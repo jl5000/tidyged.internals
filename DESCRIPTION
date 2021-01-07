@@ -1,0 +1,29 @@
+Package: tidygedcom.internals
+Title: Internal Data Structures for the tidygedcom Package
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Jamie",
+           family = "Lendrum",
+           role = c("aut", "cre"),
+           email = "jalendrum@gmail.com")
+Description: Infrastructure for the tidygedcom package.
+URL: https://github.com/jl5000/tidygedcom.internals
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("namespace", "rd", "roxytest::testthat_roclet"))
+RoxygenNote: 7.1.1
+Imports: 
+    dplyr,
+    magrittr,
+    tidyr,
+    stringr,
+    purrr,
+    lubridate,
+    tibble
+Suggests: 
+    testthat (>= 3.0.0),
+    roxytest,
+    knitr
+Config/testthat/edition: 3
+VignetteBuilder: knitr
