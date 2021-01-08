@@ -25,6 +25,10 @@ year_pattern <- function() {
   "\\d{4}(?:/\\d{2})?" %>% group_it()
 }
 
+#' Construct a regular expression for an xref
+#'
+#' @return A regular expression pattern for an xref
+#' @export
 xref_pattern <- function() {
   #p31
   "^@[a-zA-Z0-9]{1,20}@$"
