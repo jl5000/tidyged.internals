@@ -23,7 +23,5 @@ Imports:
     tibble
 Suggests: 
     testthat (>= 3.0.0),
-    roxytest,
-    tidygedcom
-Remotes: jl5000/tidygedcom
+    roxytest
 Config/testthat/edition: 3
