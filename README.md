@@ -8,7 +8,7 @@
 [![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
-THis package contains the internal data structures used in the `tidygedcom` package.
+This package contains the internal data structures used in the `tidygedcom` package.
 
 ## Installation
 

@@ -113,100 +113,6 @@ salvage_name_pieces <- function(full_name, name_pieces) {
 }
 
 
-
-#' Identify the rows of a subrecord in a tidygedcom object
-#'
-#' @param gedcom A tidygedcom object.
-#' @param containing_level The level of the first line of the subrecord.
-#' @param containing_tag The tag of the first line of the subrecord.
-#' @param containing_value The value of the first line of the subrecord.
-#' @param xrefs The xrefs of records containing the subrecord (default is all records).
-#'
-#' @return A vector of rows in the tidygedcom object of the subrecord(s).
-identify_section <- function(gedcom,
-                           containing_level,
-                           containing_tag,
-                           containing_value,
-                           xrefs = character()) {
-  
-  no_xrefs_defined <- length(xrefs) == 0
-  
-  rows_to_remove <- integer()
-  
-  active <- FALSE
-  for(i in seq_len(nrow(gedcom))) {
-    
-    if(active) {
-      if(gedcom$level[i] <= containing_level) {
-        active <- FALSE
-      } else {
-        rows_to_remove <- c(rows_to_remove, i)
-      }
-      
-    }
-    
-    if(no_xrefs_defined || gedcom$record[i] %in% xrefs) {
-      if(gedcom$level[i] == containing_level & gedcom$tag[i] == containing_tag &
-         gedcom$value[i] == containing_value) {
-        
-        active <- TRUE
-        rows_to_remove <- c(rows_to_remove, i) 
-      } 
-      
-    }
-  }
-  rows_to_remove
-  
-}
-
-
-#' Remove a subrecord in a tidygedcom object
-#'
-#' @param gedcom A tidygedcom object.
-#' @param containing_level The level of the first line of the subrecord.
-#' @param containing_tag The tag of the first line of the subrecord.
-#' @param containing_value The value of the first line of the subrecord.
-#' @param xrefs The xrefs of records containing the subrecord (default is all records).
-#'
-#' @return The tidygedcom object with the subrecord(s) removed.
-remove_section <- function(gedcom,
-                           containing_level,
-                           containing_tag,
-                           containing_value,
-                           xrefs = character()) {
-  
-  rows_to_remove <- identify_section(gedcom,
-                                     containing_level,
-                                     containing_tag,
-                                     containing_value,
-                                     xrefs)
-  
-  if(length(rows_to_remove) == 0) {
-    gedcom
-  } else {
-    dplyr::slice(gedcom, -rows_to_remove)
-  }
-  
-}
-
-
-#' Remove all creation dates from a tidygedcom object
-#' 
-#' @details This is a function used in tests so that the objects created do not
-#' change every time.
-#'
-#' @param gedcom A tidygedcom object.
-#'
-#' @return The tidygedcom object with creation dates removed.
-remove_dates_for_tests <- function(gedcom) {
-  
-  gedcom %>% 
-    remove_change_dates() %>% 
-    dplyr::filter(!(level == 1 & record == "HD" & tag == "DATE"))
-  
-}
-
-
 #' Remove all context lines from test files
 #' 
 #' @details This is a function used in development run after devtools::document().
@@ -225,15 +131,4 @@ remove_context_from_tests <- function() {
   
 }
 
-#' Remove all CHANge dates from a tidygedcom object
-#'
-#' @param gedcom A tidygedcom object.
-#'
-#' @return A tidygedcom object with all CHAN structures removed.
-#' @export
-remove_change_dates <- function(gedcom) {
-  
-  gedcom %>% 
-    remove_section(1, "CHAN", "")
-  
-}
+

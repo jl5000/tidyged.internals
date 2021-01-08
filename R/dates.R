@@ -1,5 +1,5 @@
 
-
+#' @export
 current_date <- function() { 
   toupper(format(Sys.Date(), "%d %b %Y")) 
 }
