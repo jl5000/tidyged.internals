@@ -9,6 +9,7 @@
 #' @param start_level How many levels to add on to the existing levels.
 #'
 #' @return The tidygedcom structure with modified levels.
+#' @export
 add_levels <- function(df, start_level) {
   
   if (nrow(df) == 0) return(df)
@@ -26,6 +27,7 @@ add_levels <- function(df, start_level) {
 #' @param global_start_level A global start level for records (default is 0).
 #'
 #' @return A final tidygedcom record tibble.
+#' @export
 finalise <- function(df, global_start_level = 0) {
   
   df %>% 
