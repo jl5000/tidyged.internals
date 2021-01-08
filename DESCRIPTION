@@ -1,5 +1,5 @@
 Package: tidygedcom.internals
-Title: Internal Data Structures for the tidygedcom Package
+Title: Internal Data Structures for the Tidygedcom Package
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Jamie",
@@ -24,6 +24,6 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0),
     roxytest,
-    knitr
+    tidygedcom
+Remotes: jl5000/tidygedcom
 Config/testthat/edition: 3
-VignetteBuilder: knitr

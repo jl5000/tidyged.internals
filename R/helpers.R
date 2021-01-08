@@ -3,21 +3,6 @@
 `%nin%` <- Negate(`%in%`)
 
 
-
-xrefs_record_type <- function(gedcom, record_tag) {
-  dplyr::filter(gedcom, level == 0 & tag == record_tag)$record
-}
-
-xrefs_individuals <-  function(gedcom) {  xrefs_record_type(gedcom, .pkgenv$record_tag_indi) }
-xrefs_families <-     function(gedcom) {  xrefs_record_type(gedcom, .pkgenv$record_tag_fam)  }
-xrefs_submitters <-   function(gedcom) {  xrefs_record_type(gedcom, .pkgenv$record_tag_subm) }
-xrefs_sources <-      function(gedcom) {  xrefs_record_type(gedcom, .pkgenv$record_tag_sour) }
-xrefs_repositories <- function(gedcom) {  xrefs_record_type(gedcom, .pkgenv$record_tag_repo) }
-xrefs_notes <-        function(gedcom) {  xrefs_record_type(gedcom, .pkgenv$record_tag_note) }
-xrefs_multimedia <-   function(gedcom) {  xrefs_record_type(gedcom, .pkgenv$record_tag_obje) }
-
-
-
 #' Push a tidygedcom structure down a number of levels
 #'
 #' @param df A tidygedcom structure.

@@ -1,6 +1,10 @@
 
+
+#' Return the current date in DATE_EXACT format
+#'
+#' @return The current date in DATE_EXACT format.
 #' @export
-current_date <- function() { 
+date_current <- function() { 
   toupper(format(Sys.Date(), "%d %b %Y")) 
 }
 

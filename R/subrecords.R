@@ -247,7 +247,7 @@ CHANGE_DATE <- function(change_date = date_exact(),
                         notes = list()) {
   
   if (length(change_date) == 0) 
-    change_date <- current_date()
+    change_date <- date_current()
   
   validate_date_exact(change_date, 1)
   validate_time_value(time_value, 1)
