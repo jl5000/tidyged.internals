@@ -46,6 +46,7 @@ finalise <- function(df, global_start_level = 0) {
 #' @param gedcom A tidygedcom object
 #'
 #' @return An xref to use for a new record.
+#' @export
 assign_xref <- function(type, ref = 0, gedcom = tibble::tibble()) {
   
   if (ref == 0) {
