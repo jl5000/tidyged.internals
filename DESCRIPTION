@@ -6,7 +6,8 @@ Authors@R:
            family = "Lendrum",
            role = c("aut", "cre"),
            email = "jalendrum@gmail.com")
-Description: Infrastructure for the tidygedcom package.
+Description: This package contains functionality to represent data structures described in the GEDCOM
+    5.5.5 Specification as tidy data.
 URL: https://github.com/jl5000/tidygedcom.internals
 License: MIT + file LICENSE
 Encoding: UTF-8

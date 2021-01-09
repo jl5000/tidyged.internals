@@ -28,7 +28,7 @@ validate_input_pattern <- function(input, pattern) {
 #' @tests
 #' expect_error(validate_input_choice(20, 22:28))
 validate_input_choice <- function(input, choices) {
-  if (length(input) == 1 && input %nin% choices) 
+  if (length(input) == 1 && !input %in% choices) 
     stop("Invalid argument value: ", input, ".\n  The valid values are: ", 
          paste(choices, collapse = ", "))
 }

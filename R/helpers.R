@@ -1,8 +1,5 @@
 
 
-`%nin%` <- Negate(`%in%`)
-
-
 #' Push a tidygedcom structure down a number of levels
 #'
 #' @param df A tidygedcom structure.
@@ -35,44 +32,6 @@ finalise <- function(df, global_start_level = 0) {
     tidyr::fill(record)
   
 }
-
-
-
-
-#' Create a new xref for a record
-#' 
-#' This function is used to assign xrefs to new records that are created.
-#'
-#' @param type The type of record, given by one of the xref_prefix_*() functions.
-#' @param ref An explicit reference string (xref without the "@") if one is to be chosen manually.
-#' @param gedcom A tidygedcom object
-#'
-#' @return An xref to use for a new record.
-#' @export
-assign_xref <- function(type, ref = 0, gedcom = tibble::tibble()) {
-  
-  if (ref == 0) {
-    gedcom_filt <- gedcom %>% 
-      dplyr::filter(stringr::str_detect(record, paste0("@", type, "\\d+@"))) 
-    
-    if(nrow(gedcom_filt) == 0) {
-      ref <- 1
-    } else {
-      ref <- gedcom_filt %>%
-        dplyr::pull(record) %>% 
-        unique() %>% 
-        stringr::str_remove_all("@") %>% 
-        stringr::str_remove_all("[A-Z]") %>% 
-        as.numeric() %>% 
-        max() + 1
-      
-    }
-    
-  }
-  paste0("@", type, ref, "@")
-  
-}
-
 
 
 #' Salvage a surname from name pieces
