@@ -1278,7 +1278,7 @@
       ]
     }
 
-# Function PERSONAL_NAME_PIECES() @ L655
+# Function PERSONAL_NAME_PIECES() @ L648
 
     {
       "type": "list",
@@ -1358,7 +1358,7 @@
       ]
     }
 
-# Function PERSONAL_NAME_STRUCTURE() @ L743
+# Function PERSONAL_NAME_STRUCTURE() @ L736
 
     {
       "type": "list",
@@ -1478,7 +1478,7 @@
       ]
     }
 
-# Function PLACE_STRUCTURE() @ L850
+# Function PLACE_STRUCTURE() @ L843
 
     {
       "type": "list",
@@ -1558,7 +1558,7 @@
       ]
     }
 
-# Function SOURCE_CITATION() @ L925
+# Function SOURCE_CITATION() @ L918
 
     {
       "type": "list",
@@ -1718,7 +1718,7 @@
       ]
     }
 
-# Function SOURCE_REPOSITORY_CITATION() @ L981
+# Function SOURCE_REPOSITORY_CITATION() @ L974
 
     {
       "type": "list",
@@ -1758,7 +1758,7 @@
       ]
     }
 
-# Function SPOUSE_TO_FAMILY_LINK() @ L1012
+# Function SPOUSE_TO_FAMILY_LINK() @ L1005
 
     {
       "type": "list",

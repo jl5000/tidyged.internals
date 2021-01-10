@@ -4,12 +4,10 @@
 \alias{NOTE_STRUCTURE}
 \title{Construct the NOTE_STRUCTURE tibble}
 \usage{
-NOTE_STRUCTURE(xref_note = character(), user_text = character())
+NOTE_STRUCTURE(note = character())
 }
 \arguments{
-\item{xref_note}{An xref ID of a Note record.}
-
-\item{user_text}{Free-form user text. Comments, opinions.}
+\item{note}{Either free-form text (comments, opinions) or an xref to another Note record.}
 }
 \value{
 A tidy tibble containing the NOTE_STRUCTURE part of a GEDCOM file.

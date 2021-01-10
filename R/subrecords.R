@@ -201,7 +201,7 @@ ADDRESS_STRUCTURE <- function(local_address_lines = character(),
 #' 
 #' expect_snapshot_value(ASSOCIATION_STRUCTURE("@I1@", "Godfather"), "json2")
 #' expect_snapshot_value(ASSOCIATION_STRUCTURE("@I1@", "Father", 
-#'              notes = list(NOTE_STRUCTURE(user_text = "This is a note")),
+#'              notes = list(NOTE_STRUCTURE("This is a note")),
 #'              source_citations = list(SOURCE_CITATION("@S1@"))), "json2")
 #'              
 #' @return A tidy tibble containing the ASSOCIATION_STRUCTURE part of a GEDCOM file.
@@ -237,8 +237,8 @@ ASSOCIATION_STRUCTURE <- function(xref_indi,
 #' expect_snapshot_value(CHANGE_DATE(date_exact(5, 10, 1990)), "json2")
 #' expect_snapshot_value(CHANGE_DATE(date_exact(18, 12, 2008), time_value = "11:00:08.56"), "json2")
 #' expect_snapshot_value(CHANGE_DATE(date_exact(5, 10, 1990), "10:34:56", 
-#'                          notes = list(NOTE_STRUCTURE(user_text = "Note 1"),
-#'                                       NOTE_STRUCTURE(user_text = "Note 2"))), "json2")
+#'                          notes = list(NOTE_STRUCTURE("Note 1"),
+#'                                       NOTE_STRUCTURE("Note 2"))), "json2")
 #'
 #' @return A tidy tibble containing the CHANGE_DATE part of a GEDCOM file.
 #' @export
@@ -601,34 +601,27 @@ MULTIMEDIA_LINK <- function(xref_obje) {
 #' This function constructs a tibble representation of the NOTE_STRUCTURE from the GEDCOM 5.5.5
 #' specification.
 #'
-#' @inheritParams primitive_definitions
+#' @param note Either free-form text (comments, opinions) or an xref to another Note record.
 #' @tests
-#' expect_error(NOTE_STRUCTURE(user_text = c("test1", "test2")))
+#' expect_error(NOTE_STRUCTURE(c("test1", "test2")))
 #' expect_equal(NOTE_STRUCTURE(), tibble::tibble())
 #' expect_snapshot_value(NOTE_STRUCTURE("@T1@"), "json2")
-#' expect_snapshot_value(NOTE_STRUCTURE(user_text = "test text"), "json2")
+#' expect_snapshot_value(NOTE_STRUCTURE("test text"), "json2")
 #' 
 #' @return A tidy tibble containing the NOTE_STRUCTURE part of a GEDCOM file.
 #' @export
-NOTE_STRUCTURE <- function(xref_note = character(),
-                           user_text = character()) {
+NOTE_STRUCTURE <- function(note = character()) {
   
-  if (length(xref_note) + length(user_text) == 0) 
-    return(tibble::tibble())
+  if (length(note) == 0) return(tibble::tibble())
   
-  validate_xref(xref_note, 1)
+  validate_user_text(note, 1)
   
-  if (length(xref_note) == 1) {
-    
-    tibble::tibble(level = 0, tag = "NOTE", value = xref_note)
-  
-  } else {
-  
-    validate_user_text(user_text, 1)
-    
-    tibble::tibble(level = 0, tag = "NOTE", value = user_text)  
+  if(grepl(xref_pattern(), note)) {
+    validate_xref(note, 1)
   }
   
+  tibble::tibble(level = 0, tag = "NOTE", value = note)  
+
 }
 
 
@@ -647,8 +640,8 @@ NOTE_STRUCTURE <- function(xref_note = character(),
 #'                                            name_piece_nickname = "J"), "json2")
 #' expect_snapshot_value(PERSONAL_NAME_PIECES(name_piece_prefix = "Mr", 
 #'                                            name_piece_nickname = "J",
-#'                notes = list(NOTE_STRUCTURE(user_text = "Note1"),
-#'                             NOTE_STRUCTURE(user_text = "Note2"))), "json2")
+#'                notes = list(NOTE_STRUCTURE("Note1"),
+#'                             NOTE_STRUCTURE("Note2"))), "json2")
 #'                             
 #' @return A tidy tibble containing the PERSONAL_NAME_PIECES part of a GEDCOM file.
 #' @export
@@ -1005,7 +998,7 @@ SOURCE_REPOSITORY_CITATION <- function(xref_repo,
 #' expect_error(SPOUSE_TO_FAMILY_LINK())
 #' expect_equal(SPOUSE_TO_FAMILY_LINK(character()), tibble::tibble())
 #' expect_snapshot_value(SPOUSE_TO_FAMILY_LINK("@F2@", 
-#'                     list(NOTE_STRUCTURE(user_text = "test"))), "json2")
+#'                     list(NOTE_STRUCTURE("test"))), "json2")
 #'                     
 #' @return A tidy tibble containing the SPOUSE_TO_FAMILY_LINK part of a GEDCOM file.
 #' @export

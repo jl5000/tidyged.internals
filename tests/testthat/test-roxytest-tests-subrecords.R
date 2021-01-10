@@ -68,7 +68,7 @@ test_that("Function ASSOCIATION_STRUCTURE() @ L209", {
   
   expect_snapshot_value(ASSOCIATION_STRUCTURE("@I1@", "Godfather"), "json2")
   expect_snapshot_value(ASSOCIATION_STRUCTURE("@I1@", "Father", 
-               notes = list(NOTE_STRUCTURE(user_text = "This is a note")),
+               notes = list(NOTE_STRUCTURE("This is a note")),
                source_citations = list(SOURCE_CITATION("@S1@"))), "json2")
 })
 
@@ -77,8 +77,8 @@ test_that("Function CHANGE_DATE() @ L245", {
   expect_snapshot_value(CHANGE_DATE(date_exact(5, 10, 1990)), "json2")
   expect_snapshot_value(CHANGE_DATE(date_exact(18, 12, 2008), time_value = "11:00:08.56"), "json2")
   expect_snapshot_value(CHANGE_DATE(date_exact(5, 10, 1990), "10:34:56", 
-                           notes = list(NOTE_STRUCTURE(user_text = "Note 1"),
-                                        NOTE_STRUCTURE(user_text = "Note 2"))), "json2")
+                           notes = list(NOTE_STRUCTURE("Note 1"),
+                                        NOTE_STRUCTURE("Note 2"))), "json2")
 })
 
 
@@ -166,26 +166,26 @@ test_that("Function MULTIMEDIA_LINK() @ L589", {
 
 
 test_that("Function NOTE_STRUCTURE() @ L613", {
-  expect_error(NOTE_STRUCTURE(user_text = c("test1", "test2")))
+  expect_error(NOTE_STRUCTURE(c("test1", "test2")))
   expect_equal(NOTE_STRUCTURE(), tibble::tibble())
   expect_snapshot_value(NOTE_STRUCTURE("@T1@"), "json2")
-  expect_snapshot_value(NOTE_STRUCTURE(user_text = "test text"), "json2")
+  expect_snapshot_value(NOTE_STRUCTURE("test text"), "json2")
 })
 
 
-test_that("Function PERSONAL_NAME_PIECES() @ L655", {
+test_that("Function PERSONAL_NAME_PIECES() @ L648", {
   expect_equal(dim(PERSONAL_NAME_PIECES()), c(0, 3))
   
   expect_snapshot_value(PERSONAL_NAME_PIECES(name_piece_prefix = "Mr", 
                                              name_piece_nickname = "J"), "json2")
   expect_snapshot_value(PERSONAL_NAME_PIECES(name_piece_prefix = "Mr", 
                                              name_piece_nickname = "J",
-                 notes = list(NOTE_STRUCTURE(user_text = "Note1"),
-                              NOTE_STRUCTURE(user_text = "Note2"))), "json2")
+                 notes = list(NOTE_STRUCTURE("Note1"),
+                              NOTE_STRUCTURE("Note2"))), "json2")
 })
 
 
-test_that("Function PERSONAL_NAME_STRUCTURE() @ L743", {
+test_that("Function PERSONAL_NAME_STRUCTURE() @ L736", {
   expect_error(PERSONAL_NAME_STRUCTURE())
   expect_error(PERSONAL_NAME_STRUCTURE("Joe Bloggs"))
   expect_error(PERSONAL_NAME_STRUCTURE("Joe /Bloggs/",
@@ -233,7 +233,7 @@ test_that("Function PERSONAL_NAME_STRUCTURE() @ L743", {
 })
 
 
-test_that("Function PLACE_STRUCTURE() @ L850", {
+test_that("Function PLACE_STRUCTURE() @ L843", {
   expect_error(PLACE_STRUCTURE())
   expect_error(PLACE_STRUCTURE("Here", place_latitude = "N51.5", place_longitude = "E0.0"))
   expect_error(PLACE_STRUCTURE("London", 
@@ -257,7 +257,7 @@ test_that("Function PLACE_STRUCTURE() @ L850", {
 })
 
 
-test_that("Function SOURCE_CITATION() @ L925", {
+test_that("Function SOURCE_CITATION() @ L918", {
   expect_equal(SOURCE_CITATION(character()), tibble::tibble())
   expect_snapshot_value(SOURCE_CITATION("@S1@"), "json2")
   expect_snapshot_value(SOURCE_CITATION("@S1@", 
@@ -271,7 +271,7 @@ test_that("Function SOURCE_CITATION() @ L925", {
 })
 
 
-test_that("Function SOURCE_REPOSITORY_CITATION() @ L981", {
+test_that("Function SOURCE_REPOSITORY_CITATION() @ L974", {
   expect_error(SOURCE_REPOSITORY_CITATION())
   expect_error(SOURCE_REPOSITORY_CITATION("@R1@", source_call_number = c("123", "456")))
   expect_equal(SOURCE_REPOSITORY_CITATION(character()), tibble::tibble())
@@ -279,10 +279,10 @@ test_that("Function SOURCE_REPOSITORY_CITATION() @ L981", {
 })
 
 
-test_that("Function SPOUSE_TO_FAMILY_LINK() @ L1012", {
+test_that("Function SPOUSE_TO_FAMILY_LINK() @ L1005", {
   expect_error(SPOUSE_TO_FAMILY_LINK())
   expect_equal(SPOUSE_TO_FAMILY_LINK(character()), tibble::tibble())
   expect_snapshot_value(SPOUSE_TO_FAMILY_LINK("@F2@", 
-                      list(NOTE_STRUCTURE(user_text = "test"))), "json2")
+                      list(NOTE_STRUCTURE("test"))), "json2")
 })
 
