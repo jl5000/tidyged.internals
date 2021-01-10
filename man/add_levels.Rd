@@ -2,18 +2,18 @@
 % Please edit documentation in R/helpers.R
 \name{add_levels}
 \alias{add_levels}
-\title{Push a tidygedcom structure down a number of levels}
+\title{Push a tidyged structure down a number of levels}
 \usage{
 add_levels(df, start_level)
 }
 \arguments{
-\item{df}{A tidygedcom structure.}
+\item{df}{A tidyged structure.}
 
 \item{start_level}{How many levels to add on to the existing levels.}
 }
 \value{
-The tidygedcom structure with modified levels.
+The tidyged structure with modified levels.
 }
 \description{
-Push a tidygedcom structure down a number of levels
+Push a tidyged structure down a number of levels
 }

@@ -1,11 +1,11 @@
 
 
-#' Push a tidygedcom structure down a number of levels
+#' Push a tidyged structure down a number of levels
 #'
-#' @param df A tidygedcom structure.
+#' @param df A tidyged structure.
 #' @param start_level How many levels to add on to the existing levels.
 #'
-#' @return The tidygedcom structure with modified levels.
+#' @return The tidyged structure with modified levels.
 #' @export
 add_levels <- function(df, start_level) {
   
@@ -18,12 +18,12 @@ add_levels <- function(df, start_level) {
 
 
 
-#' Finalise the formation of a tidygedcom record
+#' Finalise the formation of a tidyged record
 #'
-#' @param df A tidygedcom record tibble.
+#' @param df A tidyged record tibble.
 #' @param global_start_level A global start level for records (default is 0).
 #'
-#' @return A final tidygedcom record tibble.
+#' @return A final tidyged record tibble.
 #' @export
 finalise <- function(df, global_start_level = 0) {
   

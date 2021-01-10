@@ -38,7 +38,7 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["", "", "5.5.5", "LINEAGE-LINKED", "5.5.5", "UTF-8", "tidygedcom", "0.0.0", "tidygedcom", "Jamie Lendrum", "", "jalendrum@gmail.com", "https://jl5000.github.io/tidygedcom/"]
+          "value": ["", "", "5.5.5", "LINEAGE-LINKED", "5.5.5", "UTF-8", "tidyged", "0.0.0", "tidyged.internals", "Jamie Lendrum", "", "jalendrum@gmail.com", "https://jl5000.github.io/tidyged/"]
         }
       ]
     }
@@ -83,7 +83,7 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["", "", "5.5.5", "LINEAGE-LINKED", "5.5.5", "UTF-8", "tidygedcom", "0.0.0", "tidygedcom", "Jamie Lendrum", "", "jalendrum@gmail.com", "https://jl5000.github.io/tidygedcom/", "English"]
+          "value": ["", "", "5.5.5", "LINEAGE-LINKED", "5.5.5", "UTF-8", "tidyged", "0.0.0", "tidyged.internals", "Jamie Lendrum", "", "jalendrum@gmail.com", "https://jl5000.github.io/tidyged/", "English"]
         }
       ]
     }

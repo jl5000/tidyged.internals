@@ -1,4 +1,4 @@
 library(testthat)
-library(tidygedcom.internals)
+library(tidyged.internals)
 
-test_check("tidygedcom.internals")
+test_check("tidyged.internals")

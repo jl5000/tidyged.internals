@@ -2,18 +2,18 @@
 % Please edit documentation in R/helpers.R
 \name{finalise}
 \alias{finalise}
-\title{Finalise the formation of a tidygedcom record}
+\title{Finalise the formation of a tidyged record}
 \usage{
 finalise(df, global_start_level = 0)
 }
 \arguments{
-\item{df}{A tidygedcom record tibble.}
+\item{df}{A tidyged record tibble.}
 
 \item{global_start_level}{A global start level for records (default is 0).}
 }
 \value{
-A final tidygedcom record tibble.
+A final tidyged record tibble.
 }
 \description{
-Finalise the formation of a tidygedcom record
+Finalise the formation of a tidyged record
 }

@@ -1,5 +1,5 @@
-Package: tidygedcom.internals
-Title: Internal Data Structures for the Tidygedcom Package
+Package: tidyged.internals
+Title: Internal Data Structures for the Tidyged Package
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Jamie",
@@ -8,7 +8,7 @@ Authors@R:
            email = "jalendrum@gmail.com")
 Description: This package contains functionality to represent data structures described in the GEDCOM
     5.5.5 Specification as tidy data.
-URL: https://github.com/jl5000/tidygedcom.internals
+URL: https://github.com/jl5000/tidyged.internals
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

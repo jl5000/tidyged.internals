@@ -33,7 +33,7 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["tidygedcom", "0.0.0", "tidygedcom", "Jamie Lendrum", "", "jalendrum@gmail.com", "https://jl5000.github.io/tidygedcom/"]
+          "value": ["tidyged", "0.0.0", "tidyged.internals", "Jamie Lendrum", "", "jalendrum@gmail.com", "https://jl5000.github.io/tidyged/"]
         }
       ]
     }
@@ -73,7 +73,7 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["destination system", "tidygedcom", "0.0.0", "tidygedcom", "Jamie Lendrum", "", "Road name", "City", "State", "ABC", "UK", "123445567", "email@domain.com", "4587375238427", "www.url.com", "source data name", "25 MAY 2009", "source copyright", "3 APR 2008", "10:56:05", "English", "@U1@", "file.ged", "gedcom copyright", "gedcom_description"]
+          "value": ["destination system", "tidyged", "0.0.0", "tidyged.internals", "Jamie Lendrum", "", "Road name", "City", "State", "ABC", "UK", "123445567", "email@domain.com", "4587375238427", "www.url.com", "source data name", "25 MAY 2009", "source copyright", "3 APR 2008", "10:56:05", "English", "@U1@", "file.ged", "gedcom copyright", "gedcom_description"]
         }
       ]
     }
