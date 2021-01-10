@@ -6,8 +6,8 @@
 \usage{
 LINEAGE_LINKED_HEADER_EXTENSION(
   system_id = "tidyged",
-  product_version_number = utils::packageVersion("tidyged"),
-  name_of_product = "tidyged",
+  product_version_number = utils::packageVersion("tidyged.internals"),
+  name_of_product = "tidyged.internals",
   name_of_business = "Jamie Lendrum",
   business_address = ADDRESS_STRUCTURE(address_email = "jalendrum@gmail.com",
     address_web_page = "https://jl5000.github.io/tidyged/"),
