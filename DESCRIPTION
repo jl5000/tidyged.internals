@@ -1,5 +1,5 @@
 Package: tidyged.internals
-Title: Internal Data Structures for the Tidyged Package
+Title: Internal Data Structures for the 'Tidyged' Package
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Jamie",

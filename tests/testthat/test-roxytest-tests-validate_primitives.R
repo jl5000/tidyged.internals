@@ -28,7 +28,7 @@ test_that("Function validate_date() @ L49", {
   expect_error(validate_date(2005, -1, 6))
   expect_error(validate_date(2005, 6, 15, 2005, 0, 20))
   expect_error(validate_date(2005, 5, 18, 2006, 2, 29))
-  expect_error(validate_date(2005, 3, year2 = 2005, month2 = 2))
+  expect_error(validate_date(2005, 3, year2 = 2004, month2 = 2))
   expect_error(validate_date(2005, year2 = 2004))
 })
 

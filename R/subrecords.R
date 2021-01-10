@@ -911,7 +911,8 @@ PLACE_STRUCTURE <- function(place_name,
 #'               certainty_assessment = 2), "json2")
 #' expect_snapshot_value(SOURCE_CITATION("@S1@", where_within_source = 3, 
 #'                              event_type_cited_from = "CENS", 
-#'                              role_in_event = "WIFE"), "json2")
+#'                              role_in_event = "WIFE",
+#'                              certainty_assessment = 2), "json2")
 #'                              
 #' @return A tidy tibble containing the SOURCE_CITATION part of a GEDCOM file.
 #' @export

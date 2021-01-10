@@ -1558,7 +1558,7 @@
       ]
     }
 
-# Function SOURCE_CITATION() @ L918
+# Function SOURCE_CITATION() @ L919
 
     {
       "type": "list",
@@ -1691,7 +1691,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2, 3, 4]
+          "value": [1, 2, 3, 4, 5]
         },
         "class": {
           "type": "character",
@@ -1703,22 +1703,22 @@
         {
           "type": "double",
           "attributes": {},
-          "value": [0, 1, 1, 2]
+          "value": [0, 1, 1, 2, 1]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["SOUR", "PAGE", "EVEN", "ROLE"]
+          "value": ["SOUR", "PAGE", "EVEN", "ROLE", "QUAY"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["@S1@", "3", "CENS", "WIFE"]
+          "value": ["@S1@", "3", "CENS", "WIFE", "2"]
         }
       ]
     }
 
-# Function SOURCE_REPOSITORY_CITATION() @ L974
+# Function SOURCE_REPOSITORY_CITATION() @ L975
 
     {
       "type": "list",
@@ -1758,7 +1758,7 @@
       ]
     }
 
-# Function SPOUSE_TO_FAMILY_LINK() @ L1005
+# Function SPOUSE_TO_FAMILY_LINK() @ L1006
 
     {
       "type": "list",

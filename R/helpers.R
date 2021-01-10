@@ -60,22 +60,3 @@ salvage_name_pieces <- function(full_name, name_pieces) {
 }
 
 
-#' Remove all context lines from test files
-#' 
-#' @details This is a function used in development run after devtools::document().
-#' It removes all context() lines from test files inserted automatically by roxytest.
-#'
-#' @return Nothing.
-remove_context_from_tests <- function() {
-  
-  files <- list.files("tests/testthat", "^test-.+\\.R$", full.names = TRUE)
-  
-  for (file in files) {
-    text <- readLines(file)
-    text <- purrr::discard(text, ~ substr(., 1, 7) == "context")
-    writeLines(text, file)
-  }
-  
-}
-
-
