@@ -35,6 +35,10 @@ finalise <- function(df, global_start_level = 0) {
 
 
 #' Salvage a surname from name pieces
+#' 
+#' @details This function takes an empty PERSONAL_NAME_PIECES object and tries to salvage
+#' a surname from the full name to put into it. If the PERSONAL_NAME_PIECES object is not empty
+#' it is returned straight back.
 #'
 #' @param full_name The full name of the individual.
 #' @param name_pieces The PERSONAL_NAME_PIECES() object associated with the name.

@@ -1,10 +1,10 @@
 
-#' @keywords internal
+
 group_it <- function(reg) {
   paste0("(?:", reg, ")")
 }
 
-#' @keywords internal
+
 anchor_it <- function(reg) {
   paste0("^", reg, "$")
 }
@@ -35,7 +35,7 @@ bce_pattern <- function() {
 
 #' Construct a regular expression for an xref
 #'
-#' @return A regular expression pattern for an xref
+#' @return A regular expression pattern for an xref.
 #' @export
 xref_pattern <- function() {
   #p31
@@ -51,17 +51,19 @@ longitude_pattern <- function() {
 }
 
 age_at_event_pattern <- function() {
-  paste0("[<>]?", #TODO: handle the extra space
-         "\\d{1,3}y \\d{1,2}m \\d{1,3}d$|",
-         "\\d{1,3}y \\d{1,2}m$|",
-         "\\d{1,3}y \\d{1,3}d$|",
-         "\\d{1,2}m \\d{1,3}d$|",
-         "\\d{1,3}y$|",
-         "\\d{1,2}m$|",
-         "\\d{1,3}d$|",
-         "^CHILD$|",
-         "^INFANT$|",
-         "^STILLBORN$")
+  paste0("^(?:[<>] )?",
+         c("\\d{1,3}y \\d{1,2}m \\d{1,3}d$",
+           "\\d{1,3}y \\d{1,2}m$",
+           "\\d{1,3}y \\d{1,3}d$",
+           "\\d{1,2}m \\d{1,3}d$",
+           "\\d{1,3}y$",
+           "\\d{1,2}m$",
+           "\\d{1,3}d$")) %>% 
+    paste(collapse = "|") %>% 
+    paste0("^CHILD$|",
+           "^INFANT$|",
+           "^STILLBORN$")
+  
 }
 
 #' Construct the regex pattern for DATE_EXACT values

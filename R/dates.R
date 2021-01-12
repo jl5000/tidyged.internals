@@ -43,14 +43,14 @@ date_exact <- function(day = numeric(),
 #'
 #' @details The DATE_VALUE describes either a specific date, a date range, or a date period.
 #' 
-#' Approximate dates can be expressed as 'abt (date)', 'calc (date)', or 'est (date)'.
-#' Date ranges can be expressed as 'before (date)', 'after (date)', or 'between (date1) and (date2).
-#' Date periods can be expressed as 'from (date)', 'to (date)', or 'from (date1) to (date2)'.
+#' Dates can be qualified with the about, calc, and est parameters.
+#' Date ranges can be expressed with the before, after, and between parameters.
+#' Date periods can be expressed with the from and to parameters.
 #' 
 #' Either one or two dates can be provided depending on the date type. The following combinations of
 #' date components are allowed: Y, YM, YMD, MD. Anything different will raise an error.
 #' 
-#' @param start_year The year (or start year if a date range/period is provided). This value is required.
+#' @param start_year The year (or start year if a date range/period is provided).
 #' @param start_month The month of the year (or start month if a date range/period is provided).
 #' @param start_day The day of the month (or start day if a date range/period is provided).
 #' @param end_year The year of the end date.
@@ -78,6 +78,7 @@ date_exact <- function(day = numeric(),
 #' transform a date of 1745 to 1745/46.
 #' @tests
 #' expect_equal(date_value(2005), "2005")
+#' expect_equal(date_value(2005, start_year_is_bce = TRUE), "2005 BCE")
 #' expect_equal(date_value(2005, 1), "JAN 2005")
 #' expect_equal(date_value(2005, 1, 14), "14 JAN 2005")
 #' expect_equal(date_value(2005, after = TRUE), "AFT 2005")
