@@ -18,21 +18,25 @@ date_value(
   between = FALSE,
   about = FALSE,
   calc = FALSE,
-  est = FALSE
+  est = FALSE,
+  start_year_is_bce = FALSE,
+  end_year_is_bce = FALSE,
+  start_year_is_dual = FALSE,
+  end_year_is_dual = FALSE
 )
 }
 \arguments{
 \item{start_year}{The year (or start year if a date range/period is provided). This value is required.}
 
-\item{start_month}{The month of the year (or start month if a date range/period is provided)}
+\item{start_month}{The month of the year (or start month if a date range/period is provided).}
 
-\item{start_day}{The day of the month (or start day if a date range/period is provided)}
+\item{start_day}{The day of the month (or start day if a date range/period is provided).}
 
-\item{end_year}{The end year}
+\item{end_year}{The year of the end date.}
 
-\item{end_month}{The end month of the year}
+\item{end_month}{The month of the end date.}
 
-\item{end_day}{The end day of the month}
+\item{end_day}{The day of the end date.}
 
 \item{from}{Whether the date given by start_year/month/day should be considered the beginning of a period.
 If 'to' is FALSE then the period is semi-infinite.}
@@ -51,10 +55,34 @@ If 'from' is FALSE then the period is semi-infinite.}
 \item{calc}{Whether the date given by start_year/month/day is calculated from other values.}
 
 \item{est}{Whether the date given by start_year/month/day is estimated.}
+
+\item{start_year_is_bce}{If the start year is given without a day or month, whether it should
+be interpreted as being before the Common Era.}
+
+\item{end_year_is_bce}{If the end year is given without a day or month, whether it should
+be interpreted as being before the Common Era.}
+
+\item{start_year_is_dual}{If the start year is given with a month, whether to interpret the
+start year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
+transform a date of 1745 to 1745/46.}
+
+\item{end_year_is_dual}{If the end year is given with a month, whether to interpret the
+end year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
+transform a date of 1745 to 1745/46.}
 }
 \value{
 A DATE_VALUE string
 }
 \description{
 Construct a DATE_VALUE string
+}
+\details{
+The DATE_VALUE describes either a specific date, a date range, or a date period.
+
+Approximate dates can be expressed as 'abt (date)', 'calc (date)', or 'est (date)'.
+Date ranges can be expressed as 'before (date)', 'after (date)', or 'between (date1) and (date2).
+Date periods can be expressed as 'from (date)', 'to (date)', or 'from (date1) to (date2)'.
+
+Either one or two dates can be provided depending on the date type. The following combinations of
+date components are allowed: Y, YM, YMD, MD. Anything different will raise an error.
 }

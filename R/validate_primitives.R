@@ -46,20 +46,21 @@ validate_input_choice <- function(input, choices) {
 #' expect_error(validate_date(2005, 5, 18, 2006, 2, 29))
 #' expect_error(validate_date(2005, 3, year2 = 2004, month2 = 2))
 #' expect_error(validate_date(2005, year2 = 2004))
-validate_date <- function(year1,
+validate_date <- function(year1 = numeric(),
                           month1 = numeric(),
                           day1 = numeric(),
                           year2 = numeric(),
                           month2 = numeric(),
                           day2 = numeric()) {
   
-  if (length(year1) < length(month1) | length(year2) < length(month2))
-    stop("Month is defined without a year")
+  if (length(year1) + length(day1) < length(month1) | length(year2) + length(day2) < length(month2))
+    stop("Month is defined without a day or year")
   
   if (length(month1) < length(day1) | length(month2) < length(day2))
     stop("Day is defined without a month")
   
   # Set first date to earliest possible time
+  if (length(year1) == 0) year1 <- 1000
   if (length(month1) == 0) month1 <- 1
   if (length(day1) == 0) day1 <- 1
   

@@ -18,3 +18,7 @@ Either a single regex string or a vector of them
 \description{
 Construct the regex pattern for DATE values
 }
+\details{
+The DATE (and subsequent DATE_CALENDAR) pattern can potentially handle several
+different calendar types, but this package has only implemented the Gregorian calendar.
+}

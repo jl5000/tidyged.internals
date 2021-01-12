@@ -19,3 +19,8 @@ A DATE_EXACT string
 \description{
 Construct a DATE_EXACT string
 }
+\details{
+Even though the day, month, and year are all required for an exact date, empty default
+values have been set so that they are represented as zero-length rows in the tidyged file (i.e.
+omitted).
+}

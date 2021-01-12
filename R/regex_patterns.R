@@ -22,7 +22,15 @@ month_pattern <- function() {
 }
 
 year_pattern <- function() {
-  "\\d{4}(?:/\\d{2})?" %>% group_it()
+  "\\d{4}" %>% group_it()
+}
+
+year_dual_pattern <- function() {
+  "\\d{4}/\\d{2}" %>% group_it()
+}
+
+bce_pattern <- function() {
+  "BCE|BC|B\\.C\\." %>% group_it()
 }
 
 #' Construct a regular expression for an xref
@@ -62,9 +70,9 @@ age_at_event_pattern <- function() {
 #' expect_equal(grepl(date_exact_pattern(), "14 JAN 2005"), TRUE)
 #' expect_equal(grepl(date_exact_pattern(), "14 JAM 2005"), FALSE)
 #' expect_equal(grepl(date_exact_pattern(), "JAN 2005"), FALSE)
-#' expect_equal(grepl(date_exact_pattern(), "14 JAN 2005/06"), TRUE)
+#' expect_equal(grepl(date_exact_pattern(), "14 JAN 2005/06"), FALSE)
 #' expect_equal(grepl(date_exact_pattern(), "5 JUL 2005"), TRUE)
-#' expect_equal(grepl(date_exact_pattern(), "8 NOV 1956/57"), TRUE)
+#' expect_equal(grepl(date_exact_pattern(), "8 NOV 1956/57"), FALSE)
 #' expect_equal(grepl(date_exact_pattern(), "2005"), FALSE)
 #' expect_equal(grepl(date_exact_pattern(), "15 NOV 125"), FALSE)
 #' expect_equal(grepl(date_exact_pattern(), "JAN 1901/58"), FALSE)
@@ -75,8 +83,11 @@ date_exact_pattern <- function() {
   paste(day_pattern(), month_pattern(), year_pattern()) %>% anchor_it()
 }
 
+
 #' Construct the regex pattern for DATE values
 #'
+#' @details The DATE (and subsequent DATE_CALENDAR) pattern can potentially handle several
+#' different calendar types, but this package has only implemented the Gregorian calendar.
 #' @param flatten A logical value which determines whether a single regex string should be
 #' returned (flatten = TRUE) or if a vector of them should be returned (flatten = FALSE).
 #' The vector output is used if the regexes need to be combined with other regexes. If they
@@ -95,14 +106,28 @@ date_exact_pattern <- function() {
 #' expect_equal(grepl(date_pattern(), " 5 JUL 2005"), FALSE)
 #' @return Either a single regex string or a vector of them
 date_pattern <- function(flatten = TRUE) {
-  combos <- c(paste(day_pattern(), month_pattern(), year_pattern()),
+  date_calendar_pattern(flatten)
+}
+
+date_calendar_pattern <- function(flatten = TRUE) {
+  date_gregorian_pattern(flatten)
+}
+
+date_gregorian_pattern <- function(flatten = TRUE) {
+  combos <- c(year_pattern(),
+              paste(year_pattern(), bce_pattern()),
               paste(month_pattern(), year_pattern()),
-              year_pattern())
+              paste(day_pattern(), month_pattern(), year_pattern()),
+              paste(day_pattern(), month_pattern()),
+              paste(month_pattern(), year_dual_pattern()),
+              paste(day_pattern(), month_pattern(), year_dual_pattern()))
+  
   if (flatten) {
     combos %>% anchor_it() %>% paste(collapse = "|")
   } else {
     combos
   }
+  
 }
 
 #' Construct the regex pattern for DATE_PERIOD values
