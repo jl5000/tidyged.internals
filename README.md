@@ -10,7 +10,7 @@
 
 This package contains the internal data structures used in the [`tidyged`](https://github.com/jl5000/tidyged) package. It codifies the rules in the [GEDCOM 5.5.5 specification](https://www.gedcom.org/gedcom.html).
 
-It is only to be used by developers of tidyged extensions.
+It is only to be used by developers of tidyged and its extensions.
 
 ## Installation
 
