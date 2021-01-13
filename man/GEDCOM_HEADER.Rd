@@ -8,7 +8,7 @@ GEDCOM_HEADER(
   character_encoding = "UTF-8",
   gedcom_version_number = "5.5.5",
   gedcom_form = "LINEAGE-LINKED",
-  header_extension = LINEAGE_LINKED_HEADER_EXTENSION()
+  header_extension = LINEAGE_LINKED_HEADER_EXTENSION("tidyged.internals")
 )
 }
 \arguments{

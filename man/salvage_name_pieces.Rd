@@ -17,3 +17,8 @@ A better populated PERSONAL_NAME_PIECES() object.
 \description{
 Salvage a surname from name pieces
 }
+\details{
+This function takes an empty PERSONAL_NAME_PIECES object and tries to salvage
+a surname from the full name to put into it. If the PERSONAL_NAME_PIECES object is not empty
+it is returned straight back.
+}

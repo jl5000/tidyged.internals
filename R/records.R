@@ -22,14 +22,15 @@
 #' expect_error(GEDCOM_HEADER("ANSEL"))
 #' expect_snapshot_value(GEDCOM_HEADER(), "json2")
 #' expect_snapshot_value(GEDCOM_HEADER(
-#'         header_extension = LINEAGE_LINKED_HEADER_EXTENSION(language_of_text = "English")), "json2")
+#'         header_extension = LINEAGE_LINKED_HEADER_EXTENSION("tidyged.internals",
+#'                                                            language_of_text = "English")), "json2")
 #' 
 #' @return A tidy tibble containing a GEDCOM_HEADER part of a GEDCOM file.
 #' @export
 GEDCOM_HEADER <- function(character_encoding = "UTF-8",
                           gedcom_version_number = "5.5.5",
                           gedcom_form = "LINEAGE-LINKED",
-                          header_extension = LINEAGE_LINKED_HEADER_EXTENSION()) {
+                          header_extension = LINEAGE_LINKED_HEADER_EXTENSION("tidyged.internals")) {
   
   gedcom_version_number <- as.character(gedcom_version_number)
   

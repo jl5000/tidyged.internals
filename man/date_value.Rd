@@ -26,7 +26,7 @@ date_value(
 )
 }
 \arguments{
-\item{start_year}{The year (or start year if a date range/period is provided). This value is required.}
+\item{start_year}{The year (or start year if a date range/period is provided).}
 
 \item{start_month}{The month of the year (or start month if a date range/period is provided).}
 
@@ -64,11 +64,11 @@ be interpreted as being before the Common Era.}
 
 \item{start_year_is_dual}{If the start year is given with a month, whether to interpret the
 start year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
-transform a date of 1745 to 1745/46.}
+transform a year of 1745 to 1745/46.}
 
 \item{end_year_is_dual}{If the end year is given with a month, whether to interpret the
 end year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
-transform a date of 1745 to 1745/46.}
+transform a year of 1745 to 1745/46.}
 }
 \value{
 A DATE_VALUE string
@@ -79,9 +79,9 @@ Construct a DATE_VALUE string
 \details{
 The DATE_VALUE describes either a specific date, a date range, or a date period.
 
-Approximate dates can be expressed as 'abt (date)', 'calc (date)', or 'est (date)'.
-Date ranges can be expressed as 'before (date)', 'after (date)', or 'between (date1) and (date2).
-Date periods can be expressed as 'from (date)', 'to (date)', or 'from (date1) to (date2)'.
+Dates can be qualified with the about, calc, and est parameters.
+Date ranges can be expressed with the before, after, and between parameters.
+Date periods can be expressed with the from and to parameters.
 
 Either one or two dates can be provided depending on the date type. The following combinations of
 date components are allowed: Y, YM, YMD, MD. Anything different will raise an error.

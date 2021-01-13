@@ -1,4 +1,4 @@
-# Function GEDCOM_HEADER() @ L29
+# Function GEDCOM_HEADER() @ L30
 
     {
       "type": "list",
@@ -11,7 +11,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+          "value": [1, 2, 3, 4, 5, 6, 7]
         },
         "class": {
           "type": "character",
@@ -23,22 +23,22 @@
         {
           "type": "double",
           "attributes": {},
-          "value": [0, 1, 2, 2, 3, 1, 1, 2, 2, 2, 3, 3, 3]
+          "value": [0, 1, 2, 2, 3, 1, 1]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD"]
+          "value": ["HD", "HD", "HD", "HD", "HD", "HD", "HD"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["HEAD", "GEDC", "VERS", "FORM", "VERS", "CHAR", "SOUR", "VERS", "NAME", "CORP", "ADDR", "EMAIL", "WWW"]
+          "value": ["HEAD", "GEDC", "VERS", "FORM", "VERS", "CHAR", "SOUR"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["", "", "5.5.5", "LINEAGE-LINKED", "5.5.5", "UTF-8", "tidyged", "0.0.0", "tidyged.internals", "Jamie Lendrum", "", "jalendrum@gmail.com", "https://jl5000.github.io/tidyged/"]
+          "value": ["", "", "5.5.5", "LINEAGE-LINKED", "5.5.5", "UTF-8", "tidyged.internals"]
         }
       ]
     }
@@ -56,7 +56,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+          "value": [1, 2, 3, 4, 5, 6, 7, 8]
         },
         "class": {
           "type": "character",
@@ -68,22 +68,22 @@
         {
           "type": "double",
           "attributes": {},
-          "value": [0, 1, 2, 2, 3, 1, 1, 2, 2, 2, 3, 3, 3, 1]
+          "value": [0, 1, 2, 2, 3, 1, 1, 1]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD"]
+          "value": ["HD", "HD", "HD", "HD", "HD", "HD", "HD", "HD"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["HEAD", "GEDC", "VERS", "FORM", "VERS", "CHAR", "SOUR", "VERS", "NAME", "CORP", "ADDR", "EMAIL", "WWW", "LANG"]
+          "value": ["HEAD", "GEDC", "VERS", "FORM", "VERS", "CHAR", "SOUR", "LANG"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["", "", "5.5.5", "LINEAGE-LINKED", "5.5.5", "UTF-8", "tidyged", "0.0.0", "tidyged.internals", "Jamie Lendrum", "", "jalendrum@gmail.com", "https://jl5000.github.io/tidyged/", "English"]
+          "value": ["", "", "5.5.5", "LINEAGE-LINKED", "5.5.5", "UTF-8", "tidyged.internals", "English"]
         }
       ]
     }

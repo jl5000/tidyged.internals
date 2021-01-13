@@ -5,12 +5,11 @@
 \title{Construct the LINEAGE_LINKED_HEADER_EXTENSION tibble}
 \usage{
 LINEAGE_LINKED_HEADER_EXTENSION(
-  system_id = "tidyged",
-  product_version_number = utils::packageVersion("tidyged.internals"),
-  name_of_product = "tidyged.internals",
-  name_of_business = "Jamie Lendrum",
-  business_address = ADDRESS_STRUCTURE(address_email = "jalendrum@gmail.com",
-    address_web_page = "https://jl5000.github.io/tidyged/"),
+  system_id,
+  product_version_number = character(),
+  name_of_product = character(),
+  name_of_business = character(),
+  business_address = ADDRESS_STRUCTURE(),
   name_of_source_data = character(),
   publication_date = date_exact(),
   copyright_source_data = character(),

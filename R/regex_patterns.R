@@ -9,6 +9,13 @@ anchor_it <- function(reg) {
   paste0("^", reg, "$")
 }
 
+
+#' Enumerate all combinations of regex patterns
+#'
+#' @param reg1 A vector of regex patterns.
+#' @param reg2 A vector of regex patterns.
+#'
+#' @return A vector of all combinations of the concatenation of reg1 and reg2.
 regex_combn <- function(reg1, reg2) {
   paste(rep(reg1, each = length(reg2)), reg2, sep = "")
 }
@@ -259,5 +266,6 @@ date_value_pattern <- function() {
     date_period_pattern(FALSE),
     date_range_pattern(FALSE),
     date_approximated_pattern(FALSE)) %>% 
-    anchor_it() %>% paste(collapse = "|")
+    anchor_it() %>% 
+    paste(collapse = "|")
 }

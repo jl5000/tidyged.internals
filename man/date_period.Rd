@@ -41,11 +41,11 @@ be interpreted as being before the Common Era.}
 
 \item{start_year_is_dual}{If the start year is given with a month, whether to interpret the
 start year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
-transform a date of 1745 to 1745/46.}
+transform a year of 1745 to 1745/46.}
 
 \item{end_year_is_dual}{If the end year is given with a month, whether to interpret the
 end year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
-transform a date of 1745 to 1745/46.}
+transform a year of 1745 to 1745/46.}
 }
 \value{
 A DATE_PERIOD string

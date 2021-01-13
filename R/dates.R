@@ -72,10 +72,10 @@ date_exact <- function(day = numeric(),
 #' be interpreted as being before the Common Era.
 #' @param start_year_is_dual If the start year is given with a month, whether to interpret the
 #' start year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
-#' transform a date of 1745 to 1745/46.
+#' transform a year of 1745 to 1745/46.
 #' @param end_year_is_dual If the end year is given with a month, whether to interpret the
 #' end year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
-#' transform a date of 1745 to 1745/46.
+#' transform a year of 1745 to 1745/46.
 #' @tests
 #' expect_equal(date_value(2005), "2005")
 #' expect_equal(date_value(2005, start_year_is_bce = TRUE), "2005 BCE")
@@ -184,10 +184,10 @@ date_value <- function(start_year = numeric(),
 #' be interpreted as being before the Common Era.
 #' @param start_year_is_dual If the start year is given with a month, whether to interpret the
 #' start year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
-#' transform a date of 1745 to 1745/46.
+#' transform a year of 1745 to 1745/46.
 #' @param end_year_is_dual If the end year is given with a month, whether to interpret the
 #' end year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
-#' transform a date of 1745 to 1745/46.
+#' transform a year of 1745 to 1745/46.
 #' @tests
 #' expect_equal(date_period(2005), "FROM 2005")
 #' expect_equal(date_period(2005, 1), "FROM JAN 2005")

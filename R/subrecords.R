@@ -8,8 +8,9 @@
 #' @param business_address An ADDRESS_STRUCTURE() object giving the address of the business.
 #'
 #' @tests
-#' expect_snapshot_value(LINEAGE_LINKED_HEADER_EXTENSION(), "json2")
-#' expect_snapshot_value(LINEAGE_LINKED_HEADER_EXTENSION(
+#' expect_equal(LINEAGE_LINKED_HEADER_EXTENSION("tidyged"),
+#'              tibble::tibble(level = 0, tag = "SOUR", value = "tidyged"))
+#' expect_snapshot_value(LINEAGE_LINKED_HEADER_EXTENSION("tidyged",
 #'                business_address = ADDRESS_STRUCTURE("Road name",
 #'                                                     "City",
 #'                                                     "State",
@@ -33,12 +34,11 @@
 #'                
 #' @return A tidy tibble containing the HEADER part of a GEDCOM file.
 #' @export
-LINEAGE_LINKED_HEADER_EXTENSION <- function(system_id = "tidyged",
-                                            product_version_number = utils::packageVersion("tidyged.internals"),
-                                            name_of_product = "tidyged.internals",
-                                            name_of_business = "Jamie Lendrum",
-                                            business_address = ADDRESS_STRUCTURE(address_email = "jalendrum@gmail.com",
-                                                                                 address_web_page = "https://jl5000.github.io/tidyged/"),
+LINEAGE_LINKED_HEADER_EXTENSION <- function(system_id,
+                                            product_version_number = character(),
+                                            name_of_product = character(),
+                                            name_of_business = character(),
+                                            business_address = ADDRESS_STRUCTURE(),
                                             name_of_source_data = character(),
                                             publication_date = date_exact(),
                                             copyright_source_data = character(),

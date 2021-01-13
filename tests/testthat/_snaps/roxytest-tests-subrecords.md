@@ -1,4 +1,4 @@
-# Function LINEAGE_LINKED_HEADER_EXTENSION() @ L36
+# Function LINEAGE_LINKED_HEADER_EXTENSION() @ L37
 
     {
       "type": "list",
@@ -11,7 +11,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2, 3, 4, 5, 6, 7]
+          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
         },
         "class": {
           "type": "character",
@@ -23,57 +23,17 @@
         {
           "type": "double",
           "attributes": {},
-          "value": [0, 1, 1, 1, 2, 2, 2]
+          "value": [0, 0, 2, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 2, 2, 0, 1, 0, 0, 0, 0, 0]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["SOUR", "VERS", "NAME", "CORP", "ADDR", "EMAIL", "WWW"]
+          "value": ["DEST", "SOUR", "ADDR", "ADR1", "CITY", "STAE", "POST", "CTRY", "PHON", "EMAIL", "FAX", "WWW", "DATA", "DATE", "COPR", "DATE", "TIME", "LANG", "SUBM", "FILE", "COPR", "NOTE"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["tidyged", "0.0.0", "tidyged.internals", "Jamie Lendrum", "", "jalendrum@gmail.com", "https://jl5000.github.io/tidyged/"]
-        }
-      ]
-    }
-
----
-
-    {
-      "type": "list",
-      "attributes": {
-        "names": {
-          "type": "character",
-          "attributes": {},
-          "value": ["level", "tag", "value"]
-        },
-        "row.names": {
-          "type": "integer",
-          "attributes": {},
-          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
-        },
-        "class": {
-          "type": "character",
-          "attributes": {},
-          "value": ["tbl_df", "tbl", "data.frame"]
-        }
-      },
-      "value": [
-        {
-          "type": "double",
-          "attributes": {},
-          "value": [0, 0, 1, 1, 1, 2, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 2, 2, 0, 1, 0, 0, 0, 0, 0]
-        },
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["DEST", "SOUR", "VERS", "NAME", "CORP", "ADDR", "ADR1", "CITY", "STAE", "POST", "CTRY", "PHON", "EMAIL", "FAX", "WWW", "DATA", "DATE", "COPR", "DATE", "TIME", "LANG", "SUBM", "FILE", "COPR", "NOTE"]
-        },
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["destination system", "tidyged", "0.0.0", "tidyged.internals", "Jamie Lendrum", "", "Road name", "City", "State", "ABC", "UK", "123445567", "email@domain.com", "4587375238427", "www.url.com", "source data name", "25 MAY 2009", "source copyright", "3 APR 2008", "10:56:05", "English", "@U1@", "file.ged", "gedcom copyright", "gedcom_description"]
+          "value": ["destination system", "tidyged", "", "Road name", "City", "State", "ABC", "UK", "123445567", "email@domain.com", "4587375238427", "www.url.com", "source data name", "25 MAY 2009", "source copyright", "3 APR 2008", "10:56:05", "English", "@U1@", "file.ged", "gedcom copyright", "gedcom_description"]
         }
       ]
     }
