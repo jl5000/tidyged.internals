@@ -32,7 +32,7 @@ SOURCE_RECORD(
 particular source. Each enumeration is separated by a comma. Such as a parish register of births,
 deaths, and marriages would be BIRT, DEAT, MARR.}
 
-\item{date_period_covered}{A date_period() object associated with the period covered by the course.}
+\item{date_period_covered}{A date_period() object associated with the period covered by the sourse.}
 
 \item{source_jurisdiction_place}{The name of the lowest jurisdiction that encompasses all lower-level places
 named in this source.}

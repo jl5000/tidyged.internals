@@ -8,35 +8,50 @@ test_that("Function date_exact() @ L29", {
 })
 
 
-test_that("Function date_value() @ L96", {
-  expect_equal(date_value(2005), "2005")
-  expect_equal(date_value(2005, start_year_is_bce = TRUE), "2005 BCE")
-  expect_equal(date_value(2005, 1), "JAN 2005")
-  expect_equal(date_value(2005, 1, 14), "14 JAN 2005")
-  expect_equal(date_value(2005, after = TRUE), "AFT 2005")
-  expect_equal(date_value(2010, before = TRUE), "BEF 2010")
-  expect_equal(date_value(2005, 10, 14, before = TRUE), "BEF 14 OCT 2005")
-  expect_equal(date_value(1900, 6, 30, from = TRUE), "FROM 30 JUN 1900")
-  expect_equal(date_value(2000, 1, 1, to = TRUE), "TO 1 JAN 2000")
-  expect_equal(date_value(2005, 1, 14, 2006, 7, 9, from = TRUE, to = TRUE), "FROM 14 JAN 2005 TO 9 JUL 2006")
-  expect_equal(date_value(2005, 1, 14, 2006, 7, 9, between = TRUE), "BET 14 JAN 2005 AND 9 JUL 2006")
-  expect_equal(date_value(2005, 1, 14, calc = TRUE), "CAL 14 JAN 2005")
-  expect_equal(date_value(2005, est = TRUE), "EST 2005")
-  expect_equal(date_value(2005, 1, about = TRUE), "ABT JAN 2005")
+test_that("Function date_calendar() @ L61", {
+  expect_equal(date_calendar(2005), "2005")
+  expect_equal(date_calendar(103, year_is_bce = TRUE), "103 BCE")
+  expect_equal(date_calendar(2005, 1), "JAN 2005")
+  expect_equal(date_calendar(2005, 1, 14), "14 JAN 2005")
 })
 
 
-test_that("Function date_period() @ L205", {
-  expect_equal(date_period(2005), "FROM 2005")
-  expect_equal(date_period(2005, 1), "FROM JAN 2005")
-  expect_equal(date_period(2005, 1, 14), "FROM 14 JAN 2005")
-  expect_equal(date_period(2005, to = TRUE), "TO 2005")
-  expect_equal(date_period(2010, 6, to = TRUE), "TO JUN 2010")
-  expect_equal(date_period(2005, 10, 14, 2008, 9), "FROM 14 OCT 2005 TO SEP 2008")
-  expect_equal(date_period(2005, 10, 14, 2008, 9, start_year_is_dual = TRUE), 
-               "FROM 14 OCT 2005/06 TO SEP 2008")
-  expect_equal(date_period(2005, 10, 14, 2008, 9, end_year_is_dual = TRUE), 
-               "FROM 14 OCT 2005 TO SEP 2008/09")
-  expect_equal(date_period(1900, 6, 30, 1901), "FROM 30 JUN 1900 TO 1901")
+test_that("Function date_range() @ L106", {
+  expect_equal(date_range(start_date = date_calendar(2005)), 
+               "AFT 2005")
+  expect_equal(date_range(end_date = date_calendar(2010)), 
+               "BEF 2010")
+  expect_equal(date_range(end_date = date_calendar(2005, 10, 14)), 
+               "BEF 14 OCT 2005")
+  expect_equal(date_range(date_calendar(2005, 1, 14), date_calendar(2006, 7, 9)), 
+               "BET 14 JAN 2005 AND 9 JUL 2006")
+})
+
+
+test_that("Function date_period() @ L156", {
+  expect_equal(date_period(start_date = date_calendar(2005)), 
+               "FROM 2005")
+  expect_equal(date_period(start_date = date_calendar(2005, 1)), 
+               "FROM JAN 2005")
+  expect_equal(date_period(start_date = date_calendar(2005, 1, 14)), 
+               "FROM 14 JAN 2005")
+  expect_equal(date_period(end_date = date_calendar(2005)), 
+               "TO 2005")
+  expect_equal(date_period(end_date = date_calendar(2010, 6)), 
+               "TO JUN 2010")
+  expect_equal(date_period(start_date = date_calendar(2005, 10, 14), end_date = date_calendar(2008, 9)), 
+               "FROM 14 OCT 2005 TO SEP 2008")
+  expect_equal(date_period(start_date = date_calendar(1750, 10, year_is_dual = TRUE), 
+                           end_date = date_calendar(2008, 9)), 
+               "FROM OCT 1750/51 TO SEP 2008")
+  expect_equal(date_period(date_calendar(1900, 6, 30), date_calendar(1901)), 
+               "FROM 30 JUN 1900 TO 1901")
+})
+
+
+test_that("Function date_approximated() @ L193", {
+  expect_equal(date_approximated(date_calendar(2005, 1, 14), calc = TRUE), "CAL 14 JAN 2005")
+  expect_equal(date_approximated(date_calendar(2005), est = TRUE), "EST 2005")
+  expect_equal(date_approximated(date_calendar(2005, 1)), "ABT JAN 2005")
 })
 

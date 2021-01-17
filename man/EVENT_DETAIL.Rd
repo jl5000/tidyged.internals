@@ -6,7 +6,7 @@
 \usage{
 EVENT_DETAIL(
   event_or_fact_classification = character(),
-  date = date_value(),
+  date = character(),
   place = PLACE_STRUCTURE(character()),
   address = ADDRESS_STRUCTURE(),
   responsible_agency = character(),
@@ -22,7 +22,8 @@ EVENT_DETAIL(
 event or attribute tag. This should be used whenever either of the generic EVEN or FACT tags are used.
 The value of this primitive is responsible for classifying the generic event or fact being cited.}
 
-\item{date}{A date_value() object giving the date of the event.}
+\item{date}{A date_calendar(), date_period(), date_range(), or date_approximated() value
+giving the timing of the event.}
 
 \item{place}{A PLACE_STRUCTURE() object giving the location of the event.}
 

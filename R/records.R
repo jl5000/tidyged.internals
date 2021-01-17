@@ -450,7 +450,7 @@ REPOSITORY_RECORD <- function(xref_repo,
 #' specification.
 #'
 #' @inheritParams primitive_definitions
-#' @param date_period_covered A date_period() object associated with the period covered by the course. 
+#' @param date_period_covered A date_period() object associated with the period covered by the sourse. 
 #' @param data_notes A list of NOTE_STRUCTURE() objects associated with the data in this source.
 #' @tests
 #' expect_error(SOURCE_RECORD("@S1@",

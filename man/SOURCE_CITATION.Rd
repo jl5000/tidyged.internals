@@ -9,7 +9,7 @@ SOURCE_CITATION(
   where_within_source = character(),
   event_type_cited_from = character(),
   role_in_event = character(),
-  entry_recording_date = date_value(),
+  entry_recording_date = character(),
   text_from_source = character(),
   certainty_assessment = character(),
   multimedia_links = list(),
@@ -29,8 +29,8 @@ the certainty associated with the source used in asserting the cited fact.}
 
 \item{role_in_event}{Indicates what role this person played in the event that is being cited in this context.}
 
-\item{entry_recording_date}{A date_value() object giving the date that this event data
-was entered into the original source document.}
+\item{entry_recording_date}{A date_calendar(), date_period(), date_range(), or date_approximated() value
+giving the date that this event data was entered into the original source document.}
 
 \item{text_from_source}{A verbatim copy of any description contained within the source.
 This indicates notes or text that are actually contained in the source document, not the submitter's

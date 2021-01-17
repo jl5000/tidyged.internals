@@ -35,7 +35,7 @@ validate_input_choice <- function(input, choices) {
 
 
 #' @tests
-#' expect_error(validate_date(2005, day1 = 15))
+#' expect_error(validate_date(2005, day = 15))
 #' expect_error(validate_date(2005, 10, 15, month2 = 4))
 #' expect_error(validate_date(2005, 10, 15, day2 = 15))
 #' expect_error(validate_date(2005, 10, 15, 2015, day2 = 15))
@@ -46,38 +46,81 @@ validate_input_choice <- function(input, choices) {
 #' expect_error(validate_date(2005, 5, 18, 2006, 2, 29))
 #' expect_error(validate_date(2005, 3, year2 = 2004, month2 = 2))
 #' expect_error(validate_date(2005, year2 = 2004))
-validate_date <- function(year1 = numeric(),
-                          month1 = numeric(),
-                          day1 = numeric(),
-                          year2 = numeric(),
-                          month2 = numeric(),
-                          day2 = numeric()) {
+validate_date <- function(year = numeric(),
+                          month = numeric(),
+                          day = numeric()) {
   
-  if (length(year1) + length(day1) < length(month1) | length(year2) + length(day2) < length(month2))
+  if (length(year) + length(day) < length(month))
     stop("Month is defined without a day or year")
   
-  if (length(month1) < length(day1) | length(month2) < length(day2))
+  if (length(month) < length(day))
     stop("Day is defined without a month")
   
-  # Set first date to earliest possible time
-  if (length(year1) == 0) year1 <- 1000
-  if (length(month1) == 0) month1 <- 1
-  if (length(day1) == 0) day1 <- 1
+  # Set empties to something reasonable
+  if (length(year) == 0) year <- 2000
+  if (length(month) == 0) month <- 1
+  if (length(day) == 0) day <- 1
   
   #Let lubridate do the heavy lifting
-  date1 <- lubridate::make_date(year1, month1, day1)
-  if (is.na(date1)) stop("First date is invalid")
+  test_date <- lubridate::make_date(year, month, day)
+  if (is.na(test_date)) stop("Date is invalid")
+}
+
+
+#' @tests
+#' expect_error(validate_dates("18 MAY 2005", "17 MAY 2005"))
+#' expect_error(validate_dates("MAR 2005", "FEB 2004"))
+#' expect_error(validate_dates("2005", "2004"))
+validate_dates <- function(start_date, end_date) {
+
+  start_date <- start_date %>% 
+    stringr::str_remove("/\\d{2}") 
   
-  # If second date isn't given, make one anyway
-  if (length(year2) == 0) year2 <- 4000
-  if (length(month2) == 0) month2 <- 12
-  if (length(day2) == 0) day2 <- lubridate::days_in_month(month2)
-  if (lubridate::leap_year(year2) & month2 == 2) day2 <- day2 + 1
+  end_date <- end_date %>% 
+    stringr::str_remove("/\\d{2}") 
   
-  date2 <- lubridate::make_date(year2, month2, day2)
-  if (is.na(date2)) stop("Second date is invalid")
+  # Set first date to earliest possible time
+  if(stringr::str_detect(start_date, "\\d{3,4}$")) {
+    start_year <- stringr::str_extract(start_date, "\\d{3,4}$")
+  } else {
+    start_year <- 1000
+  }
   
+  if(stringr::str_detect(start_date, "[A-Z]{3}")) {
+    start_month <- which(toupper(month.abb) == stringr::str_extract(start_date, "[A-Z]{3}"))
+  } else {
+    start_month <- 1
+  }
+  
+  if(stringr::str_detect(start_date, "^\\d{1,2} ")) {
+    start_day <- stringr::str_extract(start_date, "^\\d{1,2} ") %>% stringr::str_trim()
+  } else {
+    start_day <- 1
+  }
+  # Set end date to latest possible time
+  if(stringr::str_detect(end_date, "\\d{3,4}$")) {
+    end_year <- stringr::str_extract(end_date, "\\d{3,4}$")
+  } else {
+    end_year <- 4000
+  }
+  
+  if(stringr::str_detect(end_date, "[A-Z]{3}")) {
+    end_month <- which(toupper(month.abb) == stringr::str_extract(end_date, "[A-Z]{3}"))
+  } else {
+    end_month <- 12
+  }
+  
+  if(stringr::str_detect(end_date, "^\\d{1,2} ")) {
+    end_day <- stringr::str_extract(end_date, "^\\d{1,2} ") %>% stringr::str_trim()
+  } else {
+    end_day <- lubridate::days_in_month(lubridate::make_date(end_year, end_month))
+  }
+
+  date1 <- lubridate::make_date(start_year, start_month, start_day)
+  date2 <- lubridate::make_date(end_year, end_month, end_day)
+
   if (date1 > date2) stop("First date is after second date")
+  
 }
 
 validate_address_city <- function(input, max_dim) {

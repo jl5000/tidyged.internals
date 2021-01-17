@@ -4,51 +4,17 @@
 \alias{date_period}
 \title{Construct a DATE_PERIOD string}
 \usage{
-date_period(
-  start_year = numeric(),
-  start_month = numeric(),
-  start_day = numeric(),
-  end_year = numeric(),
-  end_month = numeric(),
-  end_day = numeric(),
-  to = FALSE,
-  start_year_is_bce = FALSE,
-  end_year_is_bce = FALSE,
-  start_year_is_dual = FALSE,
-  end_year_is_dual = FALSE
-)
+date_period(start_date = date_calendar(), end_date = date_calendar())
 }
 \arguments{
-\item{start_year}{The start year of the period. This value is required.}
+\item{start_date}{A DATE_CALENDAR() object giving the start of the period. If only the
+start date is provided, a string of the form "FROM date" will be returned.}
 
-\item{start_month}{The start month of the period.}
-
-\item{start_day}{The start day of the period.}
-
-\item{end_year}{The end year of the period}
-
-\item{end_month}{The end month of the period.}
-
-\item{end_day}{The end day of the period.}
-
-\item{to}{Whether the date given by start_year/month/day should be considered the end of a period.}
-
-\item{start_year_is_bce}{If the start year is given without a day or month, whether it should
-be interpreted as being before the Common Era.}
-
-\item{end_year_is_bce}{If the end year is given without a day or month, whether it should
-be interpreted as being before the Common Era.}
-
-\item{start_year_is_dual}{If the start year is given with a month, whether to interpret the
-start year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
-transform a year of 1745 to 1745/46.}
-
-\item{end_year_is_dual}{If the end year is given with a month, whether to interpret the
-end year as the first part of a dual year (only for English dates pre-1752). If TRUE, it will
-transform a year of 1745 to 1745/46.}
+\item{end_date}{A DATE_CALENDAR() object giving the end of the period. If only the
+end date is provided, a string of the form "TO date" will be returned.}
 }
 \value{
-A DATE_PERIOD string
+A DATE_PERIOD string.
 }
 \description{
 Construct a DATE_PERIOD string

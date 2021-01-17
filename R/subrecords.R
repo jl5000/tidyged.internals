@@ -300,7 +300,8 @@ CHILD_TO_FAMILY_LINK <- function(xref_fam,
 #' specification.
 #'
 #' @inheritParams primitive_definitions
-#' @param date A date_value() object giving the date of the event.
+#' @param date A date_calendar(), date_period(), date_range(), or date_approximated() value
+#' giving the timing of the event.
 #' @param place A PLACE_STRUCTURE() object giving the location of the event.
 #' @param address An ADDRESS_STRUCTURE() object giving the address of the event.
 #' @tests
@@ -313,7 +314,7 @@ CHILD_TO_FAMILY_LINK <- function(xref_fam,
 #' @return A tidy tibble containing the EVENT_DETAIL part of a GEDCOM file.
 #' @export
 EVENT_DETAIL <- function(event_or_fact_classification = character(),
-                         date = date_value(),
+                         date = character(),
                          place = PLACE_STRUCTURE(character()),
                          address = ADDRESS_STRUCTURE(),
                          responsible_agency = character(),
@@ -920,7 +921,7 @@ SOURCE_CITATION <- function(xref_sour,
                             where_within_source = character(),
                             event_type_cited_from = character(),
                             role_in_event = character(),
-                            entry_recording_date = date_value(),
+                            entry_recording_date = character(),
                             text_from_source = character(),
                             certainty_assessment = character(),
                             multimedia_links = list(),

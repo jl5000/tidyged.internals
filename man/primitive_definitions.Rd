@@ -77,8 +77,8 @@ structure. This is not necessarily the count of children listed in a family stru
 
 \item{descriptive_title}{The title of a work, record, item, or object.}
 
-\item{entry_recording_date}{A date_value() object giving the date that this event data
-was entered into the original source document.}
+\item{entry_recording_date}{A date_calendar(), date_period(), date_range(), or date_approximated() value
+giving the date that this event data was entered into the original source document.}
 
 \item{event_attribute_type}{A code that classifies the principal event or happening that caused the
 source record entry to be created. If the event or attribute doesn't translate to one of these tag codes,
