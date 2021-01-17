@@ -18,22 +18,17 @@ test_that("Function validate_input_choice() @ L30", {
 })
 
 
-test_that("Function validate_date() @ L49", {
+test_that("Function validate_date() @ L44", {
   expect_error(validate_date(2005, day = 15))
-  expect_error(validate_date(2005, 10, 15, month2 = 4))
-  expect_error(validate_date(2005, 10, 15, day2 = 15))
-  expect_error(validate_date(2005, 10, 15, 2015, day2 = 15))
+  expect_error(validate_date(month = 5))
   expect_error(validate_date(2005, 13))
   expect_error(validate_date(2005, 10, 32))
   expect_error(validate_date(2005, -1, 6))
-  expect_error(validate_date(2005, 6, 15, 2005, 0, 20))
-  expect_error(validate_date(2005, 5, 18, 2006, 2, 29))
-  expect_error(validate_date(2005, 3, year2 = 2004, month2 = 2))
-  expect_error(validate_date(2005, year2 = 2004))
+  expect_error(validate_date(month = 1, day = 32))
 })
 
 
-test_that("Function validate_dates() @ L74", {
+test_that("Function validate_dates() @ L69", {
   expect_error(validate_dates("18 MAY 2005", "17 MAY 2005"))
   expect_error(validate_dates("MAR 2005", "FEB 2004"))
   expect_error(validate_dates("2005", "2004"))

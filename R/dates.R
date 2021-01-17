@@ -103,6 +103,7 @@ date_calendar <- function(year = numeric(),
 #'              "BEF 14 OCT 2005")
 #' expect_equal(date_range(date_calendar(2005, 1, 14), date_calendar(2006, 7, 9)), 
 #'              "BET 14 JAN 2005 AND 9 JUL 2006")
+#' expect_equal(date_range(), character())
 date_range <- function(start_date = date_calendar(),
                        end_date = date_calendar()) {
   
@@ -190,6 +191,8 @@ date_period <- function(start_date = date_calendar(),
 #' expect_equal(date_approximated(date_calendar(2005, 1, 14), calc = TRUE), "CAL 14 JAN 2005")
 #' expect_equal(date_approximated(date_calendar(2005), est = TRUE), "EST 2005")
 #' expect_equal(date_approximated(date_calendar(2005, 1)), "ABT JAN 2005")
+#' expect_equal(date_approximated(), character())
+#' expect_equal(date_approximated(date_calendar(2005, 1), FALSE,FALSE,FALSE), "JAN 2005")
 date_approximated <- function(date = date_calendar(),
                               about = TRUE,
                               calc = FALSE,

@@ -36,16 +36,11 @@ validate_input_choice <- function(input, choices) {
 
 #' @tests
 #' expect_error(validate_date(2005, day = 15))
-#' expect_error(validate_date(2005, 10, 15, month2 = 4))
-#' expect_error(validate_date(2005, 10, 15, day2 = 15))
-#' expect_error(validate_date(2005, 10, 15, 2015, day2 = 15))
+#' expect_error(validate_date(month = 5))
 #' expect_error(validate_date(2005, 13))
 #' expect_error(validate_date(2005, 10, 32))
 #' expect_error(validate_date(2005, -1, 6))
-#' expect_error(validate_date(2005, 6, 15, 2005, 0, 20))
-#' expect_error(validate_date(2005, 5, 18, 2006, 2, 29))
-#' expect_error(validate_date(2005, 3, year2 = 2004, month2 = 2))
-#' expect_error(validate_date(2005, year2 = 2004))
+#' expect_error(validate_date(month = 1, day = 32))
 validate_date <- function(year = numeric(),
                           month = numeric(),
                           day = numeric()) {
