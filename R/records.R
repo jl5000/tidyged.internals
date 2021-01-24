@@ -99,7 +99,7 @@ FAMILY_GROUP_RECORD <- function(xref_fam,
                                 source_citations = list(),
                                 multimedia_links = list()){
   
-  children_count <- as.character(count_of_children)
+  count_of_children <- as.character(count_of_children)
   user_reference_number <- as.character(user_reference_number)
   
   if (length(user_reference_type) > 0 & length(user_reference_type) != length(user_reference_number))
