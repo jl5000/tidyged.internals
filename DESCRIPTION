@@ -8,7 +8,7 @@ Authors@R:
            email = "jalendrum@gmail.com")
 Description: Represent data structures described in the GEDCOM 5.5.5 Specification as tidy data.
 URL: https://github.com/jl5000/tidyged.internals
-License: MIT + file LICENSE
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("namespace", "rd", "roxytest::testthat_roclet"))
