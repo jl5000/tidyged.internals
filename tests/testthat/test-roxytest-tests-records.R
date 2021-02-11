@@ -16,7 +16,7 @@ test_that("Function FAMILY_GROUP_RECORD() @ L88", {
                tibble::tribble(~level,  ~record,   ~tag,                  ~value,
                                0, "@F1@", "FAM",                      "",
                                1, "@F1@", "CHAN",                     "",
-                               2, "@F1@", "DATE", toupper(format(Sys.Date(), "%d %b %Y"))
+                               2, "@F1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
   expect_equal(FAMILY_GROUP_RECORD("@F1@", user_reference_number = c(123, 456),
                                    user_reference_type = c("type1", "type2")),
@@ -27,7 +27,7 @@ test_that("Function FAMILY_GROUP_RECORD() @ L88", {
                                1, "@F1@", "REFN",   "456",
                                2, "@F1@", "TYPE",   "type2",
                                1, "@F1@", "CHAN",                     "",
-                               2, "@F1@", "DATE", toupper(format(Sys.Date(), "%d %b %Y"))
+                               2, "@F1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
 })
 
@@ -38,7 +38,7 @@ test_that("Function INDIVIDUAL_RECORD() @ L175", {
                tibble::tribble(~level,  ~record,   ~tag,                  ~value,
                                0, "@I1@", "INDI",                      "",
                                1, "@I1@", "CHAN",                      "",
-                               2, "@I1@", "DATE", toupper(format(Sys.Date(), "%d %b %Y"))
+                               2, "@I1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
 })
 
@@ -52,7 +52,7 @@ test_that("Function MULTIMEDIA_RECORD() @ L265", {
                                1, "@M1@", "FILE",              "file_ref",
                                2, "@M1@", "FORM",                   "JPG",
                                1, "@M1@", "CHAN",                      "",
-                               2, "@M1@", "DATE", toupper(format(Sys.Date(), "%d %b %Y"))
+                               2, "@M1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
   expect_equal(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPG",
                                  user_reference_number = 123, user_reference_type = "type"),
@@ -63,7 +63,7 @@ test_that("Function MULTIMEDIA_RECORD() @ L265", {
                                1, "@M1@", "REFN",                   "123",
                                2, "@M1@", "TYPE",                   "type",
                                1, "@M1@", "CHAN",                      "",
-                               2, "@M1@", "DATE", toupper(format(Sys.Date(), "%d %b %Y"))
+                               2, "@M1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
 })
 
@@ -77,7 +77,7 @@ test_that("Function NOTE_RECORD() @ L340", {
                                1, "@N1@", "REFN",        "123",
                                2, "@N1@", "TYPE",        "type",
                                1, "@N1@", "CHAN",                      "",
-                               2, "@N1@", "DATE", toupper(format(Sys.Date(), "%d %b %Y"))
+                               2, "@N1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
 })
 
@@ -93,7 +93,7 @@ test_that("Function REPOSITORY_RECORD() @ L403", {
                                1, "@R1@", "REFN",             "123",
                                2, "@R1@", "TYPE",             "type",
                                1, "@R1@", "CHAN",                      "",
-                               2, "@R1@", "DATE", toupper(format(Sys.Date(), "%d %b %Y"))
+                               2, "@R1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
 })
 
@@ -107,7 +107,7 @@ test_that("Function SOURCE_RECORD() @ L468", {
                                1, "@S1@", "REFN",                      "234",
                                2, "@S1@", "TYPE",                      "type",
                                1, "@S1@", "CHAN",                      "",
-                               2, "@S1@", "DATE", toupper(format(Sys.Date(), "%d %b %Y"))
+                               2, "@S1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
 })
 
@@ -118,7 +118,7 @@ test_that("Function SUBMITTER_RECORD() @ L569", {
                                0, "@S1@", "SUBM",                      "",
                                1, "@S1@", "NAME",            "Joe Bloggs",
                                1, "@S1@", "CHAN",                      "",
-                               2, "@S1@", "DATE", toupper(format(Sys.Date(), "%d %b %Y"))
+                               2, "@S1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
 })
 
