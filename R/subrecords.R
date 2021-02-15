@@ -758,7 +758,7 @@ PERSONAL_NAME_STRUCTURE <- function(name_personal,
   validate_romanisation_method(romanisation_method, 1000)
   
   if(nrow(name_pieces) == 0)
-    stop("No name pieces defined")
+    stop("No name pieces defined for ", name_personal)
   
   if (length(name_phonetic) != length(phonetisation_method))
     stop("Each phonetic variation requires a phonetisation method")
