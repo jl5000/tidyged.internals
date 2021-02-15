@@ -721,9 +721,13 @@ PERSONAL_NAME_PIECES <- function(name_piece_prefix = character(),
 #'                                      name_pieces = PERSONAL_NAME_PIECES(name_piece_prefix = "Mr",
 #'                                                                         name_piece_surname = "Bloggs")), "json2")
 #' expect_snapshot_value(PERSONAL_NAME_STRUCTURE("Joe /Bloggs/", 
+#'                                      name_pieces = PERSONAL_NAME_PIECES(name_piece_surname = "Bloggs"),
 #'                                      name_phonetic = c("Joe /Blogs/", "Jo /Bloggs/"),
+#'                                      phonetic_name_pieces = list(PERSONAL_NAME_PIECES(name_piece_surname = "Blogs"),
+#'                                                                  PERSONAL_NAME_PIECES(name_piece_surname = "Bloggs")),
 #'                                      phonetisation_method = c("Can't spell", "Can't spell")), "json2")
 #' expect_snapshot_value(PERSONAL_NAME_STRUCTURE("Joe /Bloggs/", 
+#'                                      name_pieces = PERSONAL_NAME_PIECES(name_piece_surname = "Bloggs"),
 #'                                      name_phonetic = c("Joe Blogs", "Jo Bloggs"),
 #'                                      phonetisation_method = c("Can't spell", "Can't spell"),
 #'                                      phonetic_name_pieces = 
@@ -753,13 +757,14 @@ PERSONAL_NAME_STRUCTURE <- function(name_personal,
   validate_name_romanised(name_romanised, 1000)
   validate_romanisation_method(romanisation_method, 1000)
   
+  if(nrow(name_pieces) == 0)
+    stop("No name pieces defined")
+  
   if (length(name_phonetic) != length(phonetisation_method))
     stop("Each phonetic variation requires a phonetisation method")
   
   if (length(name_romanised) != length(romanisation_method))
     stop("Each romanised variation requires a romanisation method")
-  
-  name_pieces <- salvage_name_pieces(name_personal, name_pieces)
   
   if(length(name_phonetic) > 0) {
     
@@ -769,7 +774,7 @@ PERSONAL_NAME_STRUCTURE <- function(name_personal,
     } else {
       phonetic_name_pieces <- rep(list(PERSONAL_NAME_PIECES()), length(name_phonetic))
     }
-    phonetic_name_pieces <- purrr::map2(name_phonetic, phonetic_name_pieces, salvage_name_pieces)
+
   }
   
   if(length(name_romanised) > 0) {
@@ -780,7 +785,7 @@ PERSONAL_NAME_STRUCTURE <- function(name_personal,
     } else {
       romanised_name_pieces <- rep(list(PERSONAL_NAME_PIECES()), length(name_romanised))
     }
-    romanised_name_pieces <-  purrr::map2(name_romanised, romanised_name_pieces, salvage_name_pieces)
+
   }
   
   temp <- dplyr::bind_rows(
@@ -790,22 +795,26 @@ PERSONAL_NAME_STRUCTURE <- function(name_personal,
   )
   
   for (i in seq_along(name_phonetic)) {
+    if(nrow(phonetic_name_pieces[[i]]) == 0)
+      stop("No name pieces defined for ", name_phonetic[i])
+    
     temp <- dplyr::bind_rows(
       temp,
       tibble::tibble(level = 1, tag = "FONE", value = name_phonetic[i]),
-      tibble::tibble(level = 2, tag = "TYPE", value = phonetisation_method[i])
+      tibble::tibble(level = 2, tag = "TYPE", value = phonetisation_method[i]),
+      phonetic_name_pieces[[i]] %>% add_levels(2)
     )
-    if (length(phonetic_name_pieces) > 0)
-      temp <- dplyr::bind_rows(temp, phonetic_name_pieces[[i]] %>% add_levels(2))
   }
   for (i in seq_along(name_romanised)) {
+    if(nrow(romanised_name_pieces[[i]]) == 0)
+      stop("No name pieces defined for ", name_romanised[i])
+    
     temp <- dplyr::bind_rows(
      temp,
      tibble::tibble(level = 1, tag = "ROMN", value = name_romanised[i]),
-     tibble::tibble(level = 2, tag = "TYPE", value = romanisation_method[i])
+     tibble::tibble(level = 2, tag = "TYPE", value = romanisation_method[i]),
+     romanised_name_pieces[[i]] %>% add_levels(2)
     )
-    if (length(romanised_name_pieces) > 0)
-      temp <- dplyr::bind_rows(temp, romanised_name_pieces[[i]] %>% add_levels(2))
   }
   
   temp

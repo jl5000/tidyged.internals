@@ -34,33 +34,99 @@ finalise <- function(df, global_start_level = 0) {
 }
 
 
-#' Salvage a surname from name pieces
-#' 
-#' @details This function takes an empty PERSONAL_NAME_PIECES object and tries to salvage
-#' a surname from the full name to put into it. If the PERSONAL_NAME_PIECES object is not empty
-#' it is returned straight back.
+
+#' Identify the rows of a subrecord in a tidyged object
 #'
-#' @param full_name The full name of the individual.
-#' @param name_pieces The PERSONAL_NAME_PIECES() object associated with the name.
+#' @param gedcom A tidyged object.
+#' @param containing_level The level of the first line of the subrecord.
+#' @param containing_tag The tag of the first line of the subrecord.
+#' @param containing_value The value of the first line of the subrecord.
+#' @param xrefs The xrefs of records containing the subrecord (default is all records).
 #'
-#' @return A better populated PERSONAL_NAME_PIECES() object.
-salvage_name_pieces <- function(full_name, name_pieces) {
+#' @return A vector of rows in the tidyged object of the subrecord(s).
+#' @export
+identify_section <- function(gedcom,
+                             containing_level,
+                             containing_tag,
+                             containing_value,
+                             xrefs = character()) {
   
-  if(nrow(name_pieces) > 0) return(name_pieces)
+  no_xrefs_defined <- length(xrefs) == 0
   
-  if(stringr::str_detect(full_name, "/.+/")) {
+  rows_to_remove <- integer()
+  
+  active <- FALSE
+  for(i in seq_len(nrow(gedcom))) {
     
-    surname <- full_name %>% 
-      stringr::str_extract("/.+/") %>% 
-      stringr::str_remove_all("/")
+    if(active) {
+      if(gedcom$level[i] <= containing_level) {
+        active <- FALSE
+      } else {
+        rows_to_remove <- c(rows_to_remove, i)
+      }
+      
+    }
     
-    name_pieces <- PERSONAL_NAME_PIECES(name_piece_surname = surname)
-    
-  } else {
-    stop("The name ", full_name, " is given without any name pieces")
+    if(no_xrefs_defined || gedcom$record[i] %in% xrefs) {
+      if(gedcom$level[i] == containing_level & gedcom$tag[i] == containing_tag &
+         gedcom$value[i] == containing_value) {
+        
+        active <- TRUE
+        rows_to_remove <- c(rows_to_remove, i) 
+      } 
+      
+    }
   }
+  rows_to_remove
   
-  name_pieces
 }
 
+
+#' Remove a subrecord in a tidyged object
+#'
+#' @param gedcom A tidyged object.
+#' @param containing_level The level of the first line of the subrecord.
+#' @param containing_tag The tag of the first line of the subrecord.
+#' @param containing_value The value of the first line of the subrecord.
+#' @param xrefs The xrefs of records containing the subrecord (default is all records).
+#'
+#' @return The tidyged object with the subrecord(s) removed.
+#' @export
+remove_section <- function(gedcom,
+                           containing_level,
+                           containing_tag,
+                           containing_value,
+                           xrefs = character()) {
+  
+  rows_to_remove <- identify_section(gedcom,
+                                     containing_level,
+                                     containing_tag,
+                                     containing_value,
+                                     xrefs)
+  
+  if(length(rows_to_remove) == 0) {
+    gedcom
+  } else {
+    dplyr::slice(gedcom, -rows_to_remove)
+  }
+  
+}
+
+
+#' Remove all creation dates from a tidyged object
+#' 
+#' @details This is a function used in tests so that the objects created do not
+#' change every time.
+#'
+#' @param gedcom A tidyged object.
+#'
+#' @return The tidyged object with creation dates removed.
+#' @export
+remove_dates_for_tests <- function(gedcom) {
+  
+  gedcom %>% 
+    remove_section(1, "CHAN", "") %>% 
+    dplyr::filter(!(level == 1 & record == "HD" & tag == "DATE"))
+  
+}
 

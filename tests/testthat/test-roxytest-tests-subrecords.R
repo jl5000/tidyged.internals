@@ -186,7 +186,7 @@ test_that("Function PERSONAL_NAME_PIECES() @ L649", {
 })
 
 
-test_that("Function PERSONAL_NAME_STRUCTURE() @ L737", {
+test_that("Function PERSONAL_NAME_STRUCTURE() @ L741", {
   expect_error(PERSONAL_NAME_STRUCTURE())
   expect_error(PERSONAL_NAME_STRUCTURE("Joe Bloggs"))
   expect_error(PERSONAL_NAME_STRUCTURE("Joe /Bloggs/",
@@ -221,9 +221,13 @@ test_that("Function PERSONAL_NAME_STRUCTURE() @ L737", {
                                        name_pieces = PERSONAL_NAME_PIECES(name_piece_prefix = "Mr",
                                                                           name_piece_surname = "Bloggs")), "json2")
   expect_snapshot_value(PERSONAL_NAME_STRUCTURE("Joe /Bloggs/", 
+                                       name_pieces = PERSONAL_NAME_PIECES(name_piece_surname = "Bloggs"),
                                        name_phonetic = c("Joe /Blogs/", "Jo /Bloggs/"),
+                                       phonetic_name_pieces = list(PERSONAL_NAME_PIECES(name_piece_surname = "Blogs"),
+                                                                   PERSONAL_NAME_PIECES(name_piece_surname = "Bloggs")),
                                        phonetisation_method = c("Can't spell", "Can't spell")), "json2")
   expect_snapshot_value(PERSONAL_NAME_STRUCTURE("Joe /Bloggs/", 
+                                       name_pieces = PERSONAL_NAME_PIECES(name_piece_surname = "Bloggs"),
                                        name_phonetic = c("Joe Blogs", "Jo Bloggs"),
                                        phonetisation_method = c("Can't spell", "Can't spell"),
                                        phonetic_name_pieces = 
@@ -234,7 +238,7 @@ test_that("Function PERSONAL_NAME_STRUCTURE() @ L737", {
 })
 
 
-test_that("Function PLACE_STRUCTURE() @ L844", {
+test_that("Function PLACE_STRUCTURE() @ L853", {
   expect_error(PLACE_STRUCTURE())
   expect_error(PLACE_STRUCTURE("Here", place_latitude = "N51.5", place_longitude = "E0.0"))
   expect_error(PLACE_STRUCTURE("London", 
@@ -258,7 +262,7 @@ test_that("Function PLACE_STRUCTURE() @ L844", {
 })
 
 
-test_that("Function SOURCE_CITATION() @ L920", {
+test_that("Function SOURCE_CITATION() @ L929", {
   expect_equal(SOURCE_CITATION(character()), tibble::tibble())
   expect_snapshot_value(SOURCE_CITATION("@S1@"), "json2")
   expect_snapshot_value(SOURCE_CITATION("@S1@", 
@@ -273,7 +277,7 @@ test_that("Function SOURCE_CITATION() @ L920", {
 })
 
 
-test_that("Function SOURCE_REPOSITORY_CITATION() @ L976", {
+test_that("Function SOURCE_REPOSITORY_CITATION() @ L985", {
   expect_error(SOURCE_REPOSITORY_CITATION())
   expect_error(SOURCE_REPOSITORY_CITATION("@R1@", source_call_number = c("123", "456")))
   expect_equal(SOURCE_REPOSITORY_CITATION(character()), tibble::tibble())
@@ -281,7 +285,7 @@ test_that("Function SOURCE_REPOSITORY_CITATION() @ L976", {
 })
 
 
-test_that("Function SPOUSE_TO_FAMILY_LINK() @ L1007", {
+test_that("Function SPOUSE_TO_FAMILY_LINK() @ L1016", {
   expect_error(SPOUSE_TO_FAMILY_LINK())
   expect_equal(SPOUSE_TO_FAMILY_LINK(character()), tibble::tibble())
   expect_snapshot_value(SPOUSE_TO_FAMILY_LINK("@F2@", 
