@@ -1,4 +1,5 @@
 
+`%nin%` <- Negate(`%in%`)
 
 #' Push a tidyged structure down a number of levels
 #'
@@ -179,5 +180,95 @@ assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble()) {
     
   } 
   paste0("@", type, ref, "@")
+}
+
+
+#' Find a particular row position in a tidyged object.
+#'
+#' @param gedcom A tidyged object.
+#' @param xref The xref of the record where the insertion point will be.
+#' @param parent_level The level of the row where the insertion point will be.
+#' @param parent_tag The tag of the row where the insertion point will be.
+#' @param parent_value The value of the row where the insertion point will be.
+#'
+#' @return The row after the insertion point in the tidyged object.
+find_insertion_point <- function(gedcom,
+                                 xref,
+                                 parent_level,
+                                 parent_tag,
+                                 parent_value = NULL) {
+  
+  active <- FALSE
+  for(i in seq_len(nrow(gedcom))) {
+    
+    if(active && gedcom$level[i] <= parent_level) break
+    
+    if(gedcom$record[i] == xref && gedcom$level[i] == parent_level && gedcom$tag[i] == parent_tag) {
+      if(is.null(parent_value) || gedcom$value[i] == parent_value) {
+        active <- TRUE  
+      }
+    } 
+    
+  }
+  i
+}
+
+
+#' Extract a particular value from a tidyged object
+#'
+#' @param gedcom A tidyged object.
+#' @param record_xref The xref of the record in which the value may exist.
+#' @param tag The tag associated with the value.
+#' @param level The level number of the value.
+#' @param after_tag Whether the tag should be subordinate to this parent tag. 
+#'
+#' @return The particular value fitting the criteria of the input arguments. If no value is found,
+#' an empty string is returned.
+#' @tests
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "FORM", 2), "LINEAGE-LINKED")
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "TEST", 1), "")
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 2), "5.5.5")
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 3), "5.5.5")
+gedcom_value <- function(gedcom, record_xref, tag, level, after_tag = NULL) {
+  
+  gedcom_filtered <- dplyr::filter(gedcom, record %in% record_xref)
+  if(nrow(gedcom_filtered) == 0) return("")
+  
+  active <- is.null(after_tag)
+  for(i in seq_len(nrow(gedcom_filtered))) {
+    if(is.null(after_tag)) {
+      active <- TRUE
+    } else if(gedcom_filtered$tag[i] == after_tag && gedcom_filtered$level[i] < level) {
+      active <- TRUE
+    } else if(active && gedcom_filtered$level[i] < level){
+      active <- FALSE
+    }
+    
+    if(active) {
+      if(gedcom_filtered$tag[i] == tag & gedcom_filtered$level[i] == level) break  
+    }
+    
+    if(i == nrow(gedcom_filtered)) return("")
+  }
+  
+  if(i == nrow(gedcom_filtered)) return(gedcom_filtered$value[i])
+  
+  for(j in (i+1):nrow(gedcom_filtered)) {
+    if(gedcom_filtered$tag[j] %nin% c("CONT", "CONC") | 
+       gedcom_filtered$level[j] != level + 1) {
+      j <- j - 1
+      break
+    }
+  }
+  
+  if(i == j) return(gedcom_filtered$value[i])
+  
+  text <- gedcom_filtered$value[i]
+  for(row in (i+1):j) {
+    if(gedcom_filtered$tag[row] == "CONT") text <- paste0(text, "\n", gedcom_filtered$value[row])
+    if(gedcom_filtered$tag[row] == "CONC") text <- paste0(text, gedcom_filtered$value[row])
+  }
+  
+  cat(text)
 }
 
