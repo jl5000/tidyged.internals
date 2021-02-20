@@ -31,5 +31,5 @@ You can install the development version from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("jl5000/tidygedcom.internals")
+devtools::install_github("jl5000/tidyged.internals")
 ```
