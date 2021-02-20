@@ -142,3 +142,42 @@ set_class_to_tidyged <- function(gedcom) {
   class(gedcom) <- c("tidyged", "tbl_df", "tbl", "data.frame")
   gedcom
 }
+
+
+
+#' Create a new xref for a record
+#' 
+#' This function is used to assign xrefs to new records that are created.
+#'
+#' @param type An alphabetic sequence to be used as a prefix for the xref identifier.
+#' GEDCOM files traditionally use a single letter to denote the type of record, e.g.
+#' I for Individual, F for Family group, etc.
+#' @param ref An explicit reference number after the type if one is to be chosen manually.
+#' @param gedcom A tidyged object.
+#'
+#' @return An xref to use for a new record.
+#' @export
+assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble()) {
+  
+  if (ref == 0) {
+    # Are there any existing records of this type?
+    gedcom_filt <- gedcom %>% 
+      dplyr::filter(stringr::str_detect(record, paste0("^@", type, "\\d+@$"))) 
+    
+    if(nrow(gedcom_filt) == 0) {
+      ref <- 1
+    } else {
+      ref <- unique(gedcom_filt$record)
+      
+      ref <- ref[grepl(paste0("^@", type, "(\\d+)@$"), ref)] %>% 
+        stringr::str_remove_all("@") %>% 
+        stringr::str_remove_all("[A-Za-z]") %>% 
+        as.numeric() %>% 
+        max() + 1
+      
+    }
+    
+  } 
+  paste0("@", type, ref, "@")
+}
+
