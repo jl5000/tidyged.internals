@@ -17,19 +17,14 @@ test_that("Function remove_section() @ L106", {
 })
 
 
-test_that("Function assign_xref() @ L173", {
-  expect_equal(assign_xref("I", 4), "@I4@")
-})
-
-
-test_that("Function find_insertion_point() @ L212", {
+test_that("Function find_insertion_point() @ L234", {
   expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 2, "VERS"), 4)
   expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 3, "VERS"), 6)
   expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 1, "CHAR"), 7)
 })
 
 
-test_that("Function gedcom_value() @ L250", {
+test_that("Function gedcom_value() @ L272", {
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "FORM", 2), "LINEAGE-LINKED")
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "TEST", 1), "")
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 2), "5.5.5")
