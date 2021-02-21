@@ -157,7 +157,7 @@ set_class_to_tidyged <- function(gedcom) {
 
 
 
-assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble()) {
+assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble(), quantity = 1) {
   
   if (ref == 0) {
     # Are there any existing records of this type?
@@ -176,7 +176,7 @@ assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble()) {
         max() + 1
       
     }
-    
+    ref <- seq(ref, ref+quantity-1, 1)
   } 
   paste0("@", type, ref, "@")
 }
@@ -187,34 +187,35 @@ assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble()) {
 #'
 #' @param gedcom A tidyged object.
 #' @param ref An explicit reference number if one is to be chosen manually.
+#' @param quantity The number of new xrefs to return.
 #'
-#' @return An xref to use for a new record.
+#' @return A vector of xrefs to use for a new record(s).
 #' @export
-assign_xref_indi <- function(gedcom = tibble::tibble(), ref = 0) {assign_xref(.pkgenv$xref_prefix_indi, ref, gedcom)}
+assign_xref_indi <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_indi, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_famg <- function(gedcom = tibble::tibble(), ref = 0) {assign_xref(.pkgenv$xref_prefix_famg, ref, gedcom)}
+assign_xref_famg <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_famg, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_sour <- function(gedcom = tibble::tibble(), ref = 0) {assign_xref(.pkgenv$xref_prefix_sour, ref, gedcom)}
+assign_xref_sour <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_sour, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_repo <- function(gedcom = tibble::tibble(), ref = 0) {assign_xref(.pkgenv$xref_prefix_repo, ref, gedcom)}
+assign_xref_repo <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_repo, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_media <- function(gedcom = tibble::tibble(), ref = 0) {assign_xref(.pkgenv$xref_prefix_obje, ref, gedcom)}
+assign_xref_media <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_obje, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_note <- function(gedcom = tibble::tibble(), ref = 0) {assign_xref(.pkgenv$xref_prefix_note, ref, gedcom)}
+assign_xref_note <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_note, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_subm <- function(gedcom = tibble::tibble(), ref = 0) {assign_xref(.pkgenv$xref_prefix_subm, ref, gedcom)}
+assign_xref_subm <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_subm, ref, gedcom, quantity)}
 
 
 #' Find a particular row position in a tidyged object.

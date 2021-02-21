@@ -10,27 +10,29 @@
 \alias{assign_xref_subm}
 \title{Create a new xref for a record}
 \usage{
-assign_xref_indi(gedcom = tibble::tibble(), ref = 0)
+assign_xref_indi(gedcom = tibble::tibble(), ref = 0, quantity = 1)
 
-assign_xref_famg(gedcom = tibble::tibble(), ref = 0)
+assign_xref_famg(gedcom = tibble::tibble(), ref = 0, quantity = 1)
 
-assign_xref_sour(gedcom = tibble::tibble(), ref = 0)
+assign_xref_sour(gedcom = tibble::tibble(), ref = 0, quantity = 1)
 
-assign_xref_repo(gedcom = tibble::tibble(), ref = 0)
+assign_xref_repo(gedcom = tibble::tibble(), ref = 0, quantity = 1)
 
-assign_xref_media(gedcom = tibble::tibble(), ref = 0)
+assign_xref_media(gedcom = tibble::tibble(), ref = 0, quantity = 1)
 
-assign_xref_note(gedcom = tibble::tibble(), ref = 0)
+assign_xref_note(gedcom = tibble::tibble(), ref = 0, quantity = 1)
 
-assign_xref_subm(gedcom = tibble::tibble(), ref = 0)
+assign_xref_subm(gedcom = tibble::tibble(), ref = 0, quantity = 1)
 }
 \arguments{
 \item{gedcom}{A tidyged object.}
 
 \item{ref}{An explicit reference number if one is to be chosen manually.}
+
+\item{quantity}{The number of new xrefs to return.}
 }
 \value{
-An xref to use for a new record.
+A vector of xrefs to use for a new record(s).
 }
 \description{
 This function is used to assign xrefs to new records that are created.
