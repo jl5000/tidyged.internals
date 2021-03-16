@@ -66,10 +66,7 @@ age_at_event_pattern <- function() {
            "\\d{1,3}y$",
            "\\d{1,2}m$",
            "\\d{1,3}d$")) %>% 
-    paste(collapse = "|") %>% 
-    paste0("^CHILD$|",
-           "^INFANT$|",
-           "^STILLBORN$")
+    paste(collapse = "|")
   
 }
 
