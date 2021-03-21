@@ -341,7 +341,7 @@ validate_phone_number <- function(input, max_dim) {
   validate_input_size(input, max_dim, 1, 25)
 }
 validate_phonetisation_method <- function(input, max_dim) {
-  validate_input_size(input, max_dim, 5, 30)
+  validate_input_size(input, max_dim, 4, 30)
 }
 validate_physical_description <- function(input, max_dim) {
   validate_input_size(input, max_dim, 1, 4095)
