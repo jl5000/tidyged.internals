@@ -286,30 +286,12 @@ gedcom_value <- function(gedcom, record_xref, tag, level, after_tag = NULL) {
     }
     
     if(active) {
-      if(gedcom_filtered$tag[i] == tag & gedcom_filtered$level[i] == level) break  
+      if(gedcom_filtered$tag[i] == tag & gedcom_filtered$level[i] == level)
+        return(gedcom_filtered$value[i])
     }
     
     if(i == nrow(gedcom_filtered)) return("")
   }
   
-  if(i == nrow(gedcom_filtered)) return(gedcom_filtered$value[i])
-  
-  for(j in (i+1):nrow(gedcom_filtered)) {
-    if(gedcom_filtered$tag[j] %nin% c("CONT", "CONC") | 
-       gedcom_filtered$level[j] != level + 1) {
-      j <- j - 1
-      break
-    }
-  }
-  
-  if(i == j) return(gedcom_filtered$value[i])
-  
-  text <- gedcom_filtered$value[i]
-  for(row in (i+1):j) {
-    if(gedcom_filtered$tag[row] == "CONT") text <- paste0(text, "\n", gedcom_filtered$value[row])
-    if(gedcom_filtered$tag[row] == "CONC") text <- paste0(text, gedcom_filtered$value[row])
-  }
-  
-  cat(text)
 }
 
