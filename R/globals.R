@@ -9,6 +9,6 @@ if(getRversion() >= "2.15.1")
 .pkgenv$xref_prefix_famg <- "F"
 .pkgenv$xref_prefix_subm <- "U"
 .pkgenv$xref_prefix_repo <- "R"
-.pkgenv$xref_prefix_obje <- "O"
+.pkgenv$xref_prefix_obje <- "M"
 .pkgenv$xref_prefix_note <- "N"
 .pkgenv$xref_prefix_sour <- "S"
