@@ -239,22 +239,22 @@ INDIVIDUAL_RECORD <- function(xref_indi,
 #'
 #' @inheritParams primitive_definitions
 #' @tests
-#' expect_error(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPG",
+#' expect_error(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG",
 #'                                user_reference_number = 123:125, user_reference_type = letters[1:2]))
-#' expect_equal(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPG"),
+#' expect_equal(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG"),
 #'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
 #'                              0, "@M1@", "OBJE",                      "",
 #'                              1, "@M1@", "FILE",              "file_ref",
-#'                              2, "@M1@", "FORM",                   "JPG",
+#'                              2, "@M1@", "FORM",                   "JPEG",
 #'                              1, "@M1@", "CHAN",                      "",
 #'                              2, "@M1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
 #'              ))
-#' expect_equal(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPG",
+#' expect_equal(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG",
 #'                                user_reference_number = 123, user_reference_type = "type"),
 #'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
 #'                              0, "@M1@", "OBJE",                      "",
 #'                              1, "@M1@", "FILE",              "file_ref",
-#'                              2, "@M1@", "FORM",                   "JPG",
+#'                              2, "@M1@", "FORM",                   "JPEG",
 #'                              1, "@M1@", "REFN",                   "123",
 #'                              2, "@M1@", "TYPE",                   "type",
 #'                              1, "@M1@", "CHAN",                      "",

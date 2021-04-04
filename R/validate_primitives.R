@@ -274,8 +274,8 @@ validate_multimedia_file_reference <- function(input, max_dim) {
 }
 validate_multimedia_format <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- c("AAC", "AVI", "BMP", "ePub", "FLAC", "GIF", "JPEG", "JPG", "MKV",
-               "mobi", "MP3", "PCX", "PDF", "PNG", "TIFF", "TIF", "WAV")
+  choices <- c("AAC", "AVI", "BMP", "ePub", "FLAC", "GIF", "JPEG", "MKV",
+               "mobi", "MP3", "PCX", "PDF", "PNG", "TIFF", "WAV")
   validate_input_choice(input, choices)
 }
 validate_name_of_business <- function(input, max_dim) {

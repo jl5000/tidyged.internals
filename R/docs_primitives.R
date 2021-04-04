@@ -99,8 +99,7 @@
 #' @param multimedia_format Indicates the format of the multimedia data associated with the specific 
 #' GEDCOM context. This allows processors to determine whether they can process the data object. 
 #' Any linked files should contain the data required, in the indicated format, to process the file data. One of:
-#' "AAC", "AVI", "BMP", "ePub", "FLAC", "GIF", "JPEG", "JPG", "MKV", "mobi", "MP3", "PCX", "PDF", "PNG", "TIFF", 
-#' "TIF", "WAV".
+#' "AAC", "AVI", "BMP", "ePub", "FLAC", "GIF", "JPEG", "MKV", "mobi", "MP3", "PCX", "PDF", "PNG", "TIFF", "WAV".
 #' @param name_of_business Name of the business, corporation, or person that produced or commissioned the product.
 #' @param name_of_product The name of the software product that produced this file.
 #' @param name_of_repository The official name of the archive in which the stated source material is stored.
