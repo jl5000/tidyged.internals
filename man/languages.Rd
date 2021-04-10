@@ -2,18 +2,33 @@
 % Please edit documentation in R/lookups.R
 \name{languages}
 \alias{languages}
+\alias{sexes}
 \alias{multimedia_formats}
 \alias{pedigree_linkage_types}
 \alias{source_media_types}
+\alias{adoptive_parents}
+\alias{attribute_types}
+\alias{family_event_types}
+\alias{individual_event_types}
 \title{Get valid values for inputs}
 \usage{
 languages()
+
+sexes()
 
 multimedia_formats()
 
 pedigree_linkage_types()
 
 source_media_types()
+
+adoptive_parents()
+
+attribute_types()
+
+family_event_types()
+
+individual_event_types()
 }
 \value{
 A character vector of valid values.

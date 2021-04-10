@@ -147,7 +147,7 @@ validate_address_country <- function(input, max_dim) {
 }
 validate_adopted_by_which_parent <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- c("HUSB", "WIFE", "BOTH")
+  choices <- adoptive_parents()
   validate_input_choice(input, choices)
 }
 validate_age_at_event <- function(input, max_dim) {
@@ -159,10 +159,7 @@ validate_attribute_descriptor <- function(input, max_dim) {
 }
 validate_attribute_type <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- c("CAST", "DSCR", "EDUC", "IDNO",
-               "NATI", "NCHI", "NMR", "OCCU",
-               "PROP", "RELI", "RESI",
-               "TITL", "FACT")
+  choices <- attribute_types()
   validate_input_choice(input, choices)
 }
 validate_automated_record_id <- function(input, max_dim) {
@@ -224,18 +221,12 @@ validate_event_type_cited_from <- function(input, max_dim) {
 }
 validate_event_type_family <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- c("ANUL", "CENS", "DIV", "DIVF",
-               "ENGA", "MARB", "MARC", "MARR",
-               "MARL", "MARS", "RESI", "EVEN")
+  choices <- family_event_types()
   validate_input_choice(input, choices)
 }
 validate_event_type_individual <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- c("BIRT", "CHR", "DEAT", "BURI", "CREM",
-               "ADOP", "BAPM", "BARM", "BASM",
-               "CHRA", "CONF", "FCOM", "NATU",
-               "EMIG", "IMMI", "CENS", "PROB", "WILL",
-               "GRAD", "RETI", "EVEN")
+  choices <- individual_event_types()
   validate_input_choice(input, choices)
 }
 validate_events_recorded <- function(input, max_dim) {
@@ -388,7 +379,7 @@ validate_scholastic_achievement <- function(input, max_dim) {
 }
 validate_sex_value <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- c("M", "F", "U", "X", "N")
+  choices <- sexes()
   validate_input_choice(input, choices)
 }
 validate_source_call_number <- function(input, max_dim) {
