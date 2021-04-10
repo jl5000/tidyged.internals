@@ -18,7 +18,7 @@ languages <- function() {
 #' @rdname languages
 #' @export
 sexes <- function() {
-  c("M", "F", "U", "X", "N")
+  c(Male = "M", Female = "F", Unknown = "U", Intersex = "X", `Not recorded` = "N")
 }
 
 #' @rdname languages
