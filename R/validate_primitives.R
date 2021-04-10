@@ -261,12 +261,7 @@ validate_id_number <- function(input, max_dim) {
 }
 validate_language_of_text <- function(input, max_dim) {
   validate_input_size(input, max_dim, 1, 15)
-  choices <- c("Afrikaans", "Albanian", "Anglo-Saxon", "Catalan", "Catalan_Spn", "Czech", 
-               "Danish", "Dutch", "English", "Esperanto", "Estonian", "Faroese", "Finnish", 
-               "French", "German", "Hawaiian", "Hungarian", "Icelandic", "Indonesian", 
-               "Italian", "Latvian", "Lithuanian", "Navaho", "Norwegian", "Polish", 
-               "Portuguese", "Romanian", "Serbo_Croa", "Slovak", "Slovene", "Spanish", 
-               "Swedish", "Turkish", "Wendic")
+  choices <- languages()
   validate_input_choice(input, choices)
 }
 validate_multimedia_file_reference <- function(input, max_dim) {
@@ -274,8 +269,7 @@ validate_multimedia_file_reference <- function(input, max_dim) {
 }
 validate_multimedia_format <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- c("AAC", "AVI", "BMP", "ePub", "FLAC", "GIF", "JPEG", "MKV",
-               "mobi", "MP3", "PCX", "PDF", "PNG", "TIFF", "WAV")
+  choices <- multimedia_formats()
   validate_input_choice(input, choices)
 }
 validate_name_of_business <- function(input, max_dim) {
@@ -334,7 +328,7 @@ validate_occupation <- function(input, max_dim) {
 }
 validate_pedigree_linkage_type <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- c("adopted", "birth", "foster")
+  choices <- pedigree_linkage_types()
   validate_input_choice(input, choices)
 }
 validate_phone_number <- function(input, max_dim) {
@@ -411,9 +405,7 @@ validate_source_jurisdiction_place <- function(input, max_dim) {
 }
 validate_source_media_type <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- c("audio", "book", "card", "electronic", "fiche", 
-               "film", "magazine", "manuscript", "map", 
-               "newspaper", "photo", "tombstone", "video")
+  choices <- source_media_types()
   validate_input_choice(input, choices)
 }
 validate_source_originator <- function(input, max_dim) {
