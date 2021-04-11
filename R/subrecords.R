@@ -617,7 +617,7 @@ NOTE_STRUCTURE <- function(note = character()) {
   
   validate_user_text(note, 1)
   
-  if(grepl(xref_pattern(), note)) {
+  if(grepl(reg_xref(), note)) {
     validate_xref(note, 1)
   }
   

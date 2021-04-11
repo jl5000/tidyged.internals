@@ -147,19 +147,19 @@ validate_address_country <- function(input, max_dim) {
 }
 validate_adopted_by_which_parent <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- adoptive_parents()
+  choices <- val_adoptive_parents()
   validate_input_choice(input, choices)
 }
 validate_age_at_event <- function(input, max_dim) {
   validate_input_size(input, max_dim, 2, 13)
-  validate_input_pattern(input, age_at_event_pattern())
+  validate_input_pattern(input, reg_age_at_event())
 }
 validate_attribute_descriptor <- function(input, max_dim) {
   validate_input_size(input, max_dim, 1, 90)
 }
 validate_attribute_type <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- attribute_types()
+  choices <- val_attribute_types()
   validate_input_choice(input, choices)
 }
 validate_automated_record_id <- function(input, max_dim) {
@@ -197,15 +197,15 @@ validate_count_of_children <- function(input, max_dim) {
 }
 validate_date_exact <- function(input, max_dim) {
   validate_input_size(input, max_dim, 10, 11)
-  validate_input_pattern(input, date_exact_pattern())
+  validate_input_pattern(input, reg_date_exact())
 }
 validate_date_period_covered <- function(input, max_dim) {
   validate_input_size(input, max_dim, 7, 35)
-  validate_input_pattern(input, date_period_pattern())
+  validate_input_pattern(input, reg_date_period())
 }
 validate_date_value <- function(input, max_dim) {
   validate_input_size(input, max_dim, 1, 35)
-  validate_input_pattern(input, date_value_pattern())
+  validate_input_pattern(input, reg_date_value())
 }
 validate_descriptive_title <- function(input, max_dim) {
   validate_input_size(input, max_dim, 1, 248)
@@ -221,12 +221,12 @@ validate_event_type_cited_from <- function(input, max_dim) {
 }
 validate_event_type_family <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- family_event_types()
+  choices <- val_family_event_types()
   validate_input_choice(input, choices)
 }
 validate_event_type_individual <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- individual_event_types()
+  choices <- val_individual_event_types()
   validate_input_choice(input, choices)
 }
 validate_events_recorded <- function(input, max_dim) {
@@ -252,7 +252,7 @@ validate_id_number <- function(input, max_dim) {
 }
 validate_language_of_text <- function(input, max_dim) {
   validate_input_size(input, max_dim, 1, 15)
-  choices <- languages()
+  choices <- val_languages()
   validate_input_choice(input, choices)
 }
 validate_multimedia_file_reference <- function(input, max_dim) {
@@ -260,7 +260,7 @@ validate_multimedia_file_reference <- function(input, max_dim) {
 }
 validate_multimedia_format <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- multimedia_formats()
+  choices <- val_multimedia_formats()
   validate_input_choice(input, choices)
 }
 validate_name_of_business <- function(input, max_dim) {
@@ -319,7 +319,7 @@ validate_occupation <- function(input, max_dim) {
 }
 validate_pedigree_linkage_type <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- pedigree_linkage_types()
+  choices <- val_pedigree_linkage_types()
   validate_input_choice(input, choices)
 }
 validate_phone_number <- function(input, max_dim) {
@@ -333,11 +333,11 @@ validate_physical_description <- function(input, max_dim) {
 }
 validate_place_latitude <- function(input, max_dim) {
   validate_input_size(input, max_dim, 2, 10)
-  validate_input_pattern(input, latitude_pattern())
+  validate_input_pattern(input, reg_latitude())
 }
 validate_place_longitude <- function(input, max_dim) {
   validate_input_size(input, max_dim, 2, 11)
-  validate_input_pattern(input, longitude_pattern())
+  validate_input_pattern(input, reg_longitude())
 }
 validate_place_name <- function(input, max_dim) {
   validate_input_size(input, max_dim, 1, 120)
@@ -379,7 +379,7 @@ validate_scholastic_achievement <- function(input, max_dim) {
 }
 validate_sex_value <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- sexes()
+  choices <- val_sexes()
   validate_input_choice(input, choices)
 }
 validate_source_call_number <- function(input, max_dim) {
@@ -396,7 +396,7 @@ validate_source_jurisdiction_place <- function(input, max_dim) {
 }
 validate_source_media_type <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  choices <- source_media_types()
+  choices <- val_source_media_types()
   validate_input_choice(input, choices)
 }
 validate_source_originator <- function(input, max_dim) {
@@ -433,6 +433,6 @@ validate_where_within_source <- function(input, max_dim) {
 }
 validate_xref <- function(input, max_dim) {
   validate_input_size(input, max_dim)
-  validate_input_pattern(input, xref_pattern())
+  validate_input_pattern(input, reg_xref())
 }
 

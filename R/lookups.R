@@ -6,7 +6,7 @@
 #'
 #' @return A character vector of valid values.
 #' @export
-languages <- function() {
+val_languages <- function() {
   c("Afrikaans", "Albanian", "Anglo-Saxon", "Catalan", "Catalan_Spn", "Czech", 
     "Danish", "Dutch", "English", "Esperanto", "Estonian", "Faroese", "Finnish", 
     "French", "German", "Hawaiian", "Hungarian", "Icelandic", "Indonesian", 
@@ -15,42 +15,44 @@ languages <- function() {
     "Swedish", "Turkish", "Wendic")
 }
 
-#' @rdname languages
+#' @rdname val_languages
 #' @export
-sexes <- function() {
+val_sexes <- function() {
   c(Male = "M", Female = "F", Unknown = "U", Intersex = "X", `Not recorded` = "N")
 }
 
-#' @rdname languages
+#' @rdname val_languages
 #' @export
-multimedia_formats <- function() {
+val_multimedia_formats <- function() {
   c("AAC", "AVI", "BMP", "ePub", "FLAC", "GIF", "JPEG", "MKV",
     "mobi", "MP3", "PCX", "PDF", "PNG", "TIFF", "WAV")
 }
 
-#' @rdname languages
+#' @rdname val_languages
 #' @export
-pedigree_linkage_types <- function() {
-  c("adopted", "birth", "foster")
+val_pedigree_linkage_types <- function() {
+  c("adopted", "birth", "foster") %>% 
+    setNames(stringr::str_to_title(.))
 }
 
-#' @rdname languages
+#' @rdname val_languages
 #' @export
-source_media_types <- function() {
+val_source_media_types <- function() {
   c("audio", "book", "card", "electronic", "fiche", 
     "film", "magazine", "manuscript", "map", 
-    "newspaper", "photo", "tombstone", "video")
+    "newspaper", "photo", "tombstone", "video") %>% 
+    setNames(stringr::str_to_title(.))
 }
 
-#' @rdname languages
+#' @rdname val_languages
 #' @export
-adoptive_parents <- function() {
+val_adoptive_parents <- function() {
   c(Husband = "HUSB", Wife = "WIFE", Both = "BOTH")
 }
 
-#' @rdname languages
+#' @rdname val_languages
 #' @export
-attribute_types <- function() {
+val_attribute_types <- function() {
   c(Caste = "CAST", 
     `Physical description` = "DSCR", 
     Education = "EDUC", 
@@ -59,16 +61,16 @@ attribute_types <- function() {
     `Number of children` = "NCHI", 
     `Number of relationships` = "NMR", 
     Occupation = "OCCU",
-    Possessions = "PROP", 
+    Property = "PROP", 
     Religion = "RELI", 
     Residence = "RESI",
     `Nobility title` = "TITL", 
     Other = "FACT")
 }
 
-#' @rdname languages
+#' @rdname val_languages
 #' @export
-family_event_types <- function() {
+val_family_event_types <- function() {
   c(Annulment = "ANUL", 
     Census = "CENS", 
     Divorce = "DIV", 
@@ -83,9 +85,9 @@ family_event_types <- function() {
     Other = "EVEN")
 }
 
-#' @rdname languages
+#' @rdname val_languages
 #' @export
-individual_event_types <- function() {
+val_individual_event_types <- function() {
   c(Birth = "BIRT", 
     Christening = "CHR", 
     Death = "DEAT", 
