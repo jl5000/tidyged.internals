@@ -32,7 +32,7 @@ date_exact <- function(day = numeric(),
   
   if (length(day) + length(month) + length(year) < 3) return(character())
   
-  validate_date(year, month, day)
+  chk_date(year, month, day)
   
   paste(day, toupper(month.abb[month]), year)
   
@@ -66,7 +66,7 @@ date_calendar <- function(year = numeric(),
   
   if(length(year) + length(month) == 0) return(character())
   
-  validate_date(year, month, day)
+  chk_date(year, month, day)
   
   val <- ""
   if (length(day) == 1) val <- paste(val, day)
@@ -109,7 +109,7 @@ date_range <- function(start_date = date_calendar(),
   
   if (length(start_date) + length(end_date) == 2) {
     
-    validate_dates(start_date, end_date)
+    chk_dates(start_date, end_date)
     paste("BET", start_date, "AND", end_date)
     
   } else if (length(start_date) == 1) {
@@ -159,7 +159,7 @@ date_period <- function(start_date = date_calendar(),
   
   if (length(start_date) + length(end_date) == 2) {
     
-    validate_dates(start_date, end_date)
+    chk_dates(start_date, end_date)
     paste("FROM", start_date, "TO", end_date)
     
   } else if (length(start_date) == 1) {

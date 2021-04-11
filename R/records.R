@@ -34,9 +34,9 @@ GEDCOM_HEADER <- function(character_encoding = "UTF-8",
   
   gedcom_version_number <- as.character(gedcom_version_number)
   
-  validate_character_encoding(character_encoding, 1)
-  validate_gedcom_version_number(gedcom_version_number, 1)
-  validate_gedcom_form(gedcom_form, 1)
+  chk_character_encoding(character_encoding, 1)
+  chk_gedcom_version_number(gedcom_version_number, 1)
+  chk_gedcom_form(gedcom_form, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, record = "HD", tag = "HEAD", value = ""),
@@ -105,14 +105,14 @@ FAMILY_GROUP_RECORD <- function(xref_fam,
   if (length(user_reference_type) > 0 & length(user_reference_type) != length(user_reference_number))
     stop("The number of user reference types must be the same as the number of user reference numbers")
   
-  validate_xref(xref_fam, 1)
-  validate_xref(xref_husb, 1)
-  validate_xref(xref_wife, 1)
-  validate_xref(xrefs_chil, 100)
-  validate_count_of_children(count_of_children, 1)
-  validate_user_reference_number(user_reference_number, 1000)
-  validate_user_reference_type(user_reference_type, 1000)
-  validate_automated_record_id(automated_record_id, 1)
+  chk_xref(xref_fam, 1)
+  chk_xref(xref_husb, 1)
+  chk_xref(xref_wife, 1)
+  chk_xref(xrefs_chil, 100)
+  chk_count_of_children(count_of_children, 1)
+  chk_user_reference_number(user_reference_number, 1000)
+  chk_user_reference_type(user_reference_type, 1000)
+  chk_automated_record_id(automated_record_id, 1)
   
   
   temp <- dplyr::bind_rows(
@@ -193,11 +193,11 @@ INDIVIDUAL_RECORD <- function(xref_indi,
   if (length(user_reference_type) > 0 & length(user_reference_type) != length(user_reference_number))
     stop("The number of user reference types must be the same as the number of user reference numbers")
   
-  validate_xref(xref_indi, 1)
-  validate_sex_value(sex_value, 1)
-  validate_user_reference_number(user_reference_number, 1000)
-  validate_user_reference_type(user_reference_type, 1000)
-  validate_automated_record_id(automated_record_id, 1)
+  chk_xref(xref_indi, 1)
+  chk_sex_value(sex_value, 1)
+  chk_user_reference_number(user_reference_number, 1000)
+  chk_user_reference_type(user_reference_type, 1000)
+  chk_automated_record_id(automated_record_id, 1)
   
   
   temp <- dplyr::bind_rows(
@@ -280,14 +280,14 @@ MULTIMEDIA_RECORD <- function(xref_obje,
   if (length(user_reference_type) > 0 & length(user_reference_type) != length(user_reference_number))
     stop("The number of user reference types must be the same as the number of user reference numbers")
   
-  validate_xref(xref_obje, 1)
-  validate_multimedia_file_reference(multimedia_file_reference, 1)
-  validate_multimedia_format(multimedia_format, 1)
-  validate_source_media_type(source_media_type, 1)
-  validate_descriptive_title(descriptive_title, 1)
-  validate_user_reference_number(user_reference_number, 1000)
-  validate_user_reference_type(user_reference_type, 1000)
-  validate_automated_record_id(automated_record_id, 1)
+  chk_xref(xref_obje, 1)
+  chk_multimedia_file_reference(multimedia_file_reference, 1)
+  chk_multimedia_format(multimedia_format, 1)
+  chk_source_media_type(source_media_type, 1)
+  chk_descriptive_title(descriptive_title, 1)
+  chk_user_reference_number(user_reference_number, 1000)
+  chk_user_reference_type(user_reference_type, 1000)
+  chk_automated_record_id(automated_record_id, 1)
   
   temp <- dplyr::bind_rows(
        tibble::tibble(level = 0, record = xref_obje, tag = "OBJE", value = ""),
@@ -350,11 +350,11 @@ NOTE_RECORD <- function(xref_note,
   if (length(user_reference_type) > 0 & length(user_reference_type) != length(user_reference_number))
     stop("The number of user reference types must be the same as the number of user reference numbers")
   
-  validate_xref(xref_note, 1)
-  validate_user_text(user_text, 1)
-  validate_user_reference_number(user_reference_number, 1000)
-  validate_user_reference_type(user_reference_type, 1000)
-  validate_automated_record_id(automated_record_id, 1)
+  chk_xref(xref_note, 1)
+  chk_user_text(user_text, 1)
+  chk_user_reference_number(user_reference_number, 1000)
+  chk_user_reference_type(user_reference_type, 1000)
+  chk_automated_record_id(automated_record_id, 1)
   
   temp <- tibble::tibble(level = 0, record = xref_note, tag = "NOTE", value = user_text)
   
@@ -414,11 +414,11 @@ REPOSITORY_RECORD <- function(xref_repo,
   if (length(user_reference_type) > 0 & length(user_reference_type) != length(user_reference_number))
     stop("The number of user reference types must be the same as the number of user reference numbers")
   
-  validate_xref(xref_repo, 1)
-  validate_name_of_repository(name_of_repository, 1)
-  validate_user_reference_number(user_reference_number, 1000)
-  validate_user_reference_type(user_reference_type, 1000)
-  validate_automated_record_id(automated_record_id, 1)
+  chk_xref(xref_repo, 1)
+  chk_name_of_repository(name_of_repository, 1)
+  chk_user_reference_number(user_reference_number, 1000)
+  chk_user_reference_type(user_reference_type, 1000)
+  chk_automated_record_id(automated_record_id, 1)
   
   temp <- dplyr::bind_rows(
     tibble::tibble(level = 0, record = xref_repo, tag = "REPO", value = ""),
@@ -489,19 +489,19 @@ SOURCE_RECORD <- function(xref_sour,
   if (length(user_reference_type) > 0 & length(user_reference_type) != length(user_reference_number))
     stop("The number of user reference types must be the same as the number of user reference numbers")
   
-  validate_xref(xref_sour, 1)
-  validate_events_recorded(events_recorded, 1000)
-  validate_date_period_covered(date_period_covered, 1)
-  validate_source_jurisdiction_place(source_jurisdiction_place, 1)
-  validate_responsible_agency(responsible_agency, 1)
-  validate_source_originator(source_originator, 1)
-  validate_source_descriptive_title(source_descriptive_title, 1)
-  validate_source_filed_by_entry(source_filed_by_entry, 1)
-  validate_source_publication_facts(source_publication_facts, 1)
-  validate_text_from_source(text_from_source, 1)
-  validate_user_reference_number(user_reference_number, 1000)
-  validate_user_reference_type(user_reference_type, 1000)
-  validate_automated_record_id(automated_record_id, 1)
+  chk_xref(xref_sour, 1)
+  chk_events_recorded(events_recorded, 1000)
+  chk_date_period_covered(date_period_covered, 1)
+  chk_source_jurisdiction_place(source_jurisdiction_place, 1)
+  chk_responsible_agency(responsible_agency, 1)
+  chk_source_originator(source_originator, 1)
+  chk_source_descriptive_title(source_descriptive_title, 1)
+  chk_source_filed_by_entry(source_filed_by_entry, 1)
+  chk_source_publication_facts(source_publication_facts, 1)
+  chk_text_from_source(text_from_source, 1)
+  chk_user_reference_number(user_reference_number, 1000)
+  chk_user_reference_type(user_reference_type, 1000)
+  chk_automated_record_id(automated_record_id, 1)
   
   temp <- dplyr::bind_rows(
     tibble::tibble(level = 0, record = xref_sour, tag = "SOUR", value = ""),
@@ -574,9 +574,9 @@ SUBMITTER_RECORD <- function(xref_subm,
                              notes = list(),
                              date_changed = CHANGE_DATE()){
   
-  validate_xref(xref_subm, 1)
-  validate_submitter_name(submitter_name, 1)
-  validate_automated_record_id(automated_record_id, 1)
+  chk_xref(xref_subm, 1)
+  chk_submitter_name(submitter_name, 1)
+  chk_automated_record_id(automated_record_id, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, record = xref_subm, tag = "SUBM", value = ""),

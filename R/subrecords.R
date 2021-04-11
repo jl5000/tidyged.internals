@@ -55,21 +55,21 @@ LINEAGE_LINKED_HEADER_EXTENSION <- function(system_id,
   product_version_number <- stringr::str_extract(product_version_number, 
                                                  "^\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?")
   
-  validate_system_id(system_id, 1)
-  validate_product_version_number(product_version_number, 1)
-  validate_name_of_product(name_of_product, 1)
-  validate_name_of_business(name_of_business, 1)
-  validate_name_of_source_data(name_of_source_data, 1)
-  validate_date_exact(publication_date, 1)
-  validate_copyright_source_data(copyright_source_data, 1)
-  validate_receiving_system_name(receiving_system_name, 1)
-  validate_date_exact(file_creation_date, 1)
-  validate_time_value(file_creation_time, 1)
-  validate_language_of_text(language_of_text, 1)
-  validate_xref(xref_subm, 1)
-  validate_gedcom_file_name(gedcom_file_name, 1)
-  validate_copyright_gedcom_file(copyright_gedcom_file, 1)
-  validate_gedcom_content_description(gedcom_content_description, 1)
+  chk_system_id(system_id, 1)
+  chk_product_version_number(product_version_number, 1)
+  chk_name_of_product(name_of_product, 1)
+  chk_name_of_business(name_of_business, 1)
+  chk_name_of_source_data(name_of_source_data, 1)
+  chk_date_exact(publication_date, 1)
+  chk_copyright_source_data(copyright_source_data, 1)
+  chk_receiving_system_name(receiving_system_name, 1)
+  chk_date_exact(file_creation_date, 1)
+  chk_time_value(file_creation_time, 1)
+  chk_language_of_text(language_of_text, 1)
+  chk_xref(xref_subm, 1)
+  chk_gedcom_file_name(gedcom_file_name, 1)
+  chk_copyright_gedcom_file(copyright_gedcom_file, 1)
+  chk_gedcom_content_description(gedcom_content_description, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "DEST", value = receiving_system_name),
@@ -146,15 +146,15 @@ ADDRESS_STRUCTURE <- function(local_address_lines = character(),
   phone_number <- as.character(phone_number)
   address_fax <- as.character(address_fax)
   
-  validate_address_lines(local_address_lines, 3)
-  validate_address_city(address_city, 1)
-  validate_address_state(address_state, 1)
-  validate_address_postal_code(address_postal_code, 1)
-  validate_address_country(address_country, 1)
-  validate_phone_number(phone_number, 3)
-  validate_address_email(address_email, 3)
-  validate_address_fax(address_fax, 3)
-  validate_address_web_page(address_web_page, 3)
+  chk_address_lines(local_address_lines, 3)
+  chk_address_city(address_city, 1)
+  chk_address_state(address_state, 1)
+  chk_address_postal_code(address_postal_code, 1)
+  chk_address_country(address_country, 1)
+  chk_phone_number(phone_number, 3)
+  chk_address_email(address_email, 3)
+  chk_address_fax(address_fax, 3)
+  chk_address_web_page(address_web_page, 3)
   
   address_lines <- tibble::tibble(level = 0, tag = "ADDR", value = "")
   
@@ -214,8 +214,8 @@ ASSOCIATION_STRUCTURE <- function(xref_indi,
   if (length(xref_indi) == 0) return(tibble::tibble())
   if (length(relation_is_descriptor) == 0) return(tibble::tibble())
   
-  validate_xref(xref_indi, 1)
-  validate_relation_is_descriptor(relation_is_descriptor, 1)
+  chk_xref(xref_indi, 1)
+  chk_relation_is_descriptor(relation_is_descriptor, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "ASSO", value = xref_indi),
@@ -249,8 +249,8 @@ CHANGE_DATE <- function(change_date = date_exact(),
   if (length(change_date) == 0) 
     change_date <- date_current()
   
-  validate_date_exact(change_date, 1)
-  validate_time_value(time_value, 1)
+  chk_date_exact(change_date, 1)
+  chk_time_value(time_value, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "CHAN", value = ""),
@@ -283,8 +283,8 @@ CHILD_TO_FAMILY_LINK <- function(xref_fam,
   
   if (length(xref_fam) == 0) return(tibble::tibble())
   
-  validate_xref(xref_fam, 1)
-  validate_pedigree_linkage_type(pedigree_linkage_type, 1)
+  chk_xref(xref_fam, 1)
+  chk_pedigree_linkage_type(pedigree_linkage_type, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "FAMC", value = xref_fam),
@@ -324,11 +324,11 @@ EVENT_DETAIL <- function(event_or_fact_classification = character(),
                          source_citations = list(),
                          multimedia_links = list()) {
   
-  validate_event_or_fact_classification(event_or_fact_classification, 1)
-  validate_date_value(date, 1)
-  validate_responsible_agency(responsible_agency, 1)
-  validate_religious_affiliation(religious_affiliation, 1)
-  validate_cause_of_event(cause_of_event, 1)
+  chk_event_or_fact_classification(event_or_fact_classification, 1)
+  chk_date_value(date, 1)
+  chk_responsible_agency(responsible_agency, 1)
+  chk_religious_affiliation(religious_affiliation, 1)
+  chk_cause_of_event(cause_of_event, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "TYPE", value = event_or_fact_classification),
@@ -368,8 +368,8 @@ FAMILY_EVENT_DETAIL <- function(husband_age_at_event = character(),
   husband_age_at_event <- as.character(husband_age_at_event)
   wife_age_at_event <- as.character(wife_age_at_event)
   
-  validate_age_at_event(husband_age_at_event, 1)
-  validate_age_at_event(wife_age_at_event, 1)
+  chk_age_at_event(husband_age_at_event, 1)
+  chk_age_at_event(wife_age_at_event, 1)
   
   temp = dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "HUSB", value = ""),
@@ -412,8 +412,8 @@ FAMILY_EVENT_STRUCTURE <- function(event_type_family,
   
   if (length(event_type_family) == 0) return(tibble::tibble())
   
-  validate_event_type_family(event_type_family, 1)
-  if (event_type_family == "EVEN") validate_event_descriptor(event_descriptor, 1)
+  chk_event_type_family(event_type_family, 1)
+  if (event_type_family == "EVEN") chk_event_descriptor(event_descriptor, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, tag = event_type_family, value = ""),
@@ -456,24 +456,24 @@ INDIVIDUAL_ATTRIBUTE_STRUCTURE <- function(attribute_type,
   if (length(attribute_type) == 0) return(tibble::tibble())
   if (length(attribute_descriptor) == 0) return(tibble::tibble())
   
-  validate_attribute_type(attribute_type, 1)
-  validate_user_reference_type(user_reference_type, 1)
+  chk_attribute_type(attribute_type, 1)
+  chk_user_reference_type(user_reference_type, 1)
   if (attribute_type %in% c("IDNO", "NCHI", "NMR")) 
     attribute_descriptor <- as.character(attribute_descriptor) 
   
-  if (attribute_type == "CAST") validate_caste_name(attribute_descriptor, 1)
-  if (attribute_type == "DSCR") validate_physical_description(attribute_descriptor, 1)
-  if (attribute_type == "EDUC") validate_scholastic_achievement(attribute_descriptor, 1)
-  if (attribute_type == "IDNO") validate_id_number(attribute_descriptor, 1)
-  if (attribute_type == "NATI") validate_national_or_tribal_origin(attribute_descriptor, 1)
-  if (attribute_type == "NCHI") validate_count_of_children(attribute_descriptor, 1)
-  if (attribute_type == "NMR") validate_number_of_relationships(attribute_descriptor, 1)
-  if (attribute_type == "OCCU") validate_occupation(attribute_descriptor, 1)
-  if (attribute_type == "PROP") validate_possessions(attribute_descriptor, 1)
-  if (attribute_type == "RELI") validate_religious_affiliation(attribute_descriptor, 1)
+  if (attribute_type == "CAST") chk_caste_name(attribute_descriptor, 1)
+  if (attribute_type == "DSCR") chk_physical_description(attribute_descriptor, 1)
+  if (attribute_type == "EDUC") chk_scholastic_achievement(attribute_descriptor, 1)
+  if (attribute_type == "IDNO") chk_id_number(attribute_descriptor, 1)
+  if (attribute_type == "NATI") chk_national_or_tribal_origin(attribute_descriptor, 1)
+  if (attribute_type == "NCHI") chk_count_of_children(attribute_descriptor, 1)
+  if (attribute_type == "NMR") chk_number_of_relationships(attribute_descriptor, 1)
+  if (attribute_type == "OCCU") chk_occupation(attribute_descriptor, 1)
+  if (attribute_type == "PROP") chk_possessions(attribute_descriptor, 1)
+  if (attribute_type == "RELI") chk_religious_affiliation(attribute_descriptor, 1)
   if (attribute_type == "RESI") attribute_descriptor <- ""
-  if (attribute_type == "TITL") validate_nobility_type_title(attribute_descriptor, 1)
-  if (attribute_type == "FACT") validate_attribute_descriptor(attribute_descriptor, 1)
+  if (attribute_type == "TITL") chk_nobility_type_title(attribute_descriptor, 1)
+  if (attribute_type == "FACT") chk_attribute_descriptor(attribute_descriptor, 1)
   
   if (attribute_type %in% c("IDNO", "FACT") & length(user_reference_type) == 0)
     stop("Attribute requires more info")
@@ -509,7 +509,7 @@ INDIVIDUAL_EVENT_DETAIL <- function(event_details = EVENT_DETAIL(),
   
   age_at_event <- as.character(age_at_event)
   
-  validate_age_at_event(age_at_event, 1)
+  chk_age_at_event(age_at_event, 1)
   
   dplyr::bind_rows(
     event_details %>% add_levels(0),
@@ -547,9 +547,9 @@ INDIVIDUAL_EVENT_STRUCTURE <- function(event_type_individual,
   
   if (length(event_type_individual) == 0) return(tibble::tibble())
   
-  validate_event_type_individual(event_type_individual, 1)
-  validate_xref(xref_fam, 1)
-  validate_adopted_by_which_parent(adopted_by_which_parent, 1)
+  chk_event_type_individual(event_type_individual, 1)
+  chk_xref(xref_fam, 1)
+  chk_adopted_by_which_parent(adopted_by_which_parent, 1)
   
   temp <- dplyr::bind_rows(
     tibble::tibble(level = 0, tag = event_type_individual, value = event_descriptor),
@@ -591,7 +591,7 @@ MULTIMEDIA_LINK <- function(xref_obje) {
   
   if (length(xref_obje) == 0) return(tibble::tibble()) 
     
-  validate_xref(xref_obje, 1)
+  chk_xref(xref_obje, 1)
   
   tibble::tibble(level = 0, tag = "OBJE", value = xref_obje)
   
@@ -615,10 +615,10 @@ NOTE_STRUCTURE <- function(note = character()) {
   
   if (length(note) == 0) return(tibble::tibble())
   
-  validate_user_text(note, 1)
+  chk_user_text(note, 1)
   
   if(grepl(reg_xref(), note)) {
-    validate_xref(note, 1)
+    chk_xref(note, 1)
   }
   
   tibble::tibble(level = 0, tag = "NOTE", value = note)  
@@ -655,12 +655,12 @@ PERSONAL_NAME_PIECES <- function(name_piece_prefix = character(),
                                  notes = list(),
                                  source_citations = list()) {
   
-  validate_name_piece_prefix(name_piece_prefix, 1)
-  validate_name_piece_given(name_piece_given, 1)
-  validate_name_piece_nickname(name_piece_nickname, 1)
-  validate_name_piece_surname_prefix(name_piece_surname_prefix, 1)
-  validate_name_piece_surname(name_piece_surname, 1)
-  validate_name_piece_suffix(name_piece_suffix, 1)
+  chk_name_piece_prefix(name_piece_prefix, 1)
+  chk_name_piece_given(name_piece_given, 1)
+  chk_name_piece_nickname(name_piece_nickname, 1)
+  chk_name_piece_surname_prefix(name_piece_surname_prefix, 1)
+  chk_name_piece_surname(name_piece_surname, 1)
+  chk_name_piece_suffix(name_piece_suffix, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "NPFX", value = name_piece_prefix),
@@ -750,12 +750,12 @@ PERSONAL_NAME_STRUCTURE <- function(name_personal,
   
   if (length(name_personal) == 0) return(tibble::tibble())
   
-  validate_name_personal(name_personal, 1)
-  validate_name_type(name_type, 1)
-  validate_name_phonetic(name_phonetic, 1000)
-  validate_phonetisation_method(phonetisation_method, 1000)
-  validate_name_romanised(name_romanised, 1000)
-  validate_romanisation_method(romanisation_method, 1000)
+  chk_name_personal(name_personal, 1)
+  chk_name_type(name_type, 1)
+  chk_name_phonetic(name_phonetic, 1000)
+  chk_phonetisation_method(phonetisation_method, 1000)
+  chk_name_romanised(name_romanised, 1000)
+  chk_romanisation_method(romanisation_method, 1000)
   
   if(nrow(name_pieces) == 0)
     stop("No name pieces defined for ", name_personal)
@@ -861,13 +861,13 @@ PLACE_STRUCTURE <- function(place_name,
 
   if (length(place_name) == 0) return(tibble::tibble())
   
-  validate_place_name(place_name, 1)
-  validate_place_phonetic(place_phonetic, 1000)
-  validate_phonetisation_method(phonetisation_method, 1000)
-  validate_place_romanised(place_romanised, 1000)
-  validate_romanisation_method(romanisation_method, 1000)
-  validate_place_latitude(place_latitude, 1)
-  validate_place_longitude(place_longitude, 1)
+  chk_place_name(place_name, 1)
+  chk_place_phonetic(place_phonetic, 1000)
+  chk_phonetisation_method(phonetisation_method, 1000)
+  chk_place_romanised(place_romanised, 1000)
+  chk_romanisation_method(romanisation_method, 1000)
+  chk_place_latitude(place_latitude, 1)
+  chk_place_longitude(place_longitude, 1)
   
   if (length(place_phonetic) != length(phonetisation_method))
     stop("Each phonetic variation requires a phonetic type")
@@ -941,11 +941,11 @@ SOURCE_CITATION <- function(xref_sour,
   where_within_source <- as.character(where_within_source)
   certainty_assessment <- as.character(certainty_assessment)
   
-  validate_xref(xref_sour, 1)
-  validate_where_within_source(where_within_source, 1)
-  validate_event_type_cited_from(event_type_cited_from, 1)
-  validate_role_in_event(role_in_event, 1)
-  validate_date_value(entry_recording_date, 1)
+  chk_xref(xref_sour, 1)
+  chk_where_within_source(where_within_source, 1)
+  chk_event_type_cited_from(event_type_cited_from, 1)
+  chk_role_in_event(role_in_event, 1)
+  chk_date_value(entry_recording_date, 1)
   
   temp <- dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "SOUR", value = xref_sour),
@@ -988,8 +988,8 @@ SOURCE_REPOSITORY_CITATION <- function(xref_repo,
   if (length(xref_repo) == 0) return(tibble::tibble())
   
   source_call_number = as.character(source_call_number)
-  validate_xref(xref_repo, 1)
-  validate_source_call_number(source_call_number, 1)
+  chk_xref(xref_repo, 1)
+  chk_source_call_number(source_call_number, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "REPO", value = xref_repo),
@@ -1018,7 +1018,7 @@ SPOUSE_TO_FAMILY_LINK <- function(xref_fam,
   
   if (length(xref_fam) == 0) return(tibble::tibble())
   
-  validate_xref(xref_fam, 1)
+  chk_xref(xref_fam, 1)
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "FAMS", value = xref_fam),
