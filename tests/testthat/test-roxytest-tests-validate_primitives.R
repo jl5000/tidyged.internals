@@ -28,7 +28,7 @@ test_that("Function chk_date() @ L44", {
 })
 
 
-test_that("Function chk_dates() @ L69", {
+test_that("Function chk_dates() @ L76", {
   expect_error(chk_dates("18 MAY 2005", "17 MAY 2005"))
   expect_error(chk_dates("MAR 2005", "FEB 2004"))
   expect_error(chk_dates("2005", "2004"))

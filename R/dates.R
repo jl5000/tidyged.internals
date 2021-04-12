@@ -212,3 +212,37 @@ date_approximated <- function(date = date_calendar(),
   
 }
 
+
+
+#' Convert a GEDCOM date into a lubridate date
+#'
+#' @param date_string A date_calendar() string.
+#' @param minimise Whether to fill in missing date pieces so that the date is minimised. For example, if no month is given, January is used. If minimise = FALSE, December will be used.
+#'
+#' @return A lubridate date.
+#' @export
+parse_gedcom_date <- function(date_string, minimise = TRUE) {
+  
+  # remove dual year
+  ged_date <- stringr::str_remove(date_string, "/\\d{2}") 
+  
+  if(stringr::str_detect(ged_date, "\\d{3,4}$")) {
+    ged_year <- stringr::str_extract(ged_date, "\\d{3,4}$")
+  } else {
+    ged_year <- ifelse(minimise, 1000, 4000)
+  }
+  
+  if(stringr::str_detect(ged_date, "[A-Z]{3}")) {
+    ged_month <- which(toupper(month.abb) == stringr::str_extract(ged_date, "[A-Z]{3}"))
+  } else {
+    ged_month <- ifelse(minimise, 1, 12)
+  }
+ 
+  if(stringr::str_detect(ged_date, "^\\d{1,2} ")) {
+    ged_day <- stringr::str_extract(ged_date, "^\\d{1,2} ") %>% stringr::str_trim()
+  } else {
+    ged_day <- ifelse(minimise, 1, lubridate::days_in_month(lubridate::make_date(ged_year, ged_month)))
+  }
+  
+  lubridate::make_date(ged_year, ged_month, ged_day)
+}

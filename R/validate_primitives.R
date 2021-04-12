@@ -62,57 +62,21 @@ chk_date <- function(year = numeric(),
 }
 
 
+
+#' Check one date_calendar() object occurs after another
+#'
+#' @param start_date A date_calendar() string for the earlier date.
+#' @param end_date A date_calendar() string for the later date.
+#'
+#' @return Nothing.
 #' @tests
 #' expect_error(chk_dates("18 MAY 2005", "17 MAY 2005"))
 #' expect_error(chk_dates("MAR 2005", "FEB 2004"))
 #' expect_error(chk_dates("2005", "2004"))
 chk_dates <- function(start_date, end_date) {
 
-  start_date <- start_date %>% 
-    stringr::str_remove("/\\d{2}") 
-  
-  end_date <- end_date %>% 
-    stringr::str_remove("/\\d{2}") 
-  
-  # Set first date to earliest possible time
-  if(stringr::str_detect(start_date, "\\d{3,4}$")) {
-    start_year <- stringr::str_extract(start_date, "\\d{3,4}$")
-  } else {
-    start_year <- 1000
-  }
-  
-  if(stringr::str_detect(start_date, "[A-Z]{3}")) {
-    start_month <- which(toupper(month.abb) == stringr::str_extract(start_date, "[A-Z]{3}"))
-  } else {
-    start_month <- 1
-  }
-  
-  if(stringr::str_detect(start_date, "^\\d{1,2} ")) {
-    start_day <- stringr::str_extract(start_date, "^\\d{1,2} ") %>% stringr::str_trim()
-  } else {
-    start_day <- 1
-  }
-  # Set end date to latest possible time
-  if(stringr::str_detect(end_date, "\\d{3,4}$")) {
-    end_year <- stringr::str_extract(end_date, "\\d{3,4}$")
-  } else {
-    end_year <- 4000
-  }
-  
-  if(stringr::str_detect(end_date, "[A-Z]{3}")) {
-    end_month <- which(toupper(month.abb) == stringr::str_extract(end_date, "[A-Z]{3}"))
-  } else {
-    end_month <- 12
-  }
-  
-  if(stringr::str_detect(end_date, "^\\d{1,2} ")) {
-    end_day <- stringr::str_extract(end_date, "^\\d{1,2} ") %>% stringr::str_trim()
-  } else {
-    end_day <- lubridate::days_in_month(lubridate::make_date(end_year, end_month))
-  }
-
-  date1 <- lubridate::make_date(start_year, start_month, start_day)
-  date2 <- lubridate::make_date(end_year, end_month, end_day)
+  date1 <- parse_gedcom_date(start_date, minimise = TRUE)
+  date2 <- parse_gedcom_date(end_date, minimise = FALSE)
 
   if (date1 > date2) stop("First date is after second date")
   
