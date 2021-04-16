@@ -246,3 +246,31 @@ parse_gedcom_date <- function(date_string, minimise = TRUE) {
   
   lubridate::make_date(ged_year, ged_month, ged_day)
 }
+
+
+#' Convert a GEDCOM age at event into decimalised years
+#'
+#' @param age_string A string describing an age at an event, e.g. "14y 3m 20d".
+#'
+#' @return A numeric value giving the age in years.
+#' @export
+#' @tests
+#' expect_equal(parse_gedcom_age("16y"), 16)
+#' expect_equal(parse_gedcom_age("16y 6m"), 16.5)
+#' expect_equal(parse_gedcom_age("73d"), 0.2)
+parse_gedcom_age <- function(age_string) {
+  
+  years <- stringr::str_extract(age_string, "\\d{1,3}y") %>% 
+    stringr::str_replace("y", "")
+  months <- stringr::str_extract(age_string, "\\d{1,2}m") %>% 
+    stringr::str_replace("m", "")
+  days <- stringr::str_extract(age_string, "\\d{1,3}d") %>% 
+    stringr::str_replace("d", "")
+  
+  years_num <- ifelse(is.na(years), 0, as.numeric(years))
+  months_prop <- ifelse(is.na(months), 0, as.numeric(months)/12)
+  days_prop <- ifelse(is.na(days), 0, as.numeric(days)/365)
+  
+  years_num + months_prop + days_prop
+  
+}

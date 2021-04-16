@@ -58,3 +58,10 @@ test_that("Function date_approximated() @ L196", {
   expect_equal(date_approximated(date_calendar(2005, 1), FALSE,FALSE,FALSE), "JAN 2005")
 })
 
+
+test_that("Function parse_gedcom_age() @ L261", {
+  expect_equal(parse_gedcom_age("16y"), 16)
+  expect_equal(parse_gedcom_age("16y 6m"), 16.5)
+  expect_equal(parse_gedcom_age("73d"), 0.2)
+})
+
