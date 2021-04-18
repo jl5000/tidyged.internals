@@ -8,7 +8,7 @@
 [![R-CMD-check](https://github.com/jl5000/tidyged.internals/workflows/R-CMD-check/badge.svg)](https://github.com/jl5000/tidyged.internals/actions)
 [![](https://codecov.io/gh/jl5000/tidyged.internals/branch/main/graph/badge.svg)](https://codecov.io/gh/jl5000/tidyged.internals)
 [![CodeFactor](https://www.codefactor.io/repository/github/jl5000/tidyged.internals/badge)](https://www.codefactor.io/repository/github/jl5000/tidyged.internals)
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 <!-- badges: end -->
 
 This package contains the internal data structures used to represent
