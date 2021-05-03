@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find a particular row position in a tidyged object. — find_insertion_point • tidyged.internals</title>
+<title>Update particular values in a tidyged object — gedcom_value_update • tidyged.internals</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Find a particular row position in a tidyged object. — find_insertion_point" />
-<meta property="og:description" content="This is for inserting rows at the end of a record or subrecord." />
+<meta property="og:title" content="Update particular values in a tidyged object — gedcom_value_update" />
+<meta property="og:description" content="Update particular values in a tidyged object" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -116,21 +116,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find a particular row position in a tidyged object.</h1>
+    <h1>Update particular values in a tidyged object</h1>
     <small class="dont-index">Source: <a href='https://github.com/jl5000/tidyged.internals/blob/master/R/helpers.R'><code>R/helpers.R</code></a></small>
-    <div class="hidden name"><code>find_insertion_point.Rd</code></div>
+    <div class="hidden name"><code>gedcom_value_update.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This is for inserting rows at the end of a record or subrecord.</p>
+    <p>Update particular values in a tidyged object</p>
     </div>
 
-    <pre class="usage"><span class='fu'>find_insertion_point</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>gedcom_value_update</span><span class='op'>(</span>
   <span class='va'>gedcom</span>,
-  <span class='va'>xref</span>,
-  <span class='va'>parent_level</span>,
-  <span class='va'>parent_tag</span>,
-  parent_value <span class='op'>=</span> <span class='cn'>NULL</span>
+  <span class='va'>record_xref</span>,
+  <span class='va'>tag</span>,
+  <span class='va'>level</span>,
+  <span class='va'>old_value</span>,
+  <span class='va'>new_value</span>,
+  after_tag <span class='op'>=</span> <span class='cn'>NULL</span>,
+  after_value <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -141,26 +144,38 @@
       <td><p>A tidyged object.</p></td>
     </tr>
     <tr>
-      <th>xref</th>
-      <td><p>The xref of the record where the insertion point will be.</p></td>
+      <th>record_xref</th>
+      <td><p>The xref of the record in which to update the value.</p></td>
     </tr>
     <tr>
-      <th>parent_level</th>
-      <td><p>The level of the row where the insertion point will be.</p></td>
+      <th>tag</th>
+      <td><p>The tag associated with the value.</p></td>
     </tr>
     <tr>
-      <th>parent_tag</th>
-      <td><p>The tag of the row where the insertion point will be.</p></td>
+      <th>level</th>
+      <td><p>The level number of the value.</p></td>
     </tr>
     <tr>
-      <th>parent_value</th>
-      <td><p>The value of the row where the insertion point will be.</p></td>
+      <th>old_value</th>
+      <td><p>The old value.</p></td>
+    </tr>
+    <tr>
+      <th>new_value</th>
+      <td><p>The new value.</p></td>
+    </tr>
+    <tr>
+      <th>after_tag</th>
+      <td><p>Whether the tag should be subordinate to this parent tag.</p></td>
+    </tr>
+    <tr>
+      <th>after_value</th>
+      <td><p>Whether the value should be subordinate to this parent value.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The row after the insertion point in the tidyged object.</p>
+    <p>A tidyged object with the value updated.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
