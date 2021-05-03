@@ -219,6 +219,8 @@ assign_xref_subm <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {
 
 
 #' Find a particular row position in a tidyged object.
+#' 
+#' This is for inserting rows at the end of a record or subrecord.
 #'
 #' @param gedcom A tidyged object.
 #' @param xref The xref of the record where the insertion point will be.
@@ -295,3 +297,41 @@ gedcom_value <- function(gedcom, record_xref, tag, level, after_tag = NULL) {
   
 }
 
+#' Update particular values in a tidyged object
+#'
+#' @param gedcom A tidyged object.
+#' @param record_xref The xref of the record in which to update the value.
+#' @param tag The tag associated with the value.
+#' @param level The level number of the value.
+#' @param old_value The old value.
+#' @param new_value The new value.
+#' @param after_tag Whether the tag should be subordinate to this parent tag. 
+#' @param after_value Whether the value should be subordinate to this parent value. 
+#'
+#' @return A tidyged object with the value updated.
+#' @export
+gedcom_value_update <- function(gedcom, record_xref, tag, level, old_value, new_value, 
+                                after_tag = NULL, after_value = NULL) {
+  
+  if(nrow(gedcom) == 0) return(tibble::tibble())
+  
+  # Can we do a straightforward mutate?
+  if(is.null(after_tag) & is.null(after_value)) {
+    gedcom_filtered <- dplyr::filter(gedcom, record == record_xref, tag == tag, 
+                                     level == level, value == old_value)
+    
+    if(nrow(gedcom_filtered) == 1)
+      return(dplyr::mutate(gedcom, value = ifelse(record == record_xref & tag == tag & 
+                                                    level == level & value == old_value, new_value, value)))
+    
+  }
+  
+  # We have to loop
+  for(i in seq_len(nrow(gedcom))) {
+    
+    
+    
+  }
+  
+  
+}

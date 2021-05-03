@@ -27,5 +27,5 @@ find_insertion_point(
 The row after the insertion point in the tidyged object.
 }
 \description{
-Find a particular row position in a tidyged object.
+This is for inserting rows at the end of a record or subrecord.
 }

@@ -7,8 +7,8 @@
 #' @return A character vector of valid values.
 #' @export
 val_languages <- function() {
-  c("Afrikaans", "Albanian", "Anglo-Saxon", "Catalan", "Catalan_Spn", "Czech", 
-    "Danish", "Dutch", "English", "Esperanto", "Estonian", "Faroese", "Finnish", 
+  c("English", "Afrikaans", "Albanian", "Anglo-Saxon", "Catalan", "Catalan_Spn", "Czech", 
+    "Danish", "Dutch", "Esperanto", "Estonian", "Faroese", "Finnish", 
     "French", "German", "Hawaiian", "Hungarian", "Icelandic", "Indonesian", 
     "Italian", "Latvian", "Lithuanian", "Navaho", "Norwegian", "Polish", 
     "Portuguese", "Romanian", "Serbo_Croa", "Slovak", "Slovene", "Spanish", 
@@ -18,7 +18,7 @@ val_languages <- function() {
 #' @rdname val_languages
 #' @export
 val_sexes <- function() {
-  c(Male = "M", Female = "F", Unknown = "U", Intersex = "X", `Not recorded` = "N")
+  c(Unknown = "U", Male = "M", Female = "F", Intersex = "X", `Not recorded` = "N")
 }
 
 #' @rdname val_languages
@@ -31,7 +31,7 @@ val_multimedia_formats <- function() {
 #' @rdname val_languages
 #' @export
 val_pedigree_linkage_types <- function() {
-  c("adopted", "birth", "foster") %>% 
+  c("birth", "adopted", "foster") %>% 
     setNames(stringr::str_to_title(.))
 }
 
