@@ -34,9 +34,9 @@ GEDCOM_HEADER <- function(character_encoding = "UTF-8",
   
   gedcom_version_number <- as.character(gedcom_version_number)
   
-  chk_character_encoding(character_encoding, 1)
-  chk_gedcom_version_number(gedcom_version_number, 1)
-  chk_gedcom_form(gedcom_form, 1)
+  chk_character_encoding(character_encoding, 1) %>% parse_error()
+  chk_gedcom_version_number(gedcom_version_number, 1) %>% parse_error()
+  chk_gedcom_form(gedcom_form, 1) %>% parse_error()
   
   dplyr::bind_rows(
     tibble::tibble(level = 0, record = "HD", tag = "HEAD", value = ""),
@@ -105,14 +105,14 @@ FAMILY_GROUP_RECORD <- function(xref_fam,
   if (length(user_reference_type) > 0 & length(user_reference_type) != length(user_reference_number))
     stop("The number of user reference types must be the same as the number of user reference numbers")
   
-  chk_xref(xref_fam, 1)
-  chk_xref(xref_husb, 1)
-  chk_xref(xref_wife, 1)
-  chk_xref(xrefs_chil, 100)
-  chk_count_of_children(count_of_children, 1)
-  chk_user_reference_number(user_reference_number, 1000)
-  chk_user_reference_type(user_reference_type, 1000)
-  chk_automated_record_id(automated_record_id, 1)
+  chk_xref(xref_fam, 1) %>% parse_error()
+  chk_xref(xref_husb, 1) %>% parse_error()
+  chk_xref(xref_wife, 1) %>% parse_error()
+  chk_xref(xrefs_chil, 100) %>% parse_error()
+  chk_count_of_children(count_of_children, 1) %>% parse_error()
+  chk_user_reference_number(user_reference_number, 1000) %>% parse_error()
+  chk_user_reference_type(user_reference_type, 1000) %>% parse_error()
+  chk_automated_record_id(automated_record_id, 1) %>% parse_error()
   
   
   temp <- dplyr::bind_rows(
@@ -193,11 +193,11 @@ INDIVIDUAL_RECORD <- function(xref_indi,
   if (length(user_reference_type) > 0 & length(user_reference_type) != length(user_reference_number))
     stop("The number of user reference types must be the same as the number of user reference numbers")
   
-  chk_xref(xref_indi, 1)
-  chk_sex_value(sex_value, 1)
-  chk_user_reference_number(user_reference_number, 1000)
-  chk_user_reference_type(user_reference_type, 1000)
-  chk_automated_record_id(automated_record_id, 1)
+  chk_xref(xref_indi, 1) %>% parse_error()
+  chk_sex_value(sex_value, 1) %>% parse_error()
+  chk_user_reference_number(user_reference_number, 1000) %>% parse_error()
+  chk_user_reference_type(user_reference_type, 1000) %>% parse_error()
+  chk_automated_record_id(automated_record_id, 1) %>% parse_error()
   
   
   temp <- dplyr::bind_rows(

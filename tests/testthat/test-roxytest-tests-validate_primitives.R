@@ -2,36 +2,36 @@
 
 # File R/validate_primitives.R: @tests
 
-test_that("Function chk_input_size() @ L6", {
-  expect_error(chk_input_size(1:2, 1))
-  expect_error(chk_input_size("123456", 1, min_char = 7))
-  expect_error(chk_input_size("123456", 1, max_char = 5))
+test_that("Function chk_input_size() @ L10", {
+  expect_error(chk_input_size(1:2, 1) %>% parse_error())
+  expect_error(chk_input_size("123456", 1, min_char = 7) %>% parse_error())
+  expect_error(chk_input_size("123456", 1, max_char = 5) %>% parse_error())
 })
 
 
-test_that("Function chk_input_pattern() @ L19", {
-  expect_error(chk_input_pattern("Test string", "Tast string"))
+test_that("Function chk_input_pattern() @ L25", {
+  expect_error(chk_input_pattern("Test string", "Tast string") %>% parse_error())
 })
 
 
-test_that("Function chk_input_choice() @ L30", {
-  expect_error(chk_input_choice(20, 22:28))
+test_that("Function chk_input_choice() @ L37", {
+  expect_error(chk_input_choice(20, 22:28) %>% parse_error())
 })
 
 
-test_that("Function chk_date() @ L44", {
-  expect_error(chk_date(2005, day = 15))
-  expect_error(chk_date(month = 5))
-  expect_error(chk_date(2005, 13))
-  expect_error(chk_date(2005, 10, 32))
-  expect_error(chk_date(2005, -1, 6))
-  expect_error(chk_date(month = 1, day = 32))
+test_that("Function chk_date() @ L52", {
+  expect_error(chk_date(2005, day = 15) %>% parse_error())
+  expect_error(chk_date(month = 5) %>% parse_error())
+  expect_error(chk_date(2005, 13) %>% parse_error())
+  expect_error(chk_date(2005, 10, 32) %>% parse_error())
+  expect_error(chk_date(2005, -1, 6) %>% parse_error())
+  expect_error(chk_date(month = 1, day = 32) %>% parse_error())
 })
 
 
-test_that("Function chk_dates() @ L76", {
-  expect_error(chk_dates("18 MAY 2005", "17 MAY 2005"))
-  expect_error(chk_dates("MAR 2005", "FEB 2004"))
-  expect_error(chk_dates("2005", "2004"))
+test_that("Function chk_dates() @ L85", {
+  expect_error(chk_dates("18 MAY 2005", "17 MAY 2005") %>% parse_error())
+  expect_error(chk_dates("MAR 2005", "FEB 2004") %>% parse_error())
+  expect_error(chk_dates("2005", "2004") %>% parse_error())
 })
 

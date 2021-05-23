@@ -1,55 +1,63 @@
 
-#' @tests
-#' expect_error(chk_input_size(1:2, 1))
-#' expect_error(chk_input_size("123456", 1, min_char = 7))
-#' expect_error(chk_input_size("123456", 1, max_char = 5))
-chk_input_size <- function(input, max_dim, min_char = NULL, max_char = NULL) {
-  if (length(input) > max_dim)
-    stop("Input ", input, " has too many dimensions. The limit is ", max_dim)
-  
-  if (length(input) > 0 && !is.null(max_char) && max(nchar(input)) > max_char)
-    stop("Input ", input, " has too many characters. The limit is ", max_char)
-  
-  if (length(input) > 0 && !is.null(min_char) && min(nchar(input)) < min_char)
-    stop("Input ", input, " has too few characters. The minimum is ", min_char)
+parse_error <- function(msg) {
+  if(!is.null(msg)) stop(msg[1])
 }
 
 #' @tests
-#' expect_error(chk_input_pattern("Test string", "Tast string"))
+#' expect_error(chk_input_size(1:2, 1) %>% parse_error())
+#' expect_error(chk_input_size("123456", 1, min_char = 7) %>% parse_error())
+#' expect_error(chk_input_size("123456", 1, max_char = 5) %>% parse_error())
+chk_input_size <- function(input, max_dim, min_char = NULL, max_char = NULL) {
+  if (length(input) > max_dim)
+    return(paste("Input", input, "has too many dimensions. The limit is", max_dim))
+  
+  if (length(input) > 0 && !is.null(max_char) && max(nchar(input)) > max_char)
+    return(paste("Input", input, "has too many characters. The limit is", max_char))
+  
+  if (length(input) > 0 && !is.null(min_char) && min(nchar(input)) < min_char)
+    return(paste("Input", input, "has too few characters. The minimum is", min_char))
+  
+  NULL
+}
+
+#' @tests
+#' expect_error(chk_input_pattern("Test string", "Tast string") %>% parse_error())
 chk_input_pattern <- function(input, pattern) {
   if (length(input) > 0) {
     for (i in input) {
       if (!grepl(pattern, i))
-        stop("Input ", i, " is in an unexpected format")
+        return(paste("Input", i, "is in an unexpected format"))
     }
   }
+  NULL
 }
 
 #' @tests
-#' expect_error(chk_input_choice(20, 22:28))
+#' expect_error(chk_input_choice(20, 22:28) %>% parse_error())
 chk_input_choice <- function(input, choices) {
   if (length(input) == 1 && !input %in% choices) 
-    stop("Invalid argument value: ", input, ".\n  The valid values are: ", 
-         paste(choices, collapse = ", "))
+    return(paste("Invalid argument value:", input, "\n  The valid values are:", 
+         paste(choices, collapse = ", ")))
+  NULL
 }
 
 
 #' @tests
-#' expect_error(chk_date(2005, day = 15))
-#' expect_error(chk_date(month = 5))
-#' expect_error(chk_date(2005, 13))
-#' expect_error(chk_date(2005, 10, 32))
-#' expect_error(chk_date(2005, -1, 6))
-#' expect_error(chk_date(month = 1, day = 32))
+#' expect_error(chk_date(2005, day = 15) %>% parse_error())
+#' expect_error(chk_date(month = 5) %>% parse_error())
+#' expect_error(chk_date(2005, 13) %>% parse_error())
+#' expect_error(chk_date(2005, 10, 32) %>% parse_error())
+#' expect_error(chk_date(2005, -1, 6) %>% parse_error())
+#' expect_error(chk_date(month = 1, day = 32) %>% parse_error())
 chk_date <- function(year = numeric(),
                           month = numeric(),
                           day = numeric()) {
   
   if (length(year) + length(day) < length(month))
-    stop("Month is defined without a day or year")
+    return("Month is defined without a day or year")
   
   if (length(month) < length(day))
-    stop("Day is defined without a month")
+    return("Day is defined without a month")
   
   # Set empties to something reasonable
   if (length(year) == 0) year <- 2000
@@ -58,7 +66,8 @@ chk_date <- function(year = numeric(),
   
   #Let lubridate do the heavy lifting
   test_date <- lubridate::make_date(year, month, day)
-  if (is.na(test_date)) stop("Date is invalid")
+  if (is.na(test_date)) return("Date is invalid")
+  NULL
 }
 
 
@@ -70,69 +79,105 @@ chk_date <- function(year = numeric(),
 #'
 #' @return Nothing.
 #' @tests
-#' expect_error(chk_dates("18 MAY 2005", "17 MAY 2005"))
-#' expect_error(chk_dates("MAR 2005", "FEB 2004"))
-#' expect_error(chk_dates("2005", "2004"))
+#' expect_error(chk_dates("18 MAY 2005", "17 MAY 2005") %>% parse_error())
+#' expect_error(chk_dates("MAR 2005", "FEB 2004") %>% parse_error())
+#' expect_error(chk_dates("2005", "2004") %>% parse_error())
 chk_dates <- function(start_date, end_date) {
 
   date1 <- parse_gedcom_date(start_date, minimise = TRUE)
   date2 <- parse_gedcom_date(end_date, minimise = FALSE)
 
-  if (date1 > date2) stop("First date is after second date")
-  
+  if (date1 > date2) return("First date is after second date")
+  NULL
 }
 
+
+#' Validate a tidyged input value
+#' 
+#' These functions checks values for length, character limit, and form.
+#' 
+#' @details The functions are designed to be combined with the parse_error function, but are 
+#' also used for input validation in the shinyged package.
+#'
+#' @param input An input value.
+#' @param max_dim The maximum length of the input value.
+#'
+#' @return Either a single character string describing the first error encountered, or
+#' NULL if no errors are found.
+#' @export
 chk_address_city <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 60)
 }
+#' @export
+#' @rdname chk_address_city
 chk_address_country <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 60)
 }
+#' @export
+#' @rdname chk_address_city
 chk_address_email <- function(input, max_dim) {
   chk_input_size(input, max_dim, 5, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_address_fax <- function(input, max_dim) {
   chk_input_size(input, max_dim, 5, 60)
 }
+#' @export
+#' @rdname chk_address_city
 chk_address_lines <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 60)
 }
+#' @export
+#' @rdname chk_address_city
 chk_address_postal_code <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 10)
 }
+#' @export
+#' @rdname chk_address_city
 chk_address_state <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 60)
 }
+#' @export
+#' @rdname chk_address_city
 chk_address_web_page <- function(input, max_dim) {
   chk_input_size(input, max_dim, 4, 2047)
 }
+#' @export
+#' @rdname chk_address_city
 chk_address_country <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 60)
 }
+
 chk_adopted_by_which_parent <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- val_adoptive_parents()
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, val_adoptive_parents())
+  )[1]
 }
 chk_age_at_event <- function(input, max_dim) {
-  chk_input_size(input, max_dim, 2, 13)
-  chk_input_pattern(input, reg_age_at_event())
+  c(
+    chk_input_size(input, max_dim, 2, 13),
+    chk_input_pattern(input, reg_age_at_event())
+  )[1]
 }
 chk_attribute_descriptor <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
 chk_attribute_type <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- val_attribute_types()
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, val_attribute_types())
+  )[1]
 }
 chk_automated_record_id <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 12)
 }
 chk_before_common_era <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- c("BCE", "BC", "B.C.")
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, c("BCE", "BC", "B.C."))
+  )[1]
 }
 chk_caste_name <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
@@ -141,14 +186,16 @@ chk_cause_of_event <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
 chk_certainty_assessment <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- as.character(0:3)
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, as.character(0:3))
+  )[1]
 }
 chk_character_encoding <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- c("UTF-8", "UNICODE")
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, c("UTF-8", "UNICODE"))
+  )[1]
 }
 chk_copyright_gedcom_file <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
@@ -160,16 +207,22 @@ chk_count_of_children <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 3)
 }
 chk_date_exact <- function(input, max_dim) {
-  chk_input_size(input, max_dim, 10, 11)
-  chk_input_pattern(input, reg_date_exact())
+  c(
+    chk_input_size(input, max_dim, 10, 11),
+    chk_input_pattern(input, reg_date_exact())
+  )[1]
 }
 chk_date_period_covered <- function(input, max_dim) {
-  chk_input_size(input, max_dim, 7, 35)
-  chk_input_pattern(input, reg_date_period())
+  c(
+    chk_input_size(input, max_dim, 7, 35),
+    chk_input_pattern(input, reg_date_period())
+  )[1]
 }
 chk_date_value <- function(input, max_dim) {
-  chk_input_size(input, max_dim, 1, 35)
-  chk_input_pattern(input, reg_date_value())
+  c(
+    chk_input_size(input, max_dim, 1, 35),
+    chk_input_pattern(input, reg_date_value())
+  )[1]
 }
 chk_descriptive_title <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
@@ -184,14 +237,16 @@ chk_event_type_cited_from <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 15)
 }
 chk_event_type_family <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- val_family_event_types()
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, val_family_event_types())
+  )[1]
 }
 chk_event_type_individual <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- val_individual_event_types()
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, val_individual_event_types())
+  )[1]
 }
 chk_events_recorded <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
@@ -203,29 +258,35 @@ chk_gedcom_file_name <- function(input, max_dim) {
   chk_input_size(input, max_dim, 5, 248)
 }
 chk_gedcom_form <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  chk_input_pattern(input, "LINEAGE-LINKED")
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_pattern(input, "LINEAGE-LINKED")
+  )[1]
 }
 chk_gedcom_version_number <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  chk_input_pattern(input, "^\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?$")
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_pattern(input, "^\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?$")
+  )[1]
 }
 
 chk_id_number <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 30)
 }
 chk_language_of_text <- function(input, max_dim) {
-  chk_input_size(input, max_dim, 1, 15)
-  choices <- val_languages()
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim, 1, 15),
+    chk_input_choice(input, val_languages())
+  )[1]
 }
 chk_multimedia_file_reference <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 259)
 }
 chk_multimedia_format <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- val_multimedia_formats()
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, val_multimedia_formats())
+  )[1]
 }
 chk_name_of_business <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
@@ -282,9 +343,10 @@ chk_occupation <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
 chk_pedigree_linkage_type <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- val_pedigree_linkage_types()
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, val_pedigree_linkage_types())
+  )[1]
 }
 chk_phone_number <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 25)
@@ -296,12 +358,16 @@ chk_physical_description <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 4095)
 }
 chk_place_latitude <- function(input, max_dim) {
-  chk_input_size(input, max_dim, 2, 10)
-  chk_input_pattern(input, reg_latitude())
+  c(
+    chk_input_size(input, max_dim, 2, 10),
+    chk_input_pattern(input, reg_latitude())
+  )[1]
 }
 chk_place_longitude <- function(input, max_dim) {
-  chk_input_size(input, max_dim, 2, 11)
-  chk_input_pattern(input, reg_longitude())
+  c(
+    chk_input_size(input, max_dim, 2, 11),
+    chk_input_pattern(input, reg_longitude())
+  )[1]
 }
 chk_place_name <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
@@ -316,8 +382,10 @@ chk_possessions <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
 }
 chk_product_version_number <- function(input, max_dim) {
-  chk_input_size(input, max_dim, 3, 15)
-  chk_input_pattern(input, "^\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3}(\\.\\d{1,3})?)?$")
+  c(
+    chk_input_size(input, max_dim, 3, 15),
+    chk_input_pattern(input, "^\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3}(\\.\\d{1,3})?)?$")
+  )[1]
 }
 chk_receiving_system_name <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 20)
@@ -332,8 +400,10 @@ chk_responsible_agency <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
 chk_role_in_event <- function(input, max_dim) {
-  chk_input_size(input, max_dim, 3, 27)
-  chk_input_pattern(input, "CHIL|HUSB|WIFE|MOTH|FATH|SPOU|\\(.+\\)")
+  c(
+    chk_input_size(input, max_dim, 3, 27),
+    chk_input_pattern(input, "CHIL|HUSB|WIFE|MOTH|FATH|SPOU|\\(.+\\)")
+  )[1]
 }
 chk_romanisation_method <- function(input, max_dim) {
   chk_input_size(input, max_dim, 5, 30)
@@ -342,9 +412,10 @@ chk_scholastic_achievement <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
 }
 chk_sex_value <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- val_sexes()
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, val_sexes())
+  )[1]
 }
 chk_source_call_number <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
@@ -359,9 +430,10 @@ chk_source_jurisdiction_place <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
 chk_source_media_type <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  choices <- val_source_media_types()
-  chk_input_choice(input, choices)
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_choice(input, val_source_media_types())
+  )[1]
 }
 chk_source_originator <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 255)
@@ -379,9 +451,11 @@ chk_text_from_source <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 32767)
 }
 chk_time_value <- function(input, max_dim) {
-  chk_input_size(input, max_dim, 7, 12)
-  chk_input_pattern(input, paste0("^\\d{1,2}:\\d\\d:\\d\\d$|",
-                                       "^\\d{1,2}:\\d\\d:\\d\\d.\\d\\d$"))
+  c(
+    chk_input_size(input, max_dim, 7, 12),
+    chk_input_pattern(input, paste0("^\\d{1,2}:\\d\\d:\\d\\d$|",
+                                    "^\\d{1,2}:\\d\\d:\\d\\d.\\d\\d$"))
+  )[1]
 }
 chk_user_reference_number <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 20)
@@ -396,7 +470,9 @@ chk_where_within_source <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
 }
 chk_xref <- function(input, max_dim) {
-  chk_input_size(input, max_dim)
-  chk_input_pattern(input, reg_xref())
+  c(
+    chk_input_size(input, max_dim),
+    chk_input_pattern(input, reg_xref())
+  )[1]
 }
 
