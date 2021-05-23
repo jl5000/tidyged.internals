@@ -9,13 +9,13 @@ parse_error <- function(msg) {
 #' expect_error(chk_input_size("123456", 1, max_char = 5) %>% parse_error())
 chk_input_size <- function(input, max_dim, min_char = NULL, max_char = NULL) {
   if (length(input) > max_dim)
-    return(paste("Input", input, "has too many dimensions. The limit is", max_dim))
+    return(paste0("Input ", input[1], "... has too many dimensions. The limit is ", max_dim))
   
   if (length(input) > 0 && !is.null(max_char) && max(nchar(input)) > max_char)
-    return(paste("Input", input, "has too many characters. The limit is", max_char))
+    return(paste("Input", input[which.max(nchar(input))], "has too many characters. The limit is", max_char))
   
   if (length(input) > 0 && !is.null(min_char) && min(nchar(input)) < min_char)
-    return(paste("Input", input, "has too few characters. The minimum is", min_char))
+    return(paste("Input", input[which.min(nchar(input))], "has too few characters. The minimum is", min_char))
   
   NULL
 }
