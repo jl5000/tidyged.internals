@@ -12,7 +12,8 @@ chk_dates(start_date, end_date)
 \item{end_date}{A date_calendar() string for the later date.}
 }
 \value{
-Nothing.
+Either a single character string describing the error encountered, or
+NULL if no errors are found.
 }
 \description{
 Check one date_calendar() object occurs after another

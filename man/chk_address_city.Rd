@@ -9,6 +9,89 @@
 \alias{chk_address_postal_code}
 \alias{chk_address_state}
 \alias{chk_address_web_page}
+\alias{chk_adopted_by_which_parent}
+\alias{chk_age_at_event}
+\alias{chk_attribute_descriptor}
+\alias{chk_attribute_type}
+\alias{chk_automated_record_id}
+\alias{chk_before_common_era}
+\alias{chk_caste_name}
+\alias{chk_cause_of_event}
+\alias{chk_certainty_assessment}
+\alias{chk_character_encoding}
+\alias{chk_copyright_gedcom_file}
+\alias{chk_copyright_source_data}
+\alias{chk_count_of_children}
+\alias{chk_date_exact}
+\alias{chk_date_period_covered}
+\alias{chk_date_value}
+\alias{chk_descriptive_title}
+\alias{chk_event_descriptor}
+\alias{chk_event_or_fact_classification}
+\alias{chk_event_type_cited_from}
+\alias{chk_event_type_family}
+\alias{chk_event_type_individual}
+\alias{chk_events_recorded}
+\alias{chk_gedcom_file_name}
+\alias{chk_gedcom_form}
+\alias{chk_gedcom_version_number}
+\alias{chk_id_number}
+\alias{chk_language_of_text}
+\alias{chk_multimedia_file_reference}
+\alias{chk_multimedia_format}
+\alias{chk_name_of_business}
+\alias{chk_name_of_product}
+\alias{chk_name_of_repository}
+\alias{chk_name_of_source_data}
+\alias{chk_name_personal}
+\alias{chk_name_phonetic}
+\alias{chk_name_piece_given}
+\alias{chk_name_piece_nickname}
+\alias{chk_name_piece_prefix}
+\alias{chk_name_piece_suffix}
+\alias{chk_name_piece_surname}
+\alias{chk_name_piece_surname_prefix}
+\alias{chk_name_romanised}
+\alias{chk_name_type}
+\alias{chk_national_or_tribal_origin}
+\alias{chk_nobility_type_title}
+\alias{chk_number_of_relationships}
+\alias{chk_occupation}
+\alias{chk_pedigree_linkage_type}
+\alias{chk_phone_number}
+\alias{chk_phonetisation_method}
+\alias{chk_physical_description}
+\alias{chk_place_latitude}
+\alias{chk_place_longitude}
+\alias{chk_place_name}
+\alias{chk_place_phonetic}
+\alias{chk_place_romanised}
+\alias{chk_possessions}
+\alias{chk_product_version_number}
+\alias{chk_receiving_system_name}
+\alias{chk_relation_is_descriptor}
+\alias{chk_religious_affiliation}
+\alias{chk_responsible_agency}
+\alias{chk_role_in_event}
+\alias{chk_romanisation_method}
+\alias{chk_scholastic_achievement}
+\alias{chk_sex_value}
+\alias{chk_source_call_number}
+\alias{chk_source_descriptive_title}
+\alias{chk_source_filed_by_entry}
+\alias{chk_source_jurisdiction_place}
+\alias{chk_source_media_type}
+\alias{chk_source_originator}
+\alias{chk_source_publication_facts}
+\alias{chk_submitter_name}
+\alias{chk_system_id}
+\alias{chk_text_from_source}
+\alias{chk_time_value}
+\alias{chk_user_reference_number}
+\alias{chk_user_reference_type}
+\alias{chk_user_text}
+\alias{chk_where_within_source}
+\alias{chk_xref}
 \title{Validate a tidyged input value}
 \usage{
 chk_address_city(input, max_dim)
@@ -28,6 +111,172 @@ chk_address_state(input, max_dim)
 chk_address_web_page(input, max_dim)
 
 chk_address_country(input, max_dim)
+
+chk_adopted_by_which_parent(input, max_dim)
+
+chk_age_at_event(input, max_dim)
+
+chk_attribute_descriptor(input, max_dim)
+
+chk_attribute_type(input, max_dim)
+
+chk_automated_record_id(input, max_dim)
+
+chk_before_common_era(input, max_dim)
+
+chk_caste_name(input, max_dim)
+
+chk_cause_of_event(input, max_dim)
+
+chk_certainty_assessment(input, max_dim)
+
+chk_character_encoding(input, max_dim)
+
+chk_copyright_gedcom_file(input, max_dim)
+
+chk_copyright_source_data(input, max_dim)
+
+chk_count_of_children(input, max_dim)
+
+chk_date_exact(input, max_dim)
+
+chk_date_period_covered(input, max_dim)
+
+chk_date_value(input, max_dim)
+
+chk_descriptive_title(input, max_dim)
+
+chk_event_descriptor(input, max_dim)
+
+chk_event_or_fact_classification(input, max_dim)
+
+chk_event_type_cited_from(input, max_dim)
+
+chk_event_type_family(input, max_dim)
+
+chk_event_type_individual(input, max_dim)
+
+chk_events_recorded(input, max_dim)
+
+chk_gedcom_file_name(input, max_dim)
+
+chk_gedcom_form(input, max_dim)
+
+chk_gedcom_version_number(input, max_dim)
+
+chk_id_number(input, max_dim)
+
+chk_language_of_text(input, max_dim)
+
+chk_multimedia_file_reference(input, max_dim)
+
+chk_multimedia_format(input, max_dim)
+
+chk_name_of_business(input, max_dim)
+
+chk_name_of_product(input, max_dim)
+
+chk_name_of_repository(input, max_dim)
+
+chk_name_of_source_data(input, max_dim)
+
+chk_name_personal(input, max_dim)
+
+chk_name_phonetic(input, max_dim)
+
+chk_name_piece_given(input, max_dim)
+
+chk_name_piece_nickname(input, max_dim)
+
+chk_name_piece_prefix(input, max_dim)
+
+chk_name_piece_suffix(input, max_dim)
+
+chk_name_piece_surname(input, max_dim)
+
+chk_name_piece_surname_prefix(input, max_dim)
+
+chk_name_romanised(input, max_dim)
+
+chk_name_type(input, max_dim)
+
+chk_national_or_tribal_origin(input, max_dim)
+
+chk_nobility_type_title(input, max_dim)
+
+chk_number_of_relationships(input, max_dim)
+
+chk_occupation(input, max_dim)
+
+chk_pedigree_linkage_type(input, max_dim)
+
+chk_phone_number(input, max_dim)
+
+chk_phonetisation_method(input, max_dim)
+
+chk_physical_description(input, max_dim)
+
+chk_place_latitude(input, max_dim)
+
+chk_place_longitude(input, max_dim)
+
+chk_place_name(input, max_dim)
+
+chk_place_phonetic(input, max_dim)
+
+chk_place_romanised(input, max_dim)
+
+chk_possessions(input, max_dim)
+
+chk_product_version_number(input, max_dim)
+
+chk_receiving_system_name(input, max_dim)
+
+chk_relation_is_descriptor(input, max_dim)
+
+chk_religious_affiliation(input, max_dim)
+
+chk_responsible_agency(input, max_dim)
+
+chk_role_in_event(input, max_dim)
+
+chk_romanisation_method(input, max_dim)
+
+chk_scholastic_achievement(input, max_dim)
+
+chk_sex_value(input, max_dim)
+
+chk_source_call_number(input, max_dim)
+
+chk_source_descriptive_title(input, max_dim)
+
+chk_source_filed_by_entry(input, max_dim)
+
+chk_source_jurisdiction_place(input, max_dim)
+
+chk_source_media_type(input, max_dim)
+
+chk_source_originator(input, max_dim)
+
+chk_source_publication_facts(input, max_dim)
+
+chk_submitter_name(input, max_dim)
+
+chk_system_id(input, max_dim)
+
+chk_text_from_source(input, max_dim)
+
+chk_time_value(input, max_dim)
+
+chk_user_reference_number(input, max_dim)
+
+chk_user_reference_type(input, max_dim)
+
+chk_user_text(input, max_dim)
+
+chk_where_within_source(input, max_dim)
+
+chk_xref(input, max_dim)
 }
 \arguments{
 \item{input}{An input value.}
@@ -39,7 +288,7 @@ Either a single character string describing the first error encountered, or
 NULL if no errors are found.
 }
 \description{
-These functions checks values for length, character limit, and form.
+These functions check values for length, character limit, and form.
 }
 \details{
 The functions are designed to be combined with the parse_error function, but are

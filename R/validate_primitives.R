@@ -77,7 +77,8 @@ chk_date <- function(year = numeric(),
 #' @param start_date A date_calendar() string for the earlier date.
 #' @param end_date A date_calendar() string for the later date.
 #'
-#' @return Nothing.
+#' @return Either a single character string describing the error encountered, or
+#' NULL if no errors are found.
 #' @tests
 #' expect_error(chk_dates("18 MAY 2005", "17 MAY 2005") %>% parse_error())
 #' expect_error(chk_dates("MAR 2005", "FEB 2004") %>% parse_error())
@@ -94,7 +95,7 @@ chk_dates <- function(start_date, end_date) {
 
 #' Validate a tidyged input value
 #' 
-#' These functions checks values for length, character limit, and form.
+#' These functions check values for length, character limit, and form.
 #' 
 #' @details The functions are designed to be combined with the parse_error function, but are 
 #' also used for input validation in the shinyged package.
@@ -148,308 +149,461 @@ chk_address_web_page <- function(input, max_dim) {
 chk_address_country <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 60)
 }
-
+#' @export
+#' @rdname chk_address_city
 chk_adopted_by_which_parent <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, val_adoptive_parents())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_age_at_event <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 2, 13),
     chk_input_pattern(input, reg_age_at_event())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_attribute_descriptor <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_attribute_type <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, val_attribute_types())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_automated_record_id <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 12)
 }
+#' @export
+#' @rdname chk_address_city
 chk_before_common_era <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, c("BCE", "BC", "B.C."))
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_caste_name <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_cause_of_event <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_certainty_assessment <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, as.character(0:3))
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_character_encoding <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, c("UTF-8", "UNICODE"))
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_copyright_gedcom_file <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
 }
+#' @export
+#' @rdname chk_address_city
 chk_copyright_source_data <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
 }
+#' @export
+#' @rdname chk_address_city
 chk_count_of_children <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 3)
 }
+#' @export
+#' @rdname chk_address_city
 chk_date_exact <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 10, 11),
     chk_input_pattern(input, reg_date_exact())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_date_period_covered <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 7, 35),
     chk_input_pattern(input, reg_date_period())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_date_value <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 1, 35),
     chk_input_pattern(input, reg_date_value())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_descriptive_title <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
 }
+#' @export
+#' @rdname chk_address_city
 chk_event_descriptor <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_event_or_fact_classification <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_event_type_cited_from <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 15)
 }
+#' @export
+#' @rdname chk_address_city
 chk_event_type_family <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, val_family_event_types())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_event_type_individual <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, val_individual_event_types())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_events_recorded <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
 chk_gedcom_content_description <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
-}
+}#' @export
+#' @rdname chk_address_city
 chk_gedcom_file_name <- function(input, max_dim) {
   chk_input_size(input, max_dim, 5, 248)
 }
+#' @export
+#' @rdname chk_address_city
 chk_gedcom_form <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_pattern(input, "LINEAGE-LINKED")
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_gedcom_version_number <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_pattern(input, "^\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?$")
   )[1]
 }
-
+#' @export
+#' @rdname chk_address_city
 chk_id_number <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 30)
 }
+#' @export
+#' @rdname chk_address_city
 chk_language_of_text <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 1, 15),
     chk_input_choice(input, val_languages())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_multimedia_file_reference <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 259)
 }
+#' @export
+#' @rdname chk_address_city
 chk_multimedia_format <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, val_multimedia_formats())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_of_business <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_of_product <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_of_repository <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_of_source_data <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_personal <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_phonetic <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_piece_given <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_piece_nickname <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 30)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_piece_prefix <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 30)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_piece_suffix <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 30)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_piece_surname <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_piece_surname_prefix <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 30)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_romanised <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_name_type <- function(input, max_dim) {
   chk_input_size(input, max_dim, 5, 30)
 }
+#' @export
+#' @rdname chk_address_city
 chk_national_or_tribal_origin <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_nobility_type_title <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_number_of_relationships <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 3)
 }
+#' @export
+#' @rdname chk_address_city
 chk_occupation <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_pedigree_linkage_type <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, val_pedigree_linkage_types())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_phone_number <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 25)
 }
+#' @export
+#' @rdname chk_address_city
 chk_phonetisation_method <- function(input, max_dim) {
   chk_input_size(input, max_dim, 4, 30)
 }
+#' @export
+#' @rdname chk_address_city
 chk_physical_description <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 4095)
 }
+#' @export
+#' @rdname chk_address_city
 chk_place_latitude <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 2, 10),
     chk_input_pattern(input, reg_latitude())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_place_longitude <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 2, 11),
     chk_input_pattern(input, reg_longitude())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_place_name <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_place_phonetic <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_place_romanised <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_possessions <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
 }
+#' @export
+#' @rdname chk_address_city
 chk_product_version_number <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 3, 15),
     chk_input_pattern(input, "^\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3}(\\.\\d{1,3})?)?$")
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_receiving_system_name <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 20)
 }
+#' @export
+#' @rdname chk_address_city
 chk_relation_is_descriptor <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 25)
 }
+#' @export
+#' @rdname chk_address_city
 chk_religious_affiliation <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_responsible_agency <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_role_in_event <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 3, 27),
     chk_input_pattern(input, "CHIL|HUSB|WIFE|MOTH|FATH|SPOU|\\(.+\\)")
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_romanisation_method <- function(input, max_dim) {
   chk_input_size(input, max_dim, 5, 30)
 }
+#' @export
+#' @rdname chk_address_city
 chk_scholastic_achievement <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
 }
+#' @export
+#' @rdname chk_address_city
 chk_sex_value <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, val_sexes())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_source_call_number <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_source_descriptive_title <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 4095)
 }
+#' @export
+#' @rdname chk_address_city
 chk_source_filed_by_entry <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 60)
 }
+#' @export
+#' @rdname chk_address_city
 chk_source_jurisdiction_place <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 120)
 }
+#' @export
+#' @rdname chk_address_city
 chk_source_media_type <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
     chk_input_choice(input, val_source_media_types())
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_source_originator <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 255)
 }
+#' @export
+#' @rdname chk_address_city
 chk_source_publication_facts <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 4095)
 }
+#' @export
+#' @rdname chk_address_city
 chk_submitter_name <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 60)
 }
+#' @export
+#' @rdname chk_address_city
 chk_system_id <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 20)
 }
+#' @export
+#' @rdname chk_address_city
 chk_text_from_source <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 32767)
 }
+#' @export
+#' @rdname chk_address_city
 chk_time_value <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 7, 12),
@@ -457,18 +611,28 @@ chk_time_value <- function(input, max_dim) {
                                     "^\\d{1,2}:\\d\\d:\\d\\d.\\d\\d$"))
   )[1]
 }
+#' @export
+#' @rdname chk_address_city
 chk_user_reference_number <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 20)
 }
+#' @export
+#' @rdname chk_address_city
 chk_user_reference_type <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 40)
 }
+#' @export
+#' @rdname chk_address_city
 chk_user_text <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 32767)
 }
+#' @export
+#' @rdname chk_address_city
 chk_where_within_source <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
 }
+#' @export
+#' @rdname chk_address_city
 chk_xref <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
