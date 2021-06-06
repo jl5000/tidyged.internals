@@ -32,6 +32,7 @@
 \alias{chk_event_type_family}
 \alias{chk_event_type_individual}
 \alias{chk_events_recorded}
+\alias{chk_gedcom_content_description}
 \alias{chk_gedcom_file_name}
 \alias{chk_gedcom_form}
 \alias{chk_gedcom_version_number}
@@ -157,6 +158,8 @@ chk_event_type_family(input, max_dim)
 chk_event_type_individual(input, max_dim)
 
 chk_events_recorded(input, max_dim)
+
+chk_gedcom_content_description(input, max_dim)
 
 chk_gedcom_file_name(input, max_dim)
 

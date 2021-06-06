@@ -297,9 +297,12 @@ chk_event_type_individual <- function(input, max_dim) {
 chk_events_recorded <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 90)
 }
+#' @export
+#' @rdname chk_address_city
 chk_gedcom_content_description <- function(input, max_dim) {
   chk_input_size(input, max_dim, 1, 248)
-}#' @export
+}
+#' @export
 #' @rdname chk_address_city
 chk_gedcom_file_name <- function(input, max_dim) {
   chk_input_size(input, max_dim, 5, 248)
