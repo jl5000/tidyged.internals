@@ -66,8 +66,7 @@ identify_section <- function(gedcom,
     
     if(active) {
       if(gedcom$level[i] <= containing_level) {
-        # we've reached the end of the section
-        break
+        active <- FALSE
       } else {
         rows_to_return <- c(rows_to_return, i)
       }
