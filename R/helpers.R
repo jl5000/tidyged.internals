@@ -340,6 +340,7 @@ gedcom_value_update <- function(gedcom, record_xref, tag, level, old_value, new_
 #' 
 #' This function constructs a full personal name from individual name pieces.
 #'
+#' @param prefix The name prefix.
 #' @param given The given name(s).
 #' @param surname_prefix The surname prefix.
 #' @param surname The surname.
@@ -350,6 +351,7 @@ gedcom_value_update <- function(gedcom, record_xref, tag, level, old_value, new_
 #' @tests
 #' expect_error(construct_full_name(surname_prefix = "de la"))
 #' expect_equal(construct_full_name(given = "Joe"), "Joe")
+#' expect_equal(construct_full_name(prefix = "Professor", given = "Joe"), "Professor Joe")
 #' expect_equal(construct_full_name(given = "Joe,Adam"), "Joe Adam")
 #' expect_equal(construct_full_name(given = "Joey,Joe, Joe"), "Joey Joe Joe")
 #' expect_equal(construct_full_name(surname = "Bloggs"), "/Bloggs/")
@@ -359,7 +361,8 @@ gedcom_value_update <- function(gedcom, record_xref, tag, level, old_value, new_
 #'                                  surname_prefix = "de la", surname = "Bloggs",
 #'                                  suffix = "Jr., Esq."),
 #'              "Joe Adam de la /Bloggs/ Jr. Esq.")
-construct_full_name <- function(given = character(), 
+construct_full_name <- function(prefix = character(),
+                                given = character(), 
                                 surname_prefix = character(), 
                                 surname = character(), 
                                 suffix = character()) {
@@ -368,6 +371,7 @@ construct_full_name <- function(given = character(),
     stop("Surname prefix given without a surname")
   
   paste(
+    stringr::str_replace_all(prefix, ", ?", " "),
     stringr::str_replace_all(given, ", ?", " "), 
     surname_prefix, 
     ifelse(length(surname) == 1, paste0("/", surname, "/"), ""),

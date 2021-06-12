@@ -1,4 +1,4 @@
-# Function remove_section() @ L107
+# Function remove_section() @ L106
 
     {
       "type": "list",
