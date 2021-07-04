@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Remove a subrecord in a tidyged object — remove_section • tidyged.internals</title>
+<title>Remove subrecords in a tidyged object — remove_section • tidyged.internals</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Remove a subrecord in a tidyged object — remove_section" />
-<meta property="og:description" content="Remove a subrecord in a tidyged object" />
+<meta property="og:title" content="Remove subrecords in a tidyged object — remove_section" />
+<meta property="og:description" content="Remove subrecords in a tidyged object" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -116,21 +116,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Remove a subrecord in a tidyged object</h1>
+    <h1>Remove subrecords in a tidyged object</h1>
     <small class="dont-index">Source: <a href='https://github.com/jl5000/tidyged.internals/blob/master/R/helpers.R'><code>R/helpers.R</code></a></small>
     <div class="hidden name"><code>remove_section.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Remove a subrecord in a tidyged object</p>
+    <p>Remove subrecords in a tidyged object</p>
     </div>
 
     <pre class="usage"><span class='fu'>remove_section</span><span class='op'>(</span>
   <span class='va'>gedcom</span>,
   <span class='va'>containing_level</span>,
-  <span class='va'>containing_tag</span>,
-  <span class='va'>containing_value</span>,
-  xrefs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='va'>containing_tags</span>,
+  containing_values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>,
+  xrefs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>,
+  first_only <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -145,16 +146,21 @@
       <td><p>The level of the first line of the subrecord.</p></td>
     </tr>
     <tr>
-      <th>containing_tag</th>
-      <td><p>The tag of the first line of the subrecord.</p></td>
+      <th>containing_tags</th>
+      <td><p>The accepted tags of the first line of the subrecord.</p></td>
     </tr>
     <tr>
-      <th>containing_value</th>
-      <td><p>The value of the first line of the subrecord.</p></td>
+      <th>containing_values</th>
+      <td><p>The accepted values of the first line of the subrecord.</p></td>
     </tr>
     <tr>
       <th>xrefs</th>
       <td><p>The xrefs of records containing the subrecord (default is all records).</p></td>
+    </tr>
+    <tr>
+      <th>first_only</th>
+      <td><p>Whether to remove only the first match found or to remove
+all matches.</p></td>
     </tr>
     </table>
 
