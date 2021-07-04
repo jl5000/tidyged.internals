@@ -15,12 +15,13 @@ This package contains the internal data structures used to represent
 family tree GEDCOM files. It codifies the rules in the [GEDCOM 5.5.5
 specification](https://www.gedcom.org/gedcom.html).
 
-It is only to be used by developers of tidyged and its extensions.
-
 The package is part of the `gedcompendium` ecosystem of packages. This
 ecosystem enables the handling of `tidyged` objects (tibble
 representations of GEDCOM files), and the main package of this ecosystem
 is [`tidyged`](https://jl5000.github.io/tidyged/).
+
+The `tidyged.internals` package is only to be used by developers of
+`tidyged` and its extensions.
 
 <img src="man/figures/allhex.png" width="65%" style="display: block; margin: auto;" />
 
