@@ -2,14 +2,15 @@
 % Please edit documentation in R/helpers.R
 \name{identify_section}
 \alias{identify_section}
-\title{Identify the rows of a subrecord in a tidyged object}
+\title{Identify the rows of subrecords in a tidyged object}
 \usage{
 identify_section(
   gedcom,
   containing_level,
-  containing_tag,
-  containing_value,
-  xrefs = character()
+  containing_tags,
+  containing_values = character(),
+  xrefs = character(),
+  first_only = FALSE
 )
 }
 \arguments{
@@ -17,15 +18,17 @@ identify_section(
 
 \item{containing_level}{The level of the first line of the subrecord.}
 
-\item{containing_tag}{The tag of the first line of the subrecord.}
+\item{containing_tags}{The accepted tags of the first line of the subrecord.}
 
-\item{containing_value}{The value of the first line of the subrecord.}
+\item{containing_values}{The accepted values of the first line of the subrecord.}
 
 \item{xrefs}{The xrefs of records containing the subrecord (default is all records).}
+
+\item{first_only}{Whether to return only the first match found or to return all matches.}
 }
 \value{
 A vector of rows in the tidyged object of the subrecord(s).
 }
 \description{
-Identify the rows of a subrecord in a tidyged object
+Identify the rows of subrecords in a tidyged object
 }

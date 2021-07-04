@@ -36,13 +36,14 @@ finalise <- function(df, global_start_level = 0) {
 
 
 
-#' Identify the rows of a subrecord in a tidyged object
+#' Identify the rows of subrecords in a tidyged object
 #'
 #' @param gedcom A tidyged object.
 #' @param containing_level The level of the first line of the subrecord.
-#' @param containing_tag The tag of the first line of the subrecord.
-#' @param containing_value The value of the first line of the subrecord.
+#' @param containing_tags The accepted tags of the first line of the subrecord.
+#' @param containing_values The accepted values of the first line of the subrecord.
 #' @param xrefs The xrefs of records containing the subrecord (default is all records).
+#' @param first_only Whether to return only the first match found or to return all matches. 
 #'
 #' @return A vector of rows in the tidyged object of the subrecord(s).
 #' @export
@@ -53,12 +54,13 @@ finalise <- function(df, global_start_level = 0) {
 #' expect_equal(identify_section(GEDCOM_HEADER(), 3, "VERS", "5.5.5"), 5)
 identify_section <- function(gedcom,
                              containing_level,
-                             containing_tag,
-                             containing_value,
-                             xrefs = character()) {
+                             containing_tags,
+                             containing_values = character(),
+                             xrefs = character(),
+                             first_only = FALSE) {
   
   no_xrefs_defined <- length(xrefs) == 0
-  
+  no_values_defined <- length(containing_values) == 0
   rows_to_return <- integer()
   
   active <- FALSE
@@ -67,6 +69,7 @@ identify_section <- function(gedcom,
     if(active) {
       if(gedcom$level[i] <= containing_level) {
         active <- FALSE
+        if(first_only) break
       } else {
         rows_to_return <- c(rows_to_return, i)
       }
@@ -74,13 +77,13 @@ identify_section <- function(gedcom,
     }
     
     if(no_xrefs_defined || gedcom$record[i] %in% xrefs) {
-      if(gedcom$level[i] == containing_level & gedcom$tag[i] == containing_tag &
-         gedcom$value[i] == containing_value) {
-        
-        active <- TRUE
-        rows_to_return <- c(rows_to_return, i) 
-      } 
-      
+      if(no_values_defined || gedcom$value[i] %in% containing_values) {
+        if(gedcom$level[i] == containing_level & gedcom$tag[i] %in% containing_tags) {
+          
+          active <- TRUE
+          rows_to_return <- c(rows_to_return, i) 
+        } 
+      }
     }
   }
   rows_to_return
@@ -88,13 +91,15 @@ identify_section <- function(gedcom,
 }
 
 
-#' Remove a subrecord in a tidyged object
+#' Remove subrecords in a tidyged object
 #'
 #' @param gedcom A tidyged object.
 #' @param containing_level The level of the first line of the subrecord.
-#' @param containing_tag The tag of the first line of the subrecord.
-#' @param containing_value The value of the first line of the subrecord.
+#' @param containing_tags The accepted tags of the first line of the subrecord.
+#' @param containing_values The accepted values of the first line of the subrecord.
 #' @param xrefs The xrefs of records containing the subrecord (default is all records).
+#' @param first_only Whether to remove only the first match found or to remove
+#' all matches. 
 #'
 #' @return The tidyged object with the subrecord(s) removed.
 #' @export
@@ -105,15 +110,17 @@ identify_section <- function(gedcom,
 #' expect_snapshot_value(remove_section(GEDCOM_HEADER(), 3, "VERS", "5.5.5"), "json2")
 remove_section <- function(gedcom,
                            containing_level,
-                           containing_tag,
-                           containing_value,
-                           xrefs = character()) {
+                           containing_tags,
+                           containing_values = character(),
+                           xrefs = character(),
+                           first_only = FALSE) {
   
   rows_to_remove <- identify_section(gedcom,
                                      containing_level,
-                                     containing_tag,
-                                     containing_value,
-                                     xrefs)
+                                     containing_tags,
+                                     containing_values,
+                                     xrefs,
+                                     first_only)
   
   if(length(rows_to_remove) == 0) {
     gedcom
