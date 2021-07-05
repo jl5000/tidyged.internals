@@ -639,7 +639,7 @@ chk_where_within_source <- function(input, max_dim) {
 chk_xref <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim),
-    chk_input_pattern(input, reg_xref())
+    chk_input_pattern(input, reg_xref(TRUE))
   )[1]
 }
 

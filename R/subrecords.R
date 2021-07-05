@@ -618,7 +618,7 @@ NOTE_STRUCTURE <- function(note = character()) {
   
   chk_user_text(note, 1) %>% parse_error()
   
-  if(grepl(reg_xref(), note)) {
+  if(grepl(reg_xref(TRUE), note)) {
     chk_xref(note, 1) %>% parse_error()
   }
   

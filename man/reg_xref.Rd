@@ -4,7 +4,12 @@
 \alias{reg_xref}
 \title{Construct a regular expression for an xref}
 \usage{
-reg_xref()
+reg_xref(only = TRUE)
+}
+\arguments{
+\item{only}{Whether to allow strings of only xrefs. If FALSE,
+the regular expression accepts patterns where text can come before or after
+the xref.}
 }
 \value{
 A regular expression pattern for an xref.

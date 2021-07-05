@@ -42,11 +42,16 @@ reg_bce <- function() {
 
 #' Construct a regular expression for an xref
 #'
+#' @param only Whether to allow strings of only xrefs. If FALSE,
+#' the regular expression accepts patterns where text can come before or after
+#' the xref.
+#'
 #' @return A regular expression pattern for an xref.
 #' @export
-reg_xref <- function() {
+reg_xref <- function(only = TRUE) {
   #p31
-  "^@[a-zA-Z0-9]{1,20}@$"
+  reg <- "@[a-zA-Z0-9]{1,20}@"
+  ifelse(only, anchor_it(reg), reg)
 }
 
 reg_latitude <- function() {
