@@ -54,17 +54,17 @@ val_adoptive_parents <- function() {
 #' @export
 val_attribute_types <- function() {
   c(Caste = "CAST", 
-    `Physical description` = "DSCR", 
     Education = "EDUC", 
     `National ID number` = "IDNO",
     Nationality = "NATI", 
+    `Nobility title` = "TITL", 
     `Number of children` = "NCHI", 
     `Number of relationships` = "NMR", 
     Occupation = "OCCU",
+    `Physical description` = "DSCR", 
     Property = "PROP", 
     Religion = "RELI", 
     Residence = "RESI",
-    `Nobility title` = "TITL", 
     `Other attribute` = "FACT")
 }
 
@@ -78,9 +78,9 @@ val_family_event_types <- function() {
     Engagement = "ENGA", 
     `Marriage banns` = "MARB", 
     `Marriage contract` = "MARC", 
-    Relationship = "MARR",
     `Marriage license` = "MARL", 
-    `Marriage settlement` = "MARS", 
+    `Marriage settlement` = "MARS",
+    Relationship = "MARR",
     Residence = "RESI", 
     `Other event` = "EVEN")
 }
@@ -88,25 +88,25 @@ val_family_event_types <- function() {
 #' @rdname val_languages
 #' @export
 val_individual_event_types <- function() {
-  c(Birth = "BIRT", 
-    Christening = "CHR", 
-    Death = "DEAT", 
-    Burial = "BURI", 
-    Cremation = "CREM",
-    Adoption = "ADOP", 
-    Baptism = "BAPM", 
+  c(Adoption = "ADOP", 
+    `Adult christening` = "CHRA", 
+    Baptism = "BAPM",
     `Bar-mitzvah` = "BARM", 
     `Bas-mitzvah` = "BASM",
-    `Adult christening` = "CHRA", 
+    Birth = "BIRT", 
+    Burial = "BURI",
+    Census = "CENS",
+    Christening = "CHR", 
     Confirmation = "CONF", 
-    `First communion` = "FCOM", 
-    Naturalization = "NATU",
+    Cremation = "CREM",
+    Death = "DEAT", 
     Emigration = "EMIG", 
-    Immigration = "IMMI", 
-    Census = "CENS", 
-    Probate = "PROB", 
-    Will = "WILL",
+    `First communion` = "FCOM", 
     Graduation = "GRAD", 
-    Retirement = "RETI", 
+    Immigration = "IMMI", 
+    Naturalization = "NATU",
+    Probate = "PROB", 
+    Retirement = "RETI",
+    Will = "WILL",
     `Other event` = "EVEN")
 }
