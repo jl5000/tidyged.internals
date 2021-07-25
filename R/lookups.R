@@ -64,15 +64,15 @@ val_attribute_types <- function() {
     `Physical description` = "DSCR", 
     Property = "PROP", 
     Religion = "RELI", 
-    Residence = "RESI",
-    `Other attribute` = "FACT")
+    `Individual residence` = "RESI",
+    `Other individual attribute` = "FACT")
 }
 
 #' @rdname val_languages
 #' @export
 val_family_event_types <- function() {
   c(Annulment = "ANUL", 
-    Census = "CENS", 
+    `Census ` = "CENS", #Space to deconflict with individual census
     Divorce = "DIV", 
     `Divorce filed` = "DIVF",
     Engagement = "ENGA", 
@@ -81,8 +81,8 @@ val_family_event_types <- function() {
     `Marriage license` = "MARL", 
     `Marriage settlement` = "MARS",
     Relationship = "MARR",
-    Residence = "RESI", 
-    `Other event` = "EVEN")
+    `Family residence` = "RESI",
+    `Other family event` = "EVEN")
 }
 
 #' @rdname val_languages
@@ -108,5 +108,5 @@ val_individual_event_types <- function() {
     Probate = "PROB", 
     Retirement = "RETI",
     Will = "WILL",
-    `Other event` = "EVEN")
+    `Other individual event` = "EVEN")
 }
