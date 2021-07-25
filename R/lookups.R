@@ -65,7 +65,7 @@ val_attribute_types <- function() {
     Religion = "RELI", 
     Residence = "RESI",
     `Nobility title` = "TITL", 
-    Other = "FACT")
+    `Other attribute` = "FACT")
 }
 
 #' @rdname val_languages
@@ -82,7 +82,7 @@ val_family_event_types <- function() {
     `Marriage license` = "MARL", 
     `Marriage settlement` = "MARS", 
     Residence = "RESI", 
-    Other = "EVEN")
+    `Other event` = "EVEN")
 }
 
 #' @rdname val_languages
@@ -108,5 +108,5 @@ val_individual_event_types <- function() {
     Will = "WILL",
     Graduation = "GRAD", 
     Retirement = "RETI", 
-    Other = "EVEN")
+    `Other event` = "EVEN")
 }
