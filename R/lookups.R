@@ -52,6 +52,17 @@ val_adoptive_parents <- function() {
 
 #' @rdname val_languages
 #' @export
+val_roles <- function() {
+  c(Child = "CHIL",
+    Husband = "HUSB", 
+    Wife = "WIFE", 
+    Spouse = "SPOU",
+    Mother = "MOTH",
+    Father = "FATH")
+}
+
+#' @rdname val_languages
+#' @export
 val_attribute_types <- function() {
   c(Caste = "CAST", 
     Education = "EDUC", 
@@ -72,7 +83,7 @@ val_attribute_types <- function() {
 #' @export
 val_family_event_types <- function() {
   c(Annulment = "ANUL", 
-    Census = "CENS", #Space to deconflict with individual census
+    Census = "CENS", 
     Divorce = "DIV", 
     `Divorce filed` = "DIVF",
     Engagement = "ENGA", 

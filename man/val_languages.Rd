@@ -7,6 +7,7 @@
 \alias{val_pedigree_linkage_types}
 \alias{val_source_media_types}
 \alias{val_adoptive_parents}
+\alias{val_roles}
 \alias{val_attribute_types}
 \alias{val_family_event_types}
 \alias{val_individual_event_types}
@@ -23,6 +24,8 @@ val_pedigree_linkage_types()
 val_source_media_types()
 
 val_adoptive_parents()
+
+val_roles()
 
 val_attribute_types()
 

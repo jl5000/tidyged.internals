@@ -75,6 +75,12 @@ reg_age_at_event <- function() {
   
 }
 
+reg_role_in_event <- function(){
+  paste(paste(val_roles(), collapse = "|"), 
+        paste0("\\(.+\\)"), #TODO: Fix this to exclude val_roles
+        sep = "|") %>% anchor_it()
+}
+
 #' Construct the regex pattern for DATE_EXACT values
 #'
 #' @tests
