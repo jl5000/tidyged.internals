@@ -4,7 +4,12 @@
 \alias{reg_date_exact}
 \title{Construct the regex pattern for DATE_EXACT values}
 \usage{
-reg_date_exact()
+reg_date_exact(only = TRUE)
+}
+\arguments{
+\item{only}{Whether to allow strings of only date_exact. If FALSE,
+the regular expression accepts patterns where text can come before or after
+the date_exact().}
 }
 \value{
 A regex string

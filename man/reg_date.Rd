@@ -4,13 +4,17 @@
 \alias{reg_date}
 \title{Construct the regex pattern for DATE values}
 \usage{
-reg_date(flatten = TRUE)
+reg_date(flatten = TRUE, only = TRUE)
 }
 \arguments{
 \item{flatten}{A logical value which determines whether a single regex string should be
 returned (flatten = TRUE) or if a vector of them should be returned (flatten = FALSE).
 The vector output is used if the regexes need to be combined with other regexes. If they
 do not, then they are anchored with ^ and $ and separated with | (OR).}
+
+\item{only}{Whether to allow strings of only date. If FALSE,
+the regular expression accepts patterns where text can come before or after
+the date().}
 }
 \value{
 Either a single regex string or a vector of them

@@ -82,6 +82,10 @@ reg_role_in_event <- function(){
 }
 
 #' Construct the regex pattern for DATE_EXACT values
+#' 
+#' @param only Whether to allow strings of only date_exact. If FALSE,
+#' the regular expression accepts patterns where text can come before or after
+#' the date_exact().
 #'
 #' @tests
 #' expect_equal(grepl(reg_date_exact(), "14 JAN 2005"), TRUE)
@@ -96,8 +100,9 @@ reg_role_in_event <- function(){
 #' expect_equal(grepl(reg_date_exact(), "5 JUL 2005 "), FALSE)
 #' expect_equal(grepl(reg_date_exact(), " 5 JUL 2005"), FALSE)
 #' @return A regex string
-reg_date_exact <- function() {
-  paste(reg_day(), reg_month(), reg_year()) %>% anchor_it()
+reg_date_exact <- function(only = TRUE) {
+  reg <- paste(reg_day(), reg_month(), reg_year())
+  ifelse(only, anchor_it(reg), reg)
 }
 
 
@@ -109,6 +114,9 @@ reg_date_exact <- function() {
 #' returned (flatten = TRUE) or if a vector of them should be returned (flatten = FALSE).
 #' The vector output is used if the regexes need to be combined with other regexes. If they
 #' do not, then they are anchored with ^ and $ and separated with | (OR).
+#' @param only Whether to allow strings of only date. If FALSE,
+#' the regular expression accepts patterns where text can come before or after
+#' the date().
 #' @tests
 #' expect_equal(grepl(reg_date(), "14 JAN 2005"), TRUE)
 #' expect_equal(grepl(reg_date(), "14 JAM 2005"), FALSE)
@@ -122,15 +130,16 @@ reg_date_exact <- function() {
 #' expect_equal(grepl(reg_date(), "5 JUL 2005 "), FALSE)
 #' expect_equal(grepl(reg_date(), " 5 JUL 2005"), FALSE)
 #' @return Either a single regex string or a vector of them
-reg_date <- function(flatten = TRUE) {
-  reg_date_calendar(flatten)
+#' @export
+reg_date <- function(flatten = TRUE, only = TRUE) {
+  reg_date_calendar(flatten, only)
 }
 
-reg_date_calendar <- function(flatten = TRUE) {
-  reg_date_gregorian(flatten)
+reg_date_calendar <- function(flatten = TRUE, only = TRUE) {
+  reg_date_gregorian(flatten, only)
 }
 
-reg_date_gregorian <- function(flatten = TRUE) {
+reg_date_gregorian <- function(flatten = TRUE, only = TRUE) {
   combos <- c(reg_year(),
               paste(reg_year(), reg_bce()),
               paste(reg_month(), reg_year()),
@@ -139,12 +148,10 @@ reg_date_gregorian <- function(flatten = TRUE) {
               paste(reg_month(), reg_year_dual()),
               paste(reg_day(), reg_month(), reg_year_dual()))
   
-  if (flatten) {
-    combos %>% anchor_it() %>% paste(collapse = "|")
-  } else {
-    combos
-  }
+  if(only) combos <- anchor_it(combos)
+  if(flatten) combos <- paste(combos, collapse = "|")
   
+  combos
 }
 
 #' Construct the regex pattern for DATE_PERIOD values
@@ -167,10 +174,10 @@ reg_date_gregorian <- function(flatten = TRUE) {
 #' expect_equal(grepl(reg_date_period(), " TO 5 JUL 2005"), FALSE)
 #' @return Either a single regex string or a vector of them
 reg_date_period <- function(flatten = TRUE) {
-  combos <- c(paste("FROM", reg_date(FALSE)),
-              paste("TO", reg_date(FALSE)),
-              regex_combn(paste("FROM", reg_date(FALSE)), 
-                          paste(" TO", reg_date(FALSE))))
+  combos <- c(paste("FROM", reg_date(FALSE,FALSE)),
+              paste("TO", reg_date(FALSE,FALSE)),
+              regex_combn(paste("FROM", reg_date(FALSE,FALSE)), 
+                          paste(" TO", reg_date(FALSE,FALSE))))
   if (flatten) {
     combos %>% anchor_it() %>% paste(collapse = "|")
   } else {
@@ -198,10 +205,10 @@ reg_date_period <- function(flatten = TRUE) {
 #' expect_equal(grepl(reg_date_range(), " AFT 5 JUL 2005"), FALSE)
 #' @return Either a single regex string or a vector of them
 reg_date_range <- function(flatten = TRUE) {
-  combos <- c(paste("BEF", reg_date(FALSE)),
-              paste("AFT", reg_date(FALSE)),
-              regex_combn(paste("BET", reg_date(FALSE)), 
-                          paste(" AND", reg_date(FALSE))))
+  combos <- c(paste("BEF", reg_date(FALSE,FALSE)),
+              paste("AFT", reg_date(FALSE,FALSE)),
+              regex_combn(paste("BET", reg_date(FALSE,FALSE)), 
+                          paste(" AND", reg_date(FALSE,FALSE))))
   if (flatten) {
     combos %>% anchor_it() %>% paste(collapse = "|")
   } else {
@@ -229,9 +236,9 @@ reg_date_range <- function(flatten = TRUE) {
 #' expect_equal(grepl(reg_date_approximated(), " CAL 5 JUL 2005"), FALSE)
 #' @return Either a single regex string or a vector of them
 reg_date_approximated <- function(flatten = TRUE) {
-  combos <- c(paste("ABT", reg_date(FALSE)),
-              paste("CAL", reg_date(FALSE)),
-              paste("EST", reg_date(FALSE)))
+  combos <- c(paste("ABT", reg_date(FALSE,FALSE)),
+              paste("CAL", reg_date(FALSE,FALSE)),
+              paste("EST", reg_date(FALSE,FALSE)))
   if (flatten) {
     combos %>% anchor_it() %>% paste(collapse = "|")
   } else {
@@ -270,7 +277,7 @@ reg_date_approximated <- function(flatten = TRUE) {
 reg_date_value <- function() {
   
   #date_phrase not implemented
-  c(reg_date(FALSE),
+  c(reg_date(FALSE,FALSE),
     reg_date_period(FALSE),
     reg_date_range(FALSE),
     reg_date_approximated(FALSE)) %>% 
