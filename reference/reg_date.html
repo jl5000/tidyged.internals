@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.6.9000</span>
       </span>
     </div>
 
@@ -125,7 +125,7 @@
     <p>Construct the regex pattern for DATE values</p>
     </div>
 
-    <pre class="usage"><span class='fu'>reg_date</span><span class='op'>(</span>flatten <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>reg_date</span><span class='op'>(</span>flatten <span class='op'>=</span> <span class='cn'>TRUE</span>, only <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,6 +136,12 @@
 returned (flatten = TRUE) or if a vector of them should be returned (flatten = FALSE).
 The vector output is used if the regexes need to be combined with other regexes. If they
 do not, then they are anchored with ^ and $ and separated with | (OR).</p></td>
+    </tr>
+    <tr>
+      <th>only</th>
+      <td><p>Whether to allow strings of only date. If FALSE,
+the regular expression accepts patterns where text can come before or after
+the date().</p></td>
     </tr>
     </table>
 
