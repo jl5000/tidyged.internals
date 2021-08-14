@@ -60,7 +60,7 @@ test_that("Function date_approximated() @ L196", {
 })
 
 
-test_that("Function parse_gedcom_age() @ L261", {
+test_that("Function parse_gedcom_age() @ L262", {
   expect_equal(parse_gedcom_age("16y"), 16)
   expect_equal(parse_gedcom_age("16y 6m"), 16.5)
   expect_equal(parse_gedcom_age("73d"), 0.2)

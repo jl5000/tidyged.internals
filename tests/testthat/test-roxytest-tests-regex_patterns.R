@@ -32,7 +32,7 @@ test_that("Function reg_date() @ L134", {
 })
 
 
-test_that("Function reg_date_period() @ L180", {
+test_that("Function reg_date_period() @ L176", {
   expect_equal(grepl(reg_date_period(), "FROM 14 JAN 2005"), TRUE)
   expect_equal(grepl(reg_date_period(), "TO 14 JAM 2005"), FALSE)
   expect_equal(grepl(reg_date_period(), "FROM JAN 2005"), TRUE)
@@ -47,7 +47,7 @@ test_that("Function reg_date_period() @ L180", {
 })
 
 
-test_that("Function reg_date_range() @ L211", {
+test_that("Function reg_date_range() @ L207", {
   expect_equal(grepl(reg_date_range(), "BEF 14 JAN 2005"), TRUE)
   expect_equal(grepl(reg_date_range(), "AFT 14 JAM 2005"), FALSE)
   expect_equal(grepl(reg_date_range(), "BEF JAN 2005"), TRUE)
@@ -62,7 +62,7 @@ test_that("Function reg_date_range() @ L211", {
 })
 
 
-test_that("Function reg_date_approximated() @ L242", {
+test_that("Function reg_date_approximated() @ L238", {
   expect_equal(grepl(reg_date_approximated(), "ABT 14 JAN 2005"), TRUE)
   expect_equal(grepl(reg_date_approximated(), "CAL 14 JAM 2005"), FALSE)
   expect_equal(grepl(reg_date_approximated(), "EST JAN 2005"), TRUE)
@@ -77,7 +77,7 @@ test_that("Function reg_date_approximated() @ L242", {
 })
 
 
-test_that("Function reg_date_value() @ L281", {
+test_that("Function reg_date_value() @ L277", {
   expect_equal(grepl(reg_date_value(), "14 JAN 2005"), TRUE)
   expect_equal(grepl(reg_date_value(), "MAR 1901"), TRUE)
   expect_equal(grepl(reg_date_value(), "2010"), TRUE)

@@ -222,6 +222,7 @@ date_approximated <- function(date = date_calendar(),
 #' @return A lubridate date.
 #' @export
 parse_gedcom_date <- function(date_string, minimise = TRUE) {
+  if(is.na(date_string)) return(as.Date(NA))
   
   # remove dual year
   ged_date <- stringr::str_remove(date_string, "/\\d{2}") 
@@ -259,6 +260,7 @@ parse_gedcom_date <- function(date_string, minimise = TRUE) {
 #' expect_equal(parse_gedcom_age("16y 6m"), 16.5)
 #' expect_equal(parse_gedcom_age("73d"), 0.2)
 parse_gedcom_age <- function(age_string) {
+  if(is.na(age_string)) return(NA_real_)
   
   years <- stringr::str_extract(age_string, "\\d{1,3}y") %>% 
     stringr::str_replace("y", "")

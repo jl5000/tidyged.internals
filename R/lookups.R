@@ -65,7 +65,7 @@ val_roles <- function() {
 #' @export
 val_attribute_types <- function() {
   c(Caste = "CAST", 
-    Education = "EDUC", 
+    `Academic achievement` = "EDUC", 
     `National ID number` = "IDNO",
     Nationality = "NATI", 
     `Nobility title` = "TITL", 
