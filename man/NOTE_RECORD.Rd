@@ -8,7 +8,6 @@ NOTE_RECORD(
   xref_note,
   user_text,
   user_reference_number = character(),
-  user_reference_type = character(),
   automated_record_id = character(),
   source_citations = list(),
   date_changed = CHANGE_DATE()
@@ -20,8 +19,6 @@ NOTE_RECORD(
 \item{user_text}{Free-form user text. Comments, opinions.}
 
 \item{user_reference_number}{A user-defined number or text that the submitter uses to identify this record.}
-
-\item{user_reference_type}{A user-defined definition of the user_reference_number.}
 
 \item{automated_record_id}{A unique record identification number assigned to the record by
 the source system. This number is intended to serve as a more sure means of identification

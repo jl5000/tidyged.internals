@@ -11,7 +11,6 @@ MULTIMEDIA_RECORD(
   source_media_type = character(),
   descriptive_title = character(),
   user_reference_number = character(),
-  user_reference_type = character(),
   automated_record_id = character(),
   notes = list(),
   source_citations = list(),
@@ -37,8 +36,6 @@ the referenced source is stored. One of: "audio", "book", "card", "electronic", 
 \item{descriptive_title}{The title of a work, record, item, or object.}
 
 \item{user_reference_number}{A user-defined number or text that the submitter uses to identify this record.}
-
-\item{user_reference_type}{A user-defined definition of the user_reference_number.}
 
 \item{automated_record_id}{A unique record identification number assigned to the record by
 the source system. This number is intended to serve as a more sure means of identification

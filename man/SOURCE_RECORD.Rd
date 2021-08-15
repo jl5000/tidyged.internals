@@ -18,7 +18,6 @@ SOURCE_RECORD(
   text_from_source = character(),
   source_repository_citations = list(),
   user_reference_number = character(),
-  user_reference_type = character(),
   automated_record_id = character(),
   date_changed = CHANGE_DATE(),
   notes = list(),
@@ -32,7 +31,7 @@ SOURCE_RECORD(
 particular source. Each enumeration is separated by a comma. Such as a parish register of births,
 deaths, and marriages would be BIRT, DEAT, MARR.}
 
-\item{date_period_covered}{A date_period() object associated with the period covered by the sourse.}
+\item{date_period_covered}{A date_period() object associated with the period covered by the source.}
 
 \item{source_jurisdiction_place}{The name of the lowest jurisdiction that encompasses all lower-level places
 named in this source.}
@@ -64,8 +63,6 @@ opinion about the source.}
 \item{source_repository_citations}{A list of SOURCE_REPOSITORY_CITATION() objects.}
 
 \item{user_reference_number}{A user-defined number or text that the submitter uses to identify this record.}
-
-\item{user_reference_type}{A user-defined definition of the user_reference_number.}
 
 \item{automated_record_id}{A unique record identification number assigned to the record by
 the source system. This number is intended to serve as a more sure means of identification

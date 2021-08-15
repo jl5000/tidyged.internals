@@ -14,7 +14,6 @@ INDIVIDUAL_RECORD(
   spouse_to_family_links = list(),
   associations = list(),
   user_reference_number = character(),
-  user_reference_type = character(),
   automated_record_id = character(),
   date_changed = CHANGE_DATE(),
   notes = list(),
@@ -46,8 +45,6 @@ this individual is a spouse of.}
 individual is associated with.}
 
 \item{user_reference_number}{A user-defined number or text that the submitter uses to identify this record.}
-
-\item{user_reference_type}{A user-defined definition of the user_reference_number.}
 
 \item{automated_record_id}{A unique record identification number assigned to the record by
 the source system. This number is intended to serve as a more sure means of identification

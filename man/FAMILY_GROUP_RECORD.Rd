@@ -12,7 +12,6 @@ FAMILY_GROUP_RECORD(
   xrefs_chil = character(),
   count_of_children = character(),
   user_reference_number = character(),
-  user_reference_type = character(),
   automated_record_id = character(),
   date_changed = CHANGE_DATE(),
   notes = list(),
@@ -37,8 +36,6 @@ family, regardless of whether the associated children are represented in the cor
 structure. This is not necessarily the count of children listed in a family structure.}
 
 \item{user_reference_number}{A user-defined number or text that the submitter uses to identify this record.}
-
-\item{user_reference_type}{A user-defined definition of the user_reference_number.}
 
 \item{automated_record_id}{A unique record identification number assigned to the record by
 the source system. This number is intended to serve as a more sure means of identification

@@ -11,30 +11,26 @@ test_that("Function GEDCOM_HEADER() @ L30", {
 })
 
 
-test_that("Function FAMILY_GROUP_RECORD() @ L88", {
-  expect_error(FAMILY_GROUP_RECORD("@F1@", user_reference_number = 123:125, user_reference_type = letters[1:2]))
+test_that("Function FAMILY_GROUP_RECORD() @ L85", {
   expect_equal(FAMILY_GROUP_RECORD("@F1@"),
                tibble::tribble(~level,  ~record,   ~tag,                  ~value,
                                0, "@F1@", "FAM",                      "",
                                1, "@F1@", "CHAN",                     "",
                                2, "@F1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
-  expect_equal(FAMILY_GROUP_RECORD("@F1@", user_reference_number = c(123, 456),
-                                   user_reference_type = c("type1", "type2")),
+  expect_equal(FAMILY_GROUP_RECORD("@F1@", user_reference_number = c(type1 = 123, 456)),
                tibble::tribble(~level,  ~record,   ~tag,                  ~value,
                                0, "@F1@", "FAM",                      "",
                                1, "@F1@", "REFN",   "123",
                                2, "@F1@", "TYPE",   "type1",
                                1, "@F1@", "REFN",   "456",
-                               2, "@F1@", "TYPE",   "type2",
                                1, "@F1@", "CHAN",                     "",
                                2, "@F1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
 })
 
 
-test_that("Function INDIVIDUAL_RECORD() @ L175", {
-  expect_error(INDIVIDUAL_RECORD("@I1@", user_reference_number = 123:125, user_reference_type = letters[1:2]))
+test_that("Function INDIVIDUAL_RECORD() @ L173", {
   expect_equal(INDIVIDUAL_RECORD("@I1@"),
                tibble::tribble(~level,  ~record,   ~tag,                  ~value,
                                0, "@I1@", "INDI",                      "",
@@ -44,9 +40,7 @@ test_that("Function INDIVIDUAL_RECORD() @ L175", {
 })
 
 
-test_that("Function MULTIMEDIA_RECORD() @ L265", {
-  expect_error(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG",
-                                 user_reference_number = 123:125, user_reference_type = letters[1:2]))
+test_that("Function MULTIMEDIA_RECORD() @ L263", {
   expect_equal(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG"),
                tibble::tribble(~level,  ~record,   ~tag,                  ~value,
                                0, "@M1@", "OBJE",                      "",
@@ -56,7 +50,7 @@ test_that("Function MULTIMEDIA_RECORD() @ L265", {
                                2, "@M1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
                ))
   expect_equal(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG",
-                                 user_reference_number = 123, user_reference_type = "type"),
+                                 user_reference_number = c(type = 123)),
                tibble::tribble(~level,  ~record,   ~tag,                  ~value,
                                0, "@M1@", "OBJE",                      "",
                                1, "@M1@", "FILE",              "file_ref",
@@ -69,10 +63,8 @@ test_that("Function MULTIMEDIA_RECORD() @ L265", {
 })
 
 
-test_that("Function NOTE_RECORD() @ L340", {
-  expect_error(NOTE_RECORD("@N1@", "This is a note",
-                                 user_reference_number = 123:125, user_reference_type = letters[1:2]))
-  expect_equal(NOTE_RECORD("@N1@", "This is a note", 123, "type"),
+test_that("Function NOTE_RECORD() @ L338", {
+  expect_equal(NOTE_RECORD("@N1@", "This is a note", c(type = 123)),
                tibble::tribble(~level,  ~record,   ~tag,                  ~value,
                                0, "@N1@", "NOTE",        "This is a note",
                                1, "@N1@", "REFN",        "123",
@@ -83,11 +75,9 @@ test_that("Function NOTE_RECORD() @ L340", {
 })
 
 
-test_that("Function REPOSITORY_RECORD() @ L403", {
-  expect_error(REPOSITORY_RECORD("@R1@", "Repo name",
-                                 user_reference_number = 123:125, user_reference_type = letters[1:2]))
+test_that("Function REPOSITORY_RECORD() @ L401", {
   expect_equal(REPOSITORY_RECORD("@R1@", "Repo name",
-                                 user_reference_number = 123, user_reference_type = "type"),
+                                 user_reference_number = c(type = 123)),
                tibble::tribble(~level,  ~record,   ~tag,                  ~value,
                                0, "@R1@", "REPO",                      "",
                                1, "@R1@", "NAME",             "Repo name",
@@ -99,10 +89,8 @@ test_that("Function REPOSITORY_RECORD() @ L403", {
 })
 
 
-test_that("Function SOURCE_RECORD() @ L468", {
-  expect_error(SOURCE_RECORD("@S1@",
-                             user_reference_number = 123:125, user_reference_type = letters[1:2]))
-  expect_equal(SOURCE_RECORD("@S1@", user_reference_number = 234, user_reference_type = "type"),
+test_that("Function SOURCE_RECORD() @ L466", {
+  expect_equal(SOURCE_RECORD("@S1@", user_reference_number = c(type = 234)),
                tibble::tribble(~level,  ~record,   ~tag,                  ~value,
                                0, "@S1@", "SOUR",                      "",
                                1, "@S1@", "REFN",                      "234",

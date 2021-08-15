@@ -10,7 +10,6 @@ REPOSITORY_RECORD(
   address = ADDRESS_STRUCTURE(),
   notes = list(),
   user_reference_number = character(),
-  user_reference_type = character(),
   automated_record_id = character(),
   date_changed = CHANGE_DATE()
 )
@@ -25,8 +24,6 @@ REPOSITORY_RECORD(
 \item{notes}{A list of NOTE_STRUCTURE() objects.}
 
 \item{user_reference_number}{A user-defined number or text that the submitter uses to identify this record.}
-
-\item{user_reference_type}{A user-defined definition of the user_reference_number.}
 
 \item{automated_record_id}{A unique record identification number assigned to the record by
 the source system. This number is intended to serve as a more sure means of identification
