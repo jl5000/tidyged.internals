@@ -30,7 +30,7 @@ test_that("Function date_range() @ L107", {
 })
 
 
-test_that("Function date_period() @ L157", {
+test_that("Function date_period() @ L161", {
   expect_equal(date_period(start_date = date_calendar(2005)), 
                "FROM 2005")
   expect_equal(date_period(start_date = date_calendar(2005, 1)), 
@@ -51,7 +51,7 @@ test_that("Function date_period() @ L157", {
 })
 
 
-test_that("Function date_approximated() @ L196", {
+test_that("Function date_approximated() @ L204", {
   expect_equal(date_approximated(date_calendar(2005, 1, 14), calc = TRUE), "CAL 14 JAN 2005")
   expect_equal(date_approximated(date_calendar(2005), est = TRUE), "EST 2005")
   expect_equal(date_approximated(date_calendar(2005, 1)), "ABT JAN 2005")
@@ -60,7 +60,7 @@ test_that("Function date_approximated() @ L196", {
 })
 
 
-test_that("Function parse_gedcom_age() @ L262", {
+test_that("Function parse_gedcom_age() @ L270", {
   expect_equal(parse_gedcom_age("16y"), 16)
   expect_equal(parse_gedcom_age("16y 6m"), 16.5)
   expect_equal(parse_gedcom_age("73d"), 0.2)

@@ -107,6 +107,10 @@ date_calendar <- function(year = numeric(),
 date_range <- function(start_date = date_calendar(),
                        end_date = date_calendar()) {
   
+  if((length(start_date) > 0 && !stringr::str_detect(start_date, reg_date_calendar())) |
+     (length(end_date) > 0 && !stringr::str_detect(end_date, reg_date_calendar())))
+    stop("Start and end dates must be date_calendar() objects")
+    
   if (length(start_date) + length(end_date) == 2) {
     
     chk_dates(start_date, end_date)
@@ -156,6 +160,10 @@ date_range <- function(start_date = date_calendar(),
 #'              "FROM 30 JUN 1900 TO 1901")
 date_period <- function(start_date = date_calendar(),
                        end_date = date_calendar()) {
+  
+  if((length(start_date) > 0 && !stringr::str_detect(start_date, reg_date_calendar())) |
+     (length(end_date) > 0 && !stringr::str_detect(end_date, reg_date_calendar())))
+    stop("Start and end dates must be date_calendar() objects")
   
   if (length(start_date) + length(end_date) == 2) {
     
