@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Construct a DATE_APPROXIMATED string — date_approximated • tidyged.internals</title>
+<title>Construct a regular expression for a custom value — reg_custom_value • tidyged.internals</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Construct a DATE_APPROXIMATED string — date_approximated" />
-<meta property="og:description" content="Construct a DATE_APPROXIMATED string" />
+<meta property="og:title" content="Construct a regular expression for a custom value — reg_custom_value" />
+<meta property="og:description" content="Construct a regular expression for a custom value" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -116,46 +116,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Construct a DATE_APPROXIMATED string</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jl5000/tidyged.internals/blob/master/R/dates.R'><code>R/dates.R</code></a></small>
-    <div class="hidden name"><code>date_approximated.Rd</code></div>
+    <h1>Construct a regular expression for a custom value</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jl5000/tidyged.internals/blob/master/R/regex_patterns.R'><code>R/regex_patterns.R</code></a></small>
+    <div class="hidden name"><code>reg_custom_value.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Construct a DATE_APPROXIMATED string</p>
+    <p>Construct a regular expression for a custom value</p>
     </div>
 
-    <pre class="usage"><span class='fu'>date_approximated</span><span class='op'>(</span>
-  date <span class='op'>=</span> <span class='fu'><a href='date_calendar.html'>date_calendar</a></span><span class='op'>(</span><span class='op'>)</span>,
-  about <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  calc <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  est <span class='op'>=</span> <span class='cn'>FALSE</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>reg_custom_value</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>date</th>
-      <td><p>A DATE_CALENDAR() object giving the uncertain date.</p></td>
-    </tr>
-    <tr>
-      <th>about</th>
-      <td><p>Whether the date is approximate.</p></td>
-    </tr>
-    <tr>
-      <th>calc</th>
-      <td><p>Whether the date is calculated from other values.</p></td>
-    </tr>
-    <tr>
-      <th>est</th>
-      <td><p>Whether the date is estimated.</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A DATE_APPROXIMATED string.</p>
+    <p>A regular expression pattern for a custom value.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Custom values are allowed for date values and roles in events.
+They are accepted for existing GEDCOM files, but they are not permitted to be created
+in the gedcompendium.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
