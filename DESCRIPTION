@@ -1,6 +1,6 @@
 Package: tidyged.internals
 Title: Internal Data Structures for the 'Tidyged' Package
-Version: 1.0.0.9000
+Version: 1.0.1.9000
 Authors@R: 
     person(given = "Jamie",
            family = "Lendrum",

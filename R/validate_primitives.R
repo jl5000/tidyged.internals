@@ -531,7 +531,8 @@ chk_responsible_agency <- function(input, max_dim) {
 chk_role_in_event <- function(input, max_dim) {
   c(
     chk_input_size(input, max_dim, 3, 27),
-    chk_input_pattern(input, reg_role_in_event())
+    chk_input_pattern(input, paste(reg_role_in_event(),
+                                   reg_custom_value(), sep = "|"))
   )[1]
 }
 #' @export

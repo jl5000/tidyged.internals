@@ -2,7 +2,7 @@
 % Please edit documentation in R/regex_patterns.R
 \name{reg_date}
 \alias{reg_date}
-\title{Construct the regex pattern for DATE values}
+\title{Construct a regular expression for DATE values}
 \usage{
 reg_date(flatten = TRUE, only = TRUE)
 }
@@ -20,7 +20,7 @@ the date().}
 Either a single regex string or a vector of them
 }
 \description{
-Construct the regex pattern for DATE values
+Construct a regular expression for DATE values
 }
 \details{
 The DATE (and subsequent DATE_CALENDAR) pattern can potentially handle several

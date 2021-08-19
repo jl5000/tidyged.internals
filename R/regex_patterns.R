@@ -76,12 +76,22 @@ reg_age_at_event <- function() {
 }
 
 reg_role_in_event <- function(){
-  paste(paste(val_roles(), collapse = "|"), 
-        paste0("\\(.+\\)"), #TODO: Fix this to exclude val_roles
-        sep = "|") %>% anchor_it()
+  paste(anchor_it(val_roles()) , collapse = "|")
 }
 
-#' Construct the regex pattern for DATE_EXACT values
+#' Construct a regular expression for a custom value
+#' 
+#' @details Custom values are allowed for date values and roles in events.
+#' They are accepted for existing GEDCOM files, but they are not permitted to be created
+#' in the gedcompendium.
+#'
+#' @return A regular expression pattern for a custom value.
+#' @export
+reg_custom_value <- function(){
+  "^\\(.+\\)$"
+}
+
+#' Construct a regular expression for DATE_EXACT values
 #' 
 #' @param only Whether to allow strings of only date_exact. If FALSE,
 #' the regular expression accepts patterns where text can come before or after
@@ -106,7 +116,7 @@ reg_date_exact <- function(only = TRUE) {
 }
 
 
-#' Construct the regex pattern for DATE values
+#' Construct a regular expression for DATE values
 #'
 #' @details The DATE (and subsequent DATE_CALENDAR) pattern can potentially handle several
 #' different calendar types, but this package has only implemented the Gregorian calendar.
