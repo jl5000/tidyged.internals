@@ -5,9 +5,9 @@
 #' @export
 date_current <- function() { 
   current_date <- Sys.Date()
-  date_exact(lubridate::day(current_date),
+  date_exact(lubridate::year(current_date),
              lubridate::month(current_date),
-             lubridate::year(current_date))
+             lubridate::day(current_date))
 }
 
 
@@ -17,18 +17,18 @@ date_current <- function() {
 #' values have been set so that they are represented as zero-length rows in the tidyged file (i.e.
 #' omitted).
 #'
-#' @param day The day of the month.
-#' @param month The month of the year.
 #' @param year The year.
+#' @param month The month of the year.
+#' @param day The day of the month.
 #' @tests
-#' expect_equal(date_exact(12), character())
-#' expect_equal(date_exact(12, 8), character())
-#' expect_equal(date_exact(12, 8, 2005), "12 AUG 2005")
+#' expect_equal(date_exact(2005), character())
+#' expect_equal(date_exact(2005, 8), character())
+#' expect_equal(date_exact(2005, 8, 12), "12 AUG 2005")
 #' @return A DATE_EXACT string
 #' @export
-date_exact <- function(day = numeric(), 
-                       month = numeric(), 
-                       year = numeric()) {
+date_exact <- function(year = numeric(),
+                       month = numeric(),
+                       day = numeric()) {
   
   if (length(day) + length(month) + length(year) < 3) return(character())
   

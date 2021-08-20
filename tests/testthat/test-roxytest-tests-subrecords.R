@@ -16,10 +16,10 @@ test_that("Function LINEAGE_LINKED_HEADER_EXTENSION() @ L37", {
                                                       4587375238427,
                                                       "www.url.com"),
                  name_of_source_data = "source data name",
-                 publication_date = date_exact(25,5,2009),
+                 publication_date = date_exact(2009,5,25),
                  copyright_source_data = "source copyright",
                  receiving_system_name = "destination system",
-                 file_creation_date = date_exact(3,4,2008),
+                 file_creation_date = date_exact(2008,4,3),
                  file_creation_time = "10:56:05",
                  language_of_text = "English",
                  xref_subm = "@U1@",
@@ -76,9 +76,9 @@ test_that("Function ASSOCIATION_STRUCTURE() @ L209", {
 
 
 test_that("Function CHANGE_DATE() @ L245", {
-  expect_snapshot_value(CHANGE_DATE(date_exact(5, 10, 1990)), "json2")
-  expect_snapshot_value(CHANGE_DATE(date_exact(18, 12, 2008), time_value = "11:00:08.56"), "json2")
-  expect_snapshot_value(CHANGE_DATE(date_exact(5, 10, 1990), "10:34:56", 
+  expect_snapshot_value(CHANGE_DATE(date_exact(1990, 10, 5)), "json2")
+  expect_snapshot_value(CHANGE_DATE(date_exact(2008, 12, 18), time_value = "11:00:08.56"), "json2")
+  expect_snapshot_value(CHANGE_DATE(date_exact(1990, 10, 5), "10:34:56", 
                            notes = list(NOTE_STRUCTURE("Note 1"),
                                         NOTE_STRUCTURE("Note 2"))), "json2")
 })

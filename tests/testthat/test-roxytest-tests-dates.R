@@ -3,9 +3,9 @@
 # File R/dates.R: @tests
 
 test_that("Function date_exact() @ L29", {
-  expect_equal(date_exact(12), character())
-  expect_equal(date_exact(12, 8), character())
-  expect_equal(date_exact(12, 8, 2005), "12 AUG 2005")
+  expect_equal(date_exact(2005), character())
+  expect_equal(date_exact(2005, 8), character())
+  expect_equal(date_exact(2005, 8, 12), "12 AUG 2005")
 })
 
 

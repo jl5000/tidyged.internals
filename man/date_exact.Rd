@@ -4,14 +4,14 @@
 \alias{date_exact}
 \title{Construct a DATE_EXACT string}
 \usage{
-date_exact(day = numeric(), month = numeric(), year = numeric())
+date_exact(year = numeric(), month = numeric(), day = numeric())
 }
 \arguments{
-\item{day}{The day of the month.}
+\item{year}{The year.}
 
 \item{month}{The month of the year.}
 
-\item{year}{The year.}
+\item{day}{The day of the month.}
 }
 \value{
 A DATE_EXACT string
