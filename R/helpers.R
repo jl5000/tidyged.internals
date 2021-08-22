@@ -1,6 +1,4 @@
 
-`%nin%` <- Negate(`%in%`)
-
 #' Push a tidyged structure down a number of levels
 #'
 #' @param df A tidyged structure.
@@ -49,7 +47,7 @@ finalise <- function(df, global_start_level = 0) {
 #' @export
 #' @tests
 #' expect_equal(identify_section(GEDCOM_HEADER(), 0, "HEAD", ""), 1:7)
-#' expect_equal(identify_section(GEDCOM_HEADER(), 1, "GEDC", ""), 2:5)
+#' expect_equal(identify_section(GEDCOM_HEADER(), 1, "GEDC", "", first_only = TRUE), 2:5)
 #' expect_equal(identify_section(GEDCOM_HEADER(), 2, "FORM", "LINEAGE-LINKED"), 4:5)
 #' expect_equal(identify_section(GEDCOM_HEADER(), 3, "VERS", "5.5.5"), 5)
 identify_section <- function(gedcom,
@@ -108,6 +106,7 @@ identify_section <- function(gedcom,
 #' expect_snapshot_value(remove_section(GEDCOM_HEADER(), 1, "GEDC", ""), "json2")
 #' expect_snapshot_value(remove_section(GEDCOM_HEADER(), 2, "FORM", "LINEAGE-LINKED"), "json2")
 #' expect_snapshot_value(remove_section(GEDCOM_HEADER(), 3, "VERS", "5.5.5"), "json2")
+#' expect_identical(remove_section(GEDCOM_HEADER(), 1, "GEDC1", ""), GEDCOM_HEADER())
 remove_section <- function(gedcom,
                            containing_level,
                            containing_tags,
@@ -131,22 +130,7 @@ remove_section <- function(gedcom,
 }
 
 
-#' Remove all creation dates from a tidyged object
-#' 
-#' @details This is a function used in tests so that the objects created do not
-#' change every time.
-#'
-#' @param gedcom A tidyged object.
-#'
-#' @return The tidyged object with creation dates removed.
-#' @export
-remove_dates_for_tests <- function(gedcom) {
-  
-  gedcom %>% 
-    remove_section(1, "CHAN", "") %>% 
-    dplyr::filter(!(level == 1 & record == "HD" & tag == "DATE"))
-  
-}
+
 
 #' Make a dataframe a tidyged object
 #' 
@@ -155,6 +139,9 @@ remove_dates_for_tests <- function(gedcom) {
 #' @param gedcom A tibble with content consistent with that of a tidyged object.
 #'
 #' @return A tidyged object.
+#' @tests
+#' expect_identical(class(set_class_to_tidyged(tibble::tibble())),
+#'                  c("tidyged", "tbl_df", "tbl", "data.frame"))
 #' @export
 set_class_to_tidyged <- function(gedcom) {
   class(gedcom) <- c("tidyged", "tbl_df", "tbl", "data.frame")
@@ -197,6 +184,14 @@ assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble(), quantity 
 #' @param quantity The number of new xrefs to return.
 #'
 #' @return A vector of xrefs to use for a new record(s).
+#' @tests
+#' expect_equal(assign_xref_indi(tibble::tibble(record = "@I6@")), "@I7@")
+#' expect_equal(assign_xref_famg(tibble::tibble(record = "@N6@")), "@F1@")
+#' expect_equal(assign_xref_note(tibble::tibble(record = "@N6@"), quantity = 2), c("@N7@", "@N8@"))
+#' expect_equal(assign_xref_repo(tibble::tibble(record = "@N6@")), "@R1@")
+#' expect_equal(assign_xref_sour(tibble::tibble(record = "@S1@")), "@S2@")
+#' expect_equal(assign_xref_media(tibble::tibble(record = "@S1@")), "@M1@")
+#' expect_equal(assign_xref_subm(ref = 2), "@U2@")
 #' @export
 assign_xref_indi <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_indi, ref, gedcom, quantity)}
 
@@ -279,6 +274,7 @@ find_insertion_point <- function(gedcom,
 #' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "TEST", 1), "")
 #' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 2), "5.5.5")
 #' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 3), "5.5.5")
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "@I1@", "VERS", 3), "")
 gedcom_value <- function(gedcom, record_xref, tag, level, after_tag = NULL) {
   
   gedcom_filtered <- dplyr::filter(gedcom, record %in% record_xref)
@@ -317,6 +313,8 @@ gedcom_value <- function(gedcom, record_xref, tag, level, after_tag = NULL) {
 #'
 #' @return A tidyged object with the value updated.
 #' @export
+#' @tests
+#' expect_identical(gedcom_value_update(tibble::tibble(), "@1@", "TAG", 4, 5, 6), tibble::tibble())
 gedcom_value_update <- function(gedcom, record_xref, tag, level, old_value, new_value, 
                                 after_tag = NULL, after_value = NULL) {
   
@@ -335,7 +333,7 @@ gedcom_value_update <- function(gedcom, record_xref, tag, level, old_value, new_
   
   # We have to loop
   for(i in seq_len(nrow(gedcom))) {
-    
+    #TODO
     
     
   }
