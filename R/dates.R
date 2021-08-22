@@ -95,6 +95,7 @@ date_calendar <- function(year = numeric(),
 #' @export
 #'
 #' @tests
+#' expect_error(date_range("ABT 2008"))
 #' expect_equal(date_range(start_date = date_calendar(2005)), 
 #'              "AFT 2005")
 #' expect_equal(date_range(end_date = date_calendar(2010)), 
@@ -141,6 +142,7 @@ date_range <- function(start_date = date_calendar(),
 #' @export
 #'
 #' @tests
+#' expect_error(date_period("ABT 2008"))
 #' expect_equal(date_period(start_date = date_calendar(2005)), 
 #'              "FROM 2005")
 #' expect_equal(date_period(start_date = date_calendar(2005, 1)), 
@@ -229,6 +231,9 @@ date_approximated <- function(date = date_calendar(),
 #'
 #' @return A lubridate date.
 #' @export
+#' @tests
+#' expect_equal(is.na(parse_gedcom_date(NA)), TRUE)
+#' expect_equal(parse_gedcom_date("4 APR"), as.Date("1000-04-04"))
 parse_gedcom_date <- function(date_string, minimise = TRUE) {
   if(is.na(date_string)) return(as.Date(NA))
   
@@ -264,6 +269,7 @@ parse_gedcom_date <- function(date_string, minimise = TRUE) {
 #' @return A numeric value giving the age in years.
 #' @export
 #' @tests
+#' expect_equal(is.na(parse_gedcom_age(NA)), TRUE)
 #' expect_equal(parse_gedcom_age("16y"), 16)
 #' expect_equal(parse_gedcom_age("16y 6m"), 16.5)
 #' expect_equal(parse_gedcom_age("73d"), 0.2)

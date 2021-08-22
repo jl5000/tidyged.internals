@@ -444,6 +444,16 @@ FAMILY_EVENT_STRUCTURE <- function(event_type_family,
 #' expect_equal(INDIVIDUAL_ATTRIBUTE_STRUCTURE(character()), tibble::tibble())
 #' expect_equal(INDIVIDUAL_ATTRIBUTE_STRUCTURE("", character()), tibble::tibble())
 #' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("NATI", "British"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("CAST", "White"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("DSCR", "Tall"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("EDUC", "PhD"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("NCHI", 3), "json2")
+#' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("NMR", 2), "json2")
+#' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("OCCU", "Baker"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("PROP", "House"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("RELI", "Jedi"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("RESI", "Something"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("TITL", "Earl"), "json2")
 #' expect_snapshot_value(INDIVIDUAL_ATTRIBUTE_STRUCTURE("NATI", "British", 
 #'                      individual_event_details = INDIVIDUAL_EVENT_DETAIL(age_at_event = "0y")), "json2")
 #'                      

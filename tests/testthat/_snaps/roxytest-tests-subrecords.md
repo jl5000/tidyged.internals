@@ -878,7 +878,7 @@
       ]
     }
 
-# Function INDIVIDUAL_ATTRIBUTE_STRUCTURE() @ L452
+# Function INDIVIDUAL_ATTRIBUTE_STRUCTURE() @ L462
 
     {
       "type": "list",
@@ -931,6 +931,406 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
+          "value": [1]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["CAST"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["White"]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["DSCR"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["Tall"]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["EDUC"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["PhD"]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["NCHI"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["3"]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["NMR"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["2"]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["OCCU"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["Baker"]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["PROP"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["House"]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["RELI"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["Jedi"]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["RESI"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": [""]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["TITL"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["Earl"]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
           "value": [1, 2]
         },
         "class": {
@@ -958,7 +1358,7 @@
       ]
     }
 
-# Function INDIVIDUAL_EVENT_DETAIL() @ L508
+# Function INDIVIDUAL_EVENT_DETAIL() @ L518
 
     {
       "type": "list",
@@ -998,7 +1398,7 @@
       ]
     }
 
-# Function INDIVIDUAL_EVENT_STRUCTURE() @ L543
+# Function INDIVIDUAL_EVENT_STRUCTURE() @ L553
 
     {
       "type": "list",
@@ -1158,7 +1558,7 @@
       ]
     }
 
-# Function NOTE_STRUCTURE() @ L615
+# Function NOTE_STRUCTURE() @ L625
 
     {
       "type": "list",
@@ -1238,7 +1638,7 @@
       ]
     }
 
-# Function PERSONAL_NAME_PIECES() @ L650
+# Function PERSONAL_NAME_PIECES() @ L660
 
     {
       "type": "list",
@@ -1318,7 +1718,7 @@
       ]
     }
 
-# Function PERSONAL_NAME_STRUCTURE() @ L742
+# Function PERSONAL_NAME_STRUCTURE() @ L752
 
     {
       "type": "list",
@@ -1438,7 +1838,7 @@
       ]
     }
 
-# Function PLACE_STRUCTURE() @ L854
+# Function PLACE_STRUCTURE() @ L864
 
     {
       "type": "list",
@@ -1518,7 +1918,7 @@
       ]
     }
 
-# Function SOURCE_CITATION() @ L930
+# Function SOURCE_CITATION() @ L940
 
     {
       "type": "list",
@@ -1678,7 +2078,7 @@
       ]
     }
 
-# Function SOURCE_REPOSITORY_CITATION() @ L986
+# Function SOURCE_REPOSITORY_CITATION() @ L996
 
     {
       "type": "list",
@@ -1718,7 +2118,7 @@
       ]
     }
 
-# Function SPOUSE_TO_FAMILY_LINK() @ L1017
+# Function SPOUSE_TO_FAMILY_LINK() @ L1027
 
     {
       "type": "list",

@@ -17,7 +17,8 @@ test_that("Function date_calendar() @ L61", {
 })
 
 
-test_that("Function date_range() @ L107", {
+test_that("Function date_range() @ L108", {
+  expect_error(date_range("ABT 2008"))
   expect_equal(date_range(start_date = date_calendar(2005)), 
                "AFT 2005")
   expect_equal(date_range(end_date = date_calendar(2010)), 
@@ -30,7 +31,8 @@ test_that("Function date_range() @ L107", {
 })
 
 
-test_that("Function date_period() @ L161", {
+test_that("Function date_period() @ L163", {
+  expect_error(date_period("ABT 2008"))
   expect_equal(date_period(start_date = date_calendar(2005)), 
                "FROM 2005")
   expect_equal(date_period(start_date = date_calendar(2005, 1)), 
@@ -51,7 +53,7 @@ test_that("Function date_period() @ L161", {
 })
 
 
-test_that("Function date_approximated() @ L204", {
+test_that("Function date_approximated() @ L206", {
   expect_equal(date_approximated(date_calendar(2005, 1, 14), calc = TRUE), "CAL 14 JAN 2005")
   expect_equal(date_approximated(date_calendar(2005), est = TRUE), "EST 2005")
   expect_equal(date_approximated(date_calendar(2005, 1)), "ABT JAN 2005")
@@ -60,7 +62,14 @@ test_that("Function date_approximated() @ L204", {
 })
 
 
-test_that("Function parse_gedcom_age() @ L270", {
+test_that("Function parse_gedcom_date() @ L237", {
+  expect_equal(is.na(parse_gedcom_date(NA)), TRUE)
+  expect_equal(parse_gedcom_date("4 APR"), as.Date("1000-04-04"))
+})
+
+
+test_that("Function parse_gedcom_age() @ L276", {
+  expect_equal(is.na(parse_gedcom_age(NA)), TRUE)
   expect_equal(parse_gedcom_age("16y"), 16)
   expect_equal(parse_gedcom_age("16y 6m"), 16.5)
   expect_equal(parse_gedcom_age("73d"), 0.2)
