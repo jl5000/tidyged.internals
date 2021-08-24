@@ -326,8 +326,11 @@ gedcom_value_update <- function(gedcom, record_xref, tag, level, old_value, new_
                                      level == level, value == old_value)
     
     if(nrow(gedcom_filtered) == 1)
-      return(dplyr::mutate(gedcom, value = ifelse(record == record_xref & tag == tag & 
-                                                    level == level & value == old_value, new_value, value)))
+      return(dplyr::mutate(gedcom, 
+                           value = dplyr::if_else(record == record_xref & tag == tag & 
+                                                    level == level & value == old_value, 
+                                                  new_value, 
+                                                  value)))
     
   }
   
@@ -375,11 +378,17 @@ construct_full_name <- function(prefix = character(),
   if(length(surname_prefix) == 1 & length(surname) == 0)
     stop("Surname prefix given without a surname")
   
+  if(length(surname) == 1) {
+    surname <- paste0("/", surname, "/")
+  } else {
+    surname <- ""
+  }
+  
   paste(
     stringr::str_replace_all(prefix, ", ?", " "),
     stringr::str_replace_all(given, ", ?", " "), 
     surname_prefix, 
-    ifelse(length(surname) == 1, paste0("/", surname, "/"), ""),
+    surname,
     stringr::str_replace_all(suffix, ", ?", " ")
   ) %>% 
     stringr::str_squish()

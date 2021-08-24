@@ -57,7 +57,7 @@ test_that("Function gedcom_value_update() @ L318", {
 })
 
 
-test_that("Function construct_full_name() @ L369", {
+test_that("Function construct_full_name() @ L372", {
   expect_error(construct_full_name(surname_prefix = "de la"))
   expect_equal(construct_full_name(given = "Joe"), "Joe")
   expect_equal(construct_full_name(prefix = "Professor", given = "Joe"), "Professor Joe")

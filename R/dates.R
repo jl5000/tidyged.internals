@@ -243,19 +243,23 @@ parse_gedcom_date <- function(date_string, minimise = TRUE) {
   if(stringr::str_detect(ged_date, "\\d{3,4}$")) {
     ged_year <- stringr::str_extract(ged_date, "\\d{3,4}$")
   } else {
-    ged_year <- ifelse(minimise, 1000, 4000)
+    if(minimise) ged_year <- 1000 else ged_year <- 4000
   }
   
   if(stringr::str_detect(ged_date, "[A-Z]{3}")) {
     ged_month <- which(toupper(month.abb) == stringr::str_extract(ged_date, "[A-Z]{3}"))
   } else {
-    ged_month <- ifelse(minimise, 1, 12)
+    if(minimise) ged_month <- 1 else ged_month <- 12
   }
  
   if(stringr::str_detect(ged_date, "^\\d{1,2} ")) {
     ged_day <- stringr::str_extract(ged_date, "^\\d{1,2} ") %>% stringr::str_trim()
   } else {
-    ged_day <- ifelse(minimise, 1, lubridate::days_in_month(lubridate::make_date(ged_year, ged_month)))
+    if(minimise) {
+      ged_day <- 1
+    } else {
+      ged_day <- lubridate::days_in_month(lubridate::make_date(ged_year, ged_month))
+    }
   }
   
   lubridate::make_date(ged_year, ged_month, ged_day)
@@ -283,9 +287,9 @@ parse_gedcom_age <- function(age_string) {
   days <- stringr::str_extract(age_string, "\\d{1,3}d") %>% 
     stringr::str_replace("d", "")
   
-  years_num <- ifelse(is.na(years), 0, as.numeric(years))
-  months_prop <- ifelse(is.na(months), 0, as.numeric(months)/12)
-  days_prop <- ifelse(is.na(days), 0, as.numeric(days)/365)
+  if(is.na(years)) years_num <- 0 else years_num <- as.numeric(years)
+  if(is.na(months)) months_prop <- 0 else months_prop <- as.numeric(months)/12
+  if(is.na(days)) days_prop <- 0 else days_prop <- as.numeric(days)/365
   
   years_num + months_prop + days_prop
   

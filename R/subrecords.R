@@ -407,23 +407,22 @@ FAMILY_EVENT_DETAIL <- function(husband_age_at_event = character(),
 #' @return A tidy tibble containing the FAMILY_EVENT_STRUCTURE part of a GEDCOM file.
 #' @export
 FAMILY_EVENT_STRUCTURE <- function(event_type_family,
-                                   event_descriptor = character(),
+                                   event_descriptor = "",
                                    family_event_details = FAMILY_EVENT_DETAIL()) {
   
   if (length(event_type_family) == 0) return(tibble::tibble())
   
   chk_event_type_family(event_type_family, 1) %>% parse_error()
-  if (event_type_family == "EVEN") 
-    chk_event_descriptor(event_descriptor, 1) %>% parse_error()
-  
+  if (event_type_family == "EVEN") {
+    if(event_descriptor != "") chk_event_descriptor(event_descriptor, 1) %>% parse_error()
+  } else {
+    event_descriptor <- ""
+  }
+    
   dplyr::bind_rows(
-    tibble::tibble(level = 0, tag = event_type_family, value = ""),
+    tibble::tibble(level = 0, tag = event_type_family, value = event_descriptor),
     family_event_details %>% add_levels(1),
-  ) %>% 
-  dplyr::mutate(value = ifelse(tag == "EVEN" & length(event_descriptor) == 1,
-                         event_descriptor,
-                         value),
-                value = ifelse(tag == "MARR", "Y", value))
+  )
   
 }
 
@@ -561,7 +560,12 @@ INDIVIDUAL_EVENT_STRUCTURE <- function(event_type_individual,
   chk_event_type_individual(event_type_individual, 1) %>% parse_error()
   chk_xref(xref_fam, 1) %>% parse_error()
   chk_adopted_by_which_parent(adopted_by_which_parent, 1) %>% parse_error()
-  
+  if(event_type_individual == "EVEN") {
+    if(event_descriptor != "") chk_event_descriptor(event_descriptor, 1) %>% parse_error()
+  } else {
+    event_descriptor <- ""
+  }
+    
   temp <- dplyr::bind_rows(
     tibble::tibble(level = 0, tag = event_type_individual, value = event_descriptor),
     individual_event_details %>% add_levels(1)
@@ -579,8 +583,7 @@ INDIVIDUAL_EVENT_STRUCTURE <- function(event_type_individual,
       tibble::tibble(level = 2, tag = "ADOP", value = adopted_by_which_parent)
     )
     
-  temp %>% 
-    dplyr::mutate(value = dplyr::if_else(tag %in% c("CHR", "DEAT"), "Y", value))
+  temp
   
 }
 

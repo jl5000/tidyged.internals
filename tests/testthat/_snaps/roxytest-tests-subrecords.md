@@ -873,12 +873,12 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["Y", "", "20y"]
+          "value": ["", "", "20y"]
         }
       ]
     }
 
-# Function INDIVIDUAL_ATTRIBUTE_STRUCTURE() @ L462
+# Function INDIVIDUAL_ATTRIBUTE_STRUCTURE() @ L461
 
     {
       "type": "list",
@@ -1358,7 +1358,7 @@
       ]
     }
 
-# Function INDIVIDUAL_EVENT_DETAIL() @ L518
+# Function INDIVIDUAL_EVENT_DETAIL() @ L517
 
     {
       "type": "list",
@@ -1398,7 +1398,7 @@
       ]
     }
 
-# Function INDIVIDUAL_EVENT_STRUCTURE() @ L553
+# Function INDIVIDUAL_EVENT_STRUCTURE() @ L552
 
     {
       "type": "list",
@@ -1558,7 +1558,7 @@
       ]
     }
 
-# Function NOTE_STRUCTURE() @ L625
+# Function NOTE_STRUCTURE() @ L628
 
     {
       "type": "list",
@@ -1638,7 +1638,7 @@
       ]
     }
 
-# Function PERSONAL_NAME_PIECES() @ L660
+# Function PERSONAL_NAME_PIECES() @ L663
 
     {
       "type": "list",
@@ -1718,7 +1718,7 @@
       ]
     }
 
-# Function PERSONAL_NAME_STRUCTURE() @ L752
+# Function PERSONAL_NAME_STRUCTURE() @ L755
 
     {
       "type": "list",
@@ -1838,7 +1838,7 @@
       ]
     }
 
-# Function PLACE_STRUCTURE() @ L864
+# Function PLACE_STRUCTURE() @ L867
 
     {
       "type": "list",
@@ -1918,7 +1918,7 @@
       ]
     }
 
-# Function SOURCE_CITATION() @ L940
+# Function SOURCE_CITATION() @ L943
 
     {
       "type": "list",
@@ -2078,7 +2078,7 @@
       ]
     }
 
-# Function SOURCE_REPOSITORY_CITATION() @ L996
+# Function SOURCE_REPOSITORY_CITATION() @ L999
 
     {
       "type": "list",
@@ -2118,7 +2118,7 @@
       ]
     }
 
-# Function SPOUSE_TO_FAMILY_LINK() @ L1027
+# Function SPOUSE_TO_FAMILY_LINK() @ L1030
 
     {
       "type": "list",

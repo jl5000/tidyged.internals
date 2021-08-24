@@ -6,7 +6,7 @@
 \usage{
 FAMILY_EVENT_STRUCTURE(
   event_type_family,
-  event_descriptor = character(),
+  event_descriptor = "",
   family_event_details = FAMILY_EVENT_DETAIL()
 )
 }

@@ -68,7 +68,7 @@ test_that("Function parse_gedcom_date() @ L237", {
 })
 
 
-test_that("Function parse_gedcom_age() @ L276", {
+test_that("Function parse_gedcom_age() @ L280", {
   expect_equal(is.na(parse_gedcom_age(NA)), TRUE)
   expect_equal(parse_gedcom_age("16y"), 16)
   expect_equal(parse_gedcom_age("16y 6m"), 16.5)
