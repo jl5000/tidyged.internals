@@ -13,4 +13,7 @@ if(getRversion() >= "2.15.1")
 .pkgenv$xref_prefix_note <- "N"
 .pkgenv$xref_prefix_sour <- "S"
 
+.pkgenv$xref_prefix_addr <- "A"
+.pkgenv$xref_prefix_plac <- "P"
+
 .pkgenv$delete_flag <- "_____TO__DELETE____"

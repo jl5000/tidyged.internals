@@ -219,6 +219,13 @@ assign_xref_note <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {
 #' @rdname assign_xref_indi
 assign_xref_subm <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_subm, ref, gedcom, quantity)}
 
+#' @export
+#' @rdname assign_xref_indi
+assign_xref_addr <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_addr, ref, gedcom, quantity)}
+
+#' @export
+#' @rdname assign_xref_indi
+assign_xref_plac <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_plac, ref, gedcom, quantity)}
 
 #' Find a particular row position in a tidyged object.
 #' 
