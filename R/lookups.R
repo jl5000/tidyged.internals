@@ -32,7 +32,7 @@ val_multimedia_formats <- function() {
 #' @export
 val_pedigree_linkage_types <- function() {
   c("birth", "adopted", "foster") %>% 
-    setNames(stringr::str_to_title(.))
+    stats::setNames(stringr::str_to_title(.))
 }
 
 #' @rdname val_languages
@@ -41,7 +41,7 @@ val_source_media_types <- function() {
   c("audio", "book", "card", "electronic", "fiche", 
     "film", "magazine", "manuscript", "map", 
     "newspaper", "photo", "tombstone", "video") %>% 
-    setNames(stringr::str_to_title(.))
+    stats::setNames(stringr::str_to_title(.))
 }
 
 #' @rdname val_languages
