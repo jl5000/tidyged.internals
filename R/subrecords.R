@@ -371,19 +371,11 @@ FAMILY_EVENT_DETAIL <- function(husband_age_at_event = character(),
   chk_age_at_event(husband_age_at_event, 1) %>% parse_error()
   chk_age_at_event(wife_age_at_event, 1) %>% parse_error()
   
-  temp = dplyr::bind_rows(
-    tibble::tibble(level = 0, tag = "HUSB", value = ""),
-    tibble::tibble(level = 1, tag = "HAGE", value = husband_age_at_event),
-    tibble::tibble(level = 0, tag = "WIFE", value = ""),
-    tibble::tibble(level = 1, tag = "WAGE", value = wife_age_at_event),
+  dplyr::bind_rows(
+    tibble::tibble(level = 0, tag = "HUSB_AGE", value = husband_age_at_event),
+    tibble::tibble(level = 0, tag = "WIFE_AGE", value = wife_age_at_event),
     event_details %>% add_levels(0),
   )
-  
-  if (sum(temp$tag == "HAGE") == 0) temp <- dplyr::filter(temp, tag != "HUSB")
-  if (sum(temp$tag == "WAGE") == 0) temp <- dplyr::filter(temp, tag != "WIFE")  
-  dplyr::mutate(temp,
-                tag = dplyr::if_else(tag == "HAGE", "AGE", tag),
-                tag = dplyr::if_else(tag == "WAGE", "AGE", tag))
   
 }
 
