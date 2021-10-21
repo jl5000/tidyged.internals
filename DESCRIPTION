@@ -1,6 +1,6 @@
 Package: tidyged.internals
 Title: Internal Data Structures for the 'Tidyged' Package
-Version: 1.4.0.9000
+Version: 1.3.1.9000
 Authors@R: 
     person(given = "Jamie",
            family = "Lendrum",
@@ -19,11 +19,8 @@ Imports:
     tidyr,
     stringr,
     lubridate,
-    queryged,
     tibble
 Suggests: 
     testthat (>= 3.0.0),
     roxytest
-Remotes: 
-    jl5000/queryged
 Config/testthat/edition: 3

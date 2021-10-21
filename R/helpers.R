@@ -33,6 +33,62 @@ finalise <- function(df, global_start_level = 0) {
 }
 
 
+
+#' Identify the rows of subrecords in a tidyged object
+#'
+#' @param gedcom A tidyged object.
+#' @param containing_level The level of the first line of the subrecord.
+#' @param containing_tags The accepted tags of the first line of the subrecord.
+#' @param containing_values The accepted values of the first line of the subrecord.
+#' @param xrefs The xrefs of records containing the subrecord (default is all records).
+#' @param first_only Whether to return only the first match found or to return all matches. 
+#'
+#' @return A vector of rows in the tidyged object of the subrecord(s).
+#' @export
+#' @tests
+#' expect_equal(identify_section(GEDCOM_HEADER(), 0, "HEAD", ""), 1:7)
+#' expect_equal(identify_section(GEDCOM_HEADER(), 1, "GEDC", "", first_only = TRUE), 2:5)
+#' expect_equal(identify_section(GEDCOM_HEADER(), 2, "FORM", "LINEAGE-LINKED"), 4:5)
+#' expect_equal(identify_section(GEDCOM_HEADER(), 3, "VERS", "5.5.5"), 5)
+identify_section <- function(gedcom,
+                             containing_level,
+                             containing_tags,
+                             containing_values = character(),
+                             xrefs = character(),
+                             first_only = FALSE) {
+  
+  no_xrefs_defined <- length(xrefs) == 0
+  no_values_defined <- length(containing_values) == 0
+  rows_to_return <- integer()
+  
+  active <- FALSE
+  for(i in seq_len(nrow(gedcom))) {
+    
+    if(active) {
+      if(gedcom$level[i] <= containing_level) {
+        active <- FALSE
+        if(first_only) break
+      } else {
+        rows_to_return <- c(rows_to_return, i)
+      }
+      
+    }
+    
+    if(no_xrefs_defined || gedcom$record[i] %in% xrefs) {
+      if(no_values_defined || gedcom$value[i] %in% containing_values) {
+        if(gedcom$level[i] == containing_level & gedcom$tag[i] %in% containing_tags) {
+          
+          active <- TRUE
+          rows_to_return <- c(rows_to_return, i) 
+        } 
+      }
+    }
+  }
+  rows_to_return
+  
+}
+
+
 #' Remove subrecords in a tidyged object
 #'
 #' @param gedcom A tidyged object.
@@ -58,12 +114,12 @@ remove_section <- function(gedcom,
                            xrefs = character(),
                            first_only = FALSE) {
   
-  rows_to_remove <- queryged::identify_section(gedcom,
-                                               containing_level,
-                                               containing_tags,
-                                               containing_values,
-                                               xrefs,
-                                               first_only)
+  rows_to_remove <- identify_section(gedcom,
+                                     containing_level,
+                                     containing_tags,
+                                     containing_values,
+                                     xrefs,
+                                     first_only)
   
   if(length(rows_to_remove) == 0) {
     gedcom
@@ -171,7 +227,85 @@ assign_xref_addr <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {
 #' @rdname assign_xref_indi
 assign_xref_plac <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_plac, ref, gedcom, quantity)}
 
+#' Find a particular row position in a tidyged object.
+#' 
+#' This is for inserting rows at the end of a record or subrecord.
+#'
+#' @param gedcom A tidyged object.
+#' @param xref The xref of the record where the insertion point will be.
+#' @param parent_level The level of the row where the insertion point will be.
+#' @param parent_tag The tag of the row where the insertion point will be.
+#' @param parent_value The value of the row where the insertion point will be.
+#'
+#' @return The row after the insertion point in the tidyged object.
+#' @export
+#' @tests
+#' expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 2, "VERS"), 4)
+#' expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 3, "VERS"), 6)
+#' expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 1, "CHAR"), 7)
+find_insertion_point <- function(gedcom,
+                                 xref,
+                                 parent_level,
+                                 parent_tag,
+                                 parent_value = NULL) {
+  
+  active <- FALSE
+  for(i in seq_len(nrow(gedcom))) {
+    
+    if(active && gedcom$level[i] <= parent_level) break
+    
+    if(gedcom$record[i] == xref && gedcom$level[i] == parent_level && gedcom$tag[i] == parent_tag) {
+      if(is.null(parent_value) || gedcom$value[i] == parent_value) {
+        active <- TRUE  
+      }
+    } 
+    
+  }
+  i
+}
 
+
+#' Extract a particular value from a tidyged object
+#'
+#' @param gedcom A tidyged object.
+#' @param record_xref The xref of the record in which the value may exist.
+#' @param tag The tag associated with the value.
+#' @param level The level number of the value.
+#' @param after_tag Whether the tag should be subordinate to this parent tag. 
+#'
+#' @return The particular value fitting the criteria of the input arguments. If no value is found,
+#' an empty string is returned.
+#' @export
+#' @tests
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "FORM", 2), "LINEAGE-LINKED")
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "TEST", 1), "")
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 2), "5.5.5")
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 3), "5.5.5")
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "@I1@", "VERS", 3), "")
+gedcom_value <- function(gedcom, record_xref, tag, level, after_tag = NULL) {
+  
+  gedcom_filtered <- dplyr::filter(gedcom, record %in% record_xref)
+  if(nrow(gedcom_filtered) == 0) return("")
+  
+  active <- is.null(after_tag)
+  for(i in seq_len(nrow(gedcom_filtered))) {
+    if(is.null(after_tag)) {
+      active <- TRUE
+    } else if(gedcom_filtered$tag[i] == after_tag && gedcom_filtered$level[i] < level) {
+      active <- TRUE
+    } else if(active && gedcom_filtered$level[i] < level){
+      active <- FALSE
+    }
+    
+    if(active) {
+      if(gedcom_filtered$tag[i] == tag & gedcom_filtered$level[i] == level)
+        return(gedcom_filtered$value[i])
+    }
+    
+    if(i == nrow(gedcom_filtered)) return("")
+  }
+  
+}
 
 #' Update particular values in a tidyged object
 #'

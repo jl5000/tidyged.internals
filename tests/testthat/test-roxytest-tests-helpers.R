@@ -2,7 +2,15 @@
 
 # File R/helpers.R: @tests
 
-test_that("Function remove_section() @ L54", {
+test_that("Function identify_section() @ L53", {
+  expect_equal(identify_section(GEDCOM_HEADER(), 0, "HEAD", ""), 1:7)
+  expect_equal(identify_section(GEDCOM_HEADER(), 1, "GEDC", "", first_only = TRUE), 2:5)
+  expect_equal(identify_section(GEDCOM_HEADER(), 2, "FORM", "LINEAGE-LINKED"), 4:5)
+  expect_equal(identify_section(GEDCOM_HEADER(), 3, "VERS", "5.5.5"), 5)
+})
+
+
+test_that("Function remove_section() @ L110", {
   expect_snapshot_value(remove_section(GEDCOM_HEADER(), 0, "HEAD", ""), "json2")
   expect_snapshot_value(remove_section(GEDCOM_HEADER(), 1, "GEDC", ""), "json2")
   expect_snapshot_value(remove_section(GEDCOM_HEADER(), 2, "FORM", "LINEAGE-LINKED"), "json2")
@@ -11,13 +19,13 @@ test_that("Function remove_section() @ L54", {
 })
 
 
-test_that("Function set_class_to_tidyged() @ L90", {
+test_that("Function set_class_to_tidyged() @ L146", {
   expect_identical(class(set_class_to_tidyged(tibble::tibble())),
                    c("tidyged", "tbl_df", "tbl", "data.frame"))
 })
 
 
-test_that("Function assign_xref_indi() @ L140", {
+test_that("Function assign_xref_indi() @ L196", {
   expect_equal(assign_xref_indi(tibble::tibble(record = "@I6@")), "@I7@")
   expect_equal(assign_xref_famg(tibble::tibble(record = "@N6@")), "@F1@")
   expect_equal(assign_xref_note(tibble::tibble(record = "@N6@"), quantity = 2), c("@N7@", "@N8@"))
@@ -28,12 +36,28 @@ test_that("Function assign_xref_indi() @ L140", {
 })
 
 
-test_that("Function gedcom_value_update() @ L191", {
+test_that("Function find_insertion_point() @ L246", {
+  expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 2, "VERS"), 4)
+  expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 3, "VERS"), 6)
+  expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 1, "CHAR"), 7)
+})
+
+
+test_that("Function gedcom_value() @ L285", {
+  expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "FORM", 2), "LINEAGE-LINKED")
+  expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "TEST", 1), "")
+  expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 2), "5.5.5")
+  expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 3), "5.5.5")
+  expect_equal(gedcom_value(GEDCOM_HEADER(), "@I1@", "VERS", 3), "")
+})
+
+
+test_that("Function gedcom_value_update() @ L325", {
   expect_identical(gedcom_value_update(tibble::tibble(), "@1@", "TAG", 4, 5, 6), tibble::tibble())
 })
 
 
-test_that("Function construct_full_name() @ L245", {
+test_that("Function construct_full_name() @ L379", {
   expect_error(construct_full_name(surname_prefix = "de la"))
   expect_equal(construct_full_name(given = "Joe"), "Joe")
   expect_equal(construct_full_name(prefix = "Professor", given = "Joe"), "Professor Joe")

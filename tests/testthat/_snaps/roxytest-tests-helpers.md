@@ -1,22 +1,22 @@
-# Function remove_section() @ L54
+# Function remove_section() @ L110
 
     {
       "type": "list",
       "attributes": {
-        "class": {
+        "names": {
           "type": "character",
           "attributes": {},
-          "value": ["tbl_df", "tbl", "data.frame"]
+          "value": ["level", "record", "tag", "value"]
         },
         "row.names": {
           "type": "integer",
           "attributes": {},
           "value": []
         },
-        "names": {
+        "class": {
           "type": "character",
           "attributes": {},
-          "value": ["level", "record", "tag", "value"]
+          "value": ["tbl_df", "tbl", "data.frame"]
         }
       },
       "value": [
@@ -48,20 +48,20 @@
     {
       "type": "list",
       "attributes": {
-        "class": {
+        "names": {
           "type": "character",
           "attributes": {},
-          "value": ["tbl_df", "tbl", "data.frame"]
+          "value": ["level", "record", "tag", "value"]
         },
         "row.names": {
           "type": "integer",
           "attributes": {},
           "value": [1, 2, 3]
         },
-        "names": {
+        "class": {
           "type": "character",
           "attributes": {},
-          "value": ["level", "record", "tag", "value"]
+          "value": ["tbl_df", "tbl", "data.frame"]
         }
       },
       "value": [
@@ -93,20 +93,20 @@
     {
       "type": "list",
       "attributes": {
-        "class": {
+        "names": {
           "type": "character",
           "attributes": {},
-          "value": ["tbl_df", "tbl", "data.frame"]
+          "value": ["level", "record", "tag", "value"]
         },
         "row.names": {
           "type": "integer",
           "attributes": {},
           "value": [1, 2, 3, 4, 5]
         },
-        "names": {
+        "class": {
           "type": "character",
           "attributes": {},
-          "value": ["level", "record", "tag", "value"]
+          "value": ["tbl_df", "tbl", "data.frame"]
         }
       },
       "value": [
@@ -138,20 +138,20 @@
     {
       "type": "list",
       "attributes": {
-        "class": {
+        "names": {
           "type": "character",
           "attributes": {},
-          "value": ["tbl_df", "tbl", "data.frame"]
+          "value": ["level", "record", "tag", "value"]
         },
         "row.names": {
           "type": "integer",
           "attributes": {},
           "value": [1, 2, 3, 4, 5, 6]
         },
-        "names": {
+        "class": {
           "type": "character",
           "attributes": {},
-          "value": ["level", "record", "tag", "value"]
+          "value": ["tbl_df", "tbl", "data.frame"]
         }
       },
       "value": [
