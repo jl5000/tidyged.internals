@@ -273,7 +273,7 @@ test_that("Function PLACE_STRUCTURE() @ L859", {
 })
 
 
-test_that("Function SOURCE_CITATION() @ L935", {
+test_that("Function SOURCE_CITATION() @ L936", {
   expect_equal(SOURCE_CITATION(character()), tibble::tibble())
   expect_snapshot_value(SOURCE_CITATION("@S1@"), "json2")
   expect_snapshot_value(SOURCE_CITATION("@S1@", 
@@ -284,11 +284,12 @@ test_that("Function SOURCE_CITATION() @ L935", {
   expect_snapshot_value(SOURCE_CITATION("@S1@", where_within_source = 3, 
                                event_type_cited_from = "CENS", 
                                role_in_event = "WIFE",
+                               entry_recording_date = "28 JUN 1996",
                                certainty_assessment = 2), "json2")
 })
 
 
-test_that("Function SOURCE_REPOSITORY_CITATION() @ L991", {
+test_that("Function SOURCE_REPOSITORY_CITATION() @ L992", {
   expect_error(SOURCE_REPOSITORY_CITATION())
   expect_error(SOURCE_REPOSITORY_CITATION("@R1@", source_call_number = c("123", "456")))
   expect_equal(SOURCE_REPOSITORY_CITATION(character()), tibble::tibble())
@@ -296,7 +297,7 @@ test_that("Function SOURCE_REPOSITORY_CITATION() @ L991", {
 })
 
 
-test_that("Function SPOUSE_TO_FAMILY_LINK() @ L1022", {
+test_that("Function SPOUSE_TO_FAMILY_LINK() @ L1023", {
   expect_error(SPOUSE_TO_FAMILY_LINK())
   expect_equal(SPOUSE_TO_FAMILY_LINK(character()), tibble::tibble())
   expect_snapshot_value(SPOUSE_TO_FAMILY_LINK("@F2@", 

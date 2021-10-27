@@ -1918,7 +1918,7 @@
       ]
     }
 
-# Function SOURCE_CITATION() @ L935
+# Function SOURCE_CITATION() @ L936
 
     {
       "type": "list",
@@ -2051,7 +2051,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2, 3, 4, 5]
+          "value": [1, 2, 3, 4, 5, 6, 7]
         },
         "names": {
           "type": "character",
@@ -2063,22 +2063,22 @@
         {
           "type": "double",
           "attributes": {},
-          "value": [0, 1, 1, 2, 1]
+          "value": [0, 1, 1, 2, 1, 2, 1]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["SOUR", "PAGE", "EVEN", "ROLE", "QUAY"]
+          "value": ["SOUR", "PAGE", "EVEN", "ROLE", "DATA", "DATE", "QUAY"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["@S1@", "3", "CENS", "WIFE", "2"]
+          "value": ["@S1@", "3", "CENS", "WIFE", "", "28 JUN 1996", "2"]
         }
       ]
     }
 
-# Function SOURCE_REPOSITORY_CITATION() @ L991
+# Function SOURCE_REPOSITORY_CITATION() @ L992
 
     {
       "type": "list",
@@ -2118,7 +2118,7 @@
       ]
     }
 
-# Function SPOUSE_TO_FAMILY_LINK() @ L1022
+# Function SPOUSE_TO_FAMILY_LINK() @ L1023
 
     {
       "type": "list",
