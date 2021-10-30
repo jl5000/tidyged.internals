@@ -7,7 +7,6 @@
 INDIVIDUAL_ATTRIBUTE_STRUCTURE(
   attribute_type,
   attribute_descriptor,
-  user_reference_type = character(),
   individual_event_details = INDIVIDUAL_EVENT_DETAIL()
 )
 }
@@ -16,8 +15,6 @@ INDIVIDUAL_ATTRIBUTE_STRUCTURE(
 family listings to be recorded. Its application is in helping to classify sources used for information.}
 
 \item{attribute_descriptor}{Text describing a particular characteristic or attribute assigned to an individual.}
-
-\item{user_reference_type}{A user-defined definition of the user_reference_number.}
 
 \item{individual_event_details}{An INDIVIDUAL_EVENT_DETAIL() object giving details of the attribute.}
 }

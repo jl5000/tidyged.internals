@@ -452,14 +452,12 @@ FAMILY_EVENT_STRUCTURE <- function(event_type_family,
 #' @export
 INDIVIDUAL_ATTRIBUTE_STRUCTURE <- function(attribute_type,
                                            attribute_descriptor,
-                                           user_reference_type = character(),
                                            individual_event_details = INDIVIDUAL_EVENT_DETAIL()) {
   
   if (length(attribute_type) == 0) return(tibble::tibble())
   if (length(attribute_descriptor) == 0) return(tibble::tibble())
   
   chk_attribute_type(attribute_type, 1) %>% parse_error()
-  chk_user_reference_type(user_reference_type, 1) %>% parse_error()
   if (attribute_type %in% c("IDNO", "NCHI", "NMR")) 
     attribute_descriptor <- as.character(attribute_descriptor) 
   
@@ -477,13 +475,9 @@ INDIVIDUAL_ATTRIBUTE_STRUCTURE <- function(attribute_type,
   if (attribute_type == "TITL") chk_nobility_type_title(attribute_descriptor, 1) %>% parse_error()
   if (attribute_type == "FACT") chk_attribute_descriptor(attribute_descriptor, 1) %>% parse_error()
   
-  if (attribute_type %in% c("IDNO", "FACT") & length(user_reference_type) == 0)
-    stop("Attribute requires more info")
-  
   temp <- dplyr::bind_rows(
     tibble::tibble(level = 0, tag = attribute_type, value = attribute_descriptor),
-    individual_event_details %>% add_levels(1),
-    tibble::tibble(level = 1, tag = "TYPE", value = user_reference_type)
+    individual_event_details %>% add_levels(1)
   )
   
   if (sum(temp$tag %in% c("IDNO", "FACT")) == 1 & sum(temp$tag == "TYPE") == 0)
