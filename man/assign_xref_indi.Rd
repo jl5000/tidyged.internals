@@ -8,8 +8,6 @@
 \alias{assign_xref_media}
 \alias{assign_xref_note}
 \alias{assign_xref_subm}
-\alias{assign_xref_addr}
-\alias{assign_xref_plac}
 \title{Create a new xref for a record}
 \usage{
 assign_xref_indi(gedcom = tibble::tibble(), ref = 0, quantity = 1)
@@ -25,10 +23,6 @@ assign_xref_media(gedcom = tibble::tibble(), ref = 0, quantity = 1)
 assign_xref_note(gedcom = tibble::tibble(), ref = 0, quantity = 1)
 
 assign_xref_subm(gedcom = tibble::tibble(), ref = 0, quantity = 1)
-
-assign_xref_addr(gedcom = tibble::tibble(), ref = 0, quantity = 1)
-
-assign_xref_plac(gedcom = tibble::tibble(), ref = 0, quantity = 1)
 }
 \arguments{
 \item{gedcom}{A tidyged object.}

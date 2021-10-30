@@ -65,21 +65,10 @@ GEDCOM_HEADER <- function(character_encoding = "UTF-8",
 #' @param xref_wife An xref ID of the wife.
 #' @param xrefs_chil A vector of xref IDs of children in this family.
 #' @tests
-#' expect_equal(FAMILY_GROUP_RECORD("@F1@"),
-#'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
-#'                              0, "@F1@", "FAM",                      "",
-#'                              1, "@F1@", "CHAN",                     "",
-#'                              2, "@F1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
-#'              ))
-#' expect_equal(FAMILY_GROUP_RECORD("@F1@", user_reference_number = c(type1 = 123, 456)),
-#'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
-#'                              0, "@F1@", "FAM",                      "",
-#'                              1, "@F1@", "REFN",   "123",
-#'                              2, "@F1@", "TYPE",   "type1",
-#'                              1, "@F1@", "REFN",   "456",
-#'                              1, "@F1@", "CHAN",                     "",
-#'                              2, "@F1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
-#'              ))
+#' expect_equal(FAMILY_GROUP_RECORD("@F1@") %>% remove_section(1, "CHAN"),
+#'              tibble::tibble(level = 0, record = "@F1@", tag = "FAM", value = ""))
+#' expect_snapshot_value(FAMILY_GROUP_RECORD("@F1@", user_reference_number = c(type1 = 123, 456)) %>% 
+#'                                                     remove_section(1, "CHAN"), "json2")
 #' @return A tidy tibble containing a FAMILY_GROUP_RECORD part of a GEDCOM file.
 #' @export
 FAMILY_GROUP_RECORD <- function(xref_fam,
@@ -162,12 +151,7 @@ FAMILY_GROUP_RECORD <- function(xref_fam,
 #' @param associations A list of ASSOCIATION_STRUCTURE() objects giving the details of individuals this
 #' individual is associated with.
 #' @tests
-#' expect_equal(INDIVIDUAL_RECORD("@I1@"),
-#'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
-#'                              0, "@I1@", "INDI",                      "",
-#'                              1, "@I1@", "CHAN",                      "",
-#'                              2, "@I1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
-#'              ))
+#' expect_snapshot_value(INDIVIDUAL_RECORD("@I1@", sex_value = "X") %>% remove_section(1, "CHAN"), "json2")
 #' @return A tidy tibble containing an INDIVIDUAL_RECORD part of a GEDCOM file.
 #' @export
 INDIVIDUAL_RECORD <- function(xref_indi,
@@ -239,25 +223,9 @@ INDIVIDUAL_RECORD <- function(xref_indi,
 #'
 #' @inheritParams primitive_definitions
 #' @tests
-#' expect_equal(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG"),
-#'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
-#'                              0, "@M1@", "OBJE",                      "",
-#'                              1, "@M1@", "FILE",              "file_ref",
-#'                              2, "@M1@", "FORM",                   "JPEG",
-#'                              1, "@M1@", "CHAN",                      "",
-#'                              2, "@M1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
-#'              ))
-#' expect_equal(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG",
-#'                                user_reference_number = c(type = 123)),
-#'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
-#'                              0, "@M1@", "OBJE",                      "",
-#'                              1, "@M1@", "FILE",              "file_ref",
-#'                              2, "@M1@", "FORM",                   "JPEG",
-#'                              1, "@M1@", "REFN",                   "123",
-#'                              2, "@M1@", "TYPE",                   "type",
-#'                              1, "@M1@", "CHAN",                      "",
-#'                              2, "@M1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
-#'              ))
+#' expect_snapshot_value(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG") %>% remove_section(1, "CHAN"), "json2")
+#' expect_snapshot_value(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG", "electronic",
+#'                                user_reference_number = c(type = 123)) %>% remove_section(1, "CHAN"), "json2")
 #' @return A tidy tibble containing a MULTIMEDIA_RECORD part of a GEDCOM file.
 #' @export
 MULTIMEDIA_RECORD <- function(xref_obje,
@@ -325,14 +293,8 @@ MULTIMEDIA_RECORD <- function(xref_obje,
 #'
 #' @inheritParams primitive_definitions
 #' @tests
-#' expect_equal(NOTE_RECORD("@N1@", "This is a note", c(type = 123)),
-#'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
-#'                              0, "@N1@", "NOTE",        "This is a note",
-#'                              1, "@N1@", "REFN",        "123",
-#'                              2, "@N1@", "TYPE",        "type",
-#'                              1, "@N1@", "CHAN",                      "",
-#'                              2, "@N1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
-#'              ))
+#' expect_snapshot_value(NOTE_RECORD("@N1@", "This is a note", c(type = 123)) %>% remove_section(1, "CHAN"),
+#'                                                                   "json2")
 #' @return A tidy tibble containing a NOTE_RECORD part of a GEDCOM file.
 #' @export
 NOTE_RECORD <- function(xref_note,
@@ -386,16 +348,9 @@ NOTE_RECORD <- function(xref_note,
 #' @inheritParams primitive_definitions
 #' @param address An ADDRESS_STRUCTURE() object giving details of the repository address.
 #' @tests
-#' expect_equal(REPOSITORY_RECORD("@R1@", "Repo name",
-#'                                user_reference_number = c(type = 123)),
-#'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
-#'                              0, "@R1@", "REPO",                      "",
-#'                              1, "@R1@", "NAME",             "Repo name",
-#'                              1, "@R1@", "REFN",             "123",
-#'                              2, "@R1@", "TYPE",             "type",
-#'                              1, "@R1@", "CHAN",                      "",
-#'                              2, "@R1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
-#'              ))
+#' expect_snapshot_value(REPOSITORY_RECORD("@R1@", "Repo name",
+#'                                user_reference_number = c(type = 123)) %>% remove_section(1, "CHAN"),
+#'                                "json2")
 #' @return A tidy tibble containing a REPOSITORY_RECORD part of a GEDCOM file.
 #' @export
 REPOSITORY_RECORD <- function(xref_repo,
@@ -453,14 +408,8 @@ REPOSITORY_RECORD <- function(xref_repo,
 #' @param date_period_covered A date_period() object associated with the period covered by the source. 
 #' @param data_notes A list of NOTE_STRUCTURE() objects associated with the data in this source.
 #' @tests
-#' expect_equal(SOURCE_RECORD("@S1@", user_reference_number = c(type = 234)),
-#'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
-#'                              0, "@S1@", "SOUR",                      "",
-#'                              1, "@S1@", "REFN",                      "234",
-#'                              2, "@S1@", "TYPE",                      "type",
-#'                              1, "@S1@", "CHAN",                      "",
-#'                              2, "@S1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
-#'              ))
+#' expect_snapshot_value(SOURCE_RECORD("@S1@", user_reference_number = c(type = 234)) %>% 
+#'                          remove_section(1, "CHAN"), "json2")
 #' @return A tidy tibble containing a SOURCE_RECORD part of a GEDCOM file.
 #' @export
 SOURCE_RECORD <- function(xref_sour,
@@ -557,13 +506,7 @@ SOURCE_RECORD <- function(xref_sour,
 #' @inheritParams primitive_definitions
 #' @param address An ADDRESS_STRUCTURE() object giving address details of the submitter.
 #' @tests
-#' expect_equal(SUBMITTER_RECORD("@S1@", "Joe Bloggs"),
-#'              tibble::tribble(~level,  ~record,   ~tag,                  ~value,
-#'                              0, "@S1@", "SUBM",                      "",
-#'                              1, "@S1@", "NAME",            "Joe Bloggs",
-#'                              1, "@S1@", "CHAN",                      "",
-#'                              2, "@S1@", "DATE", trimws(toupper(format(Sys.Date(), "%e %b %Y")))
-#'              ))
+#' expect_snapshot_value(SUBMITTER_RECORD("@S1@", "Joe Bloggs") %>% remove_section(1, "CHAN"), "json2")
 #' @return A tidy tibble containing a SUBMITTER_RECORD part of a GEDCOM file.
 #' @export
 SUBMITTER_RECORD <- function(xref_subm,
@@ -599,9 +542,7 @@ SUBMITTER_RECORD <- function(xref_subm,
 #'
 #' @tests
 #' expect_equal(FOOTER_SECTION(),
-#'              tibble::tribble(~level,  ~record,   ~tag, ~value,
-#'                              0, "TR", "TRLR",     ""
-#'              ))
+#'              tibble::tibble(level = 0, record = "TR", tag = "TRLR", value = ""))
 #' @return A tidy tibble containing a FOOTER_SECTION part of a GEDCOM file.
 #' @export
 FOOTER_SECTION <- function(){

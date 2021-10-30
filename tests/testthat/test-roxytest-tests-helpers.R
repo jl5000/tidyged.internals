@@ -36,14 +36,14 @@ test_that("Function assign_xref_indi() @ L196", {
 })
 
 
-test_that("Function find_insertion_point() @ L246", {
+test_that("Function find_insertion_point() @ L238", {
   expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 2, "VERS"), 4)
   expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 3, "VERS"), 6)
   expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 1, "CHAR"), 7)
 })
 
 
-test_that("Function gedcom_value() @ L285", {
+test_that("Function gedcom_value() @ L277", {
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "FORM", 2), "LINEAGE-LINKED")
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "TEST", 1), "")
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 2), "5.5.5")
@@ -52,12 +52,7 @@ test_that("Function gedcom_value() @ L285", {
 })
 
 
-test_that("Function gedcom_value_update() @ L325", {
-  expect_identical(gedcom_value_update(tibble::tibble(), "@1@", "TAG", 4, 5, 6), tibble::tibble())
-})
-
-
-test_that("Function construct_full_name() @ L379", {
+test_that("Function construct_full_name() @ L328", {
   expect_error(construct_full_name(surname_prefix = "de la"))
   expect_equal(construct_full_name(given = "Joe"), "Joe")
   expect_equal(construct_full_name(prefix = "Professor", given = "Joe"), "Professor Joe")
