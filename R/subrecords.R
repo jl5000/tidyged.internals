@@ -371,19 +371,11 @@ FAMILY_EVENT_DETAIL <- function(husband_age_at_event = character(),
   chk_age_at_event(husband_age_at_event, 1) %>% parse_error()
   chk_age_at_event(wife_age_at_event, 1) %>% parse_error()
   
-  temp = dplyr::bind_rows(
-    tibble::tibble(level = 0, tag = "HUSB", value = ""),
-    tibble::tibble(level = 1, tag = "HAGE", value = husband_age_at_event),
-    tibble::tibble(level = 0, tag = "WIFE", value = ""),
-    tibble::tibble(level = 1, tag = "WAGE", value = wife_age_at_event),
+  dplyr::bind_rows(
+    tibble::tibble(level = 0, tag = "HUSB_AGE", value = husband_age_at_event),
+    tibble::tibble(level = 0, tag = "WIFE_AGE", value = wife_age_at_event),
     event_details %>% add_levels(0),
   )
-  
-  if (sum(temp$tag == "HAGE") == 0) temp <- dplyr::filter(temp, tag != "HUSB")
-  if (sum(temp$tag == "WAGE") == 0) temp <- dplyr::filter(temp, tag != "WIFE")  
-  dplyr::mutate(temp,
-                tag = dplyr::if_else(tag == "HAGE", "AGE", tag),
-                tag = dplyr::if_else(tag == "WAGE", "AGE", tag))
   
 }
 
@@ -936,6 +928,7 @@ PLACE_STRUCTURE <- function(place_name,
 #' expect_snapshot_value(SOURCE_CITATION("@S1@", where_within_source = 3, 
 #'                              event_type_cited_from = "CENS", 
 #'                              role_in_event = "WIFE",
+#'                              entry_recording_date = "28 JUN 1996",
 #'                              certainty_assessment = 2), "json2")
 #'                              
 #' @return A tidy tibble containing the SOURCE_CITATION part of a GEDCOM file.
@@ -967,7 +960,7 @@ SOURCE_CITATION <- function(xref_sour,
     tibble::tibble(level = 1, tag = "EVEN", value = event_type_cited_from),
     tibble::tibble(level = 2, tag = "ROLE", value = role_in_event),
     tibble::tibble(level = 1, tag = "DATA", value = ""),
-    tibble::tibble(level = 1, tag = "DATE", value = entry_recording_date),
+    tibble::tibble(level = 2, tag = "DATE", value = entry_recording_date),
     tibble::tibble(level = 2, tag = "TEXT", value = text_from_source),
     multimedia_links %>% dplyr::bind_rows() %>% add_levels(1),
     notes %>% dplyr::bind_rows() %>% add_levels(1),
