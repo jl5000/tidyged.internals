@@ -151,7 +151,10 @@ FAMILY_GROUP_RECORD <- function(xref_fam,
 #' @param associations A list of ASSOCIATION_STRUCTURE() objects giving the details of individuals this
 #' individual is associated with.
 #' @tests
-#' expect_snapshot_value(INDIVIDUAL_RECORD("@I1@", sex_value = "X") %>% remove_section(1, "CHAN"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_RECORD("@I1@", sex_value = "X", user_reference_number = c(type = "123")) %>% 
+#'                                  remove_section(1, "CHAN"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_RECORD("@I1@", sex_value = "X", user_reference_number = 234) %>% 
+#'                                  remove_section(1, "CHAN"), "json2")
 #' @return A tidy tibble containing an INDIVIDUAL_RECORD part of a GEDCOM file.
 #' @export
 INDIVIDUAL_RECORD <- function(xref_indi,
@@ -295,6 +298,8 @@ MULTIMEDIA_RECORD <- function(xref_obje,
 #' @tests
 #' expect_snapshot_value(NOTE_RECORD("@N1@", "This is a note", c(type = 123)) %>% remove_section(1, "CHAN"),
 #'                                                                   "json2")
+#' expect_snapshot_value(NOTE_RECORD("@N1@", "This is a note", 123) %>% remove_section(1, "CHAN"),
+#'                                                                   "json2")
 #' @return A tidy tibble containing a NOTE_RECORD part of a GEDCOM file.
 #' @export
 NOTE_RECORD <- function(xref_note,
@@ -350,6 +355,9 @@ NOTE_RECORD <- function(xref_note,
 #' @tests
 #' expect_snapshot_value(REPOSITORY_RECORD("@R1@", "Repo name",
 #'                                user_reference_number = c(type = 123)) %>% remove_section(1, "CHAN"),
+#'                                "json2")
+#' expect_snapshot_value(REPOSITORY_RECORD("@R1@", "Repo name",
+#'                                user_reference_number = 123) %>% remove_section(1, "CHAN"),
 #'                                "json2")
 #' @return A tidy tibble containing a REPOSITORY_RECORD part of a GEDCOM file.
 #' @export
@@ -409,6 +417,8 @@ REPOSITORY_RECORD <- function(xref_repo,
 #' @param data_notes A list of NOTE_STRUCTURE() objects associated with the data in this source.
 #' @tests
 #' expect_snapshot_value(SOURCE_RECORD("@S1@", user_reference_number = c(type = 234)) %>% 
+#'                          remove_section(1, "CHAN"), "json2")
+#' expect_snapshot_value(SOURCE_RECORD("@S1@", user_reference_number = 234) %>% 
 #'                          remove_section(1, "CHAN"), "json2")
 #' @return A tidy tibble containing a SOURCE_RECORD part of a GEDCOM file.
 #' @export

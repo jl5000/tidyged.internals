@@ -234,6 +234,7 @@ date_approximated <- function(date = date_calendar(),
 #' @tests
 #' expect_equal(is.na(parse_gedcom_date(NA)), TRUE)
 #' expect_equal(parse_gedcom_date("4 APR"), as.Date("1000-04-04"))
+#' expect_equal(parse_gedcom_date("4 APR", minimise = FALSE), as.Date("4000-04-04"))
 parse_gedcom_date <- function(date_string, minimise = TRUE) {
   if(is.na(date_string)) return(as.Date(NA))
   

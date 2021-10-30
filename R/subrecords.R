@@ -529,6 +529,7 @@ INDIVIDUAL_EVENT_DETAIL <- function(event_details = EVENT_DETAIL(),
 #' expect_equal(INDIVIDUAL_EVENT_STRUCTURE(character()), tibble::tibble())
 #' expect_snapshot_value(INDIVIDUAL_EVENT_STRUCTURE("BIRT"), "json2")
 #' expect_snapshot_value(INDIVIDUAL_EVENT_STRUCTURE("CHRA"), "json2")
+#' expect_snapshot_value(INDIVIDUAL_EVENT_STRUCTURE("EVEN", "A random event"), "json2")
 #' expect_snapshot_value(INDIVIDUAL_EVENT_STRUCTURE("BIRT", xref_fam = "@F4@"), "json2")
 #' expect_snapshot_value(INDIVIDUAL_EVENT_STRUCTURE("ADOP", xref_fam = "@F4@", 
 #'                                         adopted_by_which_parent = "BOTH"), "json2")
@@ -690,11 +691,11 @@ PERSONAL_NAME_PIECES <- function(name_piece_prefix = character(),
 #' expect_error(PERSONAL_NAME_STRUCTURE())
 #' expect_error(PERSONAL_NAME_STRUCTURE("Joe Bloggs"))
 #' expect_error(PERSONAL_NAME_STRUCTURE("Joe /Bloggs/",
-#'                                      name_phonetic = "Jo Bloggs",
-#'                                      phonetisation_method = "Variant"))
+#'                                      name_pieces = PERSONAL_NAME_PIECES(name_piece_given = "Joe"),
+#'                                      name_phonetic = "Jo Bloggs"))
 #' expect_error(PERSONAL_NAME_STRUCTURE("Joe /Bloggs/",
-#'                                      name_romanised = "Jo Bloggs",
-#'                                      romanisation_method = "Variant"))
+#'                                      name_pieces = PERSONAL_NAME_PIECES(name_piece_given = "Joe"),
+#'                                      name_romanised = "Jo Bloggs"))
 #' expect_error(PERSONAL_NAME_STRUCTURE("Joe Bloggs", 
 #'                           name_phonetic = c("Joe Blogs", "Jo Bloggs")))
 #' expect_error(PERSONAL_NAME_STRUCTURE("Joe /Bloggs/", 
@@ -923,6 +924,7 @@ PLACE_STRUCTURE <- function(place_name,
 #'                              event_type_cited_from = "CENS", 
 #'                              role_in_event = "WIFE",
 #'                              entry_recording_date = "28 JUN 1996",
+#'                              text_from_source = c("text1","text2"),
 #'                              certainty_assessment = 2), "json2")
 #'                              
 #' @return A tidy tibble containing the SOURCE_CITATION part of a GEDCOM file.
@@ -947,6 +949,8 @@ SOURCE_CITATION <- function(xref_sour,
   chk_event_type_cited_from(event_type_cited_from, 1) %>% parse_error()
   chk_role_in_event(role_in_event, 1) %>% parse_error()
   chk_date_value(entry_recording_date, 1) %>% parse_error()
+  chk_text_from_source(text_from_source, 1000) %>% parse_error()
+  chk_certainty_assessment(certainty_assessment, 1) %>% parse_error()
   
   temp <- dplyr::bind_rows(
     tibble::tibble(level = 0, tag = "SOUR", value = xref_sour),

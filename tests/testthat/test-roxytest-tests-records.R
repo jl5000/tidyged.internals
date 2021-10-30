@@ -19,43 +19,53 @@ test_that("Function FAMILY_GROUP_RECORD() @ L74", {
 })
 
 
-test_that("Function INDIVIDUAL_RECORD() @ L157", {
-  expect_snapshot_value(INDIVIDUAL_RECORD("@I1@", sex_value = "X") %>% remove_section(1, "CHAN"), "json2")
+test_that("Function INDIVIDUAL_RECORD() @ L160", {
+  expect_snapshot_value(INDIVIDUAL_RECORD("@I1@", sex_value = "X", user_reference_number = c(type = "123")) %>% 
+                                   remove_section(1, "CHAN"), "json2")
+  expect_snapshot_value(INDIVIDUAL_RECORD("@I1@", sex_value = "X", user_reference_number = 234) %>% 
+                                   remove_section(1, "CHAN"), "json2")
 })
 
 
-test_that("Function MULTIMEDIA_RECORD() @ L231", {
+test_that("Function MULTIMEDIA_RECORD() @ L234", {
   expect_snapshot_value(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG") %>% remove_section(1, "CHAN"), "json2")
   expect_snapshot_value(MULTIMEDIA_RECORD("@M1@", "file_ref", "JPEG", "electronic",
                                  user_reference_number = c(type = 123)) %>% remove_section(1, "CHAN"), "json2")
 })
 
 
-test_that("Function NOTE_RECORD() @ L300", {
+test_that("Function NOTE_RECORD() @ L305", {
   expect_snapshot_value(NOTE_RECORD("@N1@", "This is a note", c(type = 123)) %>% remove_section(1, "CHAN"),
+                                                                    "json2")
+  expect_snapshot_value(NOTE_RECORD("@N1@", "This is a note", 123) %>% remove_section(1, "CHAN"),
                                                                     "json2")
 })
 
 
-test_that("Function REPOSITORY_RECORD() @ L356", {
+test_that("Function REPOSITORY_RECORD() @ L364", {
   expect_snapshot_value(REPOSITORY_RECORD("@R1@", "Repo name",
                                  user_reference_number = c(type = 123)) %>% remove_section(1, "CHAN"),
+                                 "json2")
+  expect_snapshot_value(REPOSITORY_RECORD("@R1@", "Repo name",
+                                 user_reference_number = 123) %>% remove_section(1, "CHAN"),
                                  "json2")
 })
 
 
-test_that("Function SOURCE_RECORD() @ L415", {
+test_that("Function SOURCE_RECORD() @ L425", {
   expect_snapshot_value(SOURCE_RECORD("@S1@", user_reference_number = c(type = 234)) %>% 
+                           remove_section(1, "CHAN"), "json2")
+  expect_snapshot_value(SOURCE_RECORD("@S1@", user_reference_number = 234) %>% 
                            remove_section(1, "CHAN"), "json2")
 })
 
 
-test_that("Function SUBMITTER_RECORD() @ L512", {
+test_that("Function SUBMITTER_RECORD() @ L522", {
   expect_snapshot_value(SUBMITTER_RECORD("@S1@", "Joe Bloggs") %>% remove_section(1, "CHAN"), "json2")
 })
 
 
-test_that("Function FOOTER_SECTION() @ L548", {
+test_that("Function FOOTER_SECTION() @ L558", {
   expect_equal(FOOTER_SECTION(),
                tibble::tibble(level = 0, record = "TR", tag = "TRLR", value = ""))
 })

@@ -62,13 +62,14 @@ test_that("Function date_approximated() @ L206", {
 })
 
 
-test_that("Function parse_gedcom_date() @ L237", {
+test_that("Function parse_gedcom_date() @ L238", {
   expect_equal(is.na(parse_gedcom_date(NA)), TRUE)
   expect_equal(parse_gedcom_date("4 APR"), as.Date("1000-04-04"))
+  expect_equal(parse_gedcom_date("4 APR", minimise = FALSE), as.Date("4000-04-04"))
 })
 
 
-test_that("Function parse_gedcom_age() @ L280", {
+test_that("Function parse_gedcom_age() @ L281", {
   expect_equal(is.na(parse_gedcom_age(NA)), TRUE)
   expect_equal(parse_gedcom_age("16y"), 16)
   expect_equal(parse_gedcom_age("16y 6m"), 16.5)

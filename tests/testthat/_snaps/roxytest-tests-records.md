@@ -133,7 +133,7 @@
       ]
     }
 
-# Function INDIVIDUAL_RECORD() @ L157
+# Function INDIVIDUAL_RECORD() @ L160
 
     {
       "type": "list",
@@ -146,7 +146,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2]
+          "value": [1, 2, 3, 4]
         },
         "names": {
           "type": "character",
@@ -158,27 +158,72 @@
         {
           "type": "double",
           "attributes": {},
-          "value": [0, 1]
+          "value": [0, 1, 1, 2]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["@I1@", "@I1@"]
+          "value": ["@I1@", "@I1@", "@I1@", "@I1@"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["INDI", "SEX"]
+          "value": ["INDI", "SEX", "REFN", "TYPE"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["", "X"]
+          "value": ["", "X", "123", "type"]
         }
       ]
     }
 
-# Function MULTIMEDIA_RECORD() @ L231
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1, 2, 3]
+        },
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "record", "tag", "value"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0, 1, 1]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["@I1@", "@I1@", "@I1@"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["INDI", "SEX", "REFN"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["", "X", "234"]
+        }
+      ]
+    }
+
+# Function MULTIMEDIA_RECORD() @ L234
 
     {
       "type": "list",
@@ -268,7 +313,7 @@
       ]
     }
 
-# Function NOTE_RECORD() @ L300
+# Function NOTE_RECORD() @ L305
 
     {
       "type": "list",
@@ -313,7 +358,52 @@
       ]
     }
 
-# Function REPOSITORY_RECORD() @ L356
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1, 2]
+        },
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "record", "tag", "value"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0, 1]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["@N1@", "@N1@"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["NOTE", "REFN"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["This is a note", "123"]
+        }
+      ]
+    }
+
+# Function REPOSITORY_RECORD() @ L364
 
     {
       "type": "list",
@@ -358,7 +448,52 @@
       ]
     }
 
-# Function SOURCE_RECORD() @ L415
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1, 2, 3]
+        },
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "record", "tag", "value"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0, 1, 1]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["@R1@", "@R1@", "@R1@"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["REPO", "NAME", "REFN"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["", "Repo name", "123"]
+        }
+      ]
+    }
+
+# Function SOURCE_RECORD() @ L425
 
     {
       "type": "list",
@@ -403,7 +538,52 @@
       ]
     }
 
-# Function SUBMITTER_RECORD() @ L512
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1, 2]
+        },
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "record", "tag", "value"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0, 1]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["@S1@", "@S1@"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["SOUR", "REFN"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["", "234"]
+        }
+      ]
+    }
+
+# Function SUBMITTER_RECORD() @ L522
 
     {
       "type": "list",

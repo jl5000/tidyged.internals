@@ -1358,7 +1358,7 @@
       ]
     }
 
-# Function INDIVIDUAL_EVENT_DETAIL() @ L504
+# Function INDIVIDUAL_EVENT_DETAIL() @ L503
 
     {
       "type": "list",
@@ -1474,6 +1474,46 @@
           "type": "character",
           "attributes": {},
           "value": [""]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["tbl_df", "tbl", "data.frame"]
+        },
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
+          "value": [1]
+        },
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["level", "tag", "value"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["EVEN"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["A random event"]
         }
       ]
     }
@@ -1918,7 +1958,7 @@
       ]
     }
 
-# Function SOURCE_CITATION() @ L931
+# Function SOURCE_CITATION() @ L932
 
     {
       "type": "list",
@@ -2051,7 +2091,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2, 3, 4, 5, 6, 7]
+          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9]
         },
         "names": {
           "type": "character",
@@ -2063,22 +2103,22 @@
         {
           "type": "double",
           "attributes": {},
-          "value": [0, 1, 1, 2, 1, 2, 1]
+          "value": [0, 1, 1, 2, 1, 2, 2, 2, 1]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["SOUR", "PAGE", "EVEN", "ROLE", "DATA", "DATE", "QUAY"]
+          "value": ["SOUR", "PAGE", "EVEN", "ROLE", "DATA", "DATE", "TEXT", "TEXT", "QUAY"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["@S1@", "3", "CENS", "WIFE", "", "28 JUN 1996", "2"]
+          "value": ["@S1@", "3", "CENS", "WIFE", "", "28 JUN 1996", "text1", "text2", "2"]
         }
       ]
     }
 
-# Function SOURCE_REPOSITORY_CITATION() @ L987
+# Function SOURCE_REPOSITORY_CITATION() @ L990
 
     {
       "type": "list",
@@ -2118,7 +2158,7 @@
       ]
     }
 
-# Function SPOUSE_TO_FAMILY_LINK() @ L1018
+# Function SPOUSE_TO_FAMILY_LINK() @ L1021
 
     {
       "type": "list",
