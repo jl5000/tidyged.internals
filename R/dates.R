@@ -26,9 +26,9 @@ date_current <- function() {
 #' expect_equal(date_exact(2005, 8, 12), "12 AUG 2005")
 #' @return A DATE_EXACT string
 #' @export
-date_exact <- function(year = numeric(),
-                       month = numeric(),
-                       day = numeric()) {
+date_exact <- function(year = integer(),
+                       month = integer(),
+                       day = integer()) {
   
   if (length(day) + length(month) + length(year) < 3) return(character())
   
@@ -58,9 +58,9 @@ date_exact <- function(year = numeric(),
 #' expect_equal(date_calendar(103, year_is_bce = TRUE), "103 BCE")
 #' expect_equal(date_calendar(2005, 1), "JAN 2005")
 #' expect_equal(date_calendar(2005, 1, 14), "14 JAN 2005")
-date_calendar <- function(year = numeric(), 
-                          month = numeric(), 
-                          day = numeric(),
+date_calendar <- function(year = integer(), 
+                          month = integer(), 
+                          day = integer(),
                           year_is_bce = FALSE,
                           year_is_dual = FALSE) {
   

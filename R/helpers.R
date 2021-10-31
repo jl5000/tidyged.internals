@@ -166,7 +166,7 @@ assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble(), quantity 
       ref <- ref[grepl(paste0("^@", type, "(\\d+)@$"), ref)] %>% 
         stringr::str_remove_all("@") %>% 
         stringr::str_remove_all("[A-Za-z]") %>% 
-        as.numeric() %>% 
+        as.integer() %>% 
         max() + 1
       
     }

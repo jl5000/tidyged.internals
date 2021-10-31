@@ -49,9 +49,9 @@ chk_input_choice <- function(input, choices) {
 #' expect_error(chk_date(2005, 10, 32) %>% parse_error())
 #' expect_error(chk_date(2005, -1, 6) %>% parse_error())
 #' expect_error(chk_date(month = 1, day = 32) %>% parse_error())
-chk_date <- function(year = numeric(),
-                          month = numeric(),
-                          day = numeric()) {
+chk_date <- function(year = integer(),
+                          month = integer(),
+                          day = integer()) {
   
   if (length(year) + length(day) < length(month))
     return("Month is defined without a day or year")

@@ -4,7 +4,7 @@
 \alias{date_exact}
 \title{Construct a DATE_EXACT string}
 \usage{
-date_exact(year = numeric(), month = numeric(), day = numeric())
+date_exact(year = integer(), month = integer(), day = integer())
 }
 \arguments{
 \item{year}{The year.}

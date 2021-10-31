@@ -5,9 +5,9 @@
 \title{Construct a DATE_CALENDAR string}
 \usage{
 date_calendar(
-  year = numeric(),
-  month = numeric(),
-  day = numeric(),
+  year = integer(),
+  month = integer(),
+  day = integer(),
   year_is_bce = FALSE,
   year_is_dual = FALSE
 )
