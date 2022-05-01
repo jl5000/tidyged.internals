@@ -10,7 +10,7 @@ add_levels <- function(df, start_level) {
   
   if (nrow(df) == 0) return(df)
   
-  df %>% 
+  df |> 
     dplyr::mutate(level = start_level + level)
   
 }
@@ -26,8 +26,8 @@ add_levels <- function(df, start_level) {
 #' @export
 finalise <- function(df, global_start_level = 0) {
   
-  df %>% 
-    dplyr::mutate(level = global_start_level + level) %>%
+  df |> 
+    dplyr::mutate(level = global_start_level + level) |>
     tidyr::fill(record)
   
 }
@@ -155,7 +155,7 @@ assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble(), quantity 
   
   if (ref == 0) {
     # Are there any existing records of this type?
-    gedcom_filt <- gedcom %>% 
+    gedcom_filt <- gedcom |> 
       dplyr::filter(stringr::str_detect(record, paste0("^@", type, "\\d+@$"))) 
     
     if(nrow(gedcom_filt) == 0) {
@@ -163,10 +163,10 @@ assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble(), quantity 
     } else {
       ref <- unique(gedcom_filt$record)
       
-      ref <- ref[grepl(paste0("^@", type, "(\\d+)@$"), ref)] %>% 
-        stringr::str_remove_all("@") %>% 
-        stringr::str_remove_all("[A-Za-z]") %>% 
-        as.integer() %>% 
+      ref <- ref[grepl(paste0("^@", type, "(\\d+)@$"), ref)] |> 
+        stringr::str_remove_all("@") |> 
+        stringr::str_remove_all("[A-Za-z]") |> 
+        as.integer() |> 
         max() + 1
       
     }
@@ -346,7 +346,7 @@ construct_full_name <- function(prefix = character(),
     surname_prefix, 
     surname,
     stringr::str_replace_all(suffix, ", ?", " ")
-  ) %>% 
+  ) |> 
     stringr::str_squish()
   
 }

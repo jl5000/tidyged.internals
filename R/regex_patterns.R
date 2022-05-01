@@ -21,23 +21,23 @@ regex_combn <- function(reg1, reg2) {
 }
 
 reg_day <- function() {
-  "\\d{1,2}" %>% group_it()
+  "\\d{1,2}" |> group_it()
 }
 
 reg_month <- function() {
-  paste0(toupper(month.abb), collapse = "|") %>% group_it()
+  paste0(toupper(month.abb), collapse = "|") |> group_it()
 }
 
 reg_year <- function() {
-  "\\d{4}" %>% group_it()
+  "\\d{4}" |> group_it()
 }
 
 reg_year_dual <- function() {
-  "\\d{4}/\\d{2}" %>% group_it()
+  "\\d{4}/\\d{2}" |> group_it()
 }
 
 reg_bce <- function() {
-  "BCE|BC|B\\.C\\." %>% group_it()
+  "BCE|BC|B\\.C\\." |> group_it()
 }
 
 #' Construct a regular expression for an xref
@@ -70,7 +70,7 @@ reg_age_at_event <- function() {
            "\\d{1,2}m \\d{1,3}d$",
            "\\d{1,3}y$",
            "\\d{1,2}m$",
-           "\\d{1,3}d$")) %>% 
+           "\\d{1,3}d$")) |> 
     paste(collapse = "|")
   
 }
@@ -189,7 +189,7 @@ reg_date_period <- function(flatten = TRUE) {
               regex_combn(paste("FROM", reg_date(FALSE,FALSE)), 
                           paste(" TO", reg_date(FALSE,FALSE))))
   if (flatten) {
-    combos %>% anchor_it() %>% paste(collapse = "|")
+    combos |> anchor_it() |> paste(collapse = "|")
   } else {
     combos
   }
@@ -220,7 +220,7 @@ reg_date_range <- function(flatten = TRUE) {
               regex_combn(paste("BET", reg_date(FALSE,FALSE)), 
                           paste(" AND", reg_date(FALSE,FALSE))))
   if (flatten) {
-    combos %>% anchor_it() %>% paste(collapse = "|")
+    combos |> anchor_it() |> paste(collapse = "|")
   } else {
     combos
   }
@@ -250,7 +250,7 @@ reg_date_approximated <- function(flatten = TRUE) {
               paste("CAL", reg_date(FALSE,FALSE)),
               paste("EST", reg_date(FALSE,FALSE)))
   if (flatten) {
-    combos %>% anchor_it() %>% paste(collapse = "|")
+    combos |> anchor_it() |> paste(collapse = "|")
   } else {
     combos
   }
@@ -290,7 +290,7 @@ reg_date_value <- function() {
   c(reg_date(FALSE,FALSE),
     reg_date_period(FALSE),
     reg_date_range(FALSE),
-    reg_date_approximated(FALSE)) %>% 
-    anchor_it() %>% 
+    reg_date_approximated(FALSE)) |> 
+    anchor_it() |> 
     paste(collapse = "|")
 }

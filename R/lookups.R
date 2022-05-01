@@ -31,17 +31,17 @@ val_multimedia_formats <- function() {
 #' @rdname val_languages
 #' @export
 val_pedigree_linkage_types <- function() {
-  c("birth", "adopted", "foster") %>% 
-    stats::setNames(stringr::str_to_title(.))
+  vals <- c("birth", "adopted", "foster")
+  stats::setNames(vals, stringr::str_to_title(vals))
 }
 
 #' @rdname val_languages
 #' @export
 val_source_media_types <- function() {
-  c("audio", "book", "card", "electronic", "fiche", 
+  vals <- c("audio", "book", "card", "electronic", "fiche", 
     "film", "magazine", "manuscript", "map", 
-    "newspaper", "photo", "tombstone", "video") %>% 
-    stats::setNames(stringr::str_to_title(.))
+    "newspaper", "photo", "tombstone", "video")
+  stats::setNames(vals, stringr::str_to_title(vals))
 }
 
 #' @rdname val_languages

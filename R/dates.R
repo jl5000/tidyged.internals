@@ -254,7 +254,7 @@ parse_gedcom_date <- function(date_string, minimise = TRUE) {
   }
  
   if(stringr::str_detect(ged_date, "^\\d{1,2} ")) {
-    ged_day <- stringr::str_extract(ged_date, "^\\d{1,2} ") %>% stringr::str_trim()
+    ged_day <- stringr::str_extract(ged_date, "^\\d{1,2} ") |> stringr::str_trim()
   } else {
     if(minimise) {
       ged_day <- 1
@@ -281,11 +281,11 @@ parse_gedcom_date <- function(date_string, minimise = TRUE) {
 parse_gedcom_age <- function(age_string) {
   if(is.na(age_string)) return(NA_real_)
   
-  years <- stringr::str_extract(age_string, "\\d{1,3}y") %>% 
+  years <- stringr::str_extract(age_string, "\\d{1,3}y") |> 
     stringr::str_replace("y", "")
-  months <- stringr::str_extract(age_string, "\\d{1,2}m") %>% 
+  months <- stringr::str_extract(age_string, "\\d{1,2}m") |> 
     stringr::str_replace("m", "")
-  days <- stringr::str_extract(age_string, "\\d{1,3}d") %>% 
+  days <- stringr::str_extract(age_string, "\\d{1,3}d") |> 
     stringr::str_replace("d", "")
   
   if(is.na(years)) years_num <- 0 else years_num <- as.numeric(years)

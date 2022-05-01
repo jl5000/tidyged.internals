@@ -4,9 +4,9 @@ parse_error <- function(msg) {
 }
 
 #' @tests
-#' expect_error(chk_input_size(1:2, 1) %>% parse_error())
-#' expect_error(chk_input_size("123456", 1, min_char = 7) %>% parse_error())
-#' expect_error(chk_input_size("123456", 1, max_char = 5) %>% parse_error())
+#' expect_error(chk_input_size(1:2, 1) |> parse_error())
+#' expect_error(chk_input_size("123456", 1, min_char = 7) |> parse_error())
+#' expect_error(chk_input_size("123456", 1, max_char = 5) |> parse_error())
 chk_input_size <- function(input, max_dim, min_char = NULL, max_char = NULL) {
   if (length(input) > max_dim)
     return(paste0("Input ", input[1], "... has too many dimensions. The limit is ", max_dim))
@@ -21,7 +21,7 @@ chk_input_size <- function(input, max_dim, min_char = NULL, max_char = NULL) {
 }
 
 #' @tests
-#' expect_error(chk_input_pattern("Test string", "Tast string") %>% parse_error())
+#' expect_error(chk_input_pattern("Test string", "Tast string") |> parse_error())
 chk_input_pattern <- function(input, pattern) {
   if (length(input) > 0) {
     for (i in input) {
@@ -33,7 +33,7 @@ chk_input_pattern <- function(input, pattern) {
 }
 
 #' @tests
-#' expect_error(chk_input_choice(20, 22:28) %>% parse_error())
+#' expect_error(chk_input_choice(20, 22:28) |> parse_error())
 chk_input_choice <- function(input, choices) {
   if (length(input) == 1 && !input %in% choices) 
     return(paste("Invalid argument value:", input, "\n  The valid values are:", 
@@ -43,12 +43,12 @@ chk_input_choice <- function(input, choices) {
 
 
 #' @tests
-#' expect_error(chk_date(2005, day = 15) %>% parse_error())
-#' expect_error(chk_date(month = 5) %>% parse_error())
-#' expect_error(chk_date(2005, 13) %>% parse_error())
-#' expect_error(chk_date(2005, 10, 32) %>% parse_error())
-#' expect_error(chk_date(2005, -1, 6) %>% parse_error())
-#' expect_error(chk_date(month = 1, day = 32) %>% parse_error())
+#' expect_error(chk_date(2005, day = 15) |> parse_error())
+#' expect_error(chk_date(month = 5) |> parse_error())
+#' expect_error(chk_date(2005, 13) |> parse_error())
+#' expect_error(chk_date(2005, 10, 32) |> parse_error())
+#' expect_error(chk_date(2005, -1, 6) |> parse_error())
+#' expect_error(chk_date(month = 1, day = 32) |> parse_error())
 chk_date <- function(year = integer(),
                           month = integer(),
                           day = integer()) {
@@ -80,9 +80,9 @@ chk_date <- function(year = integer(),
 #' @return Either a single character string describing the error encountered, or
 #' NULL if no errors are found.
 #' @tests
-#' expect_error(chk_dates("18 MAY 2005", "17 MAY 2005") %>% parse_error())
-#' expect_error(chk_dates("MAR 2005", "FEB 2004") %>% parse_error())
-#' expect_error(chk_dates("2005", "2004") %>% parse_error())
+#' expect_error(chk_dates("18 MAY 2005", "17 MAY 2005") |> parse_error())
+#' expect_error(chk_dates("MAR 2005", "FEB 2004") |> parse_error())
+#' expect_error(chk_dates("2005", "2004") |> parse_error())
 chk_dates <- function(start_date, end_date) {
 
   date1 <- parse_gedcom_date(start_date, minimise = TRUE)
