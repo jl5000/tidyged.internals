@@ -156,19 +156,19 @@ assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble(), quantity 
   if (ref == 0) {
     # Are there any existing records of this type?
     gedcom_filt <- gedcom |> 
-      dplyr::filter(stringr::str_detect(record, paste0("^@", type, "\\d+@$"))) 
+      dplyr::filter(grepl(paste0("^@", type, "\\d+@$"), record)) 
     
     if(nrow(gedcom_filt) == 0) {
       ref <- 1
     } else {
       ref <- unique(gedcom_filt$record)
       
-      ref <- ref[grepl(paste0("^@", type, "(\\d+)@$"), ref)] |> 
-        stringr::str_remove_all("@") |> 
-        stringr::str_remove_all("[A-Za-z]") |> 
+      ref <- ref[grepl(paste0("^@", type, "(\\d+)@$"), ref)] |>
+        str_remove_all("@") |> 
+        str_remove_all("[A-Za-z]") |> 
         as.integer() |> 
         max() + 1
-      
+
     }
     ref <- seq(ref, ref+quantity-1, 1)
   } 
@@ -340,13 +340,35 @@ construct_full_name <- function(prefix = character(),
     surname <- ""
   }
   
-  paste(
-    stringr::str_replace_all(prefix, ", ?", " "),
-    stringr::str_replace_all(given, ", ?", " "), 
+  fn <- paste(
+    gsub(", ?", " ", prefix),
+    gsub(", ?", " ", given), 
     surname_prefix, 
     surname,
-    stringr::str_replace_all(suffix, ", ?", " ")
-  ) |> 
-    stringr::str_squish()
+    gsub(", ?", " ", suffix)
+  )
   
+  gsub("\\s+", " ", fn) |>
+    trimws()
+  
+}
+
+# Stringr dependency removed
+str_extract <- function(string, pattern){
+  regmatches(string, regexpr(pattern, string))
+}
+str_extract_all <- function(string, pattern){
+  regmatches(string, gregexpr(pattern, string))
+}
+str_replace <- function(string, pattern, replacement){
+  sub(pattern, replacement, string)
+}
+str_replace_all <- function(string, pattern, replacement){
+  gsub(pattern, replacement, string)
+}
+str_remove <- function(string, pattern){
+  sub(pattern, "", string)
+}
+str_remove_all <- function(string, pattern){
+  gsub(pattern, "", string)
 }

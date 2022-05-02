@@ -77,10 +77,10 @@ date_calendar <- function(year = integer(),
       val <- paste(val, "BCE")
     if(length(month) == 1 & year_is_dual) {
       next_year <- year + 1
-      val <- paste0(val, "/", stringr::str_sub(next_year, -2))
+      val <- paste0(val, "/", substr(next_year, 3, 4))
     }
   }
-  stringr::str_trim(val)
+  trimws(val)
 }
 
 
@@ -108,8 +108,8 @@ date_calendar <- function(year = integer(),
 date_range <- function(start_date = date_calendar(),
                        end_date = date_calendar()) {
   
-  if((length(start_date) > 0 && !stringr::str_detect(start_date, reg_date_calendar())) |
-     (length(end_date) > 0 && !stringr::str_detect(end_date, reg_date_calendar())))
+  if((length(start_date) > 0 && !grepl(reg_date_calendar(), start_date)) |
+     (length(end_date) > 0 && !grepl(reg_date_calendar(), end_date)))
     stop("Start and end dates must be date_calendar() objects")
     
   if (length(start_date) + length(end_date) == 2) {
@@ -163,8 +163,8 @@ date_range <- function(start_date = date_calendar(),
 date_period <- function(start_date = date_calendar(),
                        end_date = date_calendar()) {
   
-  if((length(start_date) > 0 && !stringr::str_detect(start_date, reg_date_calendar())) |
-     (length(end_date) > 0 && !stringr::str_detect(end_date, reg_date_calendar())))
+  if((length(start_date) > 0 && !grepl(reg_date_calendar(), start_date)) |
+     (length(end_date) > 0 && !grepl(reg_date_calendar(), end_date)))
     stop("Start and end dates must be date_calendar() objects")
   
   if (length(start_date) + length(end_date) == 2) {
@@ -239,22 +239,23 @@ parse_gedcom_date <- function(date_string, minimise = TRUE) {
   if(is.na(date_string)) return(as.Date(NA))
   
   # remove dual year
-  ged_date <- stringr::str_remove(date_string, "/\\d{2}") 
+  ged_date <- str_remove(date_string, "/\\d{2}") 
   
-  if(stringr::str_detect(ged_date, "\\d{3,4}$")) {
-    ged_year <- stringr::str_extract(ged_date, "\\d{3,4}$")
+  if(grepl("\\d{3,4}$", ged_date)) {
+    ged_year <- str_extract(ged_date, "\\d{3,4}$")
   } else {
     if(minimise) ged_year <- 1000 else ged_year <- 4000
   }
   
-  if(stringr::str_detect(ged_date, "[A-Z]{3}")) {
-    ged_month <- which(toupper(month.abb) == stringr::str_extract(ged_date, "[A-Z]{3}"))
+  if(grepl("[A-Z]{3}", ged_date)) {
+    ged_month <- which(toupper(month.abb) == str_extract(ged_date, "[A-Z]{3}"))
   } else {
     if(minimise) ged_month <- 1 else ged_month <- 12
   }
  
-  if(stringr::str_detect(ged_date, "^\\d{1,2} ")) {
-    ged_day <- stringr::str_extract(ged_date, "^\\d{1,2} ") |> stringr::str_trim()
+  if(grepl("^\\d{1,2} ", ged_date)) {
+    ged_day <- str_extract(ged_date, "^\\d{1,2} ") |> 
+      trimws()
   } else {
     if(minimise) {
       ged_day <- 1
@@ -281,16 +282,16 @@ parse_gedcom_date <- function(date_string, minimise = TRUE) {
 parse_gedcom_age <- function(age_string) {
   if(is.na(age_string)) return(NA_real_)
   
-  years <- stringr::str_extract(age_string, "\\d{1,3}y") |> 
-    stringr::str_replace("y", "")
-  months <- stringr::str_extract(age_string, "\\d{1,2}m") |> 
-    stringr::str_replace("m", "")
-  days <- stringr::str_extract(age_string, "\\d{1,3}d") |> 
-    stringr::str_replace("d", "")
+  years <- str_extract(age_string, "\\d{1,3}y") |> 
+    str_remove("y")
+  months <- str_extract(age_string, "\\d{1,2}m") |> 
+    str_remove("m")
+  days <- str_extract(age_string, "\\d{1,3}d") |> 
+    str_remove("d")
   
-  if(is.na(years)) years_num <- 0 else years_num <- as.numeric(years)
-  if(is.na(months)) months_prop <- 0 else months_prop <- as.numeric(months)/12
-  if(is.na(days)) days_prop <- 0 else days_prop <- as.numeric(days)/365
+  if(length(years) == 0) years_num <- 0 else years_num <- as.numeric(years)
+  if(length(months) == 0) months_prop <- 0 else months_prop <- as.numeric(months)/12
+  if(length(days) == 0) days_prop <- 0 else days_prop <- as.numeric(days)/365
   
   years_num + months_prop + days_prop
   

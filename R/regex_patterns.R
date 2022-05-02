@@ -51,7 +51,8 @@ reg_bce <- function() {
 reg_xref <- function(only = TRUE) {
   #p31
   reg <- "@[a-zA-Z0-9]{1,20}@"
-  dplyr::if_else(only, anchor_it(reg), reg)
+  if(only) reg <- anchor_it(reg)
+  reg
 }
 
 reg_latitude <- function() {
@@ -112,7 +113,8 @@ reg_custom_value <- function(){
 #' @return A regex string
 reg_date_exact <- function(only = TRUE) {
   reg <- paste(reg_day(), reg_month(), reg_year())
-  dplyr::if_else(only, anchor_it(reg), reg)
+  if(only) reg <- anchor_it(reg)
+  reg
 }
 
 

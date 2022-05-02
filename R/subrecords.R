@@ -52,8 +52,8 @@ LINEAGE_LINKED_HEADER_EXTENSION <- function(system_id,
                                             gedcom_content_description = character()) {
   
   product_version_number <- as.character(product_version_number)
-  product_version_number <- stringr::str_extract(product_version_number, 
-                                                 "^\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?")
+  product_version_number <- str_extract(product_version_number, 
+                                        "^\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?")
   
   chk_system_id(system_id, 1) |> parse_error()
   chk_product_version_number(product_version_number, 1) |> parse_error()

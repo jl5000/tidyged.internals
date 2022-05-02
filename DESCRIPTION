@@ -1,6 +1,6 @@
 Package: tidyged.internals
 Title: Internal Data Structures for the 'Tidyged' Package
-Version: 1.4.3.9000
+Version: 1.4.4.9000
 Authors@R: 
     person(given = "Jamie",
            family = "Lendrum",
@@ -16,7 +16,6 @@ RoxygenNote: 7.1.2
 Imports: 
     dplyr,
     tidyr,
-    stringr,
     lubridate,
     tibble
 Suggests: 
