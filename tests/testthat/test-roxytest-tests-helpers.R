@@ -43,16 +43,17 @@ test_that("Function find_insertion_point() @ L238", {
 })
 
 
-test_that("Function gedcom_value() @ L277", {
+test_that("Function gedcom_value() @ L278", {
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "FORM", 2), "LINEAGE-LINKED")
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "TEST", 1), "")
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 2), "5.5.5")
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 3), "5.5.5")
   expect_equal(gedcom_value(GEDCOM_HEADER(), "@I1@", "VERS", 3), "")
+  expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 3, "FORM"), "5.5.5")
 })
 
 
-test_that("Function construct_full_name() @ L328", {
+test_that("Function construct_full_name() @ L329", {
   expect_error(construct_full_name(surname_prefix = "de la"))
   expect_equal(construct_full_name(given = "Joe"), "Joe")
   expect_equal(construct_full_name(prefix = "Professor", given = "Joe"), "Professor Joe")

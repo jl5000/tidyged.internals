@@ -274,6 +274,7 @@ find_insertion_point <- function(gedcom,
 #' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 2), "5.5.5")
 #' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 3), "5.5.5")
 #' expect_equal(gedcom_value(GEDCOM_HEADER(), "@I1@", "VERS", 3), "")
+#' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 3, "FORM"), "5.5.5")
 gedcom_value <- function(gedcom, record_xref, tag, level, after_tag = NULL) {
   
   gedcom_filtered <- gedcom[gedcom$record %in% record_xref,]
