@@ -276,7 +276,7 @@ find_insertion_point <- function(gedcom,
 #' expect_equal(gedcom_value(GEDCOM_HEADER(), "@I1@", "VERS", 3), "")
 gedcom_value <- function(gedcom, record_xref, tag, level, after_tag = NULL) {
   
-  gedcom_filtered <- dplyr::filter(gedcom, record %in% record_xref)
+  gedcom_filtered <- gedcom[gedcom$record %in% record_xref,]
   if(nrow(gedcom_filtered) == 0) return("")
   
   active <- is.null(after_tag)
