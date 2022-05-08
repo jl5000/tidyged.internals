@@ -10,19 +10,19 @@
 \alias{assign_xref_subm}
 \title{Create a new xref for a record}
 \usage{
-assign_xref_indi(gedcom = tibble::tibble(), ref = 0, quantity = 1)
+assign_xref_indi(gedcom = empty_gedcom(), ref = 0, quantity = 1)
 
-assign_xref_famg(gedcom = tibble::tibble(), ref = 0, quantity = 1)
+assign_xref_famg(gedcom = empty_gedcom(), ref = 0, quantity = 1)
 
-assign_xref_sour(gedcom = tibble::tibble(), ref = 0, quantity = 1)
+assign_xref_sour(gedcom = empty_gedcom(), ref = 0, quantity = 1)
 
-assign_xref_repo(gedcom = tibble::tibble(), ref = 0, quantity = 1)
+assign_xref_repo(gedcom = empty_gedcom(), ref = 0, quantity = 1)
 
-assign_xref_media(gedcom = tibble::tibble(), ref = 0, quantity = 1)
+assign_xref_media(gedcom = empty_gedcom(), ref = 0, quantity = 1)
 
-assign_xref_note(gedcom = tibble::tibble(), ref = 0, quantity = 1)
+assign_xref_note(gedcom = empty_gedcom(), ref = 0, quantity = 1)
 
-assign_xref_subm(gedcom = tibble::tibble(), ref = 0, quantity = 1)
+assign_xref_subm(gedcom = empty_gedcom(), ref = 0, quantity = 1)
 }
 \arguments{
 \item{gedcom}{A tidyged object.}
