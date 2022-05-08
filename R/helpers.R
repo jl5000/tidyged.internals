@@ -61,8 +61,12 @@ identify_section <- function(gedcom,
   no_values_defined <- length(containing_values) == 0
   rows_to_return <- integer()
   
+  relevant_rows <- which(gedcom$level >= containing_level)
+  if(!no_xrefs_defined) 
+    relevant_rows <- setdiff(relevant_rows, which(!gedcom$record %in% xrefs))
+  
   active <- FALSE
-  for(i in seq_len(nrow(gedcom))) {
+  for(i in relevant_rows) {
     
     if(active) {
       if(gedcom$level[i] <= containing_level) {
@@ -149,15 +153,21 @@ set_class_to_tidyged <- function(gedcom) {
 }
 
 
+empty_gedcom <- function(){
+  tibble::tibble(level = integer(),
+                 record = character(),
+                 tag = character(),
+                 value = character()) |>
+    set_class_to_tidyged()
+}
 
 
-assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble(), quantity = 1) {
+assign_xref <- function(type = "", ref = 0, gedcom = empty_gedcom(), quantity = 1) {
   
   if (ref == 0) {
     # Are there any existing records of this type?
-    gedcom_filt <- gedcom |> 
-      dplyr::filter(grepl(paste0("^@", type, "\\d+@$"), record)) 
-    
+    gedcom_filt <- gedcom[grepl(paste0("^@", type, "\\d+@$"), gedcom$record),]
+
     if(nrow(gedcom_filt) == 0) {
       ref <- 1
     } else {
@@ -193,31 +203,31 @@ assign_xref <- function(type = "", ref = 0, gedcom = tibble::tibble(), quantity 
 #' expect_equal(assign_xref_media(tibble::tibble(record = "@S1@")), "@M1@")
 #' expect_equal(assign_xref_subm(ref = 2), "@U2@")
 #' @export
-assign_xref_indi <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_indi, ref, gedcom, quantity)}
+assign_xref_indi <- function(gedcom = empty_gedcom(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_indi, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_famg <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_famg, ref, gedcom, quantity)}
+assign_xref_famg <- function(gedcom = empty_gedcom(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_famg, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_sour <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_sour, ref, gedcom, quantity)}
+assign_xref_sour <- function(gedcom = empty_gedcom(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_sour, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_repo <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_repo, ref, gedcom, quantity)}
+assign_xref_repo <- function(gedcom = empty_gedcom(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_repo, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_media <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_obje, ref, gedcom, quantity)}
+assign_xref_media <- function(gedcom = empty_gedcom(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_obje, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_note <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_note, ref, gedcom, quantity)}
+assign_xref_note <- function(gedcom = empty_gedcom(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_note, ref, gedcom, quantity)}
 
 #' @export
 #' @rdname assign_xref_indi
-assign_xref_subm <- function(gedcom = tibble::tibble(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_subm, ref, gedcom, quantity)}
+assign_xref_subm <- function(gedcom = empty_gedcom(), ref = 0, quantity = 1) {assign_xref(.pkgenv$xref_prefix_subm, ref, gedcom, quantity)}
 
 #' Find a particular row position in a tidyged object.
 #' 
@@ -277,26 +287,27 @@ find_insertion_point <- function(gedcom,
 #' expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 3, "FORM"), "5.5.5")
 gedcom_value <- function(gedcom, record_xref, tag, level, after_tag = NULL) {
   
-  gedcom_filtered <- gedcom[gedcom$record %in% record_xref,]
-  if(nrow(gedcom_filtered) == 0) return("")
+  relevant_rows <- which(gedcom$record %in% record_xref, gedcom$level >= level - 1)
+  if(length(relevant_rows) == 0) return("")
   
   active <- is.null(after_tag)
-  for(i in seq_len(nrow(gedcom_filtered))) {
+  for(i in relevant_rows) {
     if(is.null(after_tag)) {
       active <- TRUE
-    } else if(gedcom_filtered$tag[i] == after_tag && gedcom_filtered$level[i] < level) {
+    } else if(gedcom$tag[i] == after_tag && gedcom$level[i] < level) {
       active <- TRUE
-    } else if(active && gedcom_filtered$level[i] < level){
+    } else if(active && gedcom$level[i] < level){
       active <- FALSE
     }
     
     if(active) {
-      if(gedcom_filtered$tag[i] == tag & gedcom_filtered$level[i] == level)
-        return(gedcom_filtered$value[i])
+      if(gedcom$tag[i] == tag & gedcom$level[i] == level)
+        return(gedcom$value[i])
     }
     
-    if(i == nrow(gedcom_filtered)) return("")
   }
+  
+  return("")
   
 }
 
