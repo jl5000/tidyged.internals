@@ -349,6 +349,12 @@ EVENT_DETAIL <- function(event_or_fact_classification = character(),
 #' 
 #' This function constructs a tibble representation of the FAMILY_EVENT_DETAIL from the GEDCOM 5.5.5
 #' specification.
+#' 
+#' @details For ages, any labels must come after their corresponding number, for example; 4y 8m 10d.
+#' The line value should be normalised; it should for example not specify 2y 13m, but 3y 1m
+#' instead. Number of days is allowed to be 365 because of leap years.
+#' The YYY, MM and DDD values must not be zero; if a value equals zero, that part is left off.
+#' The values may not contain leading zeroes either.
 #'
 #' @inheritParams primitive_definitions
 #' @param event_details An EVENT_DETAIL() object giving details of the event.
@@ -490,6 +496,12 @@ INDIVIDUAL_ATTRIBUTE_STRUCTURE <- function(attribute_type,
 #' 
 #' This function constructs a tibble representation of the INDIVIDUAL_EVENT_DETAIL from the GEDCOM 5.5.5
 #' specification.
+#' 
+#' @details For ages, any labels must come after their corresponding number, for example; 4y 8m 10d.
+#' The line value should be normalised; it should for example not specify 2y 13m, but 3y 1m
+#' instead. Number of days is allowed to be 365 because of leap years.
+#' The YYY, MM and DDD values must not be zero; if a value equals zero, that part is left off.
+#' The values may not contain leading zeroes either.
 #'
 #' @inheritParams primitive_definitions
 #' @param event_details An EVENT_DETAIL() object giving details of the event.

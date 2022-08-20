@@ -25,10 +25,10 @@ test_that("Function set_class_to_tidyged() @ L150", {
 })
 
 
-test_that("Function assign_xref_indi() @ L206", {
-  expect_equal(assign_xref_indi(tibble::tibble(record = "@I6@")), "@I7@")
+test_that("Function assign_xref_indi() @ L208", {
+  expect_equal(assign_xref_indi(tibble::tibble(record = "@I6@")), "@I1@")
   expect_equal(assign_xref_famg(tibble::tibble(record = "@N6@")), "@F1@")
-  expect_equal(assign_xref_note(tibble::tibble(record = "@N6@"), quantity = 2), c("@N7@", "@N8@"))
+  expect_equal(assign_xref_note(tibble::tibble(record = "@N2@"), quantity = 2), c("@N1@", "@N3@"))
   expect_equal(assign_xref_repo(tibble::tibble(record = "@N6@")), "@R1@")
   expect_equal(assign_xref_sour(tibble::tibble(record = "@S1@")), "@S2@")
   expect_equal(assign_xref_media(tibble::tibble(record = "@S1@")), "@M1@")
@@ -36,14 +36,14 @@ test_that("Function assign_xref_indi() @ L206", {
 })
 
 
-test_that("Function find_insertion_point() @ L248", {
+test_that("Function find_insertion_point() @ L250", {
   expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 2, "VERS"), 4)
   expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 3, "VERS"), 6)
   expect_equal(find_insertion_point(GEDCOM_HEADER(), "HD", 1, "CHAR"), 7)
 })
 
 
-test_that("Function gedcom_value() @ L288", {
+test_that("Function gedcom_value() @ L290", {
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "FORM", 2), "LINEAGE-LINKED")
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "TEST", 1), "")
   expect_equal(gedcom_value(GEDCOM_HEADER(), "HD", "VERS", 2), "5.5.5")
@@ -53,7 +53,7 @@ test_that("Function gedcom_value() @ L288", {
 })
 
 
-test_that("Function construct_full_name() @ L340", {
+test_that("Function construct_full_name() @ L342", {
   expect_error(construct_full_name(surname_prefix = "de la"))
   expect_equal(construct_full_name(given = "Joe"), "Joe")
   expect_equal(construct_full_name(prefix = "Professor", given = "Joe"), "Professor Joe")

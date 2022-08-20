@@ -49,7 +49,7 @@ which this information was downloaded.}
 
 \item{file_creation_date}{A date_exact() object giving the date that this file was created.}
 
-\item{file_creation_time}{The time of a specific event.}
+\item{file_creation_time}{The time at which the file was created.}
 
 \item{language_of_text}{The human language in which the data in the file is normally read or
 written. It is used primarily by programs to select language-specific sorting sequences and phonetic

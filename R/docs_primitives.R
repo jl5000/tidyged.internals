@@ -23,13 +23,12 @@
 #' @param address_web_page The world wide web page address.
 #' @param adopted_by_which_parent A code which shows which parent in the associated family group record adopted this person.
 #' Use "HUSB" for husband, "WIFE" for wife, or "BOTH" for both.
-#' @param age_at_event,husband_age_at_event,wife_age_at_event A string that indicates the age in years, months, and days that the 
-#' principal was at the time of the associated event. Any labels must come after their 
-#' corresponding number, for example; 4y 8m 10d.
-#' The line value should be normalised; it should for example not specify 2y 13m, but 3y 1m
-#' instead. Number of days is allowed to be 365 because of leap years.
-#' The YYY, MM and DDD values must not be zero; if a value equals zero, that part is left off.
-#' The values may not contain leading zeroes either.
+#' @param age_at_event A string that indicates the age in years, months, and days that the 
+#' principal was at the time of the associated event. See Details.
+#' @param husband_age_at_event A string that indicates the age in years, months, and days that the 
+#' husband was at the time of the associated event. See Details.
+#' @param wife_age_at_event A string that indicates the age in years, months, and days that the 
+#' wife was at the time of the associated event. See Details.
 #' @param attribute_descriptor Text describing a particular characteristic or attribute assigned to an individual. 
 #' @param attribute_type An attribute which may have caused name, addresses, phone numbers, 
 #' family listings to be recorded. Its application is in helping to classify sources used for information.
@@ -191,7 +190,8 @@
 #' @param text_from_source A verbatim copy of any description contained within the source. 
 #' This indicates notes or text that are actually contained in the source document, not the submitter's 
 #' opinion about the source.  
-#' @param time_value,file_creation_time The time of a specific event. 
+#' @param time_value The time of a specific event.
+#' @param file_creation_time The time at which the file was created. 
 #' @param user_reference_number A user-defined number or text that the submitter uses to identify this record. 
 #' @param user_reference_type A user-defined definition of the user_reference_number.
 #' @param user_text Free-form user text. Comments, opinions. 

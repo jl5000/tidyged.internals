@@ -31,13 +31,14 @@ alphanumerical string. This string is case-sensitive. Only "LINEAGE-LINKED" is s
 \item{adopted_by_which_parent}{A code which shows which parent in the associated family group record adopted this person.
 Use "HUSB" for husband, "WIFE" for wife, or "BOTH" for both.}
 
-\item{age_at_event, husband_age_at_event, wife_age_at_event}{A string that indicates the age in years, months, and days that the
-principal was at the time of the associated event. Any labels must come after their
-corresponding number, for example; 4y 8m 10d.
-The line value should be normalised; it should for example not specify 2y 13m, but 3y 1m
-instead. Number of days is allowed to be 365 because of leap years.
-The YYY, MM and DDD values must not be zero; if a value equals zero, that part is left off.
-The values may not contain leading zeroes either.}
+\item{age_at_event}{A string that indicates the age in years, months, and days that the
+principal was at the time of the associated event. See Details.}
+
+\item{husband_age_at_event}{A string that indicates the age in years, months, and days that the
+husband was at the time of the associated event. See Details.}
+
+\item{wife_age_at_event}{A string that indicates the age in years, months, and days that the
+wife was at the time of the associated event. See Details.}
 
 \item{attribute_descriptor}{Text describing a particular characteristic or attribute assigned to an individual.}
 
@@ -274,7 +275,9 @@ different from any other system. The name may include spaces, and is not restric
 This indicates notes or text that are actually contained in the source document, not the submitter's
 opinion about the source.}
 
-\item{time_value, file_creation_time}{The time of a specific event.}
+\item{time_value}{The time of a specific event.}
+
+\item{file_creation_time}{The time at which the file was created.}
 
 \item{user_reference_number}{A user-defined number or text that the submitter uses to identify this record.}
 

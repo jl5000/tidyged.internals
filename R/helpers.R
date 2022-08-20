@@ -169,18 +169,20 @@ assign_xref <- function(type = "", ref = 0, gedcom = empty_gedcom(), quantity = 
     gedcom_filt <- gedcom[grepl(paste0("^@", type, "\\d+@$"), gedcom$record),]
 
     if(nrow(gedcom_filt) == 0) {
-      ref <- 1
+      ref <- 1:quantity
     } else {
       ref <- unique(gedcom_filt$record)
       
-      ref <- ref[grepl(paste0("^@", type, "(\\d+)@$"), ref)] |>
+      existing_refs <- ref[grepl(paste0("^@", type, "\\d+@$"), ref)] |>
         str_remove_all("@") |> 
         str_remove_all("[A-Za-z]") |> 
-        as.integer() |> 
-        max() + 1
-
+        as.integer()
+      
+      available_refs <- seq_len(max(existing_refs) + quantity) |>
+        dplyr::setdiff(existing_refs)
+      
+      ref <- available_refs[1:quantity]
     }
-    ref <- seq(ref, ref+quantity-1, 1)
   } 
   paste0("@", type, ref, "@")
 }
@@ -195,9 +197,9 @@ assign_xref <- function(type = "", ref = 0, gedcom = empty_gedcom(), quantity = 
 #'
 #' @return A vector of xrefs to use for a new record(s).
 #' @tests
-#' expect_equal(assign_xref_indi(tibble::tibble(record = "@I6@")), "@I7@")
+#' expect_equal(assign_xref_indi(tibble::tibble(record = "@I6@")), "@I1@")
 #' expect_equal(assign_xref_famg(tibble::tibble(record = "@N6@")), "@F1@")
-#' expect_equal(assign_xref_note(tibble::tibble(record = "@N6@"), quantity = 2), c("@N7@", "@N8@"))
+#' expect_equal(assign_xref_note(tibble::tibble(record = "@N2@"), quantity = 2), c("@N1@", "@N3@"))
 #' expect_equal(assign_xref_repo(tibble::tibble(record = "@N6@")), "@R1@")
 #' expect_equal(assign_xref_sour(tibble::tibble(record = "@S1@")), "@S2@")
 #' expect_equal(assign_xref_media(tibble::tibble(record = "@S1@")), "@M1@")

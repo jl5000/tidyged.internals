@@ -103,7 +103,7 @@ test_that("Function EVENT_DETAIL() @ L316", {
 })
 
 
-test_that("Function FAMILY_EVENT_DETAIL() @ L364", {
+test_that("Function FAMILY_EVENT_DETAIL() @ L370", {
   expect_equal(dim(FAMILY_EVENT_DETAIL()), c(0, 3))  
   
   expect_snapshot_value(FAMILY_EVENT_DETAIL(husband_age_at_event = "42y"), "json2")
@@ -112,7 +112,7 @@ test_that("Function FAMILY_EVENT_DETAIL() @ L364", {
 })
 
 
-test_that("Function FAMILY_EVENT_STRUCTURE() @ L401", {
+test_that("Function FAMILY_EVENT_STRUCTURE() @ L407", {
   expect_error(FAMILY_EVENT_STRUCTURE())
   expect_error(FAMILY_EVENT_STRUCTURE("TEST"))
   expect_equal(FAMILY_EVENT_STRUCTURE(character()), tibble::tibble())
@@ -124,7 +124,7 @@ test_that("Function FAMILY_EVENT_STRUCTURE() @ L401", {
 })
 
 
-test_that("Function INDIVIDUAL_ATTRIBUTE_STRUCTURE() @ L453", {
+test_that("Function INDIVIDUAL_ATTRIBUTE_STRUCTURE() @ L459", {
   expect_error(INDIVIDUAL_ATTRIBUTE_STRUCTURE())
   expect_error(INDIVIDUAL_ATTRIBUTE_STRUCTURE("TEST"))
   expect_error(INDIVIDUAL_ATTRIBUTE_STRUCTURE("FACT"))
@@ -149,14 +149,14 @@ test_that("Function INDIVIDUAL_ATTRIBUTE_STRUCTURE() @ L453", {
 })
 
 
-test_that("Function INDIVIDUAL_EVENT_DETAIL() @ L503", {
+test_that("Function INDIVIDUAL_EVENT_DETAIL() @ L515", {
   expect_equal(dim(INDIVIDUAL_EVENT_DETAIL()), c(0, 3))  
   
   expect_snapshot_value(INDIVIDUAL_EVENT_DETAIL(age_at_event = "5y"), "json2")
 })
 
 
-test_that("Function INDIVIDUAL_EVENT_STRUCTURE() @ L539", {
+test_that("Function INDIVIDUAL_EVENT_STRUCTURE() @ L551", {
   expect_error(INDIVIDUAL_EVENT_STRUCTURE())
   expect_error(INDIVIDUAL_EVENT_STRUCTURE("BLAH"))
   expect_error(INDIVIDUAL_EVENT_STRUCTURE("ADOP", adopted_by_which_parent = "WHO"))
@@ -170,7 +170,7 @@ test_that("Function INDIVIDUAL_EVENT_STRUCTURE() @ L539", {
 })
 
 
-test_that("Function MULTIMEDIA_LINK() @ L591", {
+test_that("Function MULTIMEDIA_LINK() @ L603", {
   expect_error(MULTIMEDIA_LINK("ref"))
   expect_equal(MULTIMEDIA_LINK(character()), tibble::tibble())
   expect_equal(MULTIMEDIA_LINK("@M1@"),
@@ -178,7 +178,7 @@ test_that("Function MULTIMEDIA_LINK() @ L591", {
 })
 
 
-test_that("Function NOTE_STRUCTURE() @ L615", {
+test_that("Function NOTE_STRUCTURE() @ L627", {
   expect_error(NOTE_STRUCTURE(c("test1", "test2")))
   expect_equal(NOTE_STRUCTURE(), tibble::tibble())
   expect_snapshot_value(NOTE_STRUCTURE("@T1@"), "json2")
@@ -186,7 +186,7 @@ test_that("Function NOTE_STRUCTURE() @ L615", {
 })
 
 
-test_that("Function PERSONAL_NAME_PIECES() @ L650", {
+test_that("Function PERSONAL_NAME_PIECES() @ L662", {
   expect_equal(dim(PERSONAL_NAME_PIECES()), c(0, 3))
   
   expect_snapshot_value(PERSONAL_NAME_PIECES(name_piece_prefix = "Mr", 
@@ -198,7 +198,7 @@ test_that("Function PERSONAL_NAME_PIECES() @ L650", {
 })
 
 
-test_that("Function PERSONAL_NAME_STRUCTURE() @ L742", {
+test_that("Function PERSONAL_NAME_STRUCTURE() @ L754", {
   expect_error(PERSONAL_NAME_STRUCTURE())
   expect_error(PERSONAL_NAME_STRUCTURE("Joe Bloggs"))
   expect_error(PERSONAL_NAME_STRUCTURE("Joe /Bloggs/",
@@ -250,7 +250,7 @@ test_that("Function PERSONAL_NAME_STRUCTURE() @ L742", {
 })
 
 
-test_that("Function PLACE_STRUCTURE() @ L854", {
+test_that("Function PLACE_STRUCTURE() @ L866", {
   expect_error(PLACE_STRUCTURE())
   expect_error(PLACE_STRUCTURE("Here", place_latitude = "N51.5", place_longitude = "E0.0"))
   expect_error(PLACE_STRUCTURE("London", 
@@ -274,7 +274,7 @@ test_that("Function PLACE_STRUCTURE() @ L854", {
 })
 
 
-test_that("Function SOURCE_CITATION() @ L932", {
+test_that("Function SOURCE_CITATION() @ L944", {
   expect_equal(SOURCE_CITATION(character()), tibble::tibble())
   expect_snapshot_value(SOURCE_CITATION("@S1@"), "json2")
   expect_snapshot_value(SOURCE_CITATION("@S1@", 
@@ -291,7 +291,7 @@ test_that("Function SOURCE_CITATION() @ L932", {
 })
 
 
-test_that("Function SOURCE_REPOSITORY_CITATION() @ L990", {
+test_that("Function SOURCE_REPOSITORY_CITATION() @ L1002", {
   expect_error(SOURCE_REPOSITORY_CITATION())
   expect_error(SOURCE_REPOSITORY_CITATION("@R1@", source_call_number = c("123", "456")))
   expect_equal(SOURCE_REPOSITORY_CITATION(character()), tibble::tibble())
@@ -299,7 +299,7 @@ test_that("Function SOURCE_REPOSITORY_CITATION() @ L990", {
 })
 
 
-test_that("Function SPOUSE_TO_FAMILY_LINK() @ L1021", {
+test_that("Function SPOUSE_TO_FAMILY_LINK() @ L1033", {
   expect_error(SPOUSE_TO_FAMILY_LINK())
   expect_equal(SPOUSE_TO_FAMILY_LINK(character()), tibble::tibble())
   expect_snapshot_value(SPOUSE_TO_FAMILY_LINK("@F2@", 
