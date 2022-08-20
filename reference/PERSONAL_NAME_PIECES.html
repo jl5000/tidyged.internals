@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,16 +52,16 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">PERSONAL_NAME_PIECES</span><span class="op">(</span>
-  name_piece_prefix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  name_piece_given <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  name_piece_nickname <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  name_piece_surname_prefix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  name_piece_surname <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  name_piece_suffix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  source_citations <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">PERSONAL_NAME_PIECES</span><span class="op">(</span></span>
+<span>  name_piece_prefix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  name_piece_given <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  name_piece_nickname <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  name_piece_surname_prefix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  name_piece_surname <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  name_piece_suffix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  source_citations <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -69,27 +69,44 @@ specification.</p>
     <dl><dt>name_piece_prefix</dt>
 <dd><p>Non indexing name piece that appears preceding the given name and surname parts.
 Different name prefix parts are separated by a comma.</p></dd>
+
+
 <dt>name_piece_given</dt>
 <dd><p>Given name or earned name. Different given names are separated by a comma.</p></dd>
+
+
 <dt>name_piece_nickname</dt>
 <dd><p>A descriptive or familiar name used in connection with one's proper name.</p></dd>
+
+
 <dt>name_piece_surname_prefix</dt>
 <dd><p>Surname prefix or article used in a family name. A surname prefix that
 consists of multiple parts is written as is, and not modified in any way. Thus, the surname prefix for the
 surname “de la Cruz” is “de la”.</p></dd>
+
+
 <dt>name_piece_surname</dt>
 <dd><p>Surname or family name. Different surnames are separated by a comma.</p></dd>
+
+
 <dt>name_piece_suffix</dt>
 <dd><p>Non-indexing name piece that appears after the given name and surname parts.
 Different name suffix parts are separated by a comma.</p></dd>
+
+
 <dt>notes</dt>
 <dd><p>A list of NOTE_STRUCTURE() objects.</p></dd>
+
+
 <dt>source_citations</dt>
 <dd><p>A list of SOURCE_CITATION() objects.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing the PERSONAL_NAME_PIECES part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing the PERSONAL_NAME_PIECES part of a GEDCOM file.</p>
     </div>
 
   </div>
@@ -104,7 +121,7 @@ Different name suffix parts are separated by a comma.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

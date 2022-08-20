@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,25 +52,32 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">CHANGE_DATE</span><span class="op">(</span>
-  change_date <span class="op">=</span> <span class="fu"><a href="date_exact.html">date_exact</a></span><span class="op">(</span><span class="op">)</span>,
-  time_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">CHANGE_DATE</span><span class="op">(</span></span>
+<span>  change_date <span class="op">=</span> <span class="fu"><a href="date_exact.html">date_exact</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  time_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>change_date</dt>
 <dd><p>A date_exact() object giving the date that this data was changed.</p></dd>
+
+
 <dt>time_value</dt>
 <dd><p>The time of a specific event.</p></dd>
+
+
 <dt>notes</dt>
 <dd><p>A list of NOTE_STRUCTURE() objects.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing the CHANGE_DATE part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing the CHANGE_DATE part of a GEDCOM file.</p>
     </div>
 
   </div>
@@ -85,7 +92,7 @@ specification.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

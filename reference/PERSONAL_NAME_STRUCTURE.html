@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,17 +52,17 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">PERSONAL_NAME_STRUCTURE</span><span class="op">(</span>
-  <span class="va">name_personal</span>,
-  name_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  name_pieces <span class="op">=</span> <span class="fu"><a href="PERSONAL_NAME_PIECES.html">PERSONAL_NAME_PIECES</a></span><span class="op">(</span><span class="op">)</span>,
-  name_phonetic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  phonetisation_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  phonetic_name_pieces <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  name_romanised <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  romanisation_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  romanised_name_pieces <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">PERSONAL_NAME_STRUCTURE</span><span class="op">(</span></span>
+<span>  <span class="va">name_personal</span>,</span>
+<span>  name_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  name_pieces <span class="op">=</span> <span class="fu"><a href="PERSONAL_NAME_PIECES.html">PERSONAL_NAME_PIECES</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  name_phonetic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  phonetisation_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  phonetic_name_pieces <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  name_romanised <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  romanisation_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  romanised_name_pieces <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -72,28 +72,47 @@ specification.</p>
 The surname of an individual, if known, is enclosed between two slash (/) characters.
 The order of the name parts should be the order that the person would, by custom of their culture,
 have used when giving it to a recorder.</p></dd>
+
+
 <dt>name_type</dt>
 <dd><p>Indicates the name type, for example the name issued or assumed as an immigrant.</p></dd>
+
+
 <dt>name_pieces</dt>
 <dd><p>A PERSONAL_NAME_PIECES() object giving the components of the name.</p></dd>
+
+
 <dt>name_phonetic</dt>
 <dd><p>A character vector of phonetic variations of the full name.</p></dd>
+
+
 <dt>phonetisation_method</dt>
 <dd><p>Indicates the method used in transforming the text to the phonetic variation.</p></dd>
+
+
 <dt>phonetic_name_pieces</dt>
 <dd><p>A list of PERSONAL_NAME_PIECES() objects giving the components
 of the phonetic name variations.</p></dd>
+
+
 <dt>name_romanised</dt>
 <dd><p>A character vector giving romanised variations of the name.</p></dd>
+
+
 <dt>romanisation_method</dt>
 <dd><p>Indicates the method used in transforming the text to a romanised variation.</p></dd>
+
+
 <dt>romanised_name_pieces</dt>
 <dd><p>A list of PERSONAL_NAME_PIECES() objects giving the components
 of the romanised name variations.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing the PERSONAL_NAME_STRUCTURE part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing the PERSONAL_NAME_STRUCTURE part of a GEDCOM file.</p>
     </div>
 
   </div>
@@ -108,7 +127,7 @@ of the romanised name variations.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

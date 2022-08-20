@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,13 +52,13 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">INDIVIDUAL_EVENT_STRUCTURE</span><span class="op">(</span>
-  <span class="va">event_type_individual</span>,
-  event_descriptor <span class="op">=</span> <span class="st">""</span>,
-  individual_event_details <span class="op">=</span> <span class="fu"><a href="INDIVIDUAL_EVENT_DETAIL.html">INDIVIDUAL_EVENT_DETAIL</a></span><span class="op">(</span><span class="op">)</span>,
-  xref_fam <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  adopted_by_which_parent <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">INDIVIDUAL_EVENT_STRUCTURE</span><span class="op">(</span></span>
+<span>  <span class="va">event_type_individual</span>,</span>
+<span>  event_descriptor <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  individual_event_details <span class="op">=</span> <span class="fu"><a href="INDIVIDUAL_EVENT_DETAIL.html">INDIVIDUAL_EVENT_DETAIL</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  xref_fam <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  adopted_by_which_parent <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -67,22 +67,33 @@ specification.</p>
 <dd><p>A code used to indicate the type of individual event. One of:
 "BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "CHRA", "CONF", "FCOM",
 "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "EVEN".</p></dd>
+
+
 <dt>event_descriptor</dt>
 <dd><p>Text describing a particular event pertaining to the individual or family.
 This event value is usually assigned to the EVEN tag. The classification as to the difference
 between this specific event and other occurrences of the EVENt tag is indicated by the use of
 a subordinate TYPE tag selected from the EVENT_DETAIL structure.</p></dd>
+
+
 <dt>individual_event_details</dt>
 <dd><p>An INDIVIDUAL_EVENT_DETAIL() object giving details of the event.</p></dd>
+
+
 <dt>xref_fam</dt>
 <dd><p>An xref ID of a Family Group record.</p></dd>
+
+
 <dt>adopted_by_which_parent</dt>
 <dd><p>A code which shows which parent in the associated family group record adopted this person.
 Use "HUSB" for husband, "WIFE" for wife, or "BOTH" for both.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing the INDIVIDUAL_EVENT_STRUCTURE part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing the INDIVIDUAL_EVENT_STRUCTURE part of a GEDCOM file.</p>
     </div>
 
   </div>
@@ -97,7 +108,7 @@ Use "HUSB" for husband, "WIFE" for wife, or "BOTH" for both.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

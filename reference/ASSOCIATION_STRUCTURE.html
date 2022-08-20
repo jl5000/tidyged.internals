@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,28 +52,37 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ASSOCIATION_STRUCTURE</span><span class="op">(</span>
-  <span class="va">xref_indi</span>,
-  <span class="va">relation_is_descriptor</span>,
-  source_citations <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ASSOCIATION_STRUCTURE</span><span class="op">(</span></span>
+<span>  <span class="va">xref_indi</span>,</span>
+<span>  <span class="va">relation_is_descriptor</span>,</span>
+<span>  source_citations <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>xref_indi</dt>
 <dd><p>An xref ID of an Individual record.</p></dd>
+
+
 <dt>relation_is_descriptor</dt>
 <dd><p>A word or phrase that states object 1's relation is object 2.</p></dd>
+
+
 <dt>source_citations</dt>
 <dd><p>A list of SOURCE_CITATION() objects.</p></dd>
+
+
 <dt>notes</dt>
 <dd><p>A list of NOTE_STRUCTURE() objects.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing the ASSOCIATION_STRUCTURE part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing the ASSOCIATION_STRUCTURE part of a GEDCOM file.</p>
     </div>
 
   </div>
@@ -88,7 +97,7 @@ specification.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

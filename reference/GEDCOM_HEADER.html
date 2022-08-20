@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,12 +52,12 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">GEDCOM_HEADER</span><span class="op">(</span>
-  character_encoding <span class="op">=</span> <span class="st">"UTF-8"</span>,
-  gedcom_version_number <span class="op">=</span> <span class="st">"5.5.5"</span>,
-  gedcom_form <span class="op">=</span> <span class="st">"LINEAGE-LINKED"</span>,
-  header_extension <span class="op">=</span> <span class="fu"><a href="LINEAGE_LINKED_HEADER_EXTENSION.html">LINEAGE_LINKED_HEADER_EXTENSION</a></span><span class="op">(</span><span class="st">"tidyged.internals"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">GEDCOM_HEADER</span><span class="op">(</span></span>
+<span>  character_encoding <span class="op">=</span> <span class="st">"UTF-8"</span>,</span>
+<span>  gedcom_version_number <span class="op">=</span> <span class="st">"5.5.5"</span>,</span>
+<span>  gedcom_form <span class="op">=</span> <span class="st">"LINEAGE-LINKED"</span>,</span>
+<span>  header_extension <span class="op">=</span> <span class="fu"><a href="LINEAGE_LINKED_HEADER_EXTENSION.html">LINEAGE_LINKED_HEADER_EXTENSION</a></span><span class="op">(</span><span class="st">"tidyged.internals"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -65,18 +65,27 @@ specification.</p>
     <dl><dt>character_encoding</dt>
 <dd><p>A code value that represents the character set and encoding to be used to
 interpret this data. Allowed values: "UTF-8" and "UNICODE" (UTF-16).</p></dd>
+
+
 <dt>gedcom_version_number</dt>
 <dd><p>The version number of the specification used.</p></dd>
+
+
 <dt>gedcom_form</dt>
 <dd><p>A value that identifies the GEDCOM form used in this GEDCOM file. The value must be
 alphanumerical string. This string is case-sensitive. Only "LINEAGE-LINKED" is supported.</p></dd>
+
+
 <dt>header_extension</dt>
 <dd><p>A LINEAGE_LINKED_HEADER_EXTENSION() object providing more information
 about the GEDCOM file.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing a GEDCOM_HEADER part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing a GEDCOM_HEADER part of a GEDCOM file.</p>
     </div>
 
   </div>
@@ -91,7 +100,7 @@ about the GEDCOM file.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,18 +52,18 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">EVENT_DETAIL</span><span class="op">(</span>
-  event_or_fact_classification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  place <span class="op">=</span> <span class="fu"><a href="PLACE_STRUCTURE.html">PLACE_STRUCTURE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
-  address <span class="op">=</span> <span class="fu"><a href="ADDRESS_STRUCTURE.html">ADDRESS_STRUCTURE</a></span><span class="op">(</span><span class="op">)</span>,
-  responsible_agency <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  religious_affiliation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  cause_of_event <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  source_citations <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  multimedia_links <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">EVENT_DETAIL</span><span class="op">(</span></span>
+<span>  event_or_fact_classification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  place <span class="op">=</span> <span class="fu"><a href="PLACE_STRUCTURE.html">PLACE_STRUCTURE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  address <span class="op">=</span> <span class="fu"><a href="ADDRESS_STRUCTURE.html">ADDRESS_STRUCTURE</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  responsible_agency <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  religious_affiliation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  cause_of_event <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  source_citations <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  multimedia_links <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -72,34 +72,55 @@ specification.</p>
 <dd><p>A descriptive word or phrase used to further classify the parent
 event or attribute tag. This should be used whenever either of the generic EVEN or FACT tags are used.
 The value of this primitive is responsible for classifying the generic event or fact being cited.</p></dd>
+
+
 <dt>date</dt>
 <dd><p>A date_calendar(), date_period(), date_range(), or date_approximated() value
 giving the timing of the event.</p></dd>
+
+
 <dt>place</dt>
 <dd><p>A PLACE_STRUCTURE() object giving the location of the event.</p></dd>
+
+
 <dt>address</dt>
 <dd><p>An ADDRESS_STRUCTURE() object giving the address of the event.</p></dd>
+
+
 <dt>responsible_agency</dt>
 <dd><p>The organization, institution, corporation, person, or other entity that has
 responsibility for the associated context. For example, an employer of a person of an associated occupation,
 or a church that administered rites or events, or an organization responsible for creating and/or archiving
 records.</p></dd>
+
+
 <dt>religious_affiliation</dt>
 <dd><p>A name of the religion with which this person, event, or record was affiliated.</p></dd>
+
+
 <dt>cause_of_event</dt>
 <dd><p>Used in special cases to record the reasons which precipitated an event.
 Normally this will be used subordinate to a death event to show cause of death, such as
 might be listed on a death certificate.</p></dd>
+
+
 <dt>notes</dt>
 <dd><p>A list of NOTE_STRUCTURE() objects.</p></dd>
+
+
 <dt>source_citations</dt>
 <dd><p>A list of SOURCE_CITATION() objects.</p></dd>
+
+
 <dt>multimedia_links</dt>
 <dd><p>A list of MULTIMEDIA_LINK() objects</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing the EVENT_DETAIL part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing the EVENT_DETAIL part of a GEDCOM file.</p>
     </div>
 
   </div>
@@ -114,7 +135,7 @@ might be listed on a death certificate.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

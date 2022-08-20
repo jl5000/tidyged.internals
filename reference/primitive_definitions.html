@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -55,54 +55,95 @@
     <dl><dt>character_encoding</dt>
 <dd><p>A code value that represents the character set and encoding to be used to
 interpret this data. Allowed values: "UTF-8" and "UNICODE" (UTF-16).</p></dd>
+
+
 <dt>gedcom_form</dt>
 <dd><p>A value that identifies the GEDCOM form used in this GEDCOM file. The value must be
 alphanumerical string. This string is case-sensitive. Only "LINEAGE-LINKED" is supported.</p></dd>
+
+
 <dt>gedcom_version_number</dt>
 <dd><p>The version number of the specification used.</p></dd>
+
+
 <dt>address_city</dt>
 <dd><p>The name of the city/town used in the address.</p></dd>
+
+
 <dt>address_country</dt>
 <dd><p>The name of the country that pertains to the associated address.</p></dd>
+
+
 <dt>address_email</dt>
 <dd><p>An electronic address that can be used for contact such as an email address.</p></dd>
+
+
 <dt>address_fax</dt>
 <dd><p>A FAX telephone number appropriate for sending data facsimiles.</p></dd>
+
+
 <dt>local_address_lines</dt>
 <dd><p>The local address lines before the town/city. This can be a vector with up to 3 elements.</p></dd>
+
+
 <dt>address_postal_code</dt>
 <dd><p>The ZIP or postal code used by the various localities in handling of mail.</p></dd>
+
+
 <dt>address_state</dt>
 <dd><p>The name of the province, state or similar country subdivision used in the address.</p></dd>
+
+
 <dt>address_web_page</dt>
 <dd><p>The world wide web page address.</p></dd>
+
+
 <dt>adopted_by_which_parent</dt>
 <dd><p>A code which shows which parent in the associated family group record adopted this person.
 Use "HUSB" for husband, "WIFE" for wife, or "BOTH" for both.</p></dd>
-<dt>age_at_event, husband_age_at_event, wife_age_at_event</dt>
+
+
+<dt>age_at_event</dt>
 <dd><p>A string that indicates the age in years, months, and days that the
-principal was at the time of the associated event. Any labels must come after their
-corresponding number, for example; 4y 8m 10d.
-The line value should be normalised; it should for example not specify 2y 13m, but 3y 1m
-instead. Number of days is allowed to be 365 because of leap years.
-The YYY, MM and DDD values must not be zero; if a value equals zero, that part is left off.
-The values may not contain leading zeroes either.</p></dd>
+principal was at the time of the associated event. See Details.</p></dd>
+
+
+<dt>husband_age_at_event</dt>
+<dd><p>A string that indicates the age in years, months, and days that the
+husband was at the time of the associated event. See Details.</p></dd>
+
+
+<dt>wife_age_at_event</dt>
+<dd><p>A string that indicates the age in years, months, and days that the
+wife was at the time of the associated event. See Details.</p></dd>
+
+
 <dt>attribute_descriptor</dt>
 <dd><p>Text describing a particular characteristic or attribute assigned to an individual.</p></dd>
+
+
 <dt>attribute_type</dt>
 <dd><p>An attribute which may have caused name, addresses, phone numbers,
 family listings to be recorded. Its application is in helping to classify sources used for information.</p></dd>
+
+
 <dt>automated_record_id</dt>
 <dd><p>A unique record identification number assigned to the record by
 the source system. This number is intended to serve as a more sure means of identification
 of a record for reconciling differences in data between two interfacing systems.</p></dd>
+
+
 <dt>caste_name</dt>
 <dd><p>A name assigned to a particular group that this person was associated with,
 such as a particular racial group, religious group, or a group with an inherited status.</p></dd>
+
+
 <dt>cause_of_event</dt>
 <dd><p>Used in special cases to record the reasons which precipitated an event.
 Normally this will be used subordinate to a death event to show cause of death, such as
 might be listed on a death certificate.</p></dd>
+
+
 <dt>certainty_assessment</dt>
 <dd><p>A quantitative evaluation of the credibility of a piece of
 information, based upon its supporting evidence. Some systems use this feature to rank multiple
@@ -112,251 +153,426 @@ eliminate the receiver's need to evaluate the evidence for themselves.
 1 = Questionable reliability of evidence
 2 = Secondary evidence, data officially recorded sometime after event
 3 = Direct and primary evidence used, or by dominance of the evidence</p></dd>
+
+
 <dt>copyright_gedcom_file</dt>
 <dd><p>A copyright statement needed to protect the copyrights of the
 submitter of this GEDCOM file.</p></dd>
+
+
 <dt>copyright_source_data</dt>
 <dd><p>A copyright statement required by the owner of data from
 which this information was downloaded.</p></dd>
+
+
 <dt>count_of_children</dt>
 <dd><p>The known number of children of this individual from all marriages or,
 if subordinate to a family group record, the reported number of children known to belong to this
 family, regardless of whether the associated children are represented in the corresponding
 structure. This is not necessarily the count of children listed in a family structure.</p></dd>
+
+
 <dt>descriptive_title</dt>
 <dd><p>The title of a work, record, item, or object.</p></dd>
+
+
 <dt>entry_recording_date</dt>
 <dd><p>A date_calendar(), date_period(), date_range(), or date_approximated() value
 giving the date that this event data was entered into the original source document.</p></dd>
+
+
 <dt>event_attribute_type</dt>
 <dd><p>A code that classifies the principal event or happening that caused the
 source record entry to be created. If the event or attribute doesn't translate to one of these tag codes,
 then a user supplied value is expected and will be generally classified in the category of other.</p></dd>
+
+
 <dt>event_descriptor</dt>
 <dd><p>Text describing a particular event pertaining to the individual or family.
 This event value is usually assigned to the EVEN tag. The classification as to the difference
 between this specific event and other occurrences of the EVENt tag is indicated by the use of
 a subordinate TYPE tag selected from the EVENT_DETAIL structure.</p></dd>
+
+
 <dt>event_or_fact_classification</dt>
 <dd><p>A descriptive word or phrase used to further classify the parent
 event or attribute tag. This should be used whenever either of the generic EVEN or FACT tags are used.
 The value of this primitive is responsible for classifying the generic event or fact being cited.</p></dd>
+
+
 <dt>event_type_cited_from</dt>
 <dd><p>A code that indicates the type of event which was responsible for the
 source entry being recorded. For example, if the entry was created to record a birth of a child,
 then the type would be BIRT regardless of the assertions made from that record, such as the mother's
 name or mother's birth date. This will allow a prioritised best view choice and a determination of
 the certainty associated with the source used in asserting the cited fact.</p></dd>
+
+
 <dt>event_type_family</dt>
 <dd><p>A code used to indicate the type of family event. One of:
 "ANUL", "CENS", "DIV", "DIVF", "ENGA", "MARB", "MARC", "MARR", "MARL", "MARS", "RESI", "EVEN".</p></dd>
+
+
 <dt>event_type_individual</dt>
 <dd><p>A code used to indicate the type of individual event. One of:
 "BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "CHRA", "CONF", "FCOM",
 "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "EVEN".</p></dd>
+
+
 <dt>events_recorded</dt>
 <dd><p>An enumeration of the different kinds of events that were recorded in a
 particular source. Each enumeration is separated by a comma. Such as a parish register of births,
 deaths, and marriages would be BIRT, DEAT, MARR.</p></dd>
+
+
 <dt>file_creation_date</dt>
 <dd><p>A date_exact() object giving the date that this file was created.</p></dd>
+
+
 <dt>gedcom_content_description</dt>
 <dd><p>A note that a user enters to describe the contents of the
 lineage-linked file in terms of "ancestors or descendants of" so that the person receiving
 the data knows what genealogical information the file contains.</p></dd>
+
+
 <dt>gedcom_file_name</dt>
 <dd><p>The name of the GEDCOM file. A GEDCOM file name should use the format
 basename.ext, and use the file extension .GED (or .ged).</p></dd>
+
+
 <dt>id_number</dt>
 <dd><p>A third-party number assigned to an individual.</p></dd>
+
+
 <dt>language_of_text</dt>
 <dd><p>The human language in which the data in the file is normally read or
 written. It is used primarily by programs to select language-specific sorting sequences and phonetic
 name matching algorithms.</p></dd>
+
+
 <dt>multimedia_file_reference</dt>
 <dd><p>A complete local or remote file reference to the auxiliary data
 to be linked to the GEDCOM context. Remote reference would include a network address where the multimedia
 data may be obtained.</p></dd>
+
+
 <dt>multimedia_format</dt>
 <dd><p>Indicates the format of the multimedia data associated with the specific
 GEDCOM context. This allows processors to determine whether they can process the data object.
 Any linked files should contain the data required, in the indicated format, to process the file data. One of:
 "AAC", "AVI", "BMP", "ePub", "FLAC", "GIF", "JPEG", "MKV", "mobi", "MP3", "PCX", "PDF", "PNG", "TIFF", "WAV".</p></dd>
+
+
 <dt>name_of_business</dt>
 <dd><p>Name of the business, corporation, or person that produced or commissioned the product.</p></dd>
+
+
 <dt>name_of_product</dt>
 <dd><p>The name of the software product that produced this file.</p></dd>
+
+
 <dt>name_of_repository</dt>
 <dd><p>The official name of the archive in which the stated source material is stored.</p></dd>
+
+
 <dt>name_of_source_data</dt>
 <dd><p>The name of the electronic data source that was used to obtain the data in
 this file. For example, the data may have been obtained from a CD-ROM disc that was named
 "U.S. 1880 CENSUS CD-ROM vol. 13."</p></dd>
+
+
 <dt>name_personal</dt>
 <dd><p>The full name formed in the manner the name is normally spoken.
 The surname of an individual, if known, is enclosed between two slash (/) characters.
 The order of the name parts should be the order that the person would, by custom of their culture,
 have used when giving it to a recorder.</p></dd>
+
+
 <dt>name_phonetic</dt>
 <dd><p>A character vector of phonetic variations of the full name.</p></dd>
+
+
 <dt>name_piece_given</dt>
 <dd><p>Given name or earned name. Different given names are separated by a comma.</p></dd>
+
+
 <dt>name_piece_nickname</dt>
 <dd><p>A descriptive or familiar name used in connection with one's proper name.</p></dd>
+
+
 <dt>name_piece_prefix</dt>
 <dd><p>Non indexing name piece that appears preceding the given name and surname parts.
 Different name prefix parts are separated by a comma.</p></dd>
+
+
 <dt>name_piece_suffix</dt>
 <dd><p>Non-indexing name piece that appears after the given name and surname parts.
 Different name suffix parts are separated by a comma.</p></dd>
+
+
 <dt>name_piece_surname</dt>
 <dd><p>Surname or family name. Different surnames are separated by a comma.</p></dd>
+
+
 <dt>name_piece_surname_prefix</dt>
 <dd><p>Surname prefix or article used in a family name. A surname prefix that
 consists of multiple parts is written as is, and not modified in any way. Thus, the surname prefix for the
 surname “de la Cruz” is “de la”.</p></dd>
+
+
 <dt>name_romanised</dt>
 <dd><p>A character vector giving romanised variations of the name.</p></dd>
+
+
 <dt>name_type</dt>
 <dd><p>Indicates the name type, for example the name issued or assumed as an immigrant.</p></dd>
+
+
 <dt>national_or_tribal_origin</dt>
 <dd><p>The person's division of national origin or other folk, house, kindred,
 lineage, or tribal interest.</p></dd>
+
+
 <dt>nobility_type_title</dt>
 <dd><p>The title given to or used by a person, especially of royalty or other noble
 class within a locality.</p></dd>
+
+
 <dt>number_of_relationships</dt>
 <dd><p>The number of different relationships (family groups) that this person was
 known to have been a member of as a partner, regardless of whether the associated relationships are present
 in the GEDCOM file.</p></dd>
+
+
 <dt>occupation</dt>
 <dd><p>The kind of activity that an individual does for a job, profession, or principal activity.</p></dd>
+
+
 <dt>pedigree_linkage_type</dt>
 <dd><p>A code used to indicate the child to family relationship for pedigree navigation
 purposes. One of "birth", "adopted", "foster".</p></dd>
+
+
 <dt>phone_number</dt>
 <dd><p>A phone number.</p></dd>
+
+
 <dt>phonetisation_method</dt>
 <dd><p>Indicates the method used in transforming the text to the phonetic variation.</p></dd>
+
+
 <dt>physical_description</dt>
 <dd><p>An unstructured list of the attributes that describe the physical
 characteristics of a person, place, or object. Commas separate each attribute. For example:
 Hair Brown, Eyes Brown, Height 5 ft 8 in.</p></dd>
+
+
 <dt>place_latitude</dt>
 <dd><p>The value specifying the latitudinal coordinate of the place name.
 The latitude coordinate is the direction North or South from the equator in degrees and fraction of
 degrees carried out to give the desired accuracy. For example: 18 degrees, 9 minutes, and 3.4 seconds North
 would be formatted as N18.150944.</p></dd>
+
+
 <dt>place_longitude</dt>
 <dd><p>The value specifying the longitudinal coordinate of the place name.
 The longitude coordinate is Degrees and fraction of degrees east or west of the zero or base
 meridian coordinate. For example: 168 degrees, 9 minutes, and 3.4 seconds East would be formatted as E168.150944.</p></dd>
+
+
 <dt>place_name</dt>
 <dd><p>The jurisdictional name of the place where the event took place.
 Jurisdictions are separated by commas. No part of the place name may be replaced by an abbreviation.
 Place names are not terminated by a full stop or anything else.</p></dd>
+
+
 <dt>place_phonetic</dt>
 <dd><p>A character vector of phonetic variations of the place name.</p></dd>
+
+
 <dt>place_romanised</dt>
 <dd><p>A character vector of romanised variations of the place name.</p></dd>
+
+
 <dt>possessions</dt>
 <dd><p>A list of possessions (real estate or other property) belonging to this individual.</p></dd>
+
+
 <dt>product_version_number</dt>
 <dd><p>The version of the product that created the GEDCOM file.
 It is defined and changed by the creators of the product.</p></dd>
+
+
 <dt>publication_date</dt>
 <dd><p>A date_exact() object giving the date this source was published or created.</p></dd>
+
+
 <dt>receiving_system_name</dt>
 <dd><p>The name of the system expected to process the GEDCOM file.</p></dd>
+
+
 <dt>relation_is_descriptor</dt>
 <dd><p>A word or phrase that states object 1's relation is object 2.</p></dd>
+
+
 <dt>religious_affiliation</dt>
 <dd><p>A name of the religion with which this person, event, or record was affiliated.</p></dd>
+
+
 <dt>responsible_agency</dt>
 <dd><p>The organization, institution, corporation, person, or other entity that has
 responsibility for the associated context. For example, an employer of a person of an associated occupation,
 or a church that administered rites or events, or an organization responsible for creating and/or archiving
 records.</p></dd>
+
+
 <dt>role_descriptor</dt>
 <dd><p>A word or phrase that identifies a person's role in an event being described.
 This should be the same word or phrase, and in the same language, that the recorder used to define
 the role in the actual record.</p></dd>
+
+
 <dt>role_in_event</dt>
 <dd><p>Indicates what role this person played in the event that is being cited in this context.</p></dd>
+
+
 <dt>romanisation_method</dt>
 <dd><p>Indicates the method used in transforming the text to a romanised variation.</p></dd>
+
+
 <dt>scholastic_achievement</dt>
 <dd><p>A description of a scholastic or educational achievement or pursuit.</p></dd>
+
+
 <dt>sex_value</dt>
 <dd><p>A code that indicates the sex of the individual. Either "M" (male), "F" (female), "U" (undetermined),
 "X" (intersex), or "N" (not recorded).</p></dd>
+
+
 <dt>source_call_number</dt>
 <dd><p>An identification or reference description used to file and retrieve items
 from the holdings of a repository.</p></dd>
+
+
 <dt>source_descriptive_title</dt>
 <dd><p>The title of the work, record, or item and, when appropriate,
 the title of the larger work or series of which it is a part.</p></dd>
+
+
 <dt>source_filed_by_entry</dt>
 <dd><p>This entry is to provide a short title used for sorting, filing,
 and retrieving source records.</p></dd>
+
+
 <dt>source_jurisdiction_place</dt>
 <dd><p>The name of the lowest jurisdiction that encompasses all lower-level places
 named in this source.</p></dd>
+
+
 <dt>source_media_type</dt>
 <dd><p>A media classification code that indicates the type of material in which
 the referenced source is stored. One of: "audio", "book", "card", "electronic", "fiche", "film",
 "magazine", "manuscript", "map", "newspaper", "photo", "tombstone", "video".</p></dd>
+
+
 <dt>source_originator</dt>
 <dd><p>The person, agency, or entity who created the record. For a published work,
 this could be the author, compiler, transcriber, abstractor, or editor. For an unpublished source,
 this may be an individual, a government agency, church organization, or private organization, etc.</p></dd>
+
+
 <dt>source_publication_facts</dt>
 <dd><p>When and where the record was created. For published works,
 this includes information such as the city of publication, name of the publisher, and year of publication.</p></dd>
+
+
 <dt>submitter_name</dt>
 <dd><p>The name of the submitter formatted for display and address generation.</p></dd>
+
+
 <dt>system_id</dt>
 <dd><p>A system identification name. This name must be unique for each system (product),
 different from any other system. The name may include spaces, and is not restricted to ASCII characters.</p></dd>
+
+
 <dt>text_from_source</dt>
 <dd><p>A verbatim copy of any description contained within the source.
 This indicates notes or text that are actually contained in the source document, not the submitter's
 opinion about the source.</p></dd>
-<dt>time_value, file_creation_time</dt>
+
+
+<dt>time_value</dt>
 <dd><p>The time of a specific event.</p></dd>
+
+
+<dt>file_creation_time</dt>
+<dd><p>The time at which the file was created.</p></dd>
+
+
 <dt>user_reference_number</dt>
 <dd><p>A user-defined number or text that the submitter uses to identify this record.</p></dd>
+
+
 <dt>user_reference_type</dt>
 <dd><p>A user-defined definition of the user_reference_number.</p></dd>
+
+
 <dt>user_text</dt>
 <dd><p>Free-form user text. Comments, opinions.</p></dd>
+
+
 <dt>where_within_source</dt>
 <dd><p>Specific location within the information referenced.</p></dd>
+
+
 <dt>xref_fam</dt>
 <dd><p>An xref ID of a Family Group record.</p></dd>
+
+
 <dt>xref_indi</dt>
 <dd><p>An xref ID of an Individual record.</p></dd>
+
+
 <dt>xref_sour</dt>
 <dd><p>An xref ID of a Source record.</p></dd>
+
+
 <dt>xref_repo</dt>
 <dd><p>An xref ID of a Repository record.</p></dd>
+
+
 <dt>xref_obje</dt>
 <dd><p>An xref ID of a Multimedia record.</p></dd>
+
+
 <dt>xref_note</dt>
 <dd><p>An xref ID of a Note record.</p></dd>
+
+
 <dt>xref_subm</dt>
 <dd><p>An xref ID of a Submitter record.</p></dd>
+
+
 <dt>date_changed</dt>
 <dd><p>A CHANGE_DATE() object giving the time this record was last modified. If not provided,
 the current date is used.</p></dd>
+
+
 <dt>notes</dt>
 <dd><p>A list of NOTE_STRUCTURE() objects.</p></dd>
+
+
 <dt>source_citations</dt>
 <dd><p>A list of SOURCE_CITATION() objects.</p></dd>
+
+
 <dt>source_repository_citations</dt>
 <dd><p>A list of SOURCE_REPOSITORY_CITATION() objects.</p></dd>
+
+
 <dt>multimedia_links</dt>
 <dd><p>A list of MULTIMEDIA_LINK() objects</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -377,7 +593,7 @@ with the rest of the primitives.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

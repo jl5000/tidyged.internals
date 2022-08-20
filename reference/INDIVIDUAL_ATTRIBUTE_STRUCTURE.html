@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,11 +52,11 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">INDIVIDUAL_ATTRIBUTE_STRUCTURE</span><span class="op">(</span>
-  <span class="va">attribute_type</span>,
-  <span class="va">attribute_descriptor</span>,
-  individual_event_details <span class="op">=</span> <span class="fu"><a href="INDIVIDUAL_EVENT_DETAIL.html">INDIVIDUAL_EVENT_DETAIL</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">INDIVIDUAL_ATTRIBUTE_STRUCTURE</span><span class="op">(</span></span>
+<span>  <span class="va">attribute_type</span>,</span>
+<span>  <span class="va">attribute_descriptor</span>,</span>
+<span>  individual_event_details <span class="op">=</span> <span class="fu"><a href="INDIVIDUAL_EVENT_DETAIL.html">INDIVIDUAL_EVENT_DETAIL</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -64,14 +64,21 @@ specification.</p>
     <dl><dt>attribute_type</dt>
 <dd><p>An attribute which may have caused name, addresses, phone numbers,
 family listings to be recorded. Its application is in helping to classify sources used for information.</p></dd>
+
+
 <dt>attribute_descriptor</dt>
 <dd><p>Text describing a particular characteristic or attribute assigned to an individual.</p></dd>
+
+
 <dt>individual_event_details</dt>
 <dd><p>An INDIVIDUAL_EVENT_DETAIL() object giving details of the attribute.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing the INDIVIDUAL_ATTRIBUTE_STRUCTURE part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing the INDIVIDUAL_ATTRIBUTE_STRUCTURE part of a GEDCOM file.</p>
     </div>
 
   </div>
@@ -86,7 +93,7 @@ family listings to be recorded. Its application is in helping to classify source
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

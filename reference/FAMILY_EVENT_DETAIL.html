@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,37 +52,42 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">FAMILY_EVENT_DETAIL</span><span class="op">(</span>
-  husband_age_at_event <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  wife_age_at_event <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  event_details <span class="op">=</span> <span class="fu"><a href="EVENT_DETAIL.html">EVENT_DETAIL</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">FAMILY_EVENT_DETAIL</span><span class="op">(</span></span>
+<span>  husband_age_at_event <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  wife_age_at_event <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  event_details <span class="op">=</span> <span class="fu"><a href="EVENT_DETAIL.html">EVENT_DETAIL</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>husband_age_at_event</dt>
 <dd><p>A string that indicates the age in years, months, and days that the
-principal was at the time of the associated event. Any labels must come after their
-corresponding number, for example; 4y 8m 10d.
-The line value should be normalised; it should for example not specify 2y 13m, but 3y 1m
-instead. Number of days is allowed to be 365 because of leap years.
-The YYY, MM and DDD values must not be zero; if a value equals zero, that part is left off.
-The values may not contain leading zeroes either.</p></dd>
+husband was at the time of the associated event. See Details.</p></dd>
+
+
 <dt>wife_age_at_event</dt>
 <dd><p>A string that indicates the age in years, months, and days that the
-principal was at the time of the associated event. Any labels must come after their
-corresponding number, for example; 4y 8m 10d.
-The line value should be normalised; it should for example not specify 2y 13m, but 3y 1m
-instead. Number of days is allowed to be 365 because of leap years.
-The YYY, MM and DDD values must not be zero; if a value equals zero, that part is left off.
-The values may not contain leading zeroes either.</p></dd>
+wife was at the time of the associated event. See Details.</p></dd>
+
+
 <dt>event_details</dt>
 <dd><p>An EVENT_DETAIL() object giving details of the event.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing the FAMILY_EVENT_DETAIL part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing the FAMILY_EVENT_DETAIL part of a GEDCOM file.</p>
+    </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>For ages, any labels must come after their corresponding number, for example; 4y 8m 10d.
+The line value should be normalised; it should for example not specify 2y 13m, but 3y 1m
+instead. Number of days is allowed to be 365 because of leap years.
+The YYY, MM and DDD values must not be zero; if a value equals zero, that part is left off.
+The values may not contain leading zeroes either.</p>
     </div>
 
   </div>
@@ -97,7 +102,7 @@ The values may not contain leading zeroes either.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

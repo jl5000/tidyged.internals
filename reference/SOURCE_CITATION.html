@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,40 +52,52 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">SOURCE_CITATION</span><span class="op">(</span>
-  <span class="va">xref_sour</span>,
-  where_within_source <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  event_type_cited_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  role_in_event <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  entry_recording_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  text_from_source <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  certainty_assessment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  multimedia_links <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">SOURCE_CITATION</span><span class="op">(</span></span>
+<span>  <span class="va">xref_sour</span>,</span>
+<span>  where_within_source <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  event_type_cited_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  role_in_event <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  entry_recording_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  text_from_source <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  certainty_assessment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  multimedia_links <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>xref_sour</dt>
 <dd><p>An xref ID of a Source record.</p></dd>
+
+
 <dt>where_within_source</dt>
 <dd><p>Specific location within the information referenced.</p></dd>
+
+
 <dt>event_type_cited_from</dt>
 <dd><p>A code that indicates the type of event which was responsible for the
 source entry being recorded. For example, if the entry was created to record a birth of a child,
 then the type would be BIRT regardless of the assertions made from that record, such as the mother's
 name or mother's birth date. This will allow a prioritised best view choice and a determination of
 the certainty associated with the source used in asserting the cited fact.</p></dd>
+
+
 <dt>role_in_event</dt>
 <dd><p>Indicates what role this person played in the event that is being cited in this context.</p></dd>
+
+
 <dt>entry_recording_date</dt>
 <dd><p>A date_calendar(), date_period(), date_range(), or date_approximated() value
 giving the date that this event data was entered into the original source document.</p></dd>
+
+
 <dt>text_from_source</dt>
 <dd><p>A verbatim copy of any description contained within the source.
 This indicates notes or text that are actually contained in the source document, not the submitter's
 opinion about the source.</p></dd>
+
+
 <dt>certainty_assessment</dt>
 <dd><p>A quantitative evaluation of the credibility of a piece of
 information, based upon its supporting evidence. Some systems use this feature to rank multiple
@@ -95,14 +107,21 @@ eliminate the receiver's need to evaluate the evidence for themselves.
 1 = Questionable reliability of evidence
 2 = Secondary evidence, data officially recorded sometime after event
 3 = Direct and primary evidence used, or by dominance of the evidence</p></dd>
+
+
 <dt>multimedia_links</dt>
 <dd><p>A list of MULTIMEDIA_LINK() objects</p></dd>
+
+
 <dt>notes</dt>
 <dd><p>A list of NOTE_STRUCTURE() objects.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing the SOURCE_CITATION part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing the SOURCE_CITATION part of a GEDCOM file.</p>
     </div>
 
   </div>
@@ -117,7 +136,7 @@ eliminate the receiver's need to evaluate the evidence for themselves.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

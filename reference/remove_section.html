@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -50,35 +50,48 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">remove_section</span><span class="op">(</span>
-  <span class="va">gedcom</span>,
-  <span class="va">containing_level</span>,
-  <span class="va">containing_tags</span>,
-  containing_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  xrefs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  first_only <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">remove_section</span><span class="op">(</span></span>
+<span>  <span class="va">gedcom</span>,</span>
+<span>  <span class="va">containing_level</span>,</span>
+<span>  <span class="va">containing_tags</span>,</span>
+<span>  containing_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  xrefs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  first_only <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>gedcom</dt>
 <dd><p>A tidyged object.</p></dd>
+
+
 <dt>containing_level</dt>
 <dd><p>The level of the first line of the subrecord.</p></dd>
+
+
 <dt>containing_tags</dt>
 <dd><p>The accepted tags of the first line of the subrecord.</p></dd>
+
+
 <dt>containing_values</dt>
 <dd><p>The accepted values of the first line of the subrecord.</p></dd>
+
+
 <dt>xrefs</dt>
 <dd><p>The xrefs of records containing the subrecord (default is all records).</p></dd>
+
+
 <dt>first_only</dt>
 <dd><p>Whether to remove only the first match found or to remove
 all matches.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The tidyged object with the subrecord(s) removed.</p>
+    
+
+<p>The tidyged object with the subrecord(s) removed.</p>
     </div>
 
   </div>
@@ -93,7 +106,7 @@ all matches.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

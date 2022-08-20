@@ -18,7 +18,7 @@ specification."><meta property="og:image" content="/logo.png"><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -52,16 +52,16 @@ specification.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">PLACE_STRUCTURE</span><span class="op">(</span>
-  <span class="va">place_name</span>,
-  place_phonetic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  phonetisation_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  place_romanised <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  romanisation_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  place_latitude <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  place_longitude <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">PLACE_STRUCTURE</span><span class="op">(</span></span>
+<span>  <span class="va">place_name</span>,</span>
+<span>  place_phonetic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  phonetisation_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  place_romanised <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  romanisation_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  place_latitude <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  place_longitude <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -70,29 +70,46 @@ specification.</p>
 <dd><p>The jurisdictional name of the place where the event took place.
 Jurisdictions are separated by commas. No part of the place name may be replaced by an abbreviation.
 Place names are not terminated by a full stop or anything else.</p></dd>
+
+
 <dt>place_phonetic</dt>
 <dd><p>A character vector of phonetic variations of the place name.</p></dd>
+
+
 <dt>phonetisation_method</dt>
 <dd><p>Indicates the method used in transforming the text to the phonetic variation.</p></dd>
+
+
 <dt>place_romanised</dt>
 <dd><p>A character vector of romanised variations of the place name.</p></dd>
+
+
 <dt>romanisation_method</dt>
 <dd><p>Indicates the method used in transforming the text to a romanised variation.</p></dd>
+
+
 <dt>place_latitude</dt>
 <dd><p>The value specifying the latitudinal coordinate of the place name.
 The latitude coordinate is the direction North or South from the equator in degrees and fraction of
 degrees carried out to give the desired accuracy. For example: 18 degrees, 9 minutes, and 3.4 seconds North
 would be formatted as N18.150944.</p></dd>
+
+
 <dt>place_longitude</dt>
 <dd><p>The value specifying the longitudinal coordinate of the place name.
 The longitude coordinate is Degrees and fraction of degrees east or west of the zero or base
 meridian coordinate. For example: 168 degrees, 9 minutes, and 3.4 seconds East would be formatted as E168.150944.</p></dd>
+
+
 <dt>notes</dt>
 <dd><p>A list of NOTE_STRUCTURE() objects.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tidy tibble containing the PLACE_STRUCTURE part of a GEDCOM file.</p>
+    
+
+<p>A tidy tibble containing the PLACE_STRUCTURE part of a GEDCOM file.</p>
     </div>
 
   </div>
@@ -107,7 +124,7 @@ meridian coordinate. For example: 168 degrees, 9 minutes, and 3.4 seconds East w
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

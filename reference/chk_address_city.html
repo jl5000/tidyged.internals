@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyged.internals</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.9000</span>
       </span>
     </div>
 
@@ -50,203 +50,208 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">chk_address_city</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_address_country</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_address_email</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_address_fax</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_address_lines</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_address_postal_code</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_address_state</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_address_web_page</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_address_country</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_adopted_by_which_parent</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_age_at_event</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_attribute_descriptor</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_attribute_type</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_automated_record_id</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_before_common_era</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_caste_name</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_cause_of_event</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_certainty_assessment</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_character_encoding</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_copyright_gedcom_file</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_copyright_source_data</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_count_of_children</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_date_exact</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_date_period_covered</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_date_value</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_descriptive_title</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_event_descriptor</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_event_or_fact_classification</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_event_type_cited_from</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_event_type_family</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_event_type_individual</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_events_recorded</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_gedcom_content_description</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_gedcom_file_name</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_gedcom_form</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_gedcom_version_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_id_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_language_of_text</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_multimedia_file_reference</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_multimedia_format</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_of_business</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_of_product</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_of_repository</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_of_source_data</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_personal</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_phonetic</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_piece_given</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_piece_nickname</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_piece_prefix</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_piece_suffix</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_piece_surname</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_piece_surname_prefix</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_romanised</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_name_type</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_national_or_tribal_origin</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_nobility_type_title</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_number_of_relationships</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_occupation</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_pedigree_linkage_type</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_phone_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_phonetisation_method</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_physical_description</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_place_latitude</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_place_longitude</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_place_name</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_place_phonetic</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_place_romanised</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_possessions</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_product_version_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_receiving_system_name</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_relation_is_descriptor</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_religious_affiliation</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_responsible_agency</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_role_in_event</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_romanisation_method</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_scholastic_achievement</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_sex_value</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_source_call_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_source_descriptive_title</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_source_filed_by_entry</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_source_jurisdiction_place</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_source_media_type</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_source_originator</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_source_publication_facts</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_submitter_name</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_system_id</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_text_from_source</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_time_value</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_user_reference_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_user_reference_type</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_user_text</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_where_within_source</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span>
-
-<span class="fu">chk_xref</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">chk_address_city</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_address_country</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_address_email</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_address_fax</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_address_lines</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_address_postal_code</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_address_state</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_address_web_page</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_address_country</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_adopted_by_which_parent</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_age_at_event</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_attribute_descriptor</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_attribute_type</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_automated_record_id</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_before_common_era</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_caste_name</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_cause_of_event</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_certainty_assessment</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_character_encoding</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_copyright_gedcom_file</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_copyright_source_data</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_count_of_children</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_date_exact</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_date_period_covered</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_date_value</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_descriptive_title</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_event_descriptor</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_event_or_fact_classification</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_event_type_cited_from</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_event_type_family</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_event_type_individual</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_events_recorded</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_gedcom_content_description</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_gedcom_file_name</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_gedcom_form</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_gedcom_version_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_id_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_language_of_text</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_multimedia_file_reference</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_multimedia_format</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_of_business</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_of_product</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_of_repository</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_of_source_data</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_personal</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_phonetic</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_piece_given</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_piece_nickname</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_piece_prefix</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_piece_suffix</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_piece_surname</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_piece_surname_prefix</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_romanised</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_name_type</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_national_or_tribal_origin</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_nobility_type_title</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_number_of_relationships</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_occupation</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_pedigree_linkage_type</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_phone_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_phonetisation_method</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_physical_description</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_place_latitude</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_place_longitude</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_place_name</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_place_phonetic</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_place_romanised</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_possessions</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_product_version_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_receiving_system_name</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_relation_is_descriptor</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_religious_affiliation</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_responsible_agency</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_role_in_event</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_romanisation_method</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_scholastic_achievement</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_sex_value</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_source_call_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_source_descriptive_title</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_source_filed_by_entry</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_source_jurisdiction_place</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_source_media_type</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_source_originator</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_source_publication_facts</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_submitter_name</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_system_id</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_text_from_source</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_time_value</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_user_reference_number</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_user_reference_type</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_user_text</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_where_within_source</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">chk_xref</span><span class="op">(</span><span class="va">input</span>, <span class="va">max_dim</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>input</dt>
 <dd><p>An input value.</p></dd>
+
+
 <dt>max_dim</dt>
 <dd><p>The maximum length of the input value.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Either a single character string describing the first error encountered, or
+    
+
+<p>Either a single character string describing the first error encountered, or
 NULL if no errors are found.</p>
     </div>
     <div id="details">
@@ -267,7 +272,7 @@ also used for input validation in the shinyged package.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
